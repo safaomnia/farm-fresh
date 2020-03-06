@@ -30,7 +30,9 @@ class CreateFermeTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('ferme');
+	  Schema::disableForeignKeyConstraints();
+	  Schema::drop('ferme');
+	  Schema::enableForeignKeyConstraints();
 	}
 
 }

@@ -34,7 +34,9 @@ class CreateUtilisateurTable extends Migration {
 	 */
 	public function down()
 	{
+	  Schema::disableForeignKeyConstraints();
 		Schema::drop('utilisateur');
+		Schema::enableForeignKeyConstraints();
 	}
 
 }

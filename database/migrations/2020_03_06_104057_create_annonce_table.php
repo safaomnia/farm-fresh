@@ -29,7 +29,9 @@ class CreateAnnonceTable extends Migration {
 	 */
 	public function down()
 	{
+	  Schema::disableForeignKeyConstraints();
 		Schema::drop('annonce');
+		Schema::enableForeignKeyConstraints();
 	}
 
 }

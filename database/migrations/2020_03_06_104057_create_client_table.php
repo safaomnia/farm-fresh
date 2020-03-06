@@ -26,7 +26,9 @@ class CreateClientTable extends Migration {
 	 */
 	public function down()
 	{
+	  Schema::disableForeignKeyConstraints();
 		Schema::drop('client');
+		Schema::enableForeignKeyConstraints();
 	}
 
 }

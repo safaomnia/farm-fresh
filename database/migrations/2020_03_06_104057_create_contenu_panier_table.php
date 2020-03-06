@@ -29,7 +29,9 @@ class CreateContenuPanierTable extends Migration {
 	 */
 	public function down()
 	{
+	  Schema::disableForeignKeyConstraints();
 		Schema::drop('contenu_panier');
+		Schema::enableForeignKeyConstraints();
 	}
 
 }

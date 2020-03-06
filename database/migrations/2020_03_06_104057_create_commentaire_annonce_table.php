@@ -30,7 +30,9 @@ class CreateCommentaireAnnonceTable extends Migration {
 	 */
 	public function down()
 	{
+	  Schema::disableForeignKeyConstraints();
 		Schema::drop('commentaire_annonce');
+		Schema::enableForeignKeyConstraints();
 	}
 
 }

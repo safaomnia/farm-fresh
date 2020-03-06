@@ -28,7 +28,9 @@ class CreateLivraisonTable extends Migration {
 	 */
 	public function down()
 	{
+	  Schema::disableForeignKeyConstraints();
 		Schema::drop('livraison');
+		Schema::enableForeignKeyConstraints();
 	}
 
 }
