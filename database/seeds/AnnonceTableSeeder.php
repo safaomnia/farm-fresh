@@ -11,6 +11,10 @@ class AnnonceTableSeeder extends Seeder
    */
   public function run()
   {
-    factory(App\Annonce::class, 20)->create();
+    factory(App\Annonce::class, 20)
+      ->create()
+      ->each(function ($annonce) {
+        $annonce->commentaires()->saveMany(factory(App\CommentaireAnnonce::class, rand(2, 5))->make(['annonce_id' => $annonce->id]));
+      });
   }
 }

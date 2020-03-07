@@ -19,4 +19,8 @@ class Client extends User
     'id'
   ];
 
+  public function user(){
+    return $this->hasOne(User::class);
+  }
+
 }
