@@ -13,6 +13,6 @@ class Annonce extends Model
     }
 
     public function commentaires() {
-      return $this->hasMany(CommentaireAnnonce::class);
+      return $this->belongsToMany(User::class, 'commentaire_annonce');
     }
 }
