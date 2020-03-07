@@ -14,13 +14,13 @@ class CreateUtilisateurTable extends Migration {
 	{
 		Schema::create('utilisateur', function(Blueprint $table)
 		{
-			$table->bigInteger('id')->unsigned()->primary();
+			$table->bigIncrements('id');
 			$table->text('nom', 65535);
 			$table->text('prenom', 65535);
 			$table->date('datenai');
-			$table->string('sexe');
+			$table->enum('sexe', array('Femme','Homme'));
 			$table->string('telephone', 15);
-			$table->string('email', 30);
+			$table->string('email', 100);
 			$table->string('adresse', 50);
 			$table->string('password', 100);
 			$table->text('photo', 65535);

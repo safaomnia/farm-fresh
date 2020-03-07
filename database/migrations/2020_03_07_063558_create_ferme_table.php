@@ -14,7 +14,7 @@ class CreateFermeTable extends Migration {
 	{
 		Schema::create('ferme', function(Blueprint $table)
 		{
-			$table->bigInteger('id')->unsigned()->primary();
+			$table->bigIncrements('id');
 			$table->text('nom', 65535);
 			$table->string('adresse', 50);
 			$table->string('contact', 50);

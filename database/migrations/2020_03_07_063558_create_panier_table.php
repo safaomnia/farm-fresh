@@ -14,8 +14,8 @@ class CreatePanierTable extends Migration {
 	{
 		Schema::create('panier', function(Blueprint $table)
 		{
-			$table->bigInteger('id')->unsigned()->primary();
-			$table->string('ipv6', 11);
+			$table->bigIncrements('id');
+			$table->string('ipv4', 11);
 			$table->bigInteger('utilisateur_id')->unsigned()->index('utilisateur_id');
 		});
 	}

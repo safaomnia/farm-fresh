@@ -14,7 +14,7 @@ class CreateCommentaireAnnonceTable extends Migration {
 	{
 		Schema::create('commentaire_annonce', function(Blueprint $table)
 		{
-			$table->bigInteger('id')->unsigned()->primary();
+			$table->bigIncrements('id');
 			$table->text('commentaire', 65535);
 			$table->bigInteger('annonce_id')->unsigned()->index('annonce_id');
 			$table->bigInteger('utilisateur_id')->unsigned()->index('utilisateur_id');

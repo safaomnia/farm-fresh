@@ -14,10 +14,10 @@ class CreateAnnonceTable extends Migration {
 	{
 		Schema::create('annonce', function(Blueprint $table)
 		{
-			$table->bigInteger('id')->unsigned()->primary();
+			$table->bigIncrements('id');
 			$table->text('text', 65535);
-			$table->dateTime('date');
-			$table->bigInteger('utilisateur_id')->unsigned()->index('utitisateur_id');
+			$table->bigInteger('utilisateur_id')->unsigned()->index('utilisateur_id');
+			$table->timestamps();
 		});
 	}
 

@@ -14,7 +14,7 @@ class CreateLivreurTable extends Migration {
 	{
 		Schema::create('livreur', function(Blueprint $table)
 		{
-			$table->bigInteger('id')->unsigned()->index('id');
+			$table->bigIncrements('id')->index('id');
 			$table->text('entreprise', 65535);
 			$table->text('adresse', 65535);
 			$table->string('telephone', 15);

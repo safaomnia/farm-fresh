@@ -22,7 +22,6 @@ $factory->define(User::class, function (Faker $faker) {
   if($sexe == 'Homme') $prenom = $faker->firstNameMale;
   else $prenom = $faker->firstNameFemale;
   return [
-    'id' => $faker->unique()->randomNumber(),
     'nom' => $faker->lastName,
     'prenom' => $prenom,
     'datenai' => $faker->date('Y-m-d', 'now'),
@@ -33,8 +32,6 @@ $factory->define(User::class, function (Faker $faker) {
     'photo' => "$sexe.jpg", //$faker->image('public/images/team', 530, 620, 'people', false),
     'email_verified_at' => now(),
     'password' => '$2y$10$2xnl2rPlIQa.ZRN.o3GZz.4uk/ja9C5T06unmYWZVPfzUX/9nObo2', // password
-    'remember_token' => Str::random(10),
-    'created_at' => now(),
-    'updated_at' => now()
+    'remember_token' => Str::random(10)
   ];
 });

@@ -14,7 +14,7 @@ class CreateLivraisonTable extends Migration {
 	{
 		Schema::create('livraison', function(Blueprint $table)
 		{
-			$table->bigInteger('id')->unsigned()->primary();
+			$table->bigIncrements('id');
 			$table->string('trajectoire', 50);
 			$table->bigInteger('livreur_id')->unsigned()->index('livreur_id');
 		});

@@ -14,7 +14,7 @@ class CreateClientTable extends Migration {
 	{
 		Schema::create('client', function(Blueprint $table)
 		{
-			$table->bigInteger('id')->unsigned()->index('id');
+			$table->bigIncrements('id')->index('id');
 		});
 	}
 

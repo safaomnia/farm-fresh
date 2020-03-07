@@ -14,7 +14,7 @@ class CreateProduitTable extends Migration {
 	{
 		Schema::create('produit', function(Blueprint $table)
 		{
-			$table->bigInteger('id')->unsigned()->primary();
+			$table->bigIncrements('id');
 			$table->string('nom', 3);
 			$table->integer('prix');
 			$table->integer('stock');
