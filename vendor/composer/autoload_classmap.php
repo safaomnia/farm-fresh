@@ -6,7 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AgriculteurTableSeeder' => $baseDir . '/database/seeds/AgriculteurTableSeeder.php',
+    'AnnonceTableSeeder' => $baseDir . '/database/seeds/AnnonceTableSeeder.php',
     'App\\Agence' => $baseDir . '/app/Agence.php',
+    'App\\Agriculteur' => $baseDir . '/app/Agriculteur.php',
+    'App\\Annonce' => $baseDir . '/app/Annonce.php',
+    'App\\Categorie' => $baseDir . '/app/Categorie.php',
     'App\\Chambre' => $baseDir . '/app/Chambre.php',
     'App\\Client' => $baseDir . '/app/Client.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
@@ -83,6 +88,8 @@ return array(
     'Carbon\\Traits\\Units' => $vendorDir . '/nesbot/carbon/src/Carbon/Traits/Units.php',
     'Carbon\\Traits\\Week' => $vendorDir . '/nesbot/carbon/src/Carbon/Traits/Week.php',
     'Carbon\\Translator' => $vendorDir . '/nesbot/carbon/src/Carbon/Translator.php',
+    'CategorieTableSeeder' => $baseDir . '/database/seeds/CategorieTableSeeder.php',
+    'ClientTableSeeder' => $baseDir . '/database/seeds/ClientTableSeeder.php',
     'Cron\\AbstractField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
     'Cron\\CronExpression' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
     'Cron\\DayOfMonthField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/DayOfMonthField.php',
@@ -3928,6 +3935,7 @@ return array(
     'TijsVerkoyen\\CssToInlineStyles\\Css\\Property\\Property' => $vendorDir . '/tijsverkoyen/css-to-inline-styles/src/Css/Property/Property.php',
     'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => $vendorDir . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
     'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => $vendorDir . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
+    'UsersTableSeeder' => $baseDir . '/database/seeds/UsersTableSeeder.php',
     'Way\\Generators\\Commands\\ControllerGeneratorCommand' => $vendorDir . '/xethron/laravel-4-generators/src/Way/Generators/Commands/ControllerGeneratorCommand.php',
     'Way\\Generators\\Commands\\GeneratorCommand' => $vendorDir . '/xethron/laravel-4-generators/src/Way/Generators/Commands/GeneratorCommand.php',
     'Way\\Generators\\Commands\\MigrationGeneratorCommand' => $vendorDir . '/xethron/laravel-4-generators/src/Way/Generators/Commands/MigrationGeneratorCommand.php',

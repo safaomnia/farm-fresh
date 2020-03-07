@@ -428,7 +428,12 @@ class ComposerStaticInit0a332c44ecaad5948502ab7f30cc7bb1
     );
 
     public static $classMap = array (
+        'AgriculteurTableSeeder' => __DIR__ . '/../..' . '/database/seeds/AgriculteurTableSeeder.php',
+        'AnnonceTableSeeder' => __DIR__ . '/../..' . '/database/seeds/AnnonceTableSeeder.php',
         'App\\Agence' => __DIR__ . '/../..' . '/app/Agence.php',
+        'App\\Agriculteur' => __DIR__ . '/../..' . '/app/Agriculteur.php',
+        'App\\Annonce' => __DIR__ . '/../..' . '/app/Annonce.php',
+        'App\\Categorie' => __DIR__ . '/../..' . '/app/Categorie.php',
         'App\\Chambre' => __DIR__ . '/../..' . '/app/Chambre.php',
         'App\\Client' => __DIR__ . '/../..' . '/app/Client.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
@@ -505,6 +510,8 @@ class ComposerStaticInit0a332c44ecaad5948502ab7f30cc7bb1
         'Carbon\\Traits\\Units' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Units.php',
         'Carbon\\Traits\\Week' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Week.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
+        'CategorieTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CategorieTableSeeder.php',
+        'ClientTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ClientTableSeeder.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/DayOfMonthField.php',
@@ -4350,6 +4357,7 @@ class ComposerStaticInit0a332c44ecaad5948502ab7f30cc7bb1
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Property\\Property' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Property/Property.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
+        'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
         'Way\\Generators\\Commands\\ControllerGeneratorCommand' => __DIR__ . '/..' . '/xethron/laravel-4-generators/src/Way/Generators/Commands/ControllerGeneratorCommand.php',
         'Way\\Generators\\Commands\\GeneratorCommand' => __DIR__ . '/..' . '/xethron/laravel-4-generators/src/Way/Generators/Commands/GeneratorCommand.php',
         'Way\\Generators\\Commands\\MigrationGeneratorCommand' => __DIR__ . '/..' . '/xethron/laravel-4-generators/src/Way/Generators/Commands/MigrationGeneratorCommand.php',

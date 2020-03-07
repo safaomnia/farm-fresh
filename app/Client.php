@@ -9,6 +9,7 @@ class Client extends User
 {
   use Notifiable;
   public $table = 'client';
+  public $timestamps = false;
   /**
    * The attributes that are mass assignable.
    *
