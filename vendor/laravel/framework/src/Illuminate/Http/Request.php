@@ -293,7 +293,7 @@ class Request extends SymfonyRequest implements Arrayable, ArrayAccess
      */
     public function userAgent()
     {
-        return $this->headers->get('user-Agent');
+        return $this->headers->get('User-Agent');
     }
 
     /**

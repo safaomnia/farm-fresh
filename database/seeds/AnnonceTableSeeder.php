@@ -13,8 +13,14 @@ class AnnonceTableSeeder extends Seeder
   {
     factory(App\Annonce::class, 20)
       ->create()
-      ->each(function ($annonce) {
-        $annonce->commentaires()->saveMany(factory(App\AnnonceCommentaire::class, rand(2, 5))->make(['annonce_id' => $annonce->id]));
+      ->each(function ($annonce)
+      {
+        $faker = Faker\Factory::create();
+        $annonce->commentaires()->attach('', [
+          'annonce_id' => $annonce->id,
+          'utilisateur_id' => App\User::all()->random()->id,
+          'commentaire' => $faker->paragraph
+        ]);
       });
   }
 }

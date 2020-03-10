@@ -44,6 +44,13 @@ Route::get('/room/{id}/edit', 'hotelController@edit')->name('room.edit')->middle
 Route::post('/room/{id}/update', 'hotelController@update')->name('room.update')->middleware('auth');
 Route::get('/room/{id}/delete', 'hotelController@delete')->name('room.delete')->middleware('auth');
 
+
+Route::get('/test', function ()
+{
+  $ferme = App\Ferme::find(1);
+  $ferme->commentaires()->attach('', ['ferme_id' => 1, 'utilisateur_id' => 1, 'commentaire' => 'comment1']);
+});
+
 //unfound route
 Route::get('/{page}', function ($page) {
   $pages = [

@@ -52,15 +52,15 @@ class ErrorHandler
 {
     private $levels = [
         E_DEPRECATED => 'Deprecated',
-        E_USER_DEPRECATED => 'user Deprecated',
+        E_USER_DEPRECATED => 'User Deprecated',
         E_NOTICE => 'Notice',
-        E_USER_NOTICE => 'user Notice',
+        E_USER_NOTICE => 'User Notice',
         E_STRICT => 'Runtime Notice',
         E_WARNING => 'Warning',
-        E_USER_WARNING => 'user Warning',
+        E_USER_WARNING => 'User Warning',
         E_COMPILE_WARNING => 'Compile Warning',
         E_CORE_WARNING => 'Core Warning',
-        E_USER_ERROR => 'user Error',
+        E_USER_ERROR => 'User Error',
         E_RECOVERABLE_ERROR => 'Catchable Fatal Error',
         E_COMPILE_ERROR => 'Compile Error',
         E_PARSE => 'Parse Error',
@@ -92,6 +92,7 @@ class ErrorHandler
     private $screamedErrors = 0x55; // E_ERROR + E_CORE_ERROR + E_COMPILE_ERROR + E_PARSE
     private $loggedErrors = 0;
     private $traceReflector;
+    private $debug;
 
     private $isRecursive = 0;
     private $isRoot = false;
@@ -180,7 +181,7 @@ class ErrorHandler
         }
     }
 
-    public function __construct(BufferingLogger $bootstrappingLogger = null)
+    public function __construct(BufferingLogger $bootstrappingLogger = null, bool $debug = false)
     {
         if ($bootstrappingLogger) {
             $this->bootstrappingLogger = $bootstrappingLogger;
@@ -188,6 +189,7 @@ class ErrorHandler
         }
         $this->traceReflector = new \ReflectionProperty('Exception', 'trace');
         $this->traceReflector->setAccessible(true);
+        $this->debug = $debug;
     }
 
     /**
@@ -410,6 +412,11 @@ class ErrorHandler
         $log = $this->loggedErrors & $type;
         $throw = $this->thrownErrors & $type & $level;
         $type &= $level | $this->screamedErrors;
+
+        // Never throw on warnings triggered by assert()
+        if (E_WARNING === $type && 'a' === $message[0] && 0 === strncmp($message, 'assert(): ', 10)) {
+            $throw = 0;
+        }
 
         if (!$type || (!$log && !$throw)) {
             return !$silenced && $type && $log;
@@ -697,7 +704,7 @@ class ErrorHandler
      */
     private function renderException(\Throwable $exception): void
     {
-        $renderer = \in_array(\PHP_SAPI, ['cli', 'phpdbg'], true) ? new CliErrorRenderer() : new HtmlErrorRenderer(0 !== $this->scopedErrors);
+        $renderer = \in_array(\PHP_SAPI, ['cli', 'phpdbg'], true) ? new CliErrorRenderer() : new HtmlErrorRenderer($this->debug);
 
         $exception = $renderer->render($exception);
 
@@ -761,7 +768,7 @@ class ErrorHandler
      */
     private function parseAnonymousClass(string $message): string
     {
-        return preg_replace_callback('/class@anonymous\x00.*?\.php(?:0x?|:)[0-9a-fA-F]++/', static function ($m) {
+        return preg_replace_callback('/class@anonymous\x00.*?\.php(?:0x?|:[0-9]++\$)[0-9a-fA-F]++/', static function ($m) {
             return class_exists($m[0], false) ? get_parent_class($m[0]).'@anonymous' : $m[0];
         }, $message);
     }

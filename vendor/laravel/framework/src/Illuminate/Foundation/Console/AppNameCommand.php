@@ -175,7 +175,7 @@ class AppNameCommand extends Command
     }
 
     /**
-     * Set the authentication user namespace.
+     * Set the authentication User namespace.
      *
      * @return void
      */
@@ -183,13 +183,13 @@ class AppNameCommand extends Command
     {
         $this->replaceIn(
             $this->getConfigPath('auth'),
-            $this->currentRoot.'\\user',
-            $this->argument('name').'\\user'
+            $this->currentRoot.'\\User',
+            $this->argument('name').'\\User'
         );
     }
 
     /**
-     * Set the services user namespace.
+     * Set the services User namespace.
      *
      * @return void
      */
@@ -197,8 +197,8 @@ class AppNameCommand extends Command
     {
         $this->replaceIn(
             $this->getConfigPath('services'),
-            $this->currentRoot.'\\user',
-            $this->argument('name').'\\user'
+            $this->currentRoot.'\\User',
+            $this->argument('name').'\\User'
         );
     }
 

@@ -107,13 +107,13 @@ class EloquentUserProvider implements UserProvider
     {
         if (empty($credentials) ||
            (count($credentials) === 1 &&
-            array_key_exists('password', $credentials))) {
+            Str::contains($this->firstCredentialKey($credentials), 'password'))) {
             return;
         }
 
         // First we will add each credential element to the query as a where clause.
         // Then we can execute the query and, if we found a user, return it in a
-        // Eloquent user "model" that will be utilized by the Guard instances.
+        // Eloquent User "model" that will be utilized by the Guard instances.
         $query = $this->newModelQuery();
 
         foreach ($credentials as $key => $value) {
@@ -129,6 +129,19 @@ class EloquentUserProvider implements UserProvider
         }
 
         return $query->first();
+    }
+
+    /**
+     * Get the first key from the credential array.
+     *
+     * @param  array  $credentials
+     * @return string|null
+     */
+    protected function firstCredentialKey(array $credentials)
+    {
+        foreach ($credentials as $key => $value) {
+            return $key;
+        }
     }
 
     /**

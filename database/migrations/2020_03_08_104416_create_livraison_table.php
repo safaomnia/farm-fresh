@@ -16,7 +16,7 @@ class CreateLivraisonTable extends Migration {
 		{
 			$table->bigInteger('id', true)->unsigned();
 			$table->string('trajectoire', 50);
-			$table->bigInteger('livreur_id')->unsigned()->index('livreur_id');
+			$table->bigInteger('transport_id')->unsigned()->index('trasport_id');
 			$table->timestamps();
 		});
 	}

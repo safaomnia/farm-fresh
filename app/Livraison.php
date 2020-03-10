@@ -6,5 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Livraison extends Model
 {
-    //
+  public $table = 'livraison';
+  protected $fillable = [
+    'trajectoire'
+  ];
+
+  public function transport()
+  {
+    return $this->belongsTo(Transport::class);
+  }
+
+  public function livreur()
+  {
+    return $this->belongsTo(Livreur::class);
+  }
 }

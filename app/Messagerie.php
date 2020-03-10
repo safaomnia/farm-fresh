@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Messagerie extends Model
+class Messagerie extends Pivot
 {
-    //
+  //
 }

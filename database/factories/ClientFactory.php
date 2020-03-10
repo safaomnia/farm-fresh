@@ -5,8 +5,8 @@
 use App\Client;
 use Faker\Generator as Faker;
 
-$factory->define(Client::class, function (Faker $faker) {
+$factory->define(Client::class, function (Faker $faker, $param) {
     return [
-        'id' => $faker->unique()->randomElement(DB::table('utilisateur')->select('id')->get())->id
+        'id' => $param['id']
     ];
 });

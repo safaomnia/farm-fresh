@@ -2,9 +2,12 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Commande extends Model
+class Commande extends Pivot
 {
-    //
+  public function livraison()
+  {
+    return $this->belongsTo(Commande::class);
+  }
 }

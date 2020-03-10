@@ -18,7 +18,7 @@ trait HasEvents
     protected $dispatchesEvents = [];
 
     /**
-     * user exposed observable events.
+     * User exposed observable events.
      *
      * These are extra user-defined events observers may subscribe to.
      *

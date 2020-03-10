@@ -15,7 +15,7 @@ class CreatePanierTable extends Migration {
 		Schema::create('panier', function(Blueprint $table)
 		{
 			$table->bigInteger('id', true)->unsigned();
-			$table->string('ipv4', 11);
+			$table->string('ipv4', 51);
 			$table->bigInteger('utilisateur_id')->unsigned()->index('utilisateur_id');
 			$table->timestamps();
 		});

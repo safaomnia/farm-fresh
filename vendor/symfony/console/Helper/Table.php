@@ -78,7 +78,7 @@ class Table
     private $columnStyles = [];
 
     /**
-     * user set column widths.
+     * User set column widths.
      *
      * @var array
      */
@@ -601,7 +601,9 @@ class Table
             ++$numberOfRows; // Add row for header separator
         }
 
-        ++$numberOfRows; // Add row for footer separator
+        if (\count($this->rows) > 0) {
+            ++$numberOfRows; // Add row for footer separator
+        }
 
         return $numberOfRows;
     }

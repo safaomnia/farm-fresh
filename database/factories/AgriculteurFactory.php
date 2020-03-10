@@ -5,11 +5,9 @@
 use App\Agriculteur;
 use Faker\Generator as Faker;
 
-$factory->define(Agriculteur::class, function (Faker $faker) {
-  $user_ids = \DB::table('utilisateur')->select('id')->get();
-  $id = $faker->unique()->randomElement($user_ids)->id;
+$factory->define(Agriculteur::class, function (Faker $faker, $param) {
   return [
-    'id' => $id,
+    'id' => $param['id'],
     'domaine' => $faker->text,
     'certification' => $faker->realText(200, 2)
   ];

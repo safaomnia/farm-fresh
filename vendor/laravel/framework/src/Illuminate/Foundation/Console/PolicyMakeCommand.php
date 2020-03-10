@@ -47,7 +47,7 @@ class PolicyMakeCommand extends GeneratorCommand
     }
 
     /**
-     * Replace the user model namespace.
+     * Replace the User model namespace.
      *
      * @param  string  $stub
      * @return string
@@ -61,7 +61,7 @@ class PolicyMakeCommand extends GeneratorCommand
         }
 
         return str_replace(
-            $this->rootNamespace().'user',
+            $this->rootNamespace().'User',
             $model,
             $stub
         );

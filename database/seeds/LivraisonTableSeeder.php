@@ -11,6 +11,6 @@ class LivraisonTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+      factory(App\Livraison::class, rand(5,10))->create();
     }
 }

@@ -2,19 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class AnnonceCommentaire extends Model
+class AnnonceCommentaire extends Pivot
 {
-  public $table = 'commentaire_annonce';
-
-  public function annonce()
-  {
-    return $this->belongsTo(Annonce::class);
-  }
-
-  public function user()
-  {
-    return $this->belongsTo(User::class);
-  }
+  //
 }

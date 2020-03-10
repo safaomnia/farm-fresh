@@ -532,7 +532,7 @@ class LogManager implements LoggerInterface
     /**
      * Interesting events.
      *
-     * Example: user logs in, SQL logs.
+     * Example: User logs in, SQL logs.
      *
      * @param  string  $message
      * @param  array  $context
