@@ -27,7 +27,7 @@ class CreateUtilisateurTable extends Migration {
 			$table->dateTime('email_verified_at');
 			$table->string('remember_token', 50);
 			$table->timestamps();
-			$table->enum('type', array('livreur', 'agriculteur', 'client'))->default('client');
+			$table->enum('type', array('livreur','agriculteur','client'))->default('client');
 		});
 	}
 

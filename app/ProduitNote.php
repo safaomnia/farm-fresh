@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class FermeCommentaire extends Pivot
+class ProduitNote extends Pivot
 {
-  //
+    //
 }

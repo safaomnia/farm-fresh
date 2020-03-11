@@ -19,15 +19,10 @@ class FermeTableSeeder extends Seeder
         ->each(function ($ferme) {
           $faker = Faker\Factory::create();
           $userId = App\User::all()->random()->id;
-          $ferme->commentaires()->attach('', [
+          $ferme->avis()->attach('', [
             'ferme_id' => $ferme->id,
             'utilisateur_id' => $userId,
-            'commentaire' => $faker->paragraph
-          ]);
-          $ferme->notes()->attach('', [
-            'ferme_id' => $ferme->id,
-            'utilisateur_id' => $userId,
-            'nb_etoile' => rand(1,5)
+            'avis' => $faker->paragraph
           ]);
         });
     }

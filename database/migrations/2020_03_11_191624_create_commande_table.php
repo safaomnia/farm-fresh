@@ -16,10 +16,10 @@ class CreateCommandeTable extends Migration {
 		{
 			$table->bigInteger('id', true)->unsigned();
 			$table->integer('quantite');
-			$table->enum('valide', array('0','1'));
+			$table->enum('preparate', array('en cours','preparé'));
 			$table->bigInteger('produit_id')->unsigned()->index('produit_id');
 			$table->bigInteger('client_id')->unsigned()->index('client_id');
-			$table->bigInteger('livraison_id')->unsigned()->index('livraison_id');
+			$table->bigInteger('livraison_id')->unsigned()->nullable()->index('livraison_id');
 			$table->timestamps();
 		});
 	}

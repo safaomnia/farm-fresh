@@ -14,7 +14,7 @@ class AddForeignKeysToFermeTable extends Migration {
 	{
 		Schema::table('ferme', function(Blueprint $table)
 		{
-			$table->foreign('agriculteur_id', 'ferme_ibfk_1')->references('id')->on('agriculteur')->onUpdate('CASCADE')->onDelete('CASCADE');
+			$table->foreign('agriculteur_id', 'ferme_agriculteur')->references('id')->on('agriculteur')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 
@@ -28,7 +28,7 @@ class AddForeignKeysToFermeTable extends Migration {
 	{
 		Schema::table('ferme', function(Blueprint $table)
 		{
-			$table->dropForeign('ferme_ibfk_1');
+			$table->dropForeign('ferme_agriculteur');
 		});
 	}
 

@@ -50,23 +50,22 @@ class User extends Authenticatable
     return $this->belongsToMany(Annonce::class, 'annonce_commentaire', 'annonce_id', 'utilisateur_id')->withTimestamps();
   }
 
-  public function fermeCommentaires()
+  public function fermeAvis()
   {
-    return $this->belongsToMany(Ferme::class, 'ferme_commentaire', 'utilisateur_id', 'ferme_id')
-      ->using(FermeCommentaire::class)
+    return $this->belongsToMany(Ferme::class, 'ferme_avis', 'utilisateur_id', 'ferme_id')
+      ->using(FermeAvis::class)
       ->withPivot('commentaire')
       ->withTimestamps();
   }
 
-  public function fermeNotes()
+  public function ProduitNotes()
   {
-    return $this->belongsToMany(Ferme::class, 'ferme_note', 'ferme_id');
+    return $this->belongsToMany(Produit::class, 'produit_note');
   }
 
   public function emetteurs()
   {
     return $this->belongsToMany(User::class, 'messagerie', 'recepteur_id', 'emetteur_id')
-      ->using(AnnonceCommentaire::class)
       ->withPivot('message', 'fichier', 'seen_at')
       ->withTimestamps();
   }
@@ -74,7 +73,6 @@ class User extends Authenticatable
   public function recepteurs()
   {
     return $this->belongsToMany(User::class, 'messagerie', 'emetteur_id', 'recepteur_id')
-      ->using(AnnonceCommentaire::class)
       ->withPivot('message', 'fichier', 'seen_at')
       ->withTimestamps();
   }

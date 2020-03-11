@@ -11,9 +11,9 @@ class Transport extends Model
     'nom', 'type'
   ];
 
-  public function transports()
+  public function livreur()
   {
-    return $this->hasMany(Transport::class);
+    return $this->belongsTo(Livreur::class);
   }
 
   public function livraisons()

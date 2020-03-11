@@ -16,7 +16,6 @@ class Annonce extends Model
   public function commentaires()
   {
     return $this->belongsToMany(User::class, 'annonce_commentaire', 'annonce_id', 'utilisateur_id')
-      ->using(AnnonceCommentaire::class)
       ->withPivot('commentaire')
       ->withTimestamps();
   }

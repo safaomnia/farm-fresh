@@ -8,6 +8,6 @@ class Commande extends Pivot
 {
   public function livraison()
   {
-    return $this->belongsTo(Commande::class);
+    return $this->belongsTo(Livraison::class);
   }
 }

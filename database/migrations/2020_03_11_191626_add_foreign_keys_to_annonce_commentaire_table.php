@@ -14,8 +14,8 @@ class AddForeignKeysToAnnonceCommentaireTable extends Migration {
 	{
 		Schema::table('annonce_commentaire', function(Blueprint $table)
 		{
-			$table->foreign('annonce_id', 'annonce_commentaire_ibfk_1')->references('id')->on('annonce')->onUpdate('CASCADE')->onDelete('CASCADE');
-			$table->foreign('utilisateur_id', 'annonce_commentaire_ibfk_2')->references('id')->on('utilisateur')->onUpdate('CASCADE')->onDelete('CASCADE');
+			$table->foreign('annonce_id', 'annonce_commentaire')->references('id')->on('annonce')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('utilisateur_id', 'annonce_commentaire_utilisateur')->references('id')->on('utilisateur')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 
@@ -29,8 +29,8 @@ class AddForeignKeysToAnnonceCommentaireTable extends Migration {
 	{
 		Schema::table('annonce_commentaire', function(Blueprint $table)
 		{
-			$table->dropForeign('annonce_commentaire_ibfk_1');
-			$table->dropForeign('annonce_commentaire_ibfk_2');
+			$table->dropForeign('annonce_commentaire');
+			$table->dropForeign('annonce_commentaire_utilisateur');
 		});
 	}
 

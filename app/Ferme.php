@@ -11,28 +11,20 @@ class Ferme extends Model
     'nom', 'adresse', 'contact', 'agriculteur_id'
   ];
 
-  public function notes()
+  public function avis()
   {
-    return $this->belongsToMany(User::class, 'ferme_note', 'ferme_id', 'utilisateur_id')
-      ->using(FermeNote::class)
-      ->withPivot('nb_etoile');
-  }
-
-  public function commentaires()
-  {
-    return $this->belongsToMany(User::class, 'ferme_commentaire', 'ferme_id', 'utilisateur_id')
-      ->using(FermeCommentaire::class)
+    return $this->belongsToMany(User::class, 'ferme_avis', 'ferme_id', 'utilisateur_id')
       ->withPivot('commentaire')
       ->withTimestamps();
   }
 
   public function produits()
   {
-    return $this->hasMany(Produit::class, 'ferme_id');
+    return $this->hasMany(Produit::class);
   }
 
   public function agriculteur()
   {
-    return $this->belongsTo(Agriculteur::class, 'ferme_id');
+    return $this->belongsTo(Agriculteur::class);
   }
 }

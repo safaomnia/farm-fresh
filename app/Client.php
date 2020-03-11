@@ -24,7 +24,7 @@ class Client extends Model
   {
      return $this->belongsToMany(Produit::class, 'commande', 'client_id', 'produit_id')
       ->using(Commande::class)
-      ->withPivot('quantite', 'valide', 'livraison_id')
+      ->withPivot('quantite', 'preparate', 'livraison_id')
       ->withTimestamps();
   }
 }

@@ -12,11 +12,6 @@ class Livreur extends Model
     'entreprise', 'telephone', 'adresse'
   ];
 
-  public function livraisons()
-  {
-    return $this->hasMany(Livraison::class);
-  }
-
   public function transports()
   {
     return $this->hasMany(Transport::class);

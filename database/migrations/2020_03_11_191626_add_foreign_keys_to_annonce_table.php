@@ -14,7 +14,7 @@ class AddForeignKeysToAnnonceTable extends Migration {
 	{
 		Schema::table('annonce', function(Blueprint $table)
 		{
-			$table->foreign('utilisateur_id', 'annonce_ibfk_1')->references('id')->on('utilisateur')->onUpdate('CASCADE')->onDelete('CASCADE');
+			$table->foreign('utilisateur_id', 'utilisateur_annonce')->references('id')->on('utilisateur')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 
@@ -28,7 +28,7 @@ class AddForeignKeysToAnnonceTable extends Migration {
 	{
 		Schema::table('annonce', function(Blueprint $table)
 		{
-			$table->dropForeign('annonce_ibfk_1');
+			$table->dropForeign('utilisateur_annonce');
 		});
 	}
 

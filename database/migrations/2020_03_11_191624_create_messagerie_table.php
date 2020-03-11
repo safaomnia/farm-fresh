@@ -15,12 +15,12 @@ class CreateMessagerieTable extends Migration {
 		Schema::create('messagerie', function(Blueprint $table)
 		{
 			$table->bigInteger('id', true)->unsigned();
-			$table->text('message');
-			$table->text('fichier', 65535);
+			$table->text('message', 65535)->nullable();
+			$table->text('fichier', 65535)->nullable();
 			$table->bigInteger('recepteur_id')->unsigned()->index('recepteur_id');
 			$table->bigInteger('emetteur_id')->unsigned()->index('emetteur_id');
 			$table->timestamps();
-			$table->dateTime('seen_at');
+			$table->dateTime('seen_at')->nullable();
 		});
 	}
 

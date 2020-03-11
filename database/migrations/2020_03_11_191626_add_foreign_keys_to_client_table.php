@@ -14,7 +14,7 @@ class AddForeignKeysToClientTable extends Migration {
 	{
 		Schema::table('client', function(Blueprint $table)
 		{
-			$table->foreign('id', 'client_ibfk_1')->references('id')->on('utilisateur')->onUpdate('CASCADE')->onDelete('CASCADE');
+			$table->foreign('id', 'client_utlisateur')->references('id')->on('utilisateur')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 
@@ -28,7 +28,7 @@ class AddForeignKeysToClientTable extends Migration {
 	{
 		Schema::table('client', function(Blueprint $table)
 		{
-			$table->dropForeign('client_ibfk_1');
+			$table->dropForeign('client_utlisateur');
 		});
 	}
 

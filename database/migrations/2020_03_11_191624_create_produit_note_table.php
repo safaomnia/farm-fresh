@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateFermeCommentaireTable extends Migration {
+class CreateProduitNoteTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,12 @@ class CreateFermeCommentaireTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('ferme_commentaire', function(Blueprint $table)
+		Schema::create('produit_note', function(Blueprint $table)
 		{
 			$table->bigInteger('id', true)->unsigned();
-			$table->text('commentaire', 65535);
+			$table->integer('nb_etoile');
 			$table->bigInteger('utilisateur_id')->unsigned()->index('utilisateur_id');
-			$table->bigInteger('ferme_id')->unsigned()->index('ferme_id');
-			$table->timestamps();
+			$table->bigInteger('produit_id')->unsigned()->index('ferme_id');
 		});
 	}
 
@@ -30,7 +29,7 @@ class CreateFermeCommentaireTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('ferme_commentaire');
+		Schema::drop('produit_note');
 	}
 
 }

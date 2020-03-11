@@ -18,9 +18,9 @@ class Produit extends Model
 
   public function commandes()
   {
-    return $this->belongsToMany(Client::class, 'commande', 'produit_id', 'Client_id')
+    return $this->belongsToMany(Client::class, 'commande', 'produit_id', 'client_id')
       ->using(Commande::class)
-      ->withPivot('quantite', 'valide', 'livraison_id')
+      ->withPivot('quantite', 'preparate', 'livraison_id')
       ->withTimestamps();
   }
 
@@ -28,8 +28,15 @@ class Produit extends Model
   {
     return $this->belongsTo(Categorie::class);
   }
-   public function paniers()
-   {
-      return $this->belongsToMany(Panier::class);
-   }
+
+  public function paniers()
+  {
+    return $this->belongsToMany(Panier::class);
+  }
+
+  public function notes()
+  {
+    return $this->belongsToMany(User::class, 'produit_note', 'produit_id', 'utilisateur_id')
+      ->withPivot('nb_etoile');
+  }
 }

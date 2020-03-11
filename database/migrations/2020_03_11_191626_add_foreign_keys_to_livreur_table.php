@@ -14,7 +14,7 @@ class AddForeignKeysToLivreurTable extends Migration {
 	{
 		Schema::table('livreur', function(Blueprint $table)
 		{
-			$table->foreign('id', 'livreur_ibfk_1')->references('id')->on('utilisateur')->onUpdate('CASCADE')->onDelete('CASCADE');
+			$table->foreign('id', 'livreur_utilisateur')->references('id')->on('utilisateur')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 
@@ -28,7 +28,7 @@ class AddForeignKeysToLivreurTable extends Migration {
 	{
 		Schema::table('livreur', function(Blueprint $table)
 		{
-			$table->dropForeign('livreur_ibfk_1');
+			$table->dropForeign('livreur_utilisateur');
 		});
 	}
 

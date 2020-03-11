@@ -14,12 +14,7 @@ class Agriculteur extends Model
 
   public function fermes()
   {
-    return $this->hasMany(Ferme::class, 'agriculteur_id');
-  }
-
-  public function produits()
-  {
-    return $this->hasMany(Produit::class);
+    return $this->hasMany(Ferme::class);
   }
 
   public function user()

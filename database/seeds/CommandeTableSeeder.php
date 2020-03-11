@@ -16,7 +16,7 @@ class CommandeTableSeeder extends Seeder
       $faker = Faker\Factory::create();
       $client->commandes()->attach('', [
         'quantite' => $faker->randomNumber(),
-        'valide' => $faker->randomElement(['0', '1']),
+        'preparate' => $faker->randomElement(['en cours', 'preparé']),
         'livraison_id' => App\Livraison::all()->random()->id,
         'client_id' => $client->id,
         'produit_id' => App\User::all()->random()->id

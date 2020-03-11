@@ -15,9 +15,8 @@ class CreatePanierProduitTable extends Migration {
 		Schema::create('panier_produit', function(Blueprint $table)
 		{
 			$table->bigInteger('panier_id')->unsigned();
-			$table->bigInteger('produit_id')->unsigned()->index('produit_id');
-			$table->unique(['panier_id','produit_id'], 'panier_id_2');
-			$table->index(['panier_id','produit_id'], 'panier_id');
+			$table->bigInteger('produit_id')->unsigned()->index('produit_panier');
+			$table->unique(['panier_id','produit_id'], 'panier_id');
 		});
 	}
 

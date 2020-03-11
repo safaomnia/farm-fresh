@@ -24,8 +24,8 @@ class DatabaseSeeder extends Seeder
     DB::table('annonce_commentaire')->truncate();
     DB::table('categorie')->truncate();
     DB::table('ferme')->truncate();
-    DB::table('ferme_commentaire')->truncate();
-    DB::table('ferme_note')->truncate();
+    DB::table('ferme_avis')->truncate();
+    DB::table('produit_note')->truncate();
     DB::table('produit')->truncate();
     DB::table('commande')->truncate();
     DB::table('panier')->truncate();
@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
     $this->call(CategorieTableSeeder::class);
     $this->call(FermeTableSeeder::class);
     $this->call(ProduitTableSeeder::class);
+    $this->call(ProduitNoteTableSeeder::class);
     $this->call(LivraisonTableSeeder::class);
     $this->call(CommandeTableSeeder::class);
     $this->call(PanierTableSeeder::class);

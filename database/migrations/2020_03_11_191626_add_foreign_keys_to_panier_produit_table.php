@@ -14,8 +14,8 @@ class AddForeignKeysToPanierProduitTable extends Migration {
 	{
 		Schema::table('panier_produit', function(Blueprint $table)
 		{
-			$table->foreign('panier_id', 'panier_produit_ibfk_1')->references('id')->on('panier')->onUpdate('CASCADE')->onDelete('CASCADE');
-			$table->foreign('produit_id', 'panier_produit_ibfk_2')->references('id')->on('produit')->onUpdate('CASCADE')->onDelete('CASCADE');
+			$table->foreign('panier_id', 'panier_produit')->references('id')->on('panier')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('produit_id', 'produit_panier')->references('id')->on('produit')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 
@@ -29,8 +29,8 @@ class AddForeignKeysToPanierProduitTable extends Migration {
 	{
 		Schema::table('panier_produit', function(Blueprint $table)
 		{
-			$table->dropForeign('panier_produit_ibfk_1');
-			$table->dropForeign('panier_produit_ibfk_2');
+			$table->dropForeign('panier_produit');
+			$table->dropForeign('produit_panier');
 		});
 	}
 

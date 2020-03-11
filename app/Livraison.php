@@ -15,9 +15,4 @@ class Livraison extends Model
   {
     return $this->belongsTo(Transport::class);
   }
-
-  public function livreur()
-  {
-    return $this->belongsTo(Livreur::class);
-  }
 }

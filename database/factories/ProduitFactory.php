@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Produit::class, function (Faker $faker, $param) {
   return [
     'nom' => $faker->word,
-    'prix' => $faker->randomNumber(),
+    'prix' => $faker->randomFloat(),
     'stock' => $faker->randomNumber(),
     'image' => 'default.jpg',
     'description' => $faker->paragraph,
