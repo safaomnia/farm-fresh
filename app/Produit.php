@@ -31,12 +31,13 @@ class Produit extends Model
 
   public function paniers()
   {
-    return $this->belongsToMany(Panier::class);
+    return $this->belongsToMany(Panier::class)->withTimestamps();
   }
 
   public function notes()
   {
     return $this->belongsToMany(User::class, 'produit_note', 'produit_id', 'utilisateur_id')
-      ->withPivot('nb_etoile');
+      ->withPivot('nb_etoile')
+      ->withTimestamps();
   }
 }

@@ -60,7 +60,7 @@ class User extends Authenticatable
 
   public function ProduitNotes()
   {
-    return $this->belongsToMany(Produit::class, 'produit_note');
+    return $this->belongsToMany(Produit::class, 'produit_note')->withTimestamps();
   }
 
   public function emetteurs()

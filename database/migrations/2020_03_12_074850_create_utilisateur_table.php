@@ -24,10 +24,10 @@ class CreateUtilisateurTable extends Migration {
 			$table->string('adresse', 50);
 			$table->string('password', 100);
 			$table->text('photo', 65535);
-			$table->dateTime('email_verified_at');
-			$table->string('remember_token', 50);
-			$table->timestamps();
 			$table->enum('type', array('livreur','agriculteur','client'))->default('client');
+			$table->dateTime('email_verified_at');
+			$table->timestamps();
+			$table->string('remember_token', 50);
 		});
 	}
 

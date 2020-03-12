@@ -18,6 +18,7 @@ class CreateProduitNoteTable extends Migration {
 			$table->integer('nb_etoile');
 			$table->bigInteger('utilisateur_id')->unsigned()->index('utilisateur_id');
 			$table->bigInteger('produit_id')->unsigned()->index('ferme_id');
+			$table->timestamps();
 		});
 	}
 

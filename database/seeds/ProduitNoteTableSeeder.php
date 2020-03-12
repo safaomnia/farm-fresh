@@ -13,11 +13,13 @@ class ProduitNoteTableSeeder extends Seeder
   {
     $produits = App\Produit::all();
     foreach ($produits as $produit) {
-      $produit->notes()->attach('', [
-        'produit_id' => $produit->id,
-        'utilisateur_id' => App\User::all()->random()->id,
-        'nb_etoile' => rand(1, 5)
-      ]);
+      for ($i = 0; $i < rand(5, 10); $i++) {
+        $produit->notes()->attach('', [
+          'produit_id' => $produit->id,
+          'utilisateur_id' => App\User::all()->random()->id,
+          'nb_etoile' => rand(1, 5)
+        ]);
+      }
     }
   }
 }

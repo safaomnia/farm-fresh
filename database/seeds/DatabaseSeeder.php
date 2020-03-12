@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
     DB::table('panier')->truncate();
     DB::table('panier_produit')->truncate();
     DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
     //seeding tables
     $this->call(UsersTableSeeder::class);
     $this->call(AnnonceTableSeeder::class);
@@ -38,9 +39,9 @@ class DatabaseSeeder extends Seeder
     $this->call(FermeTableSeeder::class);
     $this->call(ProduitTableSeeder::class);
     $this->call(ProduitNoteTableSeeder::class);
+    $this->call(TransportTableSeeder::class);
     $this->call(LivraisonTableSeeder::class);
     $this->call(CommandeTableSeeder::class);
     $this->call(PanierTableSeeder::class);
-
   }
 }

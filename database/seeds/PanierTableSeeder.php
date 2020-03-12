@@ -16,7 +16,9 @@ class PanierTableSeeder extends Seeder
       factory(App\Panier::class)
         ->create(['utilisateur_id' => $user->id])
         ->each(function ($panier) {
-          $panier->produits()->sync([$panier->id, App\Produit::all()->random()->id]);
+          for ($i = 0; $i < rand(5, 10); $i++) {
+            $panier->produits()->sync([$panier->id, App\Produit::all()->random()->id]);
+          }
         });
     }
   }

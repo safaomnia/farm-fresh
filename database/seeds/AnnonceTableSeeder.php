@@ -16,11 +16,14 @@ class AnnonceTableSeeder extends Seeder
       ->each(function ($annonce)
       {
         $faker = Faker\Factory::create();
-        $annonce->commentaires()->attach('', [
-          'annonce_id' => $annonce->id,
-          'utilisateur_id' => App\User::all()->random()->id,
-          'commentaire' => $faker->paragraph
-        ]);
+        for ($i = 0; $i < rand(3, 7); $i++)
+        {
+          $annonce->commentaires()->attach('', [
+            'annonce_id' => $annonce->id,
+            'utilisateur_id' => App\User::all()->random()->id,
+            'commentaire' => $faker->paragraph
+          ]);
+        }
       });
   }
 }
