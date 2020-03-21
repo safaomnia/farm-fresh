@@ -35,19 +35,25 @@ class User extends Authenticatable
     'email_verified_at' => 'datetime',
   ];
 
-  public function annonces()
+  public function forums()
   {
-    return $this->hasMany(Annonce::class);
+    return $this->hasMany(Forum::class);
+
+  }
+
+  public function forumCommentaires()
+  {
+    return $this->belongsToMany(Annonce::class, 'forum_commentaire', 'forum_id', 'utilisateur_id')->withTimestamps();
+  }
+
+  public function forumCommentaireRpondres()
+  {
+    return $this->belongsToMany(Annonce::class, 'forum_commentaire', 'forum_id', 'utilisateur_id')->withTimestamps();
   }
 
   public function panier()
   {
     return $this->hasOne(Panier::class);
-  }
-
-  public function annonceCommentaires()
-  {
-    return $this->belongsToMany(Annonce::class, 'annonce_commentaire', 'annonce_id', 'utilisateur_id')->withTimestamps();
   }
 
   public function fermeAvis()
@@ -61,19 +67,5 @@ class User extends Authenticatable
   public function ProduitNotes()
   {
     return $this->belongsToMany(Produit::class, 'produit_note')->withTimestamps();
-  }
-
-  public function emetteurs()
-  {
-    return $this->belongsToMany(User::class, 'messagerie', 'recepteur_id', 'emetteur_id')
-      ->withPivot('message', 'fichier', 'seen_at')
-      ->withTimestamps();
-  }
-
-  public function recepteurs()
-  {
-    return $this->belongsToMany(User::class, 'messagerie', 'emetteur_id', 'recepteur_id')
-      ->withPivot('message', 'fichier', 'seen_at')
-      ->withTimestamps();
   }
 }

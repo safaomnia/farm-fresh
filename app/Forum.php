@@ -4,18 +4,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Annonce extends Model
+class Forum extends Model
 {
-  public $table = "annonce";
+  public $table = "forum";
   protected $fillable = [
-    'text', 'fichier'
+    'theme', 'description'
   ];
   public function user() {
     return $this->belongsTo(User::class);
   }
   public function commentaires()
   {
-    return $this->belongsToMany(User::class, 'annonce_commentaire', 'annonce_id', 'utilisateur_id')
+    return $this->belongsToMany(User::class, 'forum_commentaire', 'forum_id', 'utilisateur_id')
       ->withPivot('commentaire')
       ->withTimestamps();
   }

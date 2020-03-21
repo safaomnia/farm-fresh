@@ -19,9 +19,9 @@ class DatabaseSeeder extends Seeder
     DB::table('livraison')->truncate();
     DB::table('transport')->truncate();
     DB::table('agriculteur')->truncate();
-    DB::table('messagerie')->truncate();
-    DB::table('annonce')->truncate();
-    DB::table('annonce_commentaire')->truncate();
+    DB::table('forum')->truncate();
+    DB::table('forum_commentaire')->truncate();
+    DB::table('forum_commentaire_repondre')->truncate();
     DB::table('categorie')->truncate();
     DB::table('ferme')->truncate();
     DB::table('ferme_avis')->truncate();
@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
 
     //seeding tables
     $this->call(UsersTableSeeder::class);
-    $this->call(AnnonceTableSeeder::class);
+    $this->call(ForumTableSeeder::class);
     $this->call(CategorieTableSeeder::class);
     $this->call(FermeTableSeeder::class);
     $this->call(ProduitTableSeeder::class);

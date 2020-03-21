@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateAnnonceTable extends Migration {
+class CreateForumTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,11 @@ class CreateAnnonceTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('annonce', function(Blueprint $table)
+		Schema::create('forum', function(Blueprint $table)
 		{
 			$table->bigInteger('id', true)->unsigned();
-			$table->text('text', 65535);
+			$table->text('theme', 65535)->nullable();
+			$table->text('description');
 			$table->bigInteger('utilisateur_id')->unsigned()->index('utilisateur_id');
 			$table->timestamps();
 		});
@@ -29,7 +30,7 @@ class CreateAnnonceTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('annonce');
+		Schema::drop('forum');
 	}
 
 }

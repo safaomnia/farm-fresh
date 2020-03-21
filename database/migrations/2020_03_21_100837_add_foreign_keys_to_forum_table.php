@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToAnnonceTable extends Migration {
+class AddForeignKeysToForumTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class AddForeignKeysToAnnonceTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('annonce', function(Blueprint $table)
+		Schema::table('forum', function(Blueprint $table)
 		{
 			$table->foreign('utilisateur_id', 'utilisateur_annonce')->references('id')->on('utilisateur')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
@@ -26,7 +26,7 @@ class AddForeignKeysToAnnonceTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('annonce', function(Blueprint $table)
+		Schema::table('forum', function(Blueprint $table)
 		{
 			$table->dropForeign('utilisateur_annonce');
 		});

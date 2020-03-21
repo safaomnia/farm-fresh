@@ -428,10 +428,7 @@ class ComposerStaticInit0a332c44ecaad5948502ab7f30cc7bb1
     );
 
     public static $classMap = array (
-        'AnnonceTableSeeder' => __DIR__ . '/../..' . '/database/seeds/AnnonceTableSeeder.php',
         'App\\Agriculteur' => __DIR__ . '/../..' . '/app/Agriculteur.php',
-        'App\\Annonce' => __DIR__ . '/../..' . '/app/Annonce.php',
-        'App\\AnnonceCommentaire' => __DIR__ . '/../..' . '/app/AnnonceCommentaire.php',
         'App\\Categorie' => __DIR__ . '/../..' . '/app/Categorie.php',
         'App\\Client' => __DIR__ . '/../..' . '/app/Client.php',
         'App\\Commande' => __DIR__ . '/../..' . '/app/Commande.php',
@@ -439,6 +436,9 @@ class ComposerStaticInit0a332c44ecaad5948502ab7f30cc7bb1
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Ferme' => __DIR__ . '/../..' . '/app/Ferme.php',
         'App\\FermeAvis' => __DIR__ . '/../..' . '/app/FermeAvis.php',
+        'App\\Forum' => __DIR__ . '/../..' . '/app/Forum.php',
+        'App\\ForumCommentaire' => __DIR__ . '/../..' . '/app/ForumCommentaire.php',
+        'App\\ForumCommentaireRepondre' => __DIR__ . '/../..' . '/app/ForumCommentaireRepondre.php',
         'App\\Http\\Controllers\\AgriculteurController' => __DIR__ . '/../..' . '/app/Http/Controllers/AgriculteurController.php',
         'App\\Http\\Controllers\\AnnonceController' => __DIR__ . '/../..' . '/app/Http/Controllers/AnnonceController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -472,7 +472,6 @@ class ComposerStaticInit0a332c44ecaad5948502ab7f30cc7bb1
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Livraison' => __DIR__ . '/../..' . '/app/Livraison.php',
         'App\\Livreur' => __DIR__ . '/../..' . '/app/Livreur.php',
-        'App\\Messagerie' => __DIR__ . '/../..' . '/app/Messagerie.php',
         'App\\Panier' => __DIR__ . '/../..' . '/app/Panier.php',
         'App\\Produit' => __DIR__ . '/../..' . '/app/Produit.php',
         'App\\ProduitNote' => __DIR__ . '/../..' . '/app/ProduitNote.php',
@@ -1396,6 +1395,7 @@ class ComposerStaticInit0a332c44ecaad5948502ab7f30cc7bb1
         'FermeTableSeeder' => __DIR__ . '/../..' . '/database/seeds/FermeTableSeeder.php',
         'Fideloper\\Proxy\\TrustProxies' => __DIR__ . '/..' . '/fideloper/proxy/src/TrustProxies.php',
         'Fideloper\\Proxy\\TrustedProxyServiceProvider' => __DIR__ . '/..' . '/fideloper/proxy/src/TrustedProxyServiceProvider.php',
+        'ForumTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ForumTableSeeder.php',
         'Hamcrest\\Arrays\\IsArray' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
         'Hamcrest\\Arrays\\IsArrayContaining' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
         'Hamcrest\\Arrays\\IsArrayContainingInAnyOrder' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContainingInAnyOrder.php',

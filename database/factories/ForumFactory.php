@@ -2,12 +2,13 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Annonce;
+use App\Forum;
 use Faker\Generator as Faker;
 
-$factory->define(Annonce::class, function (Faker $faker) {
+$factory->define(Forum::class, function (Faker $faker) {
   return [
-    'text' => $faker->paragraph,
+    'theme' => $faker->text,
+    'description' => $faker->paragraph,
     'utilisateur_id' => $faker->randomElement(\DB::table('utilisateur')->select('id')->get())->id
   ];
 });

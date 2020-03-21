@@ -6,10 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'AnnonceTableSeeder' => $baseDir . '/database/seeds/AnnonceTableSeeder.php',
     'App\\Agriculteur' => $baseDir . '/app/Agriculteur.php',
-    'App\\Annonce' => $baseDir . '/app/Annonce.php',
-    'App\\AnnonceCommentaire' => $baseDir . '/app/AnnonceCommentaire.php',
     'App\\Categorie' => $baseDir . '/app/Categorie.php',
     'App\\Client' => $baseDir . '/app/Client.php',
     'App\\Commande' => $baseDir . '/app/Commande.php',
@@ -17,6 +14,9 @@ return array(
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Ferme' => $baseDir . '/app/Ferme.php',
     'App\\FermeAvis' => $baseDir . '/app/FermeAvis.php',
+    'App\\Forum' => $baseDir . '/app/Forum.php',
+    'App\\ForumCommentaire' => $baseDir . '/app/ForumCommentaire.php',
+    'App\\ForumCommentaireRepondre' => $baseDir . '/app/ForumCommentaireRepondre.php',
     'App\\Http\\Controllers\\AgriculteurController' => $baseDir . '/app/Http/Controllers/AgriculteurController.php',
     'App\\Http\\Controllers\\AnnonceController' => $baseDir . '/app/Http/Controllers/AnnonceController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -50,7 +50,6 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Livraison' => $baseDir . '/app/Livraison.php',
     'App\\Livreur' => $baseDir . '/app/Livreur.php',
-    'App\\Messagerie' => $baseDir . '/app/Messagerie.php',
     'App\\Panier' => $baseDir . '/app/Panier.php',
     'App\\Produit' => $baseDir . '/app/Produit.php',
     'App\\ProduitNote' => $baseDir . '/app/ProduitNote.php',
@@ -974,6 +973,7 @@ return array(
     'FermeTableSeeder' => $baseDir . '/database/seeds/FermeTableSeeder.php',
     'Fideloper\\Proxy\\TrustProxies' => $vendorDir . '/fideloper/proxy/src/TrustProxies.php',
     'Fideloper\\Proxy\\TrustedProxyServiceProvider' => $vendorDir . '/fideloper/proxy/src/TrustedProxyServiceProvider.php',
+    'ForumTableSeeder' => $baseDir . '/database/seeds/ForumTableSeeder.php',
     'Hamcrest\\Arrays\\IsArray' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
     'Hamcrest\\Arrays\\IsArrayContaining' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
     'Hamcrest\\Arrays\\IsArrayContainingInAnyOrder' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContainingInAnyOrder.php',
