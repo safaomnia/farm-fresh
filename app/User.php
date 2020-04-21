@@ -8,14 +8,14 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
   use Notifiable;
-  public $table = "utilisateur";
+  public $table = "client";
   /**
    * The attributes that are mass assignable.
    *
    * @var array
    */
   protected $fillable = [
-    'nom', 'penom', 'datenai', 'sexe', 'telephone', 'email', 'adresse', 'password', 'photo', 'type'
+    'nom', 'penom', 'datenai', 'sexe', 'telephone', 'email', 'adresse', 'password', 'photo', 'description'
   ];
   /**
    * The attributes that should be hidden for arrays.
@@ -37,18 +37,20 @@ class User extends Authenticatable
 
   public function forums()
   {
-    return $this->hasMany(Forum::class);
+    return $this->hasMany(forum::class);
 
   }
 
   public function forumCommentaires()
   {
-    return $this->belongsToMany(Annonce::class, 'forum_commentaire', 'forum_id', 'utilisateur_id')->withTimestamps();
+    return $this->belongsToMany(forum::class, 'forum_commentaire', 'forum_id', 'client_id')->withTimestamps();
   }
 
   public function forumCommentaireRpondres()
   {
-    return $this->belongsToMany(Annonce::class, 'forum_commentaire', 'forum_id', 'utilisateur_id')->withTimestamps();
+    return $this->belongsToMany(forum_commentaire::class, 'forum_commentaire_reponde', 'client_id', 'forum_commentaire_id')
+      ->withPivot('reponde')
+      ->withTimestamps();
   }
 
   public function panier()
@@ -58,7 +60,7 @@ class User extends Authenticatable
 
   public function fermeAvis()
   {
-    return $this->belongsToMany(Ferme::class, 'ferme_avis', 'utilisateur_id', 'ferme_id')
+    return $this->belongsToMany(Ferme::class, 'ferme_avis', 'client_id', 'ferme_id')
       ->using(FermeAvis::class)
       ->withPivot('commentaire')
       ->withTimestamps();
@@ -67,5 +69,18 @@ class User extends Authenticatable
   public function ProduitNotes()
   {
     return $this->belongsToMany(Produit::class, 'produit_note')->withTimestamps();
+  }
+
+  public function demandes()
+  {
+    return $this->belongsToMany(User::class)->withTimestamps();
+  }
+
+   public function commandes()
+  {
+    return $this->belongsToMany(produit::class, 'commande', 'produit_id', 'client_id')
+      ->using(commande::class)
+      ->withPivot('total', 'etat', 'livraison_id')
+      ->withTimestamps();
   }
 }

@@ -4,20 +4,20 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Transport extends Model
+class transport extends Model
 {
   public $table = 'transport';
   protected $fillable = [
-    'nom', 'type'
+    'matricule','nom', 'type'
   ];
 
   public function livreur()
   {
-    return $this->belongsTo(Livreur::class);
+    return $this->belongsTo(livreur::class);
   }
 
   public function livraisons()
   {
-    return $this->hasMany(Livraison::class);
+    return $this->hasMany(livraison::class);
   }
 }

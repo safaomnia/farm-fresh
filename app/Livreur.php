@@ -1,19 +1,25 @@
 <?php
 
 namespace App;
+
 use Illuminate\Database\Eloquent\Model;
 
-class Livreur extends Model
+class livreur extends Model
 {
   public $table = 'livreur';
   public $timestamps = false;
 
   protected $fillable = [
-    'entreprise', 'telephone', 'adresse'
+    'nom_entreprise', 'telephone_entreprise', 'adresse_entreprise', 'certificate'
   ];
 
   public function transports()
   {
-    return $this->hasMany(Transport::class);
+    return $this->hasMany(transport::class);
+  }
+
+  public function client()
+  {
+    return $this->belongsTo(User::class);
   }
 }

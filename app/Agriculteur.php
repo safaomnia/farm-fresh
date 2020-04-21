@@ -1,24 +1,25 @@
 <?php
 
 namespace App;
+
 use Illuminate\Database\Eloquent\Model;
 
-class Agriculteur extends Model
+class agriculteur extends Model
 {
   public $table = 'agriculteur';
   public $timestamps = false;
 
   protected $fillable = [
-    'id', 'domaine', 'certification'
+    'domaine', 'certification'
   ];
 
   public function fermes()
   {
-    return $this->hasMany(Ferme::class);
+    return $this->hasMany(ferme::class);
   }
 
-  public function user()
+  public function client()
   {
-    return $this->belongsTo(User::class, 'id');
+    return $this->belongsTo(User::class, 'client_id');
   }
 }

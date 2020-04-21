@@ -4,27 +4,27 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Ferme extends Model
+class ferme extends Model
 {
   public $table = 'ferme';
   protected $fillable = [
-    'nom', 'adresse', 'contact', 'agriculteur_id'
+    'nom', 'adresse', 'description'
   ];
 
   public function avis()
   {
-    return $this->belongsToMany(User::class, 'ferme_avis', 'ferme_id', 'utilisateur_id')
+    return $this->belongsToMany(User::class, 'ferme_avis', 'ferme_id', 'client_id')
       ->withPivot('commentaire')
       ->withTimestamps();
   }
 
   public function produits()
   {
-    return $this->hasMany(Produit::class);
+    return $this->hasMany(produit::class);
   }
 
   public function agriculteur()
   {
-    return $this->belongsTo(Agriculteur::class);
+    return $this->belongsTo(agriculteur::class);
   }
 }

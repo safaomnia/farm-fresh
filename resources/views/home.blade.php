@@ -2,1211 +2,1248 @@
 
 @section('content')
 
-  <!-- =======================
-	Main Banner -->
-  <section class="p-0 height-700 parallax-bg"
-           style="background:url(images/banner/03.jpg) no-repeat 65% 0%; background-size:cover;">
-    <div class="container h-100">
-      <div class="row justify-content-between align-items-center h-100">
-        <div class="col-md-8 mb-7">
-          <h4>Lorem ipsum dolor sit amet</h4>
-          <h1 class="display-4 font-weight-bold">Sed ut perspiciatis unde omnis </h1>
+  <div class="main-sec"></div>
+  <!-- Navigation -->
+  <section class="banner-1 p-relative">
+    <img src="assets/img/banner/banner-3.jpg" class="img-fluid full-width" alt="Banner">
+    <div class="transform-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="content-wrapper bg-white padding-20">
+              <div class="content-box padding-tb-10">
+                <h2 class="text-light-black fw-700">Find Fresh Product Farms Near You and Order Online For Free.</h2>
+                <label class="text-light-black fw-700">Find a location near you</label>
+                <div class="input-group row">
+                  <div class="input-group2 col-xl-8">
+                    <input type="search" class="form-control form-control-submit" placeholder="Enter street address or zip code"
+                           value="1246 57th St, Brooklyn, NY, 11219">
+                    <div class="input-group-prepend">
+                      <button class="input-group-text text-light-green"><i class="fab fa-telegram-plane"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="input-group-append col-xl-4">
+                    <button class="btn-second btn-submit full-width" type="button">Find food</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <div class="overlay overlay-bg"></div>
   </section>
-  <!-- =======================
-      Main banner -->
-
-  <section class="mt-lg-n9 mt-sm-0 pb-0 z-index-9 booking-search">
-    <div class="container ">
-      <div class="row shadow border-radius-3">
-        <div class="col-md-12 np">
-          <div class="feature-box h-100">
-            <div class="tab_container">
-              <input id="tab1" type="radio" name="tabs" checked>
-              <label for="tab1"><i
-                  class="fas fa-utensils"></i><span>Hotels</span></label>
-              <input id="tab2" type="radio" name="tabs">
-              <label for="tab2"><i class="fas fa-helicopter"></i><span>Flights</span></label>
-              <input id="tab3" type="radio" name="tabs">
-              <label for="tab3"><i
-                  class="fas fa-car-side"></i><span>Cars</span></label>
-              <input id="tab4" type="radio" name="tabs">
-              <label for="tab4"><i
-                  class="fas fa-ship"></i><span>Cruises</span></label>
-              <input id="tab5" type="radio" name="tabs">
-              <label for="tab5"><i class="fas fa-route"></i><span>Tours</span></label>
-              <section id="content1" class="tab-content">
-                <div class="row">
-                  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group"><span
-                        class="fas fa-map-marker-alt"></span>
-                      <input class="form-control" type="text"
-                             placeholder="City, Point of Interest or U.S. Zip Code">
-                    </div>
-                  </div>
-                  <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group"><span
-                        class="far fa-calendar-alt"></span>
-                      <input class="form-control" type="text" id="datepicker"
-                             autocomplete="off" placeholder="Check-in">
-                    </div>
-                  </div>
-                  <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group"><span
-                        class="far fa-calendar-alt"></span>
-                      <input class="form-control" type="text"
-                             id="datepicker-out" autocomplete="off"
-                             placeholder="Check-out">
-                    </div>
-                  </div>
-                  <div class="col-lg-1 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group">
-                      <select class="custom-select select-big">
-                        <option selected="">Rooms</option>
-                        <option value="location1">01</option>
-                        <option value="location2">02</option>
-                        <option value="location3">03</option>
-                        <option value="location4">04</option>
-                        <option value="location5">05</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-1 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group">
-                      <select class="custom-select select-big">
-                        <option selected="">Guests</option>
-                        <option value="location1">01</option>
-                        <option value="location2">02</option>
-                        <option value="location3">03</option>
-                        <option value="location4">04</option>
-                        <option value="location5">05</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group">
-                      <button class="btn btn-primary btn-lg btn-grad"
-                              type="submit">Search
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </section>
-              <section id="content2" class="tab-content">
-                <div class="row">
-                  <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group"><span
-                        class="fas fa-map-marker-alt"></span>
-                      <input class="form-control" type="text"
-                             placeholder="From : City, Airport, U.S. Zip">
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group"><span
-                        class="fas fa-map-marker-alt"></span>
-                      <input class="form-control" type="text"
-                             placeholder="To : City, Airport, U.S. Zip">
-                    </div>
-                  </div>
-                  <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group"><span
-                        class="far fa-calendar-alt"></span>
-                      <input class="form-control" type="text"
-                             id="datepicker-1" autocomplete="off"
-                             placeholder="Departing">
-                    </div>
-                  </div>
-                  <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group"><span
-                        class="far fa-calendar-alt"></span>
-                      <input class="form-control" type="text"
-                             id="datepicker-2" autocomplete="off"
-                             placeholder="Returning">
-                    </div>
-                  </div>
-                  <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group">
-                      <button class="btn btn-primary btn-lg btn-grad"
-                              type="submit">Search
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </section>
-              <section id="content3" class="tab-content">
-                <div class="row">
-                  <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group"><span
-                        class="fas fa-map-marker-alt"></span>
-                      <input class="form-control" type="text"
-                             placeholder="Pick-up Location">
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group"><span
-                        class="fas fa-map-marker-alt"></span>
-                      <input class="form-control" type="text"
-                             placeholder="Drop-off Location">
-                    </div>
-                  </div>
-                  <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group"><span
-                        class="far fa-calendar-alt"></span>
-                      <input class="form-control" type="text"
-                             id="datepicker-3" autocomplete="off"
-                             placeholder="Pick-up Date">
-                    </div>
-                  </div>
-                  <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group"><span
-                        class="far fa-calendar-alt"></span>
-                      <input class="form-control" type="text"
-                             id="datepicker-4" autocomplete="off"
-                             placeholder="Drop-ff Date">
-                    </div>
-                  </div>
-                  <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group">
-                      <button class="btn btn-primary btn-lg btn-grad"
-                              type="submit">Search
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </section>
-              <section id="content4" class="tab-content">
-                <div class="row">
-                  <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 padding8">
-                    <div class="form-group"><span
-                        class="fas fa-map-marker-alt"></span>
-                      <input class="form-control" type="text"
-                             placeholder="enter a destination or hotel name">
-                    </div>
-                  </div>
-                  <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group"><span
-                        class="far fa-calendar-alt"></span>
-                      <input class="form-control" type="text"
-                             id="datepicker-5" autocomplete="off"
-                             placeholder="Departure Date">
-                    </div>
-                  </div>
-                  <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group">
-                      <select class="custom-select select-big">
-                        <option selected="">Cruise Length</option>
-                        <option value="location1">1-2 Night</option>
-                        <option value="location2">2-3 Night</option>
-                        <option value="location3">3-4 Night</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group">
-                      <select class="custom-select select-big">
-                        <option selected="">Cruise Line</option>
-                        <option value="location1">Azamara Club Cruises
-                        </option>
-                        <option value="location2">Celebrity Cruises</option>
-                        <option value="location3">Cruise & Maritime</option>
-                        <option value="location4">Oceania Cruises</option>
-                        <option value="location5">Peter Deilmann Cruises
-                        </option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group">
-                      <button class="btn btn-primary btn-lg btn-grad"
-                              type="submit">Search
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </section>
-              <section id="content5" class="tab-content">
-                <div class="row">
-                  <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group"><span
-                        class="fas fa-map-marker-alt"></span>
-                      <input class="form-control" type="text"
-                             placeholder="From : City, Airport, U.S. Zip">
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group"><span
-                        class="fas fa-map-marker-alt"></span>
-                      <input class="form-control" type="text"
-                             placeholder="To : City, Airport, U.S. Zip">
-                    </div>
-                  </div>
-                  <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group"><span
-                        class="far fa-calendar-alt"></span>
-                      <input class="form-control" type="text"
-                             id="datepicker-6" autocomplete="off"
-                             placeholder="Departing">
-                    </div>
-                  </div>
-                  <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group"><span
-                        class="far fa-calendar-alt"></span>
-                      <input class="form-control" type="text"
-                             id="datepicker-7" autocomplete="off"
-                             placeholder="Returning">
-                    </div>
-                  </div>
-                  <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
-                    <div class="form-group">
-                      <button class="btn btn-primary btn-lg btn-grad"
-                              type="submit">Search
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                </p>
-              </section>
+  <!-- banner-bottom -->
+  <section class="section-padding banner-bottom-sec">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-sm-6">
+          <div class="infor-box mb-md-40">
+            <div class="infor-box-wrapper">
+              <div class="icon-box">
+                <i class="flaticon-truck"></i>
+              </div>
+              <div class="text-box">
+                <h6 class="text-light-black">Free Shipping</h6>
+                <span class="text-light-white">With $50 or more orders</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <div class="infor-box mb-md-40">
+            <div class="infor-box-wrapper">
+              <div class="icon-box">
+                <i class="flaticon-wallet-1"></i>
+              </div>
+              <div class="text-box">
+                <h6 class="text-light-black">Free Refund</h6>
+                <span class="text-light-white">100% Refund within 3 days</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <div class="infor-box">
+            <div class="infor-box-wrapper">
+              <div class="icon-box">
+                <i class="flaticon-help"></i>
+              </div>
+              <div class="text-box">
+                <h6 class="text-light-black">Support 24x7</h6>
+                <span class="text-light-white">Call us anytime you want</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <section class="Categories pt80 pb60">
+  <!-- banner-bottom -->
+  <!-- Browse by category -->
+  <section class="browse-cat u-line section-padding bg-light-green">
     <div class="container">
-      <div class="row mb-5">
-        <div class="col-md-8">
-          <p class="subtitle text-secondary nopadding">MOST POPULAR CITIES</p>
-          <h1 class="paddtop1 font-weight lspace-sm">Popular Destination</h1>
-        </div>
-        <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a href="#"
-                                                                                  class="blist text-sm ml-2">
-            See all cities<i
-              class="fas fa-angle-double-right ml-2"></i></a></div>
-      </div>
       <div class="row">
-        <div class="col-md-6"><a href="#">
-            <div class="list-mig-like-com">
-              <div class="list-mig-lc-img"><img src="images/tour/home.jpg" alt="">
+        <div class="col-12">
+          <div class="section-header-left">
+            <h3 class="text-custom-white header-title title">Browse by cuisine <span class="fs-14"><a href="farm.html" class="text-white">See all farm</a></span></h3>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="category-slider swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <a href="farm.html" class="categories">
+                  <div class="icon text-custom-white bg-light-green ">
+                    <img src="assets/img/farms/125x125/cuisine-1.jpg" class="rounded-circle" alt="categories">
+                  </div>
+                  <span class="text-custom-white cat-name">Garlic</span>
+                </a>
               </div>
-              <div class="list-mig-lc-con">
-                <h5>United States</h5>
-                <p>81 Cities </p>
+              <div class="swiper-slide">
+                <a href="farm.html" class="categories">
+                  <div class="icon text-custom-white bg-light-green ">
+                    <img src="assets/img/farms/125x125/cuisine-2.jpg" class="rounded-circle" alt="categories">
+                  </div>
+                  <span class="text-custom-white cat-name">Strawberry</span>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="farm.html" class="categories">
+                  <div class="icon text-custom-white bg-light-green ">
+                    <img src="assets/img/farms/125x125/cuisine-3.jpg" class="rounded-circle" alt="categories">
+                  </div>
+                  <span class="text-custom-white cat-name">Cuccumber</span>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="farm.html" class="categories">
+                  <div class="icon text-custom-white bg-light-green ">
+                    <img src="assets/img/farms/125x125/cuisine-4.jpg" class="rounded-circle" alt="categories">
+                  </div>
+                  <span class="text-custom-white cat-name">Bannana</span>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="farm.html" class="categories">
+                  <div class="icon text-custom-white bg-light-green ">
+                    <img src="assets/img/farms/125x125/cuisine-5.jpg" class="rounded-circle" alt="categories">
+                  </div>
+                  <span class="text-custom-white cat-name">Brockley</span>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="farm.html" class="categories">
+                  <div class="icon text-custom-white bg-light-green ">
+                    <img src="assets/img/farms/125x125/cuisine-6.jpg" class="rounded-circle" alt="categories">
+                  </div>
+                  <span class="text-custom-white cat-name">Carrot</span>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="farm.html" class="categories">
+                  <div class="icon text-custom-white bg-light-green ">
+                    <img src="assets/img/farms/125x125/cuisine-7.jpg" class="rounded-circle" alt="categories">
+                  </div>
+                  <span class="text-custom-white cat-name">Pineapple</span>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="farm.html" class="categories">
+                  <div class="icon text-custom-white bg-light-green ">
+                    <img src="assets/img/farms/125x125/cuisine-8.jpg" class="rounded-circle" alt="categories">
+                  </div>
+                  <span class="text-custom-white cat-name">Mango</span>
+                </a>
               </div>
             </div>
-          </a></div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Browse by category -->
+  <!-- your previous order -->
+  <section class="section-padding sale-products">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="section-header-left">
+            <h3 class="text-light-black header-title title">Your previous orders <span class="fs-14"><a href="order-details.html">See all past orders</a></span></h3>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+          <div class="product-item main-box mb-xl-20">
+            <div class="img">
+              <a href="#">
+                <img src="assets/img/dish/150x151/dish-1.jpg" alt="image">
+              </a> <span><a href="#">
+                            <i class="fas fa-shopping-bag"></i></a></span>
+            </div>
+            <div class="product-info">
+              <h5><a href="#" class="text-light-black">Parsely</a></h5>
+              <p class="text-light-green fw-600">$90 <span class="line-through text-light-white fs-16">$180</span><span
+                  class="save-price text-light-green fs-12">save $90</span>
+              </p>
+              <div class="rating">
+                            <span>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                            </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+          <div class="product-item main-box mb-xl-20">
+            <div class="img">
+              <a href="#">
+                <img src="assets/img/dish/150x151/dish-2.jpg" alt="image">
+              </a> <span><a href="#">
+                            <i class="fas fa-shopping-bag"></i></a></span>
+            </div>
+            <div class="product-info">
+              <h5><a href="#" class="text-light-black">Palmitto</a></h5>
+              <p class="text-light-green fw-600">$90 <span class="line-through text-light-white fs-16">$180</span><span
+                  class="save-price text-light-green fs-12">save $90</span>
+              </p>
+              <div class="rating">
+                            <span>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                            </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+          <div class="product-item main-box mb-xl-20">
+            <div class="img">
+              <a href="#">
+                <img src="assets/img/dish/150x151/dish-3.jpg" alt="image">
+              </a> <span><a href="#">
+                            <i class="fas fa-shopping-bag"></i></a></span>
+            </div>
+            <div class="product-info">
+              <h5><a href="#" class="text-light-black">Dragon Fruit</a></h5>
+              <p class="text-light-green fw-600">$90 <span class="line-through text-light-white fs-16">$180</span><span
+                  class="save-price text-light-green fs-12">save $90</span>
+              </p>
+              <div class="rating">
+                            <span>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                            </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+          <div class="product-item main-box mb-md-20">
+            <div class="img">
+              <a href="#">
+                <img src="assets/img/dish/150x151/dish-4.jpg" alt="image">
+              </a> <span><a href="#">
+                            <i class="fas fa-shopping-bag"></i></a></span>
+            </div>
+            <div class="product-info">
+              <h5><a href="#" class="text-light-black">Green Onion</a></h5>
+              <p class="text-light-green fw-600">$90 <span class="line-through text-light-white fs-16">$180</span><span
+                  class="save-price text-light-green fs-12">save $90</span>
+              </p>
+              <div class="rating">
+                            <span>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                            </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+          <div class="product-item main-box mb-xs-20">
+            <div class="img">
+              <a href="#">
+                <img src="assets/img/dish/150x151/dish-5.jpg" alt="image">
+              </a> <span><a href="#">
+                            <i class="fas fa-shopping-bag"></i></a></span>
+            </div>
+            <div class="product-info">
+              <h5><a href="#" class="text-light-black">Radish</a></h5>
+              <p class="text-light-green fw-600">$90 <span class="line-through text-light-white fs-16">$180</span><span
+                  class="save-price text-light-green fs-12">save $90</span>
+              </p>
+              <div class="rating">
+                            <span>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                            </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+          <div class="product-item main-box">
+            <div class="img">
+              <a href="#">
+                <img src="assets/img/dish/150x151/dish-6.jpg" alt="image">
+              </a> <span><a href="#">
+                            <i class="fas fa-shopping-bag"></i></a></span>
+            </div>
+            <div class="product-info">
+              <h5><a href="#" class="text-light-black">Malana</a></h5>
+              <p class="text-light-green fw-600">$90 <span class="line-through text-light-white fs-16">$180</span><span
+                  class="save-price text-light-green fs-12">save $90</span>
+              </p>
+              <div class="rating">
+                            <span>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                                <i class="fas fa-star text-yellow"></i>
+                            </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- your previous order -->
+  <div class="container">
+    <!-- advertisement banner-->
+    <div class="row">
+      <div class="col-12">
+        <div id="banner-adv2" class="banner-adv2">
+          <img src="assets/img/farms/1110x100/vbanner-2.jpg" class="img-fluid full-width" alt="banner"> <span class="text">Unlimited Free Delivery with. <img
+              src="assets/img/tag.jpg" alt="logo"> <a href="farm.html" class="btn-second btn-submit">Try 30 Days FREE</a></span>
+          <span class="close-banner"></span>
+          <div class="overlay overlay-bg"></div>
+        </div>
+      </div>
+    </div>
+    <!-- advertisement banner-->
+  </div>
+  <!-- Explore collection -->
+  <section class="ex-collection section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="section-header-left">
+            <h3 class="text-light-black header-title title">Explore our collections</h3>
+          </div>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-md-6">
+          <div class="ex-collection-box mb-xl-20">
+            <img src="assets/img/farms/540x300/collection-1.jpg" class="img-fluid full-width" alt="image">
+            <div class="overlay overlay-bg"></div>
+            <div class="transform-center">
+              <div class="ex-collection-box-text padding-15">
+                <h6 class="text-light-green">Organic</h6>
+                <h4 class="text-custom-white">Jersey Frams</h4>
+                <p class="text-custom-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                <button class="category-btn">40% Off</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="ex-collection-box mb-xl-20">
+            <img src="assets/img/farms/540x300/collection-2.jpg" class="img-fluid full-width" alt="image">
+            <div class="overlay overlay-bg"></div>
+            <div class="transform-center">
+              <div class="ex-collection-box-text padding-15">
+                <h6 class="text-light-green">Organic</h6>
+                <h4 class="text-custom-white">Joe's Farm</h4>
+                <p class="text-custom-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                <button class="category-btn">40% Off</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="ex-collection-box mb-sm-20">
+            <img src="assets/img/farms/540x300/collection-3.jpg" class="img-fluid full-width" alt="image">
+            <div class="overlay overlay-bg"></div>
+            <div class="transform-center">
+              <div class="ex-collection-box-text padding-15">
+                <h6 class="text-light-green">Organic</h6>
+                <h4 class="text-custom-white">NYC Farms</h4>
+                <p class="text-custom-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                <button class="category-btn">40% Off</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="ex-collection-box">
+            <img src="assets/img/farms/540x300/collection-4.jpg" class="img-fluid full-width" alt="image">
+            <div class="overlay overlay-bg"></div>
+            <div class="transform-center">
+              <div class="ex-collection-box-text padding-15">
+                <h6 class="text-light-green">Organic</h6>
+                <h4 class="text-custom-white">Fresh Big Farm</h4>
+                <p class="text-custom-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                <button class="category-btn">40% Off</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Explore collection -->
+  <!-- Features Listing -->
+  <section class="ex-collection section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="section-header-left">
+            <h3 class="text-light-black header-title title">Features farms around You</h3>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 col-md-4">
+          <div class="large-product-box mb-xl-20 p-relative">
+            <img src="assets/img/farms/255x587/Banner-12.jpg" class="img-fluid full-width" alt="image">
+          </div>
+        </div>
+        <div class="col-lg-9 col-md-8">
           <div class="row">
-            <div class="col-md-6"><a href="#">
-                <div class="list-mig-like-com">
-                  <div class="list-mig-lc-img"><img src="images/tour/home2.jpg"
-                                                    alt=""></div>
-                  <div class="list-mig-lc-con list-mig-lc-con2">
-                    <h5>United Kingdom</h5>
-                    <p>81 Cities </p>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="product-box mb-xl-20">
+                <div class="product-img">
+                  <a href="farm.html">
+                    <img src="assets/img/farms/255x150/shop-23.jpg" class="img-fluid full-width" alt="product-img">
+                  </a>
+                  <div class="overlay">
+                    <div class="product-tags padding-10"> <span class="circle-tag">
+                        <img src="assets/img/svg/013-heart-1.svg" alt="tag">
+                      </span>
+                      <div class="custom-tag"> <span class="text-custom-white rectangle-tag bg-gradient-red">
+                          10%
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </a></div>
-            <div class="col-md-6"><a href="#">
-                <div class="list-mig-like-com">
-                  <div class="list-mig-lc-img"><img src="images/tour/home3.jpg"
-                                                    alt=""></div>
-                  <div class="list-mig-lc-con list-mig-lc-con2">
-                    <h5>Australia</h5>
-                    <p>81 Cities </p>
+                <div class="product-caption">
+                  <div class="title-box">
+                    <h6 class="product-title"><a href="farm.html" class="text-light-black "> Great Burger</a></h6>
+                    <div class="tags"> <span class="text-custom-white rectangle-tag bg-yellow">
+                        3.1
+                      </span>
+                    </div>
+                  </div>
+                  <p class="text-light-white">American, Fast Food</p>
+                  <div class="product-details">
+                    <div class="price-time"><span class="text-light-black time">30-40 min</span>
+                      <span class="text-light-white price">$10 min</span>
+                    </div>
+                    <div class="rating"> <span>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                      </span>
+                      <span class="text-light-white text-right">4225 ratings</span>
+                    </div>
+                  </div>
+                  <div class="product-footer"> <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/004-leaf.svg" alt="tag">
+                    </span>
+                    <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/006-chili.svg" alt="tag">
+                    </span>
+
+                    <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/008-protein.svg" alt="tag">
+                    </span>
+                    <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/009-lemon.svg" alt="tag">
+                    </span>
                   </div>
                 </div>
-              </a></div>
-            <div class="col-md-6"><a href="#">
-                <div class="list-mig-like-com">
-                  <div class="list-mig-lc-img"><img src="images/tour/home4.jpg"
-                                                    alt=""></div>
-                  <div class="list-mig-lc-con list-mig-lc-con2">
-                    <h5>Germany</h5>
-                    <p>81 Cities </p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="product-box mb-xl-20">
+                <div class="product-img">
+                  <a href="farm.html">
+                    <img src="assets/img/farms/255x150/shop-2.jpg" class="img-fluid full-width" alt="product-img">
+                  </a>
+                  <div class="overlay">
+                    <div class="product-tags padding-10"> <span class="circle-tag">
+                        <img src="assets/img/svg/013-heart-1.svg" alt="tag">
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </a></div>
-            <div class="col-md-6"><a href="#">
-                <div class="list-mig-like-com">
-                  <div class="list-mig-lc-img"><img src="images/tour/home1.jpg"
-                                                    alt=""></div>
-                  <div class="list-mig-lc-con list-mig-lc-con2">
-                    <h5>India</h5>
-                    <p>81 Cities </p>
+                <div class="product-caption">
+                  <div class="title-box">
+                    <h6 class="product-title"><a href="farm.html" class="text-light-black "> Flavor Town</a></h6>
+                    <div class="tags"> <span class="text-custom-white rectangle-tag bg-red">
+                        2.1
+                      </span>
+                    </div>
+                  </div>
+                  <p class="text-light-white">Breakfast, Lunch & Dinner</p>
+                  <div class="product-details">
+                    <div class="price-time"><span class="text-light-black time">30-40 min</span>
+                      <span class="text-light-white price">$10 min</span>
+                    </div>
+                    <div class="rating"> <span>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                      </span>
+                      <span class="text-light-white text-right">4225 ratings</span>
+                    </div>
+                  </div>
+                  <div class="product-footer"> <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/007-chili-1.svg" alt="tag">
+                    </span>
+                    <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/004-leaf.svg" alt="tag">
+                    </span>
+                    <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/009-lemon.svg" alt="tag">
+                    </span>
                   </div>
                 </div>
-              </a></div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="product-box mb-xl-20">
+                <div class="product-img">
+                  <a href="farm.html">
+                    <img src="assets/img/farms/255x150/shop-3.jpg" class="img-fluid full-width" alt="product-img">
+                  </a>
+                  <div class="overlay">
+                    <div class="product-tags padding-10"> <span class="circle-tag">
+                        <img src="assets/img/svg/013-heart-1.svg" alt="tag">
+                      </span>
+                      <span class="type-tag bg-gradient-green text-custom-white">
+                        Trending
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="product-caption">
+                  <div class="title-box">
+                    <h6 class="product-title"><a href="farm.html" class="text-light-black "> Big Bites</a></h6>
+                    <div class="tags"> <span class="text-custom-white rectangle-tag bg-green">
+                        4.5
+                      </span>
+                    </div>
+                  </div>
+                  <p class="text-light-white">Pizzas, Fast Food</p>
+                  <div class="product-details">
+                    <div class="price-time"><span class="text-light-black time">30-40 min</span>
+                      <span class="text-light-white price">$10 min</span>
+                    </div>
+                    <div class="rating"> <span>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                      </span>
+                      <span class="text-light-white text-right">4225 ratings</span>
+                    </div>
+                  </div>
+                  <div class="product-footer">
+                                        <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/004-leaf.svg" alt="tag">
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="product-box mb-xl-20">
+                <div class="product-img">
+                  <a href="farm.html">
+                    <img src="assets/img/farms/255x150/shop-4.jpg" class="img-fluid full-width" alt="product-img">
+                  </a>
+                  <div class="overlay">
+                    <div class="product-tags padding-10"> <span class="circle-tag">
+                        <img src="assets/img/svg/013-heart-1.svg" alt="tag">
+                      </span>
+                      <span class="type-tag bg-gradient-green text-custom-white">
+                        Trending
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="product-caption">
+                  <div class="title-box">
+                    <h6 class="product-title"><a href="farm.html" class="text-light-black "> Smile N’ Delight</a></h6>
+                    <div class="tags"> <span class="text-custom-white rectangle-tag bg-green">
+                        4.5
+                      </span>
+                    </div>
+                  </div>
+                  <p class="text-light-white">Desserts, Beverages</p>
+                  <div class="product-details">
+                    <div class="price-time"><span class="text-light-black time">30-40 min</span>
+                      <span class="text-light-white price">$10 min</span>
+                    </div>
+                    <div class="rating"> <span>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                      </span>
+                      <span class="text-light-white text-right">4225 ratings</span>
+                    </div>
+                  </div>
+                  <div class="product-footer">
+                                        <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/008-protein.svg" alt="tag">
+                    </span>
+                    <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/009-lemon.svg" alt="tag">
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="product-box mb-xl-20">
+                <div class="product-img">
+                  <a href="farm.html">
+                    <img src="assets/img/farms/255x150/shop-5.jpg" class="img-fluid full-width" alt="product-img">
+                  </a>
+                  <div class="overlay">
+                    <div class="product-tags padding-10"> <span class="circle-tag">
+                        <img src="assets/img/svg/013-heart-1.svg" alt="tag">
+                      </span>
+                      <div class="custom-tag"> <span class="text-custom-white rectangle-tag bg-gradient-red">
+                          20%
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="product-caption">
+                  <div class="title-box">
+                    <h6 class="product-title"><a href="farm.html" class="text-light-black "> Lil Johnny’s</a></h6>
+                    <div class="tags"> <span class="text-custom-white rectangle-tag bg-red">
+                        2.1
+                      </span>
+                    </div>
+                  </div>
+                  <p class="text-light-white">Continental & Mexican</p>
+                  <div class="product-details">
+                    <div class="price-time"><span class="text-light-black time">30-40 min</span>
+                      <span class="text-light-white price">$10 min</span>
+                    </div>
+                    <div class="rating"> <span>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                      </span>
+                      <span class="text-light-white text-right">4225 ratings</span>
+                    </div>
+                  </div>
+                  <div class="product-footer"> <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/008-protein.svg" alt="tag">
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="product-box mb-xl-20">
+                <div class="product-img">
+                  <a href="farm.html">
+                    <img src="assets/img/farms/255x150/shop-6.jpg" class="img-fluid full-width" alt="product-img">
+                  </a>
+                  <div class="overlay">
+                    <div class="product-tags padding-10"> <span class="circle-tag">
+                        <img src="assets/img/svg/013-heart-1.svg" alt="tag">
+                      </span>
+                      <span class="text-custom-white type-tag bg-gradient-orange">
+                        NEW
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="product-caption">
+                  <div class="title-box">
+                    <h6 class="product-title"><a href="farm.html" class="text-light-black "> Choice Foods</a></h6>
+                    <div class="tags"> <span class="text-custom-white rectangle-tag bg-green">
+                        4.5
+                      </span>
+                    </div>
+                  </div>
+                  <p class="text-light-white">Indian, Chinese, Tandoor</p>
+                  <div class="product-details">
+                    <div class="price-time"><span class="text-light-black time">30-40 min</span>
+                      <span class="text-light-white price">$10 min</span>
+                    </div>
+                    <div class="rating"> <span>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                      </span>
+                      <span class="text-light-white text-right">4225 ratings</span>
+                    </div>
+                  </div>
+                  <div class="product-footer">
+                                        <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/008-protein.svg" alt="tag">
+                    </span>
+                    <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/009-lemon.svg" alt="tag">
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- advertisement banner-->
+      <div class="row">
+        <div class="col-12">
+          <div class="banner-adv2 mb-xl-20">
+            <img src="assets/img/farms/1110x100/vbanner-2.jpg" class="img-fluid full-width" alt="banner"> <span class="text">Unlimited Free Delivery with. <img
+                src="assets/img/tag.jpg" alt="logo">
+                            <a href="farm.html" class="btn-second btn-submit">Try 30 Days FREE</a></span>
+            <span class="close-banner"></span>
+            <div class="overlay overlay-bg"></div>
+          </div>
+        </div>
+      </div>
+      <!-- advertisement banner-->
+      <div class="row">
+        <div class="col-lg-9 col-md-8">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="product-box mb-xl-20">
+                <div class="product-img">
+                  <a href="farm.html">
+                    <img src="assets/img/farms/255x150/shop-7.jpg" class="img-fluid full-width" alt="product-img">
+                  </a>
+                  <div class="overlay">
+                    <div class="product-tags padding-10"> <span class="circle-tag">
+                        <img src="assets/img/svg/013-heart-1.svg" alt="tag">
+                      </span>
+                      <div class="custom-tag"> <span class="text-custom-white rectangle-tag bg-gradient-red">
+                          10%
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="product-caption">
+                  <div class="title-box">
+                    <h6 class="product-title"><a href="farm.html" class="text-light-black "> Great Burger</a></h6>
+                    <div class="tags"> <span class="text-custom-white rectangle-tag bg-yellow">
+                        3.1
+                      </span>
+                    </div>
+                  </div>
+                  <p class="text-light-white">American, Fast Food</p>
+                  <div class="product-details">
+                    <div class="price-time"><span class="text-light-black time">30-40 min</span>
+                      <span class="text-light-white price">$10 min</span>
+                    </div>
+                    <div class="rating"> <span>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                      </span>
+                      <span class="text-light-white text-right">4225 ratings</span>
+                    </div>
+                  </div>
+                  <div class="product-footer"> <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/004-leaf.svg" alt="tag">
+                    </span>
+                    <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/006-chili.svg" alt="tag">
+                    </span>
+
+                    <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/008-protein.svg" alt="tag">
+                    </span>
+                    <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/009-lemon.svg" alt="tag">
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="product-box mb-xl-20">
+                <div class="product-img">
+                  <a href="farm.html">
+                    <img src="assets/img/farms/255x150/shop-8.jpg" class="img-fluid full-width" alt="product-img">
+                  </a>
+                  <div class="overlay">
+                    <div class="product-tags padding-10"> <span class="circle-tag">
+                        <img src="assets/img/svg/013-heart-1.svg" alt="tag">
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="product-caption">
+                  <div class="title-box">
+                    <h6 class="product-title"><a href="farm.html" class="text-light-black "> Flavor Town</a></h6>
+                    <div class="tags"> <span class="text-custom-white rectangle-tag bg-red">
+                        2.1
+                      </span>
+                    </div>
+                  </div>
+                  <p class="text-light-white">Breakfast, Lunch & Dinner</p>
+                  <div class="product-details">
+                    <div class="price-time"><span class="text-light-black time">30-40 min</span>
+                      <span class="text-light-white price">$10 min</span>
+                    </div>
+                    <div class="rating"> <span>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                      </span>
+                      <span class="text-light-white text-right">4225 ratings</span>
+                    </div>
+                  </div>
+                  <div class="product-footer"> <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/007-chili-1.svg" alt="tag">
+                    </span>
+                    <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/004-leaf.svg" alt="tag">
+                    </span>
+                    <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/009-lemon.svg" alt="tag">
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="product-box mb-xl-20">
+                <div class="product-img">
+                  <a href="farm.html">
+                    <img src="assets/img/farms/255x150/shop-9.jpg" class="img-fluid full-width" alt="product-img">
+                  </a>
+                  <div class="overlay">
+                    <div class="product-tags padding-10"> <span class="circle-tag">
+                        <img src="assets/img/svg/013-heart-1.svg" alt="tag">
+                      </span>
+                      <span class="type-tag bg-gradient-green text-custom-white">
+                        Trending
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="product-caption">
+                  <div class="title-box">
+                    <h6 class="product-title"><a href="farm.html" class="text-light-black "> Big Bites</a></h6>
+                    <div class="tags"> <span class="text-custom-white rectangle-tag bg-green">
+                        4.5
+                      </span>
+                    </div>
+                  </div>
+                  <p class="text-light-white">Pizzas, Fast Food</p>
+                  <div class="product-details">
+                    <div class="price-time"><span class="text-light-black time">30-40 min</span>
+                      <span class="text-light-white price">$10 min</span>
+                    </div>
+                    <div class="rating"> <span>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                      </span>
+                      <span class="text-light-white text-right">4225 ratings</span>
+                    </div>
+                  </div>
+                  <div class="product-footer">
+                                        <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/004-leaf.svg" alt="tag">
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="product-box mb-xl-20">
+                <div class="product-img">
+                  <a href="farm.html">
+                    <img src="assets/img/farms/255x150/shop-10.jpg" class="img-fluid full-width" alt="product-img">
+                  </a>
+                  <div class="overlay">
+                    <div class="product-tags padding-10"> <span class="circle-tag">
+                        <img src="assets/img/svg/013-heart-1.svg" alt="tag">
+                      </span>
+                      <span class="type-tag bg-gradient-green text-custom-white">
+                        Trending
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="product-caption">
+                  <div class="title-box">
+                    <h6 class="product-title"><a href="farm.html" class="text-light-black "> Smile N’ Delight</a></h6>
+                    <div class="tags"> <span class="text-custom-white rectangle-tag bg-green">
+                        4.5
+                      </span>
+                    </div>
+                  </div>
+                  <p class="text-light-white">Desserts, Beverages</p>
+                  <div class="product-details">
+                    <div class="price-time"><span class="text-light-black time">30-40 min</span>
+                      <span class="text-light-white price">$10 min</span>
+                    </div>
+                    <div class="rating"> <span>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                      </span>
+                      <span class="text-light-white text-right">4225 ratings</span>
+                    </div>
+                  </div>
+                  <div class="product-footer">
+                                        <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/008-protein.svg" alt="tag">
+                    </span>
+                    <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/009-lemon.svg" alt="tag">
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="product-box mb-xl-20">
+                <div class="product-img">
+                  <a href="farm.html">
+                    <img src="assets/img/farms/255x150/shop-24.jpg" class="img-fluid full-width" alt="product-img">
+                  </a>
+                  <div class="overlay">
+                    <div class="product-tags padding-10"> <span class="circle-tag">
+                        <img src="assets/img/svg/013-heart-1.svg" alt="tag">
+                      </span>
+                      <div class="custom-tag"> <span class="text-custom-white rectangle-tag bg-gradient-red">
+                          20%
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="product-caption">
+                  <div class="title-box">
+                    <h6 class="product-title"><a href="farm.html" class="text-light-black ">Lil Johnny’s</a></h6>
+                    <div class="tags"> <span class="text-custom-white rectangle-tag bg-red">
+                        2.1
+                      </span>
+                    </div>
+                  </div>
+                  <p class="text-light-white">Continental & Mexican</p>
+                  <div class="product-details">
+                    <div class="price-time"><span class="text-light-black time">30-40 min</span>
+                      <span class="text-light-white price">$10 min</span>
+                    </div>
+                    <div class="rating"> <span>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                      </span>
+                      <span class="text-light-white text-right">4225 ratings</span>
+                    </div>
+                  </div>
+                  <div class="product-footer"> <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/008-protein.svg" alt="tag">
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="product-box mb-xl-20">
+                <div class="product-img">
+                  <a href="farm.html">
+                    <img src="assets/img/farms/255x150/shop-12.jpg" class="img-fluid full-width" alt="product-img">
+                  </a>
+                  <div class="overlay">
+                    <div class="product-tags padding-10"> <span class="circle-tag">
+                        <img src="assets/img/svg/013-heart-1.svg" alt="tag">
+                      </span>
+                      <span class="text-custom-white type-tag bg-gradient-orange">
+                        NEW
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="product-caption">
+                  <div class="title-box">
+                    <h6 class="product-title"><a href="farm.html" class="text-light-black ">Choice Foods</a></h6>
+                    <div class="tags"> <span class="text-custom-white rectangle-tag bg-green">
+                        4.5
+                      </span>
+                    </div>
+                  </div>
+                  <p class="text-light-white">Indian, Chinese, Tandoor </p>
+                  <div class="product-details">
+                    <div class="price-time"><span class="text-light-black time">30-40 min</span>
+                      <span class="text-light-white price">$10 min</span>
+                    </div>
+                    <div class="rating"> <span>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                        <i class="fas fa-star text-yellow"></i>
+                      </span>
+                      <span class="text-light-white text-right">4225 ratings</span>
+                    </div>
+                  </div>
+                  <div class="product-footer">
+                                        <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/008-protein.svg" alt="tag">
+                    </span>
+                    <span class="text-custom-white square-tag">
+                      <img src="assets/img/svg/009-lemon.svg" alt="tag">
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4">
+          <div class="large-product-box mb-xl-20 p-relative">
+            <img src="assets/img/farms/255x587/Banner-1.jpg" class="img-fluid full-width" alt="image">
           </div>
         </div>
       </div>
     </div>
   </section>
-
-
-
-
-  <section class="grayBG pt80 pb80">
-    <div class="container ">
+  <!-- Features Listing -->
+  <!-- footer -->
+  <div class="footer-top section-padding">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-md-8 mx-auto text-center mb-5">
-          <h2 class="title text-center">Our Services</h2>
-          <p>Sorem ipsum dolor sit amet, consectetur adipisicing Suscipit votas aperiam
-            Sorem ipsum dolor consectur adipisicing elit.</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="feature-box h-100 text-center px-4 py-5">
-            <div class="feature-box-icon"><img class="w-25"
-                                               src="images/tour/check-mark.svg" alt="">
-            </div>
-            <h3 class="feature-box-title">Hotel Booking</h3>
-            <p class="feature-box-desc">Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. Aenean condimentum, eros eu tristique dictum, neque
-              lorem
-              laoreet purus</p>
+        <div class="col-md-2 col-sm-4 col-6 mb-sm-20">
+          <div class="icon-box"><span class="text-light-green"><i class="flaticon-credit-card-1"></i></span>
+            <span class="text-light-black">100% Payment<br>Secured</span>
           </div>
         </div>
-        <div class="col-md-4">
-          <div
-            class="feature-box h-100 text-center all-text-white bg-grad px-4 py-5 border-radius-3">
-            <div class="feature-box-icon"><img class="w-25" src="images/tour/editor.svg"
-                                               alt=""></div>
-            <h3 class="feature-box-title">Ticket Booking</h3>
-            <p class="feature-box-desc">Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. Aenean condimentum, eros eu tristique dictum, neque
-              lorem
-              laoreet</p>
+        <div class="col-md-2 col-sm-4 col-6 mb-sm-20">
+          <div class="icon-box"><span class="text-light-green"><i class="flaticon-wallet-1"></i></span>
+            <span class="text-light-black">Support lots<br> of Payments</span>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="feature-box h-100 text-center px-4 py-5">
-            <div class="feature-box-icon"><img class="w-25"
-                                               src="images/tour/envelope.svg" alt="">
-            </div>
-            <h3 class="feature-box-title">Amazing Tour</h3>
-            <p class="feature-box-desc">Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. Aenean condimentum, eros eu tristique dictum, neque
-              lorem
-              laoreet </p>
+        <div class="col-md-2 col-sm-4 col-6 mb-sm-20">
+          <div class="icon-box"><span class="text-light-green"><i class="flaticon-help"></i></span>
+            <span class="text-light-black">24 hours / 7 days<br>Support</span>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-6">
+          <div class="icon-box"><span class="text-light-green"><i class="flaticon-truck"></i></span>
+            <span class="text-light-black">Free Delivery<br>with $50</span>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-6">
+          <div class="icon-box"><span class="text-light-green"><i class="flaticon-guarantee"></i></span>
+            <span class="text-light-black">Best Price<br>Guaranteed</span>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-6">
+          <div class="icon-box"><span class="text-light-green"><i class="flaticon-app-file-symbol"></i></span>
+            <span class="text-light-black">Mobile Apps<br>Ready</span>
           </div>
         </div>
       </div>
     </div>
-  </section>
-
-
-
-
-
-
-
-  <section class="Categories pt80 pb60 ">
-    <div class="container">
-      <div class="row mb-5">
-        <div class="col-md-8">
-          <p class="subtitle text-secondary nopadding">Stay and eat like a local</p>
-          <h1 class="paddtop1 font-weight lspace-sm">Popular Hotels</h1>
-        </div>
-        <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a href="#"
-                                                                                  class="blist text-sm ml-2">
-            See all Hotels<i
-              class="fas fa-angle-double-right ml-2"></i></a></div>
-      </div>
+  </div>
+  <footer class="section-padding bg-light-theme pt-0 u-line">
+    <div class="u-line instagram-slider swiper-container">
+      <ul class="hm-list hm-instagram swiper-wrapper">
+        <li class="swiper-slide">
+          <a href="#"><img src="assets/img/farms/250x200/insta-3.jpg" alt="instagram"></a>
+        </li>
+        <li class="swiper-slide">
+          <a href="#"><img src="assets/img/farms/250x200/insta-1.jpg" alt="instagram"></a>
+        </li>
+        <li class="swiper-slide">
+          <a href="#"><img src="assets/img/farms/250x200/insta-2.jpg" alt="instagram"></a>
+        </li>
+        <li class="swiper-slide">
+          <a href="#"><img src="assets/img/farms/250x200/insta-4.jpg" alt="instagram"></a>
+        </li>
+        <li class="swiper-slide">
+          <a href="#"><img src="assets/img/farms/250x200/insta-5.jpg" alt="instagram"></a>
+        </li>
+        <li class="swiper-slide">
+          <a href="#"><img src="assets/img/farms/250x200/insta-6.jpg" alt="instagram"></a>
+        </li>
+        <li class="swiper-slide">
+          <a href="#"><img src="assets/img/farms/250x200/insta-7.jpg" alt="instagram"></a>
+        </li>
+        <li class="swiper-slide">
+          <a href="#"><img src="assets/img/farms/250x200/insta-8.jpg" alt="instagram"></a>
+        </li>
+      </ul>
+    </div>
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-          <div class="listroBox">
-            <figure><a href="hotel-detailed.html" class="wishlist_bt"></a> <a
-                href="hotel-detailed.html"><img src="images/hotels/room5.jpg"
-                                                class="img-fluid"
-                                                alt="">
-                <div class="read_more"><span>Read more</span></div>
-              </a></figure>
-            <div class="listroBoxmain">
-              <h3><a href="hotel-detailed.html">Modern, Well-Appointed Room</a></h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</p>
-              <a class="address" href="#">Get directions</a></div>
+        <div class="col-xl col-lg-4 col-md-4 col-sm-6">
+          <div class="footer-contact">
+            <h6 class="text-light-black">Need Help</h6>
             <ul>
-              <li>
-                <p class="card-text text-muted"><span
-                    class="h4 text-primary">$80</span> / night</p>
+              <li class="fw-600"><span class="text-light-white">Call Us</span> <a href="tel:" class="text-light-black">+(347) 123 456 789</a>
               </li>
-              <li>
-                <div class="R_retings">
-                  <div class="list-rat-ch list-room-rati"><i class="fa fa-star"
-                                                             aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i> <i
-                      class="fa fa-star" aria-hidden="true"></i> <i
-                      class="fa fa-star" aria-hidden="true"></i> <i
-                      class="fa fa-star"
-                      aria-hidden="true"></i></div>
-                </div>
+              <li class="fw-600"><span class="text-light-white">Email Us</span> <a href="mailto:" class="text-light-black">demo@domain.com</a>
+              </li>
+              <li class="fw-600"><span class="text-light-white">Join our twitter</span> <a href="#" class="text-light-black">@Organza</a>
+              </li>
+              <li class="fw-600"><span class="text-light-white">Join our instagram</span> <a href="#" class="text-light-black">@Organza</a>
               </li>
             </ul>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-          <div class="listroBox">
-            <figure><a href="hotel-detailed.html" class="wishlist_bt"></a> <a
-                href="hotel-detailed.html"><img src="images/hotels/room1.jpg"
-                                                class="img-fluid"
-                                                alt="">
-                <div class="read_more"><span>Read more</span></div>
-              </a></figure>
-            <div class="listroBoxmain">
-              <h3><a href="hotel-detailed.html">Modern, Well-Appointed Room</a></h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</p>
-              <a class="address" href="#">Get directions</a></div>
+        <div class="col-xl col-lg-4 col-md-4 col-sm-6">
+          <div class="footer-links">
+            <h6 class="text-light-black">Get to Know Us</h6>
             <ul>
-              <li>
-                <p class="card-text text-muted"><span
-                    class="h4 text-primary">$80</span> / night</p>
+              <li><a href="#" class="text-light-white fw-600">About Us</a>
               </li>
-              <li>
-                <div class="R_retings">
-                  <div class="list-rat-ch list-room-rati"><i class="fa fa-star"
-                                                             aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i> <i
-                      class="fa fa-star" aria-hidden="true"></i> <i
-                      class="fa fa-star" aria-hidden="true"></i> <i
-                      class="fa fa-star"
-                      aria-hidden="true"></i></div>
-                </div>
+              <li><a href="#" class="text-light-white fw-600">Blog</a>
+              </li>
+              <li><a href="#" class="text-light-white fw-600">Socialize</a>
+              </li>
+              <li><a href="#" class="text-light-white fw-600">Organza</a>
+              </li>
+              <li><a href="#" class="text-light-white fw-600">Perks</a>
               </li>
             </ul>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-          <div class="listroBox">
-            <figure><a href="hotel-detailed.html" class="wishlist_bt"></a> <a
-                href="hotel-detailed.html"><img src="images/hotels/room2.jpg"
-                                                class="img-fluid"
-                                                alt="">
-                <div class="read_more"><span>Read more</span></div>
-              </a></figure>
-            <div class="listroBoxmain">
-              <h3><a href="hotel-detailed.html">Modern, Well-Appointed Room</a></h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</p>
-              <a class="address" href="#">Get directions</a></div>
+        <div class="col-xl col-lg-4 col-md-4 col-sm-6">
+          <div class="footer-links">
+            <h6 class="text-light-black">Let Us Help You</h6>
             <ul>
-              <li>
-                <p class="card-text text-muted"><span
-                    class="h4 text-primary">$80</span> / night</p>
+              <li><a href="#" class="text-light-white fw-600">Account Details</a>
               </li>
-              <li>
-                <div class="R_retings">
-                  <div class="list-rat-ch list-room-rati"><i class="fa fa-star"
-                                                             aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i> <i
-                      class="fa fa-star" aria-hidden="true"></i> <i
-                      class="fa fa-star" aria-hidden="true"></i> <i
-                      class="fa fa-star"
-                      aria-hidden="true"></i></div>
-                </div>
+              <li><a href="#" class="text-light-white fw-600">Order History</a>
+              </li>
+              <li><a href="#" class="text-light-white fw-600">Find farm</a>
+              </li>
+              <li><a href="#" class="text-light-white fw-600">Login</a>
+              </li>
+              <li><a href="#" class="text-light-white fw-600">Track order</a>
               </li>
             </ul>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-          <div class="listroBox">
-            <figure><a href="hotel-detailed.html" class="wishlist_bt"></a> <a
-                href="hotel-detailed.html"><img src="images/hotels/room7.jpg"
-                                                class="img-fluid"
-                                                alt="">
-                <div class="read_more"><span>Read more</span></div>
-              </a></figure>
-            <div class="listroBoxmain">
-              <h3><a href="hotel-detailed.html">Modern, Well-Appointed Room</a></h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</p>
-              <a class="address" href="#">Get directions</a></div>
+        <div class="col-xl col-lg-4 col-md-4 col-sm-6">
+          <div class="footer-links">
+            <h6 class="text-light-black">Doing Business</h6>
             <ul>
-              <li>
-                <p class="card-text text-muted"><span
-                    class="h4 text-primary">$80</span> / night</p>
+              <li><a href="#" class="text-light-white fw-600">Suggest an Idea</a>
               </li>
-              <li>
-                <div class="R_retings">
-                  <div class="list-rat-ch list-room-rati"><i class="fa fa-star"
-                                                             aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i> <i
-                      class="fa fa-star" aria-hidden="true"></i> <i
-                      class="fa fa-star" aria-hidden="true"></i> <i
-                      class="fa fa-star"
-                      aria-hidden="true"></i></div>
-                </div>
+              <li><a href="#" class="text-light-white fw-600">Be a Partner farm</a>
+              </li>
+              <li><a href="#" class="text-light-white fw-600">Create an Account</a>
+              </li>
+              <li><a href="#" class="text-light-white fw-600">Help</a>
               </li>
             </ul>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-          <div class="listroBox">
-            <figure><a href="hotel-detailed.html" class="wishlist_bt"></a> <a
-                href="hotel-detailed.html"><img src="images/hotels/room8.jpg"
-                                                class="img-fluid"
-                                                alt="">
-                <div class="read_more"><span>Read more</span></div>
-              </a></figure>
-            <div class="listroBoxmain">
-              <h3><a href="hotel-detailed.html">Modern, Well-Appointed Room</a></h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</p>
-              <a class="address" href="#">Get directions</a></div>
-            <ul>
-              <li>
-                <p class="card-text text-muted"><span
-                    class="h4 text-primary">$80</span> / night</p>
-              </li>
-              <li>
-                <div class="R_retings">
-                  <div class="list-rat-ch list-room-rati"><i class="fa fa-star"
-                                                             aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i> <i
-                      class="fa fa-star" aria-hidden="true"></i> <i
-                      class="fa fa-star" aria-hidden="true"></i> <i
-                      class="fa fa-star"
-                      aria-hidden="true"></i></div>
-                </div>
-              </li>
-            </ul>
+        <div class="col-xl col-lg-4 col-md-4 col-sm-6">
+          <div class="footer-links">
+            <h6 class="text-light-black">Download Apps</h6>
+            <div class="appimg">
+              <a href="#">
+                <img src="assets/img/playstore.jpg" class="img-fluid" alt="app logo">
+              </a>
+            </div>
+            <div class="appimg">
+              <a href="#">
+                <img src="assets/img/appstore.jpg" class="img-fluid" alt="app logo">
+              </a>
+            </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-          <div class="listroBox">
-            <figure><a href="hotel-detailed.html" class="wishlist_bt"></a> <a
-                href="hotel-detailed.html"><img src="images/hotels/room6.jpg"
-                                                class="img-fluid"
-                                                alt="">
-                <div class="read_more"><span>Read more</span></div>
-              </a></figure>
-            <div class="listroBoxmain">
-              <h3><a href="hotel-detailed.html">Modern, Well-Appointed Room</a></h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</p>
-              <a class="address" href="#">Get directions</a></div>
+        <div class="col-xl col-lg-4 col-md-4 col-sm-6">
+          <div class="footer-contact">
+            <h6 class="text-light-black">Newsletter</h6>
+            <form class="subscribe_form">
+              <div class="input-group">
+                <input type="text" class="form-control form-control-submit" name="email" placeholder="Enter your email">
+                <span class="input-group-btn">
+                      <button class="btn btn-second btn-submit" type="button"><i class="fas fa-paper-plane"></i></button>
+                 </span>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="ft-social-media">
+            <h6 class="text-center text-light-black">Follow us</h6>
             <ul>
-              <li>
-                <p class="card-text text-muted"><span
-                    class="h4 text-primary">$80</span> / night</p>
+              <li><a href="#"><i class="fab fa-facebook-f"></i></a>
               </li>
-              <li>
-                <div class="R_retings">
-                  <div class="list-rat-ch list-room-rati"><i class="fa fa-star"
-                                                             aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i> <i
-                      class="fa fa-star" aria-hidden="true"></i> <i
-                      class="fa fa-star" aria-hidden="true"></i> <i
-                      class="fa fa-star"
-                      aria-hidden="true"></i></div>
-                </div>
+              <li><a href="#"><i class="fab fa-twitter"></i></a>
+              </li>
+              <li><a href="#"><i class="fab fa-instagram"></i></a>
+              </li>
+              <li><a href="#"><i class="fab fa-pinterest-p"></i></a>
+              </li>
+              <li><a href="#"><i class="fab fa-youtube"></i></a>
               </li>
             </ul>
           </div>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- =======================
-      service -->
-  <section class="service pt80 pb80 service-home">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-lg-8 mx-auto">
-          <div class="title text-center">
-            <h2>Did you know?</h2>
-            <p class="mb-0">Mauris ullamcorper nibh quis leo ultrices in hendrerit velit
-              tristiqueut augue in nulla lacinia bibendum liberoras rutrum ac purus
-              ut tristique. Nullam placerat lacinia dolor quis pretium. Phasellus
-              vitae lacinia quam</p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4 mt-30">
-          <div class="featureBox icon-grad h-100">
-            <div class="feature-box-icon"><i class="fas fa-route"></i></div>
-            <h3 class="feature-box-title">Best Travel Agent</h3>
-            <p class="feature-box-desc">Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna
-              aliqua.</p>
-            <a class="mt-3" href="#">See more!</a></div>
-        </div>
-        <div class="col-md-4 mt-30">
-          <div class="featureBox icon-grad h-100">
-            <div class="feature-box-icon"><i class="fab fa-avianex"></i></div>
-            <h3 class="feature-box-title">Trust & Safety</h3>
-            <p class="feature-box-desc">Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna
-              aliqua.</p>
-            <a class="mt-3" href="#">See more!</a></div>
-        </div>
-        <div class="col-md-4 mt-30">
-          <div class="featureBox icon-grad h-100">
-            <div class="feature-box-icon"><i class="fas fa-bullhorn"></i></div>
-            <h3 class="feature-box-title">Best Price Guarantee</h3>
-            <p class="feature-box-desc">Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna
-              aliqua.</p>
-            <a class="mt-3" href="#">See more!</a></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- =======================
-      service -->
-
-  <section class="Categories pt80 pb60 Categories-home">
-    <div class="container">
-      <div class="row mb-5">
-        <div class="col-md-8">
-          <p class="subtitle text-secondary nopadding">Stay and eat like a local</p>
-          <h1 class="paddtop1 font-weight lspace-sm">Latest Cruises</h1>
-        </div>
-        <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a href="#"
-                                                                                  class="blist text-sm ml-2">
-            See all Cruises<i
-              class="fas fa-angle-double-right ml-2"></i></a></div>
-      </div>
-      <div class="row">
-        <div class="swiper-container guides-slider-home-cruises">
-          <!-- Additional required wrapper-->
-          <div class="swiper-wrapper">
-            <!-- Slides-->
-
-            <div class="swiper-slide h-auto px-2">
-              <div class="listing-item ">
-                <article class="TravelGo-category-listing fl-wrap">
-                  <div class="TravelGo-category-img"><a
-                      href="hotel-detailed.html"><img
-                        src="images/cruises/1.jpg" alt=""></a>
-                    <div class="TravelGo-category-opt">
-                      <div class="listing-rating card-popup-rainingvis"
-                           data-starrating2="5"><i class="fa fa-star"></i><i
-                          class="fa fa-star"></i><i
-                          class="fa fa-star"></i><i
-                          class="fa fa-star"></i><i
-                          class="fa fa-star"></i></div>
-                      <div class="rate-class-name">
-                        <div class="score"><strong>Very Good</strong>27
-                          Reviews
-                        </div>
-                        <span>5.0</span></div>
-                    </div>
-                  </div>
-                  <div class="TravelGo-category-content fl-wrap title-sin_item">
-                    <div class="TravelGo-category-content-title fl-wrap">
-                      <div class="TravelGo-category-content-title-item">
-                        <h3 class="title-sin_map"><a
-                            href="hotel-detailed.html">Asia & African
-                            Cruise</a></h3>
-                        <div class="TravelGo-category-location fl-wrap"><a
-                            href="#" class="map-item"><i
-                              class="fas fa-map-marker-alt"></i> 27th
-                            Brooklyn New York, USA</a>
-                          <span>$ 200</span></div>
-                      </div>
-                    </div>
-                    <p>Sed interdum metus at nisi tempor laoreet. Integer
-                      gravida orci a justo sodales.</p>
-                    <ul class="facilities-list fl-wrap">
-                      <li><i class="fas fa-wifi"></i><span>Free WiFi</span>
-                      </li>
-                      <li><i class="fas fa-parking"></i><span>Parking</span>
-                      </li>
-                      <li><i class="fas fa-smoking-ban"></i><span>Non-smoking Rooms</span>
-                      </li>
-                      <li>
-                        <i class="fas fa-utensils"></i><span> Restaurant</span>
-                      </li>
-                    </ul>
-                    <div class="TravelGo-category-footer fl-wrap">
-                      <div class="TravelGo-category-price btn-grad"><span>2 days 3 nights</span>
-                      </div>
-                      <div class="TravelGo-opt-list"><a href="#"
-                                                        class="single-map-item"><i
-                            class="fas fa-map-marker-alt"></i><span
-                            class="TravelGo-opt-tooltip">On the map</span></a>
-                        <a href="#" class="TravelGo-js-favorite"><i
-                            class="fas fa-heart"></i><span
-                            class="TravelGo-opt-tooltip">Save</span></a>
-                        <a href="#"
-                           class="TravelGo-js-booking"><i
-                            class="fas fa-retweet"></i><span
-                            class="TravelGo-opt-tooltip">Find Directions</span></a>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            </div>
-            <div class="swiper-slide h-auto px-2">
-              <div class="listing-item ">
-                <article class="TravelGo-category-listing fl-wrap">
-                  <div class="TravelGo-category-img"><a
-                      href="hotel-detailed.html"><img
-                        src="images/cruises/2.jpg" alt=""></a>
-                    <div class="TravelGo-category-opt">
-                      <div class="listing-rating card-popup-rainingvis"
-                           data-starrating2="5"><i class="fa fa-star"></i><i
-                          class="fa fa-star"></i><i
-                          class="fa fa-star"></i><i
-                          class="fa fa-star"></i><i
-                          class="fa fa-star"></i></div>
-                      <div class="rate-class-name">
-                        <div class="score"><strong>Very Good</strong>27
-                          Reviews
-                        </div>
-                        <span>5.0</span></div>
-                    </div>
-                  </div>
-                  <div class="TravelGo-category-content fl-wrap title-sin_item">
-                    <div class="TravelGo-category-content-title fl-wrap">
-                      <div class="TravelGo-category-content-title-item">
-                        <h3 class="title-sin_map"><a
-                            href="hotel-detailed.html">Asia & African
-                            Cruise</a></h3>
-                        <div class="TravelGo-category-location fl-wrap"><a
-                            href="#" class="map-item"><i
-                              class="fas fa-map-marker-alt"></i> 27th
-                            Brooklyn New York, USA</a>
-                          <span>$ 200</span></div>
-                      </div>
-                    </div>
-                    <p>Sed interdum metus at nisi tempor laoreet. Integer
-                      gravida orci a justo sodales.</p>
-                    <ul class="facilities-list fl-wrap">
-                      <li><i class="fas fa-wifi"></i><span>Free WiFi</span>
-                      </li>
-                      <li><i class="fas fa-parking"></i><span>Parking</span>
-                      </li>
-                      <li><i class="fas fa-smoking-ban"></i><span>Non-smoking Rooms</span>
-                      </li>
-                      <li>
-                        <i class="fas fa-utensils"></i><span> Restaurant</span>
-                      </li>
-                    </ul>
-                    <div class="TravelGo-category-footer fl-wrap">
-                      <div class="TravelGo-category-price btn-grad"><span>2 days 3 nights</span>
-                      </div>
-                      <div class="TravelGo-opt-list"><a href="#"
-                                                        class="single-map-item"><i
-                            class="fas fa-map-marker-alt"></i><span
-                            class="TravelGo-opt-tooltip">On the map</span></a>
-                        <a href="#" class="TravelGo-js-favorite"><i
-                            class="fas fa-heart"></i><span
-                            class="TravelGo-opt-tooltip">Save</span></a>
-                        <a href="#"
-                           class="TravelGo-js-booking"><i
-                            class="fas fa-retweet"></i><span
-                            class="TravelGo-opt-tooltip">Find Directions</span></a>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            </div>
-            <div class="swiper-slide h-auto px-2">
-              <div class="listing-item ">
-                <article class="TravelGo-category-listing fl-wrap">
-                  <div class="TravelGo-category-img"><a
-                      href="hotel-detailed.html"><img
-                        src="images/cruises/3.jpg" alt=""></a>
-                    <div class="TravelGo-category-opt">
-                      <div class="listing-rating card-popup-rainingvis"
-                           data-starrating2="5"><i class="fa fa-star"></i><i
-                          class="fa fa-star"></i><i
-                          class="fa fa-star"></i><i
-                          class="fa fa-star"></i><i
-                          class="fa fa-star"></i></div>
-                      <div class="rate-class-name">
-                        <div class="score"><strong>Very Good</strong>27
-                          Reviews
-                        </div>
-                        <span>5.0</span></div>
-                    </div>
-                  </div>
-                  <div class="TravelGo-category-content fl-wrap title-sin_item">
-                    <div class="TravelGo-category-content-title fl-wrap">
-                      <div class="TravelGo-category-content-title-item">
-                        <h3 class="title-sin_map"><a
-                            href="hotel-detailed.html">Asia & African
-                            Cruise</a></h3>
-                        <div class="TravelGo-category-location fl-wrap"><a
-                            href="#" class="map-item"><i
-                              class="fas fa-map-marker-alt"></i> 27th
-                            Brooklyn New York, USA</a>
-                          <span>$ 200</span></div>
-                      </div>
-                    </div>
-                    <p>Sed interdum metus at nisi tempor laoreet. Integer
-                      gravida orci a justo sodales.</p>
-                    <ul class="facilities-list fl-wrap">
-                      <li><i class="fas fa-wifi"></i><span>Free WiFi</span>
-                      </li>
-                      <li><i class="fas fa-parking"></i><span>Parking</span>
-                      </li>
-                      <li><i class="fas fa-smoking-ban"></i><span>Non-smoking Rooms</span>
-                      </li>
-                      <li>
-                        <i class="fas fa-utensils"></i><span> Restaurant</span>
-                      </li>
-                    </ul>
-                    <div class="TravelGo-category-footer fl-wrap">
-                      <div class="TravelGo-category-price btn-grad"><span>2 days 3 nights</span>
-                      </div>
-                      <div class="TravelGo-opt-list"><a href="#"
-                                                        class="single-map-item"><i
-                            class="fas fa-map-marker-alt"></i><span
-                            class="TravelGo-opt-tooltip">On the map</span></a>
-                        <a href="#" class="TravelGo-js-favorite"><i
-                            class="fas fa-heart"></i><span
-                            class="TravelGo-opt-tooltip">Save</span></a>
-                        <a href="#"
-                           class="TravelGo-js-booking"><i
-                            class="fas fa-retweet"></i><span
-                            class="TravelGo-opt-tooltip">Find Directions</span></a>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            </div>
-            <div class="swiper-slide h-auto px-2">
-              <div class="listing-item ">
-                <article class="TravelGo-category-listing fl-wrap">
-                  <div class="TravelGo-category-img"><a
-                      href="hotel-detailed.html"><img
-                        src="images/cruises/4.jpg" alt=""></a>
-                    <div class="TravelGo-category-opt">
-                      <div class="listing-rating card-popup-rainingvis"
-                           data-starrating2="5"><i class="fa fa-star"></i><i
-                          class="fa fa-star"></i><i
-                          class="fa fa-star"></i><i
-                          class="fa fa-star"></i><i
-                          class="fa fa-star"></i></div>
-                      <div class="rate-class-name">
-                        <div class="score"><strong>Very Good</strong>27
-                          Reviews
-                        </div>
-                        <span>5.0</span></div>
-                    </div>
-                  </div>
-                  <div class="TravelGo-category-content fl-wrap title-sin_item">
-                    <div class="TravelGo-category-content-title fl-wrap">
-                      <div class="TravelGo-category-content-title-item">
-                        <h3 class="title-sin_map"><a
-                            href="hotel-detailed.html">Asia & African
-                            Cruise</a></h3>
-                        <div class="TravelGo-category-location fl-wrap"><a
-                            href="#" class="map-item"><i
-                              class="fas fa-map-marker-alt"></i> 27th
-                            Brooklyn New York, USA</a>
-                          <span>$ 200</span></div>
-                      </div>
-                    </div>
-                    <p>Sed interdum metus at nisi tempor laoreet. Integer
-                      gravida orci a justo sodales.</p>
-                    <ul class="facilities-list fl-wrap">
-                      <li><i class="fas fa-wifi"></i><span>Free WiFi</span>
-                      </li>
-                      <li><i class="fas fa-parking"></i><span>Parking</span>
-                      </li>
-                      <li><i class="fas fa-smoking-ban"></i><span>Non-smoking Rooms</span>
-                      </li>
-                      <li>
-                        <i class="fas fa-utensils"></i><span> Restaurant</span>
-                      </li>
-                    </ul>
-                    <div class="TravelGo-category-footer fl-wrap">
-                      <div class="TravelGo-category-price btn-grad"><span>2 days 3 nights</span>
-                      </div>
-                      <div class="TravelGo-opt-list"><a href="#"
-                                                        class="single-map-item"><i
-                            class="fas fa-map-marker-alt"></i><span
-                            class="TravelGo-opt-tooltip">On the map</span></a>
-                        <a href="#" class="TravelGo-js-favorite"><i
-                            class="fas fa-heart"></i><span
-                            class="TravelGo-opt-tooltip">Save</span></a>
-                        <a href="#"
-                           class="TravelGo-js-booking"><i
-                            class="fas fa-retweet"></i><span
-                            class="TravelGo-opt-tooltip">Find Directions</span></a>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            </div>
-            <div class="swiper-slide h-auto px-2">
-              <div class="listing-item ">
-                <article class="TravelGo-category-listing fl-wrap">
-                  <div class="TravelGo-category-img"><a
-                      href="hotel-detailed.html"><img
-                        src="images/cruises/5.jpg" alt=""></a>
-                    <div class="TravelGo-category-opt">
-                      <div class="listing-rating card-popup-rainingvis"
-                           data-starrating2="5"><i class="fa fa-star"></i><i
-                          class="fa fa-star"></i><i
-                          class="fa fa-star"></i><i
-                          class="fa fa-star"></i><i
-                          class="fa fa-star"></i></div>
-                      <div class="rate-class-name">
-                        <div class="score"><strong>Very Good</strong>27
-                          Reviews
-                        </div>
-                        <span>5.0</span></div>
-                    </div>
-                  </div>
-                  <div class="TravelGo-category-content fl-wrap title-sin_item">
-                    <div class="TravelGo-category-content-title fl-wrap">
-                      <div class="TravelGo-category-content-title-item">
-                        <h3 class="title-sin_map"><a
-                            href="hotel-detailed.html">Asia & African
-                            Cruise</a></h3>
-                        <div class="TravelGo-category-location fl-wrap"><a
-                            href="#" class="map-item"><i
-                              class="fas fa-map-marker-alt"></i> 27th
-                            Brooklyn New York, USA</a>
-                          <span>$ 200</span></div>
-                      </div>
-                    </div>
-                    <p>Sed interdum metus at nisi tempor laoreet. Integer
-                      gravida orci a justo sodales.</p>
-                    <ul class="facilities-list fl-wrap">
-                      <li><i class="fas fa-wifi"></i><span>Free WiFi</span>
-                      </li>
-                      <li><i class="fas fa-parking"></i><span>Parking</span>
-                      </li>
-                      <li><i class="fas fa-smoking-ban"></i><span>Non-smoking Rooms</span>
-                      </li>
-                      <li>
-                        <i class="fas fa-utensils"></i><span> Restaurant</span>
-                      </li>
-                    </ul>
-                    <div class="TravelGo-category-footer fl-wrap">
-                      <div class="TravelGo-category-price btn-grad"><span>2 days 3 nights</span>
-                      </div>
-                      <div class="TravelGo-opt-list"><a href="#"
-                                                        class="single-map-item"><i
-                            class="fas fa-map-marker-alt"></i><span
-                            class="TravelGo-opt-tooltip">On the map</span></a>
-                        <a href="#" class="TravelGo-js-favorite"><i
-                            class="fas fa-heart"></i><span
-                            class="TravelGo-opt-tooltip">Save</span></a>
-                        <a href="#"
-                           class="TravelGo-js-booking"><i
-                            class="fas fa-retweet"></i><span
-                            class="TravelGo-opt-tooltip">Find Directions</span></a>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            </div>
-            <div class="swiper-slide h-auto px-2">
-              <div class="listing-item ">
-                <article class="TravelGo-category-listing fl-wrap">
-                  <div class="TravelGo-category-img"><a
-                      href="hotel-detailed.html"><img
-                        src="images/cruises/6.jpg" alt=""></a>
-                    <div class="TravelGo-category-opt">
-                      <div class="listing-rating card-popup-rainingvis"
-                           data-starrating2="5"><i class="fa fa-star"></i><i
-                          class="fa fa-star"></i><i
-                          class="fa fa-star"></i><i
-                          class="fa fa-star"></i><i
-                          class="fa fa-star"></i></div>
-                      <div class="rate-class-name">
-                        <div class="score"><strong>Very Good</strong>27
-                          Reviews
-                        </div>
-                        <span>5.0</span></div>
-                    </div>
-                  </div>
-                  <div class="TravelGo-category-content fl-wrap title-sin_item">
-                    <div class="TravelGo-category-content-title fl-wrap">
-                      <div class="TravelGo-category-content-title-item">
-                        <h3 class="title-sin_map"><a
-                            href="hotel-detailed.html">Asia & African
-                            Cruise</a></h3>
-                        <div class="TravelGo-category-location fl-wrap"><a
-                            href="#" class="map-item"><i
-                              class="fas fa-map-marker-alt"></i> 27th
-                            Brooklyn New York, USA</a>
-                          <span>$ 200</span></div>
-                      </div>
-                    </div>
-                    <p>Sed interdum metus at nisi tempor laoreet. Integer
-                      gravida orci a justo sodales.</p>
-                    <ul class="facilities-list fl-wrap">
-                      <li><i class="fas fa-wifi"></i><span>Free WiFi</span>
-                      </li>
-                      <li><i class="fas fa-parking"></i><span>Parking</span>
-                      </li>
-                      <li><i class="fas fa-smoking-ban"></i><span>Non-smoking Rooms</span>
-                      </li>
-                      <li>
-                        <i class="fas fa-utensils"></i><span> Restaurant</span>
-                      </li>
-                    </ul>
-                    <div class="TravelGo-category-footer fl-wrap">
-                      <div class="TravelGo-category-price btn-grad"><span>2 days 3 nights</span>
-                      </div>
-                      <div class="TravelGo-opt-list"><a href="#"
-                                                        class="single-map-item"><i
-                            class="fas fa-map-marker-alt"></i><span
-                            class="TravelGo-opt-tooltip">On the map</span></a>
-                        <a href="#" class="TravelGo-js-favorite"><i
-                            class="fas fa-heart"></i><span
-                            class="TravelGo-opt-tooltip">Save</span></a>
-                        <a href="#"
-                           class="TravelGo-js-booking"><i
-                            class="fas fa-retweet"></i><span
-                            class="TravelGo-opt-tooltip">Find Directions</span></a>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-pagination d-md-none"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-
-  <section class="bg-light pt80 pb60 solutions">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 mx-auto text-center mb-5">
-          <h2 class="title text-center">Why Choose Us</h2>
-          <p>Sorem ipsum dolor sit amet, consectetur adipisicing Suscipit votas aperiam
-            Sorem ipsum dolor consectur adipisicing elit.</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 col-lg-3 mb-4 mb-lg-0">
-          <div class="shadow-hover h-100 bg-white px-5 pt-0 pb-5 text-center up-on-hover"><span
-              class="alt-font text-light-gray display-2 font-italic opacity-2">01</span>
-            <span class="d-block mb-4"><i
-                class="fas fa-road display-2 text-grad"></i></span> <a class="h5"
-                                                                       href="#">Rail
-              Booking</a></div>
-        </div>
-        <div class="col-sm-6 col-lg-3 mb-4 mb-lg-0">
-          <div class="shadow-hover h-100 bg-white px-5 pt-0 pb-5 text-center up-on-hover"><span
-              class="alt-font text-light-gray display-2 font-italic opacity-2">02</span>
-            <span class="d-block mb-4"><i
-                class="fas fa-utensils display-2 text-grad"></i></span> <a
-              class="h5" href="#">Hotel Booking</a></div>
-        </div>
-        <div class="col-sm-6 col-lg-3 mb-4 mb-lg-0">
-          <div class="shadow-hover h-100 bg-white px-5 pt-0 pb-5 text-center up-on-hover"><span
-              class="alt-font text-light-gray display-2 font-italic opacity-2">03</span>
-            <span class="d-block mb-4"><i
-                class="fas fa-ticket-alt display-2 text-grad"></i></span> <a
-              class="h5" href="#">Ticket Booking</a></div>
-        </div>
-        <div class="col-sm-6 col-lg-3 mb-4 mb-lg-0">
-          <div class="shadow-hover h-100 bg-white px-5 pt-0 pb-5 text-center up-on-hover"><span
-              class="alt-font text-light-gray display-2 font-italic opacity-2">04</span>
-            <span class="d-block mb-4"><i
-                class="fas fa-child display-2 text-grad"></i></span> <a class="h5"
-                                                                        href="#">Amazing
-              Tour</a></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-
-  <section class="pricing pricing-center whiteBG pb60">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-lg-8 mx-auto mb-5">
-          <div class="title text-center">
-            <h2> Pricing Packages</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing Suscipit votas
-              aperiam Sorem ipsum dolor consectur adipisicing elit.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <!-- pricing item -->
-        <div class="col-md-4">
-          <div class="pricing-box h-100">
-            <h5>Honeymoon Package</h5>
-            <div class="plan-price"><span class="price text-grad"> <sup
-                  class="text-grad">$</sup>20 </span> / Day
-            </div>
-            <p>4 nights in Honeymoon Suite.<br>
-              Private luxury airport transfer.<br>
-              Daily breakfast your suite.</p>
-            <a class="btn btn-outline-light mt-4" href="#!">Order now!</a></div>
-        </div>
-        <!-- pricing item -->
-        <div class="col-md-4 ">
-          <div class="pricing-box h-100 shadow no-border box">
-            <div class="ribbon"><span>POPULAR</span></div>
-            <h5>Family Package</h5>
-            <div class="plan-price"><span class="price text-grad"> <sup
-                  class="text-grad">$</sup>50 </span> / Day
-            </div>
-            <p>4 nights in Honeymoon Suite.<br>
-              Private luxury airport transfer.<br>
-              Daily breakfast your suite.</p>
-            <a class="btn btn-grad mt-4" href="#!">Order now!</a></div>
-        </div>
-        <!-- pricing item -->
-        <div class="col-md-4">
-          <div class="pricing-box h-100">
-            <h5>All Inclusive</h5>
-            <div class="plan-price"><span class="price text-grad"> <sup
-                  class="text-grad">$</sup>99 </span> / Day
-            </div>
-            <p>4 nights in Honeymoon Suite.<br>
-              Private luxury airport transfer.<br>
-              Daily breakfast your suite.</p>
-            <a class="btn btn-outline-light mt-4" href="#!">Order now!</a></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-  <!-- =======================
-      newsletter -->
-  <section class="bg-light pattern-overlay-1-dark">
-    <div class="container">
-      <div class="col-md-12 col-lg-9 mx-auto p-4 p-sm-5">
-        <div class="text-center px-0 px-sm-5">
-          <p class="mb-3 lead">21,215+ Hotel and Resorts Available!</p>
-          <form>
-            <div class="input-group px-0 px-md-5">
-              <input
-                class="form-control border-radius-right-0 border-right-0 bg-transparent"
-                type="text" name="search" placeholder="Enter destination">
-              <button type="button" class="btn btn-grad mb-0 border-radius-left-0">
-                <span class=" d-md-block">Search now</span> <span class="d-md-none"><i
-                    class="fab fa-paper-plane-o m-0"></i></span></button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- =======================
-      newsletter -->
-
+  </footer>
 @endsection
