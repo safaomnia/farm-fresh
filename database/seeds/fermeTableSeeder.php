@@ -24,7 +24,11 @@ class fermeTableSeeder extends Seeder
               try {
                 $ferme->avis()->attach('', ['client_id' => App\User::all()->random()->id, 'avis' => $faker->paragraph]);
               } catch (PDOException $Exception) {
-                $error = true;
+                if ($Exception->errorInfo[0] == '23000' && $Exception->errorInfo[1] == '1062') {
+                  $error = true;
+                } else {
+                  throw $Exception;
+                }
               }
             } while ($error = false);
           }

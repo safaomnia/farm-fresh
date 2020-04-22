@@ -23,7 +23,11 @@ class panierTableSeeder extends Seeder
           try {
             $panier->produits()->attach('', ['produit_id' => App\produit::all()->random()->id]);
           } catch (PDOException $Exception) {
-            $error = true;
+            if ($Exception->errorInfo[0] == '23000' && $Exception->errorInfo[1] == '1062') {
+              $error = true;
+            } else {
+              throw $Exception;
+            }
           }
         } while ($error = false);
       }

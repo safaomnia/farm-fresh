@@ -19,7 +19,11 @@ class produitNoteTableSeeder extends Seeder
           try {
             $produit->notes()->attach('', ['client_id' => App\User::all()->random()->id, 'nb_etoile' => rand(1, 5)]);
           } catch (PDOException $Exception) {
-            $error = true;
+            if ($Exception->errorInfo[0] == '23000' && $Exception->errorInfo[1] == '1062') {
+              $error = true;
+            } else {
+              throw $Exception;
+            }
           }
         } while ($error = false);
       }

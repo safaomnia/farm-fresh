@@ -13,6 +13,7 @@ class produitTableSeeder extends Seeder
   {
     $fermes = App\ferme::all();
     foreach ($fermes as $ferme) {
+      //we used make() for adding multiple rows with saveMany()
       $ferme->produits()->saveMany(factory(App\produit::class, rand(5, 10))->make(['ferme_id' => $ferme->id]));
     }
   }
