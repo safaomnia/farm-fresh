@@ -13,7 +13,7 @@ class categorie extends Model
 
   public function produits()
   {
-    return $this->belongsToMany(produit::class, 'produit_categorie', 'produit_id', 'categorie_id')
+    return $this->belongsToMany(produit::class, 'produit_categorie', 'categorie_id', 'produit_id')
       ->using(produit_categorie::class);
   }
 }

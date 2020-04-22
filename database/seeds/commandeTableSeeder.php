@@ -16,13 +16,12 @@ class commandeTableSeeder extends Seeder
       $faker = Faker\Factory::create();
       for($i = 0; $i < rand(5, 10); $i++)
       {
-        /*$client->commandes()->attach('', [
-          'quantite' => $faker->randomNumber(),
-          'preparate' => $faker->randomElement(['en cours', 'preparé']),
+        $client->commandes()->attach('', [
+          'total' => 0,
+          'etat' => $faker->randomElement(['en cours', 'accepte', 'refuse']),
           'livraison_id' => App\livraison::all()->random()->id,
-          'client_id' => $client->id,
           'produit_id' => App\produit::all()->random()->id
-        ]);*/
+        ]);
       }
     }
   }

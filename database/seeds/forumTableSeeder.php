@@ -23,17 +23,16 @@ class forumTableSeeder extends Seeder
           ]);
         }
       });
-    /*$commentaires = App\forum_commentaire::all();
+    $commentaires = App\forum_commentaire::all();
     foreach ($commentaires as $commentaire)
     {
       $faker = Faker\Factory::create();
       for ($i = 0; $i < rand(3, 7); $i++) {
-        $commentaire->repondres()->attach('', [
-          'forum_commentaire_id' => $commentaire->id,
-          'client_id' => App\User::all()->random()->id,
-          'reponde' => $faker->paragraph
+        $commentaire->repondes()->attach('', [
+          'reponde' => $faker->paragraph,
+          'client_id' => App\User::all()->random()->id
         ]);
       }
-    }*/
+    }
   }
 }

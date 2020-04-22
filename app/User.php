@@ -78,7 +78,7 @@ class User extends Authenticatable
 
    public function commandes()
   {
-    return $this->belongsToMany(produit::class, 'commande', 'produit_id', 'client_id')
+    return $this->belongsToMany(produit::class, 'commande', 'client_id', 'produit_id')
       ->using(commande::class)
       ->withPivot('total', 'etat', 'livraison_id')
       ->withTimestamps();

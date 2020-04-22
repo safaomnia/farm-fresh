@@ -18,13 +18,15 @@ class fermeTableSeeder extends Seeder
         ->create(['agriculteur_id' => $agriculteur->id])
         ->each(function ($ferme) {
           $faker = Faker\Factory::create();
-          $clientId = App\User::all()->random()->id;
-          for ($i = 0; $i < rand(3, 7); $i++) {
-            $ferme->avis()->attach('', [
-              'ferme_id' => $ferme->id,
-              'client_id' => $clientId,
-              'avis' => $faker->paragraph
-            ]);
+          for ($i = 0; $i < rand(3, 5); $i++) {
+            $error = false;
+            do {
+              try {
+                $ferme->avis()->attach('', ['client_id' => App\User::all()->random()->id, 'avis' => $faker->paragraph]);
+              } catch (PDOException $Exception) {
+                $error = true;
+              }
+            } while ($error = false);
           }
         });
     }

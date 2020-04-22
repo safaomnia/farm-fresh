@@ -44,6 +44,6 @@ class DatabaseSeeder extends Seeder
     $this->call(livraisonTableSeeder::class);
     $this->call(commandeTableSeeder::class);
     $this->call(demandeTableSeeder::class);
-    //$this->call(panierTableSeeder::class);
+    $this->call(panierTableSeeder::class);
   }
 }
