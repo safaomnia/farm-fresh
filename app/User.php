@@ -15,7 +15,7 @@ class User extends Authenticatable
    * @var array
    */
   protected $fillable = [
-    'nom', 'penom', 'datenai', 'sexe', 'telephone', 'email', 'adresse', 'password', 'photo', 'description'
+    'nom', 'prenom', 'datenai', 'sexe', 'telephone', 'email', 'adresse', 'password', 'photo', 'description'
   ];
   /**
    * The attributes that should be hidden for arrays.
@@ -34,6 +34,21 @@ class User extends Authenticatable
   protected $casts = [
     'email_verified_at' => 'datetime',
   ];
+
+  public function getRememberToken()
+  {
+    return $this->remember_token;
+  }
+
+  public function setRememberToken($value)
+  {
+    $this->remember_token = $value;
+  }
+
+  public function getRememberTokenName()
+  {
+    return 'remember_token';
+  }
 
   public function forums()
   {
@@ -76,7 +91,7 @@ class User extends Authenticatable
     return $this->belongsToMany(User::class)->withTimestamps();
   }
 
-   public function commandes()
+  public function commandes()
   {
     return $this->belongsToMany(produit::class, 'commande', 'client_id', 'produit_id')
       ->using(commande::class)

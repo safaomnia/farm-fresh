@@ -250,7 +250,8 @@
                     </a>
                   </li>
                 </ul>
-                <div class="user-footer"><span class="text-light-black">Not Jhon?</span> <a href="#">Sign Out</a>
+                  <div class="user-footer"><span class="text-light-black">Not Jhon?</span> <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">>Déconnecter</a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
                 </div>
               </div>
             </div>

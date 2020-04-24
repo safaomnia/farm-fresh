@@ -15,15 +15,15 @@ Auth::routes();
 Route::get('/', function () {
   return view('home');
 })->name('home');
-Route::get('/home', 'HomeController@test')->name('home');
-
 
 //unfound route
 Route::get('/{page}', function ($page) {
   $pages = [
-    'hotel' => 'hotel'
+    'identifier' => 'auth.login',
+    'inscrire' => 'auth.register',
+    'home' => 'home'
   ];
   if (!array_key_exists($page, $pages))
-    abort(404, 'Sorry this page not exist');
+    abort(503, 'Désolé cette page n\'existe pas');
   else return view($pages[$page]);
 });

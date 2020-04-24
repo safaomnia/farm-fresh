@@ -53,8 +53,8 @@ class RegisterController extends Controller
       [
         'nom' => ['required', 'string', 'max:255', 'alpha'],
         'prenom' => ['required', 'string', 'max:255', 'alpha'],
-        'email' => ['required', 'string', 'email', 'unique:utilisateur'],
-        'password' => ['required', 'string', 'min:8', 'regex:#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#', 'confirmed'],
+        'email' => ['required', 'string', 'email', 'unique:client'],
+        'password' => ['required', 'string', 'min:8', 'regex:#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#'],
       ],
       [
         'nom.alpha' => 'Votre nom pas correct',
@@ -70,21 +70,16 @@ class RegisterController extends Controller
    *
    * @param array $data
    * @return \App\User;
-   * @param  \App\Client;
    */
   protected function create(array $data)
   {
-    if ($data['sexe'] == "femme") $image = "femme.jpg";
-    else $image = 'homme.jpg';
     $user = User::create([
-      'photo' => $image,
+      'photo' => 'homme.jpg',
       'nom' => ucwords(strtolower($data['nom']), ' '),
       'prenom' => ucwords(strtolower($data['prenom']), ' '),
-      'sexe' => $data['sexe'],
       'email' => strtolower($data['email']),
       'password' => Hash::make($data['password']),
     ]);
-    Client::create(['id' => $user->id]);
     return $user;
   }
 }
