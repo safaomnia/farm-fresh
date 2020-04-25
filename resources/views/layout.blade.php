@@ -32,7 +32,6 @@
   <!-- Custom Responsive -->
   <link href="{{ URL::asset('assets/css/responsive.css')}}" rel="stylesheet">
   <!-- Google Fonts -->
-  <
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;display=swap" rel="stylesheet">
   <!-- place -->
 </head>
@@ -53,20 +52,10 @@
           <div class="main-search mainNavCol">
             <form class="main-search search-form full-width">
               <div class="row">
-                <!-- location picker -->
-                <div class="col-lg-6 col-md-5">
-                  <a href="#" class="delivery-add p-relative"> <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
-                    <span class="address">Brooklyn, NY</span>
-                  </a>
-                  <div class="location-picker">
-                    <input type="text" class="form-control" placeholder="Enter a new address">
-                  </div>
-                </div>
-                <!-- location picker -->
                 <!-- search -->
                 <div class="col-lg-6 col-md-7">
                   <div class="search-box padding-10">
-                    <input type="text" class="form-control" placeholder="Fruits, Vegitables, Milk, Eggs">
+                    <input type="text" class="form-control" placeholder="Fruits, Légume, Lait, Oeufs">
                   </div>
                 </div>
                 <!-- search -->
@@ -75,111 +64,22 @@
           </div>
           <div class="right-side fw-700 mainNavCol">
             <div class="gem-points">
-              <a href="#"> <i class="fas fa-concierge-bell"></i>
-                <span>Order Now</span>
+              <a href="/produit">
+                <span>Produit</span>
               </a>
             </div>
-            <div class="catring parent-megamenu">
-              <a href="#"> <span>Pages <i class="fas fa-caret-down"></i></span>
-                <i class="fas fa-bars"></i>
+            @guest
+            <div class="gem-points">
+              <a href="/login">
+                <span>S'identifer</span>
               </a>
-              <div class="megamenu">
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="row">
-                      <div class="col-lg-4 col-md-5">
-                        <div class="ex-collection-box h-100">
-                          <a href="#">
-                            <img src="{{URL::asset('assets/img/nav-1.jpg')}}" class="img-fluid full-width h-100" alt="image">
-                          </a>
-                          <div class="category-type overlay padding-15"><a href="farm.html" class="category-btn">Top rated</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-8 col-md-7">
-                        <div class="row">
-                          <div class="col-lg-3 col-sm-6">
-                            <div class="menu-style">
-                              <div class="menu-title">
-                                <h6 class="cat-name"><a href="#" class="text-light-black">Home Pages</a></h6>
-                              </div>
-                              <ul>
-                                <li><a href="index-2.html" class="text-light-white fw-500">Landing Page</a>
-                                </li>
-                                <li><a href="homepage-1.html" class="text-light-white fw-500">Home Page 1</a>
-                                </li>
-                                <li class="active"><a href="homepage-2.html" class="text-light-white fw-500">Home Page 2</a>
-                                </li>
-                                <li><a href="homepage-3.html" class="text-light-white fw-500">Home Page 3</a>
-                                </li>
-                                <li><a href="homepage-4.html" class="text-light-white fw-500">Home Page 4</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="col-lg-3 col-sm-6">
-                            <div class="menu-style">
-                              <div class="menu-title">
-                                <h6 class="cat-name"><a href="#" class="text-light-black">Inner Pages</a></h6>
-                              </div>
-                              <ul>
-                                <li><a href="blog.html" class="text-light-white fw-500">Blog Grid View</a>
-                                </li>
-                                <li><a href="blog-style-2.html" class="text-light-white fw-500">Blog Grid View 2</a>
-                                </li>
-                                <li><a href="blog-details.html" class="text-light-white fw-500">Blog Details</a>
-                                </li>
-                                <li><a href="ex-deals.html" class="text-light-white fw-500">Ex Deals</a>
-                                </li>
-                                <li><a href="about.html" class="text-light-white fw-500">About Us</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="col-lg-3 col-sm-6">
-                            <div class="menu-style">
-                              <div class="menu-title">
-                                <h6 class="cat-name"><a href="#" class="text-light-black">Related Pages</a></h6>
-                              </div>
-                              <ul>
-                                <li><a href="farm.html" class="text-light-white fw-500">farm</a>
-                                <li><a href="farm-style-1.html" class="text-light-white fw-500">farm 1</a>
-                                </li>
-                                <li><a href="farm-style-2.html" class="text-light-white fw-500">farm 2</a>
-                                </li>
-                                <li><a href="add-farm.html" class="text-light-white fw-500">Add farm</a>
-                                </li>
-                                <li><a href="list-view.html" class="text-light-white fw-500">List View</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="col-lg-3 col-sm-6">
-                            <div class="menu-style">
-                              <div class="menu-title">
-                                <h6 class="cat-name"><a href="#" class="text-light-black">Additional Pages</a></h6>
-                              </div>
-                              <ul>
-                                <li><a href="login.html" class="text-light-white fw-500">Login</a>
-                                </li>
-                                <li><a href="register.html" class="text-light-white fw-500">Sign-up</a>
-                                </li>
-                                <li><a href="checkout.html" class="text-light-white fw-500">Checkout</a>
-                                </li>
-                                <li><a href="order-details.html" class="text-light-white fw-500">Order Details</a>
-                                </li>
-                                <li><a href="geo-locator.html" class="text-light-white fw-500">Geo Locator</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
+            <div class="gem-points">
+              <a href="/register">
+                <span>S'inscrire</span>
+              </a>
+            </div>
+            @else
             <!-- mobile search -->
             <div class="mobile-search">
               <a href="#" data-toggle="modal" data-target="#search-box"> <i class="fas fa-search"></i>
@@ -189,7 +89,8 @@
             <!-- user account -->
             <div class="user-details p-relative">
               <a href="#" class="text-light-white fw-500">
-                <img src="{{ URL::asset('assets/img/user-1.png')}}" class="rounded-circle" alt="userimg"> <span>Hi, Kate</span>
+                <img src="assets/img/user/{{ Auth::user()->photo }}" class="rounded-circle" alt="userimg">
+                <span> {{ Auth::user()->prenom }} {{ Auth::user()->nom }} </span>
               </a>
               <div class="user-dropdown">
                 <ul>
@@ -197,42 +98,7 @@
                     <a href="order-details.html">
                       <div class="icon"><i class="flaticon-rewind"></i>
                       </div>
-                      <span class="details">Past Orders</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="order-details.html">
-                      <div class="icon"><i class="flaticon-takeaway"></i>
-                      </div>
-                      <span class="details">Upcoming Orders</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="icon"><i class="flaticon-breadbox"></i>
-                      </div>
-                      <span class="details">Saved</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="icon"><i class="flaticon-gift"></i>
-                      </div>
-                      <span class="details">Gift cards</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="icon"><i class="flaticon-refer"></i>
-                      </div>
-                      <span class="details">Refer a friend</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="icon"><i class="flaticon-diamond"></i>
-                      </div>
-                      <span class="details">Perks</span>
+                      <span class="details">Commandes passées</span>
                     </a>
                   </li>
                   <li>
@@ -250,7 +116,7 @@
                     </a>
                   </li>
                 </ul>
-                  <div class="user-footer"><span class="text-light-black">Not Jhon?</span> <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">>Déconnecter</a>
+                <div class="user-footer"><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnecter</a>
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
                 </div>
               </div>
@@ -284,6 +150,7 @@
               </div>
             </div>
             <!-- user notification -->
+            @endguest
             <!-- user cart -->
             <div class="cart-btn cart-dropdown">
               <a href="#" class="text-light-green fw-700"> <i class="fas fa-shopping-bag"></i>
@@ -363,37 +230,81 @@
             <!-- user cart -->
           </div>
         </div>
-        <div class="col-sm-12 mobile-search">
-          <div class="mobile-address">
-            <a href="#" class="delivery-add" data-toggle="modal" data-target="#address-box"> <span class="address">Brooklyn, NY</span>
-            </a>
-          </div>
-          <div class="sorting-addressbox"><span class="full-address text-light-green">Brooklyn, NY 10041</span>
-            <div class="btns">
-              <div class="filter-btn">
-                <button type="button"><i class="fas fa-sliders-h text-light-green fs-18"></i>
-                </button>
-                <span class="text-light-green">Sort</span>
-              </div>
-              <div class="filter-btn">
-                <button type="button"><i class="fas fa-filter text-light-green fs-18"></i>
-                </button>
-                <span class="text-light-green">Filter</span>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </header>
 </div>
 @yield('content')
+<footer class="section-padding bg-light-theme pt-0 u-line">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl col-lg-4 col-md-4 col-sm-6">
+        <div class="footer-contact">
+          <h6 class="text-light-black">Besoin d'aide</h6>
+          <ul>
+            <li class="fw-600"><span class="text-light-white">Appelez-nous</span> <a href="tel:" class="text-light-black">+(216) 52 110 104</a>
+            </li>
+            <li class="fw-600"><span class="text-light-white">Envoyez-nous un email</span> <a href="mailto:" class="text-light-black">soulisafa47@gmail.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xl col-lg-4 col-md-4 col-sm-6">
+        <div class="footer-links">
+          <h6 class="text-light-black">Laissez-nous vous aider</h6>
+          <ul>
+            <li><a href="#" class="text-light-white fw-600">Détails du compte</a>
+            </li>
+            <li><a href="#" class="text-light-white fw-600">Commandes passées</a>
+            </li>
+            <li><a href="#" class="text-light-white fw-600">Rechercher ferme</a>
+            </li>
+            <li><a href="/login" class="text-light-white fw-600">S'identifier</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xl col-lg-4 col-md-4 col-sm-6">
+        <div class="footer-links">
+          <h6 class="text-light-black">Faire des affaires</h6>
+          <ul>
+            <li><a href="#" class="text-light-white fw-600">Suggérez une idée</a>
+            </li>
+            <li><a href="#" class="text-light-white fw-600">Être un agriculteur</a>
+            </li>
+            <li><a href="#" class="text-light-white fw-600">Être un livreur </a>
+            </li>
+            <li><a href="#" class="text-light-white fw-600">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xl col-lg-4 col-md-4 col-sm-6">
+        <div class="footer-links">
+          <h6 class="text-light-black">Télécharger Apps</h6>
+          <div class="appimg">
+            <a href="#">
+              <img src="assets/img/playstore.jpg" class="img-fluid" alt="app logo">
+            </a>
+          </div>
+          <div class="appimg">
+            <a href="#">
+              <img src="assets/img/appstore.jpg" class="img-fluid" alt="app logo">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
 <div class="copyright">
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-4">
-        <div class="payment-logo mb-md-20"><span class="text-light-white fs-14 mr-3">We are accept</span>
+        <div class="payment-logo mb-md-20"><span class="text-light-white fs-14 mr-3">Nous acceptons</span>
           <div class="payemt-icon">
+            <img src="{{URL::asset('assets/img/pay-pal.png')}}" alt="#">
             <img src="{{URL::asset('assets/img/card-front.jpg')}}" alt="#">
             <img src="{{URL::asset('assets/img/visa.jpg')}}" alt="#">
             <img src="{{URL::asset('assets/img/amex-card-front.png')}}" alt="#">
@@ -402,10 +313,10 @@
         </div>
       </div>
       <div class="col-lg-4 text-center medewithlove align-self-center">
-        <a href="http://www.slidesigma.com/" class="text-light-black">Made with Real <i class="fas fa-heart"></i> Slidesigma</a>
+        <a href="http://www.slidesigma.com/" class="text-light-black">Fabriqué avec du vrai <i class="fas fa-heart"></i> Farmfresh</a>
       </div>
       <div class="col-lg-4">
-        <div class="copyright-text"><span class="text-light-black">© <a href="#" class="text-light-white">Slidesigma</a> - 2019 | All Right Reserved</span>
+        <div class="copyright-text"><span class="text-light-black">© <a href="#" class="text-light-white">Copyright</a> - 2020 | All Right Reserved</span>
         </div>
       </div>
     </div>

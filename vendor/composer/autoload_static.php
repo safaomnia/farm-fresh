@@ -13,11 +13,11 @@ class ComposerStaticInit0a332c44ecaad5948502ab7f30cc7bb1
         '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
-        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
+        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
-        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
@@ -71,6 +71,7 @@ class ComposerStaticInit0a332c44ecaad5948502ab7f30cc7bb1
             'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
+            'Sven\\ArtisanView\\' => 17,
         ),
         'R' => 
         array (
@@ -271,6 +272,10 @@ class ComposerStaticInit0a332c44ecaad5948502ab7f30cc7bb1
         'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
+        ),
+        'Sven\\ArtisanView\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sven/artisan-view/src',
         ),
         'Ramsey\\Uuid\\' => 
         array (
@@ -474,6 +479,7 @@ class ComposerStaticInit0a332c44ecaad5948502ab7f30cc7bb1
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\ProduitController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProduitController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -3768,6 +3774,26 @@ class ComposerStaticInit0a332c44ecaad5948502ab7f30cc7bb1
         'SebastianBergmann\\Timer\\RuntimeException' => __DIR__ . '/..' . '/phpunit/php-timer/src/RuntimeException.php',
         'SebastianBergmann\\Timer\\Timer' => __DIR__ . '/..' . '/phpunit/php-timer/src/Timer.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'Sven\\ArtisanView\\BlockBuilder' => __DIR__ . '/..' . '/sven/artisan-view/src/BlockBuilder.php',
+        'Sven\\ArtisanView\\BlockStack' => __DIR__ . '/..' . '/sven/artisan-view/src/BlockStack.php',
+        'Sven\\ArtisanView\\Blocks\\Block' => __DIR__ . '/..' . '/sven/artisan-view/src/Blocks/Block.php',
+        'Sven\\ArtisanView\\Blocks\\Extend' => __DIR__ . '/..' . '/sven/artisan-view/src/Blocks/Extend.php',
+        'Sven\\ArtisanView\\Blocks\\InlineSection' => __DIR__ . '/..' . '/sven/artisan-view/src/Blocks/InlineSection.php',
+        'Sven\\ArtisanView\\Blocks\\Push' => __DIR__ . '/..' . '/sven/artisan-view/src/Blocks/Push.php',
+        'Sven\\ArtisanView\\Blocks\\Section' => __DIR__ . '/..' . '/sven/artisan-view/src/Blocks/Section.php',
+        'Sven\\ArtisanView\\Commands\\MakeView' => __DIR__ . '/..' . '/sven/artisan-view/src/Commands/MakeView.php',
+        'Sven\\ArtisanView\\Commands\\ScrapView' => __DIR__ . '/..' . '/sven/artisan-view/src/Commands/ScrapView.php',
+        'Sven\\ArtisanView\\Config' => __DIR__ . '/..' . '/sven/artisan-view/src/Config.php',
+        'Sven\\ArtisanView\\Destroyer' => __DIR__ . '/..' . '/sven/artisan-view/src/Destroyer.php',
+        'Sven\\ArtisanView\\Generator' => __DIR__ . '/..' . '/sven/artisan-view/src/Generator.php',
+        'Sven\\ArtisanView\\PathHelper' => __DIR__ . '/..' . '/sven/artisan-view/src/PathHelper.php',
+        'Sven\\ArtisanView\\ServiceProvider' => __DIR__ . '/..' . '/sven/artisan-view/src/ServiceProvider.php',
+        'Sven\\ArtisanView\\ViewActor' => __DIR__ . '/..' . '/sven/artisan-view/src/ViewActor.php',
+        'Sven\\ArtisanView\\Voters\\ExtendsParent' => __DIR__ . '/..' . '/sven/artisan-view/src/Voters/ExtendsParent.php',
+        'Sven\\ArtisanView\\Voters\\SectionsInParent' => __DIR__ . '/..' . '/sven/artisan-view/src/Voters/SectionsInParent.php',
+        'Sven\\ArtisanView\\Voters\\StacksFromParent' => __DIR__ . '/..' . '/sven/artisan-view/src/Voters/StacksFromParent.php',
+        'Sven\\ArtisanView\\Voters\\Voter' => __DIR__ . '/..' . '/sven/artisan-view/src/Voters/Voter.php',
+        'Sven\\ArtisanView\\Voters\\YieldsFromParent' => __DIR__ . '/..' . '/sven/artisan-view/src/Voters/YieldsFromParent.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\CommandLoader\\CommandLoaderInterface' => __DIR__ . '/..' . '/symfony/console/CommandLoader/CommandLoaderInterface.php',
         'Symfony\\Component\\Console\\CommandLoader\\ContainerCommandLoader' => __DIR__ . '/..' . '/symfony/console/CommandLoader/ContainerCommandLoader.php',

@@ -15,7 +15,6 @@ Auth::routes();
 Route::get('/', function () {
   return view('home');
 })->name('home');
-
 //unfound route
 Route::get('/{page}', function ($page) {
   $pages = [
