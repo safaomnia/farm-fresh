@@ -191,13 +191,13 @@
                   class="save-price text-light-green fs-12">save $90</span>
               </p>
               <div class="rating">
-                            <span>
-                                <i class="fas fa-star text-yellow"></i>
-                                <i class="fas fa-star text-yellow"></i>
-                                <i class="fas fa-star text-yellow"></i>
-                                <i class="fas fa-star text-yellow"></i>
-                                <i class="fas fa-star text-yellow"></i>
-                            </span>
+                <span>
+                  <i class="fas fa-star text-yellow"></i>
+                  <i class="fas fa-star text-yellow"></i>
+                  <i class="fas fa-star text-yellow"></i>
+                  <i class="fas fa-star text-yellow"></i>
+                  <i class="fas fa-star text-yellow"></i>
+                </span>
               </div>
             </div>
           </div>

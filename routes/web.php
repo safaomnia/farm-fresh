@@ -15,6 +15,9 @@ Auth::routes();
 Route::get('/', function () {
   return view('home');
 })->name('home');
+
+Route::get('/produit', 'produitController@show');
+Route::get('/produit/categorie/{id}', 'produitController@showithcategorie')->name('produit.categorie');
 //unfound route
 Route::get('/{page}', function ($page) {
   $pages = [
