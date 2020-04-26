@@ -16,8 +16,11 @@ Route::get('/', function () {
   return view('home');
 })->name('home');
 
-Route::get('/produit', 'produitController@show');
+Route::get('/produit', 'produitController@show')->name('produit');
 Route::get('/produit/categorie/{id}', 'produitController@showithcategorie')->name('produit.categorie');
+Route::get('/ferme', 'fermeController@show')->name('ferme');
+Route::get('/forum', 'forumController@show')->name('forum');
+
 //unfound route
 Route::get('/{page}', function ($page) {
   $pages = [

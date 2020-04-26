@@ -11,10 +11,10 @@ class categorieTableSeeder extends Seeder
    */
   public function run()
   {
-    factory(App\categorie::class, 10)
+    factory(App\categorie::class, 20)
       ->create()
       ->each(function ($categorie) {
-        for ($i = 0; $i < rand(5, 10); $i++) {
+        for ($i = 0; $i < rand(10, 30); $i++) {
           $error = false;
           do { // we used exception to duplicate primary key
             try {

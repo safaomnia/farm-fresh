@@ -68,90 +68,102 @@
                 <span>Produit</span>
               </a>
             </div>
+            <div class="gem-points">
+              <a href="/ferme">
+                <span>Ferme</span>
+              </a>
+            </div>
+            <div class="gem-points">
+              <a href="/forum">
+                <span>Forum</span>
+              </a>
+            </div>
             @guest
-            <div class="gem-points">
-              <a href="/login">
-                <span>S'identifer</span>
-              </a>
-            </div>
-            <div class="gem-points">
-              <a href="/register">
-                <span>S'inscrire</span>
-              </a>
-            </div>
-            @else
+              <div class="gem-points">
+                <a href="/register">
+                  <span>S'inscrire</span>
+                </a>
+              </div>
+              <div class="gem-points">
+                <a href="/login">
+                  <span>S'identifer</span>
+                </a>
+              </div>
+          @else
             <!-- mobile search -->
-            <div class="mobile-search">
-              <a href="#" data-toggle="modal" data-target="#search-box"> <i class="fas fa-search"></i>
-              </a>
-            </div>
-            <!-- mobile search -->
-            <!-- user account -->
-            <div class="user-details p-relative">
-              <a href="#" class="text-light-white fw-500">
-                <img src="assets/img/user/{{ Auth::user()->photo }}" class="rounded-circle" alt="userimg">
-                <span> {{ Auth::user()->prenom }} {{ Auth::user()->nom }} </span>
-              </a>
-              <div class="user-dropdown">
-                <ul>
-                  <li>
-                    <a href="order-details.html">
-                      <div class="icon"><i class="flaticon-rewind"></i>
-                      </div>
-                      <span class="details">Commandes passées</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="icon"><i class="flaticon-user"></i>
-                      </div>
-                      <span class="details">Account</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="icon"><i class="flaticon-board-games-with-roles"></i>
-                      </div>
-                      <span class="details">Help</span>
-                    </a>
-                  </li>
-                </ul>
-                <div class="user-footer"><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnecter</a>
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
+              <div class="mobile-search">
+                <a href="#" data-toggle="modal" data-target="#search-box"> <i class="fas fa-search"></i>
+                </a>
+              </div>
+              <!-- mobile search -->
+              <!-- user account -->
+              <div class="user-details p-relative">
+                <a href="#" class="text-light-white fw-500">
+                  <?php $photo = Auth::user()->photo; ?>
+                  <img src='{{ URL::asset("assets/img/user/$photo") }}' width="50" height="50" class="rounded-circle" alt="user-img">
+                  <span> {{ Auth::user()->prenom }} {{ Auth::user()->nom }} </span>
+                </a>
+                <div class="user-dropdown">
+                  <ul>
+                    <li>
+                      <a href="order-details.html">
+                        <div class="icon"><i class="flaticon-rewind"></i>
+                        </div>
+                        <span class="details">Commandes passées</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <div class="icon"><i class="flaticon-user"></i>
+                        </div>
+                        <span class="details">Account</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <div class="icon"><i class="flaticon-board-games-with-roles"></i>
+                        </div>
+                        <span class="details">Help</span>
+                      </a>
+                    </li>
+                  </ul>
+                  <div class="user-footer"><a href="{{ route('logout') }}"
+                                              onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnecter</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
+                  </div>
                 </div>
               </div>
-            </div>
-            <!-- mobile search -->
-            <!-- user notification -->
-            <div class="cart-btn notification-btn">
-              <a href="#" class="text-light-green fw-700"> <i class="fas fa-bell"></i>
-                <span class="user-alert-notification"></span>
-              </a>
-              <div class="notification-dropdown">
-                <div class="product-detail">
-                  <a href="#">
-                    <div class="img-box">
-                      <img src="{{URL::asset('assets/img/shop-1.png')}}" class="rounded" alt="image">
-                    </div>
-                    <div class="product-about">
-                      <p class="text-light-black">Lil Johnny’s</p>
-                      <p class="text-light-white">Spicy Maxican Grill</p>
-                    </div>
-                  </a>
-                </div>
-                <div class="rating-box">
-                  <p class="text-light-black">How was your last order ?.</p> <span class="text-dark-white"><i class="fas fa-star"></i></span>
-                  <span class="text-dark-white"><i class="fas fa-star"></i></span>
-                  <span class="text-dark-white"><i class="fas fa-star"></i></span>
-                  <span class="text-dark-white"><i class="fas fa-star"></i></span>
-                  <span class="text-dark-white"><i class="fas fa-star"></i></span>
-                  <cite class="text-light-white">Ordered 2 days ago</cite>
+              <!-- mobile search -->
+              <!-- user notification -->
+              <div class="cart-btn notification-btn">
+                <a href="#" class="text-light-green fw-700"> <i class="fas fa-bell"></i>
+                  <span class="user-alert-notification"></span>
+                </a>
+                <div class="notification-dropdown">
+                  <div class="product-detail">
+                    <a href="#">
+                      <div class="img-box">
+                        <img src="{{URL::asset('assets/img/shop-1.png')}}" class="rounded" alt="image">
+                      </div>
+                      <div class="product-about">
+                        <p class="text-light-black">Lil Johnny’s</p>
+                        <p class="text-light-white">Spicy Maxican Grill</p>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="rating-box">
+                    <p class="text-light-black">How was your last order ?.</p> <span class="text-dark-white"><i class="fas fa-star"></i></span>
+                    <span class="text-dark-white"><i class="fas fa-star"></i></span>
+                    <span class="text-dark-white"><i class="fas fa-star"></i></span>
+                    <span class="text-dark-white"><i class="fas fa-star"></i></span>
+                    <span class="text-dark-white"><i class="fas fa-star"></i></span>
+                    <cite class="text-light-white">Ordered 2 days ago</cite>
+                  </div>
                 </div>
               </div>
-            </div>
-            <!-- user notification -->
-            @endguest
-            <!-- user cart -->
+              <!-- user notification -->
+          @endguest
+          <!-- user cart -->
             <div class="cart-btn cart-dropdown">
               <a href="#" class="text-light-green fw-700"> <i class="fas fa-shopping-bag"></i>
                 <span class="user-alert-cart">3</span>

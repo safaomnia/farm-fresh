@@ -13,7 +13,7 @@ class produitNoteTableSeeder extends Seeder
   {
     $produits = App\produit::all();
     foreach ($produits as $produit) {
-      for ($i = 0; $i < rand(3, 5); $i++) {
+      for ($i = 0; $i < rand(10, 30); $i++) {
         $error = false;
         do {
           try {

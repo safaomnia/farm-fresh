@@ -8,9 +8,9 @@ use Faker\Generator as Faker;
 $factory->define(produit::class, function (Faker $faker, $param) {
   return [
     'nom' => $faker->word,
-    'prix' => $faker->randomFloat(),
+    'prix' => $faker->randomFloat(3,  0, 5000), // nbmaxdecimal numbers ofter cammer
     'stock' => $faker->randomNumber(),
-    'image' => 'default.jpg',
+    'image' => 'produit ('.rand(1, 72).').jpg',
     'description' => $faker->paragraph,
     'ferme_id' => $param['ferme_id']
   ];

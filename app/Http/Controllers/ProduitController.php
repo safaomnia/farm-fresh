@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\categorie;
 use App\produit;
-use App\produit_categorie;
-use App\produit_note;
 use Illuminate\Http\Request;
 
 class ProduitController extends Controller
@@ -14,7 +12,7 @@ class ProduitController extends Controller
  {
    return view('produit',
    [
-     'produits' => produit::orderBy('created_at', 'desc'),
+     'produits' => produit::all(),
      'categories' => categorie::all()
    ]);
  }
@@ -22,14 +20,15 @@ class ProduitController extends Controller
  public function showithcategorie($id){
    return view('produit',
    [
-     'produits' => categorie::find($id)->produits(),
+     'produits' => categorie::with('produits')->findOrFail($id)->produits, //access to the parent columns
+     'categorie' => categorie::find($id),
      'categories' => categorie::all()
    ]);
  }
 
- public function nbProduit($id)
+ public function nbproduit($id)
  {
-   return produit_categorie::where('categorie_id', $id)->count();
+   return categorie::find($id)->produits()->count();
  }
 
  public function nbnote($id)
@@ -38,6 +37,6 @@ class ProduitController extends Controller
  }
  public function moynote($id)
  {
-   return produit::find($id)->notes()->sum('nb_etoile') % $this->nbnote($id);
+   return produit::find($id)->notes()->avg('nb_etoile');
  }
 }
