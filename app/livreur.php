@@ -20,6 +20,6 @@ class livreur extends Model
 
   public function client()
   {
-    return $this->belongsTo(User::class);
+    return $this->belongsTo(User::class, 'id');
   }
 }

@@ -25,11 +25,12 @@ class ProduitController extends Controller
 
   public function categorie($id)
   {
+    $categorie = categorie::find($id);
     return view('produits',
       [
         'time' => $this->time,
-        'produits' => categorie::with('produits')->findOrFail($id)->produits, //access to the parent columns
-        'Categorie' => categorie::find($id),
+        'produits' =>  $categorie->produits, //access to the parent columns
+        'Categorie' => $categorie,
         'categories' => categorie::orderBy('nom')->get()
       ]);
   }

@@ -68,9 +68,7 @@
             </div>
           </div>
           <div class="restaurent-logo">
-            @inject('user', 'App\Http\Controllers\ClientController')
-            <?php $agriculteur = $user->show($ferme->agriculteur->id); ?>
-            <img src='{{ URL::asset("assets/img/user/$agriculteur->photo")}}' class="img-fluid" title="{{ $agriculteur->prenom }} {{ $agriculteur->nom }}">
+            <img src='{{ URL::asset("assets/img/user/{$ferme->client->photo}")}}' class="img-fluid" title="{{ $ferme->client->prenom }} {{ $ferme->client->nom }}">
           </div>
         </div>
       </div>

@@ -23,8 +23,8 @@ class ferme extends Model
     return $this->hasMany(produit::class);
   }
 
-  public function agriculteur()
+  public function client()
   {
-    return $this->belongsTo(agriculteur::class);
+    return $this->belongsTo(User::class, 'agriculteur_id');
   }
 }

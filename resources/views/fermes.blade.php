@@ -43,12 +43,10 @@
                     </div>
                     <div class="post-meta">
                       <div class="author-img">
-                        @inject('user', 'App\Http\Controllers\ClientController')
-                        <?php $agriculteur = $user->show($ferme->agriculteur->id); ?>
-                        <img src='{{ URL::asset("assets/img/user/$agriculteur->photo") }}' class="rounded-circle" alt="image">
+                        <img src='{{ URL::asset("assets/img/user/{$ferme->client->photo}") }}' class="rounded-circle" alt="image">
                       </div>
                       <div class="author-meta">
-                        <h6 class="no-margin"><a href="#" class="text-light-black">{{ $agriculteur->prenom }}{{ $agriculteur->nom }}</a></h6>
+                        <h6 class="no-margin"><a href="#" class="text-light-black">{{ $ferme->client->prenom }} {{ $ferme->client->nom }}</a></h6>
                         <p class="no-margin text-light-white"><a href="#" class="text-light-white">{{ $time->inWords($ferme->created_at) }}</p>
                       </div>
                     </div>

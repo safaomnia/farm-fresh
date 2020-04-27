@@ -22,7 +22,7 @@
                             <span class="text-light-white fw-400">
                               (
                                 @inject('nbp', 'App\Http\Controllers\ProduitController')
-                              {{ $nbp->nbproduit($categorie->id)}}
+                              {{ $nbp->count($categorie->id)}}
                               )
                             </span>
                           </a>
@@ -55,21 +55,21 @@
 
                     <div class="restaurent-product-rating text-right" style="margin-top: -40px;">
                       @inject('note', 'App\Http\Controllers\ProduitController')
-                      @for($i = 0; $i <  number_format($note->moynote($produit->id)); $i++)
+                      @for($i = 0; $i <  number_format($note->avg($produit->id)); $i++)
                         <i class="fas fa-star text-yellow"></i>
                       @endfor
-                      @if(($note->moynote($produit->id) %  number_format($note->moynote($produit->id))) > 0.5)
+                      @if(($note->avg($produit->id) %  number_format($note->avg($produit->id))) > 0.5)
                         <i class="fas fa-star-half-alt text-yellow"></i>
                       @endif
                       <div class="rating-text">
-                        <p class="text-light-white fs-12 text-right" title="Nombre d'évaluations">{{ $note->nbnote($produit->id) }} évals</p>
+                        <p class="text-light-white fs-12 text-right" title="Nombre d'évaluations">{{ $note->avg($produit->id) }} évals</p>
                       </div>
                     </div>
                   </h2>
                   <h6 class="text-light-white fs-14" style="margin-top: -30px;">{{ $time->inWords($produit->updated_at) }}</h6>
 
                   <div class="restaurent-tags-price">
-                    <a href="{{ route('produit', ['id' => $produit->id]) }}" class="btn-first white-btn">Afficher plus</a>
+                    <a href="#" class="btn-second btn-submit">Ajouter panier</a>
                     <div class="restaurent-product-price">
                       <h6 class="text-success fw-600 text-right" style="margin-top: -30px;">{{$produit->prix}}<sup>dt</sup></h6>
                     </div>
@@ -88,184 +88,121 @@
                   <div class="testimonial-wrapper">
                     <div class="testimonial-box">
                       <div class="testimonial-img p-relative">
-                        <a href="farm.html">
-                          <img src="assets/img/blog/438x180/shop-2.jpg" class="img-fluid full-width" alt="testimonial-img">
-                        </a>
+                        <img src='{{ URL::asset("assets/img/farms/{$produit->ferme->image}")}}' class="img-fluid full-width" alt="testimonial-img">
                         <div class="overlay">
                           <div class="brand-logo">
-                            <img src="assets/img/user/user-1.png" class="img-fluid" alt="logo">
-                          </div>
-                          <div class="add-fav text-light-white"><img src="assets/img/svg/013-heart-1.svg" alt="tag">
+                            <img src='{{ URL::asset("assets/img/user/{$produit->ferme->client->photo}") }}' class="img-fluid" alt="logo">
                           </div>
                         </div>
                       </div>
                       <div class="testimonial-caption padding-15">
                         <p class="text-light-white text-uppercase no-margin fs-12">Featured</p>
-                        <h5 class="fw-600"><a href="farm.html" class="text-light-black">GSA King Tomato Farm</a></h5>
-                        <div class="testimonial-user-box">
-                          <img src="assets/img/blog-details/40x40/user-2.png" class="rounded-circle" alt="#">
-                          <div class="testimonial-user-name">
-                            <p class="text-light-black fw-600">Sarra</p> <i class="fas fa-trophy text-black"></i><span class="text-light-black">Top Reviewer</span>
+                        <h5 class="fw-600 text-light-black"> {{ $produit->ferme->nom }} </h5>
+                        <div class="head-rating" style="margin-top: -10px;">
+                          <div class="rating">
+                            @inject('note', 'App\Http\Controllers\FermeController')
+                            @for($i = 0; $i <  number_format($note->avg($produit->ferme->id)); $i++)
+                              <i class="fas fa-star text-yellow"></i>
+                            @endfor
+                            @if(($note->avg($produit->ferme->id) %  number_format($note->avg($produit->ferme->id))) > 0.5)
+                              <i class="fas fa-star-half-alt text-yellow"></i>
+                            @endif
+                            <span class="text-light-black fs-12 rate-data">{{ $note->etoiles($produit->ferme->id) }} évaluations</span>
+                          </div>
+                          <p class="text-light-black">Delivery was fast and friendly...</p>
+                          <p class="text-light-white fw-100">{{ substr($produit->ferme->description, 0, 50) }}...</p>
+                          <a href="{{ route('ferme', ['id' => $produit->ferme->id]) }}" class="btn-first white-btn">Afficher plus</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="testimonial-wrapper">
+                      <div class="testimonial-box">
+                        <div class="testimonial-img p-relative">
+                          <a href="farm.html">
+                            <img src="assets/img/blog/438x180/shop-3.jpg" class="img-fluid full-width" alt="testimonial-img">
+                          </a>
+                          <div class="overlay">
+                            <div class="brand-logo">
+                              <img src="assets/img/user/user-1.png" class="img-fluid" alt="logo">
+                            </div>
+                            <div class="add-fav text-light-white"><img src="assets/img/svg/013-heart-1.svg" alt="tag">
+                            </div>
                           </div>
                         </div>
-                        <div class="ratings"> <span class="text-yellow fs-16">
+                        <div class="testimonial-caption padding-15">
+                          <p class="text-light-white text-uppercase no-margin fs-12">Featured</p>
+                          <h5 class="fw-600"><a href="farm.html" class="text-light-black">GSA King Tomato Farm</a></h5>
+                          <div class="testimonial-user-box">
+                            <img src="assets/img/blog-details/40x40/user-3.png" class="rounded-circle" alt="farm.html">
+                            <div class="testimonial-user-name">
+                              <p class="text-light-black fw-600">Sarra</p> <i class="fas fa-trophy text-black"></i><span class="text-light-black">Top Reviewer</span>
+                            </div>
+                          </div>
+                          <div class="ratings"> <span class="text-yellow fs-16">
                             <i class="fas fa-star"></i>
                           </span>
-                          <span class="text-yellow fs-16">
+                            <span class="text-yellow fs-16">
                             <i class="fas fa-star"></i>
                           </span>
-                          <span class="text-yellow fs-16">
+                            <span class="text-yellow fs-16">
                             <i class="fas fa-star"></i>
                           </span>
-                          <span class="text-yellow fs-16">
+                            <span class="text-yellow fs-16">
                             <i class="fas fa-star"></i>
                           </span>
-                          <span class="text-yellow fs-16">
+                            <span class="text-yellow fs-16">
                             <i class="fas fa-star"></i>
                           </span>
+                          </div>
+                          <p class="text-light-black">Delivery was fast and friendly...</p>
+                          <p class="text-light-white fw-100"><strong class="text-light-black fw-700">Local delivery: </strong> From $7.99 (4.0 mi)</p>
+                          <a href="checkout.html" class="btn-second btn-submit">Order Now</a>
                         </div>
-                        <p class="text-light-black">Delivery was fast and friendly...</p>
-                        <p class="text-light-white fw-100"><strong class="text-light-black fw-700">Local delivery: </strong> From $7.99 (4.0 mi)</p>
-
-                        <a href="checkout.html" class="btn-second btn-submit">Order Now</a>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="swiper-slide">
-                  <div class="testimonial-wrapper">
-                    <div class="testimonial-box">
-                      <div class="testimonial-img p-relative">
-                        <a href="farm.html">
-                          <img src="assets/img/blog/438x180/shop-3.jpg" class="img-fluid full-width" alt="testimonial-img">
-                        </a>
-                        <div class="overlay">
-                          <div class="brand-logo">
-                            <img src="assets/img/user/user-1.png" class="img-fluid" alt="logo">
-                          </div>
-                          <div class="add-fav text-light-white"><img src="assets/img/svg/013-heart-1.svg" alt="tag">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="testimonial-caption padding-15">
-                        <p class="text-light-white text-uppercase no-margin fs-12">Featured</p>
-                        <h5 class="fw-600"><a href="farm.html" class="text-light-black">GSA King Tomato Farm</a></h5>
-                        <div class="testimonial-user-box">
-                          <img src="assets/img/blog-details/40x40/user-3.png" class="rounded-circle" alt="farm.html">
-                          <div class="testimonial-user-name">
-                            <p class="text-light-black fw-600">Sarra</p> <i class="fas fa-trophy text-black"></i><span class="text-light-black">Top Reviewer</span>
-                          </div>
-                        </div>
-                        <div class="ratings"> <span class="text-yellow fs-16">
-                            <i class="fas fa-star"></i>
-                          </span>
-                          <span class="text-yellow fs-16">
-                            <i class="fas fa-star"></i>
-                          </span>
-                          <span class="text-yellow fs-16">
-                            <i class="fas fa-star"></i>
-                          </span>
-                          <span class="text-yellow fs-16">
-                            <i class="fas fa-star"></i>
-                          </span>
-                          <span class="text-yellow fs-16">
-                            <i class="fas fa-star"></i>
-                          </span>
-                        </div>
-                        <p class="text-light-black">Delivery was fast and friendly...</p>
-                        <p class="text-light-white fw-100"><strong class="text-light-black fw-700">Local delivery: </strong> From $7.99 (4.0 mi)</p>
-                        <a href="checkout.html" class="btn-second btn-submit">Order Now</a>
-                      </div>
-                    </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+              </div>
+              <div class="large-product-box mb-xl-20">
+                <img src="assets/img/blog/446x1025/ad-1.jpg" class="img-fluid full-width" alt="image">
+                <div class="category-type overlay padding-15">
+                  <button class="category-btn">Most popular near you</button>
+                  <a href="farm.html" class="btn-first white-btn text-light-black fw-600 full-width">See all</a>
+                </div>
+              </div>
+              <div class="inner-wrapper main-box">
+                <div class="main-banner p-relative">
+                  <img src="assets/img/blog/446x501/ff-1.jpg" class="img-fluid full-width main-img" alt="banner">
+                  <div class="overlay-2 main-padding">
+                    <img src="assets/img/logo-2.jpg" class="img-fluid" alt="logo">
                   </div>
+                  <img src="assets/img/banner/burger.png" class="footer-img" alt="footerimg">
                 </div>
-                <div class="swiper-slide">
-                  <div class="testimonial-wrapper">
-                    <div class="testimonial-box">
-                      <div class="testimonial-img p-relative">
-                        <a href="farm.html">
-                          <img src="assets/img/blog/438x180/shop-1.jpg" class="img-fluid full-width" alt="testimonial-img">
-                        </a>
-                        <div class="overlay">
-                          <div class="brand-logo">
-                            <img src="assets/img/user/user-2.png" class="img-fluid" alt="logo">
-                          </div>
-                          <div class="add-fav text-light-white"><img src="assets/img/svg/013-heart-1.svg" alt="tag">
-                          </div>
+                <div class="section-2 main-page main-padding">
+                  <div class="login-box">
+                    <h3 class="text-light-black fw-700">Organza food delivery every time</h3>
+                    <div class="input-group row">
+                      <div class="input-group2 col-xl-8">
+                        <input type="search" class="form-control form-control-submit" placeholder="Enter street address or zip code"
+                               value="1246 57th St, Brooklyn, NY, 11219">
+                        <div class="input-group-prepend">
+                          <button class="input-group-text text-light-green"><i class="fab fa-telegram-plane"></i>
+                          </button>
                         </div>
                       </div>
-                      <div class="testimonial-caption padding-15">
-                        <p class="text-light-white text-uppercase no-margin fs-12">Featured</p>
-                        <h5 class="fw-600"><a href="farm.html" class="text-light-black">GSA King Tomato Farm</a></h5>
-                        <div class="testimonial-user-box">
-                          <img src="assets/img/blog-details/40x40/user-1.png" class="rounded-circle" alt="farm.html">
-                          <div class="testimonial-user-name">
-                            <p class="text-light-black fw-600">Sarra</p> <i class="fas fa-trophy text-black"></i><span class="text-light-black">Top Reviewer</span>
-                          </div>
-                        </div>
-                        <div class="ratings"> <span class="text-yellow fs-16">
-                            <i class="fas fa-star"></i>
-                          </span>
-                          <span class="text-yellow fs-16">
-                            <i class="fas fa-star"></i>
-                          </span>
-                          <span class="text-yellow fs-16">
-                            <i class="fas fa-star"></i>
-                          </span>
-                          <span class="text-yellow fs-16">
-                            <i class="fas fa-star"></i>
-                          </span>
-                          <span class="text-yellow fs-16">
-                            <i class="fas fa-star"></i>
-                          </span>
-                        </div>
-                        <p class="text-light-black">Delivery was fast and friendly...</p>
-                        <p class="text-light-white fw-100"><strong class="text-light-black fw-700">Local delivery: </strong> From $7.99 (4.0 mi)</p>
-                        <a href="checkout.html" class="btn-second btn-submit">Order Now</a>
+                      <div class="input-group-append col-xl-4">
+                        <button class="btn-second btn-submit full-width" type="button">Find food</button>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Add Arrows -->
-              <div class="swiper-button-next"></div>
-              <div class="swiper-button-prev"></div>
-            </div>
-            <div class="large-product-box mb-xl-20">
-              <img src="assets/img/blog/446x1025/ad-1.jpg" class="img-fluid full-width" alt="image">
-              <div class="category-type overlay padding-15">
-                <button class="category-btn">Most popular near you</button>
-                <a href="farm.html" class="btn-first white-btn text-light-black fw-600 full-width">See all</a>
-              </div>
-            </div>
-            <div class="inner-wrapper main-box">
-              <div class="main-banner p-relative">
-                <img src="assets/img/blog/446x501/ff-1.jpg" class="img-fluid full-width main-img" alt="banner">
-                <div class="overlay-2 main-padding">
-                  <img src="assets/img/logo-2.jpg" class="img-fluid" alt="logo">
-                </div>
-                <img src="assets/img/banner/burger.png" class="footer-img" alt="footerimg">
-              </div>
-              <div class="section-2 main-page main-padding">
-                <div class="login-box">
-                  <h3 class="text-light-black fw-700">Organza food delivery every time</h3>
-                  <div class="input-group row">
-                    <div class="input-group2 col-xl-8">
-                      <input type="search" class="form-control form-control-submit" placeholder="Enter street address or zip code"
-                             value="1246 57th St, Brooklyn, NY, 11219">
-                      <div class="input-group-prepend">
-                        <button class="input-group-text text-light-green"><i class="fab fa-telegram-plane"></i>
-                        </button>
-                      </div>
-                    </div>
-                    <div class="input-group-append col-xl-4">
-                      <button class="btn-second btn-submit full-width" type="button">Find food</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
         </aside>
       </div>
     </div>

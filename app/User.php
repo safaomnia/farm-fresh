@@ -50,6 +50,16 @@ class User extends Authenticatable
     return 'remember_token';
   }
 
+  public function agriculteur()
+  {
+    return $this->hasOne(agriculteur::class, 'id');
+  }
+
+  public function livreur()
+  {
+    return $this->hasOne(livreur::class, 'id');
+  }
+
   public function forums()
   {
     return $this->hasMany(forum::class);
