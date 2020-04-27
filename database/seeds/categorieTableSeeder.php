@@ -14,7 +14,7 @@ class categorieTableSeeder extends Seeder
     factory(App\categorie::class, 20)
       ->create()
       ->each(function ($categorie) {
-        for ($i = 0; $i < rand(10, 30); $i++) {
+        for ($i = 0; $i < rand(10, 40); $i++) {
           $error = false;
           do { // we used exception to duplicate primary key
             try {

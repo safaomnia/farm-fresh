@@ -14,7 +14,7 @@ class fermeTableSeeder extends Seeder
   {
     $agriculteurs = App\agriculteur::all();
     foreach ($agriculteurs as $agriculteur) {
-      factory(App\ferme::class, 1)
+      factory(App\ferme::class, rand(1, 3))
         ->create(['agriculteur_id' => $agriculteur->id])
         ->each(function ($ferme) {
           $faker = Faker\Factory::create();
@@ -22,7 +22,7 @@ class fermeTableSeeder extends Seeder
             $error = false;
             do {
               try {
-                $ferme->avis()->attach('', ['client_id' => App\User::all()->random()->id, 'avis' => $faker->paragraph]);
+                $ferme->avis()->attach('', ['client_id' => App\User::all()->random()->id, 'avis' => $faker->paragraph, 'etoiles' => rand(1, 5)]);
               } catch (PDOException $Exception) {
                 if ($Exception->errorInfo[0] == '23000' && $Exception->errorInfo[1] == '1062') {
                   $error = true;

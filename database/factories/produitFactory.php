@@ -11,7 +11,7 @@ $factory->define(produit::class, function (Faker $faker, $param) {
     'prix' => $faker->randomFloat(3,  0, 5000), // nbmaxdecimal numbers ofter cammer
     'stock' => $faker->randomNumber(),
     'image' => 'produit ('.rand(1, 72).').jpg',
-    'description' => $faker->paragraph,
+    'description' => $faker->text('10000'),
     'ferme_id' => $param['ferme_id']
   ];
 });

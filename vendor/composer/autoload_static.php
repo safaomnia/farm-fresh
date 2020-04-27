@@ -40,6 +40,7 @@ class ComposerStaticInit0a332c44ecaad5948502ab7f30cc7bb1
         'W' => 
         array (
             'Whoops\\' => 7,
+            'Westsworld\\' => 11,
             'Webmozart\\Assert\\' => 17,
         ),
         'T' => 
@@ -172,6 +173,10 @@ class ComposerStaticInit0a332c44ecaad5948502ab7f30cc7bb1
         'Whoops\\' => 
         array (
             0 => __DIR__ . '/..' . '/filp/whoops/src/Whoops',
+        ),
+        'Westsworld\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld',
         ),
         'Webmozart\\Assert\\' => 
         array (
@@ -478,6 +483,8 @@ class ComposerStaticInit0a332c44ecaad5948502ab7f30cc7bb1
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\FermeController' => __DIR__ . '/../..' . '/app/Http/Controllers/FermeController.php',
+        'App\\Http\\Controllers\\ForumController' => __DIR__ . '/../..' . '/app/Http/Controllers/ForumController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\ProduitController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProduitController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
@@ -4565,6 +4572,37 @@ class ComposerStaticInit0a332c44ecaad5948502ab7f30cc7bb1
         'Way\\Generators\\Templates\\Data\\Controller' => __DIR__ . '/..' . '/xethron/laravel-4-generators/src/Way/Generators/templates/Data/Controller.php',
         'Way\\Generators\\Templates\\Data\\Migration' => __DIR__ . '/..' . '/xethron/laravel-4-generators/src/Way/Generators/templates/Data/Migration.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
+        'Westsworld\\TimeAgo' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo.php',
+        'Westsworld\\TimeAgo\\Language' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Language.php',
+        'Westsworld\\TimeAgo\\Translations\\Ar' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Ar.php',
+        'Westsworld\\TimeAgo\\Translations\\Bg' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Bg.php',
+        'Westsworld\\TimeAgo\\Translations\\Ca' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Ca.php',
+        'Westsworld\\TimeAgo\\Translations\\Cs' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Cs.php',
+        'Westsworld\\TimeAgo\\Translations\\Da' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Da.php',
+        'Westsworld\\TimeAgo\\Translations\\De' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/De.php',
+        'Westsworld\\TimeAgo\\Translations\\En' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/En.php',
+        'Westsworld\\TimeAgo\\Translations\\Es' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Es.php',
+        'Westsworld\\TimeAgo\\Translations\\Fa_IR' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Fa_IR.php',
+        'Westsworld\\TimeAgo\\Translations\\Fi' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Fi.php',
+        'Westsworld\\TimeAgo\\Translations\\Fr' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Fr.php',
+        'Westsworld\\TimeAgo\\Translations\\Ge' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Ge.php',
+        'Westsworld\\TimeAgo\\Translations\\Hu' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Hu.php',
+        'Westsworld\\TimeAgo\\Translations\\Id' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Id.php',
+        'Westsworld\\TimeAgo\\Translations\\Ja' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Ja.php',
+        'Westsworld\\TimeAgo\\Translations\\Ko' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Ko.php',
+        'Westsworld\\TimeAgo\\Translations\\Lv' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Lv.php',
+        'Westsworld\\TimeAgo\\Translations\\Nl' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Nl.php',
+        'Westsworld\\TimeAgo\\Translations\\Pl' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Pl.php',
+        'Westsworld\\TimeAgo\\Translations\\Pt_BR' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Pt_BR.php',
+        'Westsworld\\TimeAgo\\Translations\\Ru' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Ru.php',
+        'Westsworld\\TimeAgo\\Translations\\Sk' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Sk.php',
+        'Westsworld\\TimeAgo\\Translations\\Sv_SE' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Sv_SE.php',
+        'Westsworld\\TimeAgo\\Translations\\Th' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Th.php',
+        'Westsworld\\TimeAgo\\Translations\\Tr' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Tr.php',
+        'Westsworld\\TimeAgo\\Translations\\Uk' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Uk.php',
+        'Westsworld\\TimeAgo\\Translations\\Vi' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Vi.php',
+        'Westsworld\\TimeAgo\\Translations\\Zh_CN' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Zh_CN.php',
+        'Westsworld\\TimeAgo\\Translations\\Zh_Tw' => __DIR__ . '/..' . '/jimmiw/php-time-ago/src/Westsworld/TimeAgo/Translations/Zh_TW.php',
         'Whoops\\Exception\\ErrorException' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/ErrorException.php',
         'Whoops\\Exception\\Formatter' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/Formatter.php',
         'Whoops\\Exception\\Frame' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/Frame.php',

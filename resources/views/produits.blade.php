@@ -9,13 +9,13 @@
           <div class="filter-sidebar mb-5">
             <div class="sidebar-tab" style="margin-top: 50px;">
               <ul class="nav nav-pills mb-xl-20">
-                <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#restaurents">farms</a>
+                <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#filtre">Filtre</a>
                 </li>
-                <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#caterings">Caterings</a>
+                <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#categorie">Catégories</a>
                 </li>
               </ul>
               <div class="tab-content">
-                <div class="tab-pane fade show active" id="restaurents">
+                <div class="tab-pane fade show active" id="filtre">
                   <div class="siderbar-innertab">
                     <ul class="nav nav-pills">
                       <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#delivery-restaurents">Delivery</a>
@@ -188,23 +188,23 @@
                     </div>
                   </div>
                 </div>
-                <div class="tab-pane fade" id="caterings">
-                    <div class="main-box padding-20 trending-blog-cat mb-xl-20">
-                      <h4 class="text-light-black">Catégories</h4>
-                      <ul>
-                        @foreach($categories as $categorie)
-                          <li class="pb-xl-20 u-line mb-xl-20"><a href="{{ route('produit.categorie', ['id'=> $categorie->id]) }}" class="text-light-black fw-600">{{
-                  $categorie->nom }}
-                              <span
-                                class="text-light-white
-                  fw-400">(
-                      @inject('nbp', 'App\Http\Controllers\ProduitController')
-                                {{ $nbp->nbproduit($categorie->id)}}
-                      )
-                    </span></a></li>
-                        @endforeach
-                      </ul>
-                    </div>
+                <div class="tab-pane fade" id="categorie">
+                  <div class="main-box padding-20 trending-blog-cat mb-xl-20">
+                    <ul>
+                      @foreach($categories as $categorie)
+                        <li class="pb-xl-20 u-line mb-xl-20">
+                          <a href="{{ route('produits.categorie', ['id'=> $categorie->id]) }}" class="text-light-black fw-600">{{ $categorie->nom }}
+                            <span class="text-light-white fw-400">
+                              (
+                                @inject('nbp', 'App\Http\Controllers\ProduitController')
+                                {{ $nbp->count($categorie->id)}}
+                              )
+                            </span>
+                          </a>
+                        </li>
+                      @endforeach
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -215,8 +215,8 @@
             <div class="breadcrumb-wrpr">
               <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index-2.html" class="text-light-black">Acceuil</a></li>
-                @isset($categorie)
-                  <li class="breadcrumb-item"><a href="{{ route('produit') }}" class="text-light-black">Produit</a></li>
+                @isset($Categorie)
+                  <li class="breadcrumb-item"><a href="{{ route('produits') }}" class="text-light-black">Produit</a></li>
                   <li class="breadcrumb-item active" aria-current="page">{{ $categorie->nom }}</li>
                 @else
                   <li class="breadcrumb-item active" aria-current="page">Produit</li>
@@ -225,48 +225,44 @@
             </div>
             <div class="row">
               @foreach($produits as $produit)
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                  <div class="product-box mb-xl-20">
-                    <div class="product-img">
-                      <a href="farm.html">
-                        <img src='{{URL::asset("assets/img/dish/$produit->image")}}' alt="produit-img">
-                      </a>
-                      <div class="overlay">
-                        <div class="product-tags padding-10">
-                          <div class="custom-tag"> <span class="text-custom-white rectangle-tag bg-gradient-red">
-                          10%
-                        </span>
+                <div class="col-lg-12">
+                  <div class="restaurent-product-list">
+                    <div class="restaurent-product-detail">
+                      <div class="restaurent-product-left">
+                        <div class="restaurent-product-title-box">
+                          <div class="restaurent-product-box">
+                            <div class="restaurent-product-title">
+                              <h6 class="mb-2 text-light-black">{{ $produit->nom }}</h6>
+                              <p class="text-light-white">{{ $time->inWords($produit->created_at) }}</p>
+                            </div>
+                            <div class="restaurent-product-label">
+                              <span class="rectangle-tag bg-gradient-red text-custom-white">10%</span>
+                            </div>
+                          </div>
+                          <div class="restaurent-product-rating text-right">
+                            @inject('note', 'App\Http\Controllers\ProduitController')
+                            @for($i = 0; $i <  number_format($note->avg($produit->id)); $i++)
+                              <i class="fas fa-star text-yellow"></i>
+                            @endfor
+                            @if(($note->avg($produit->id) %  number_format($note->avg($produit->id))) > 0.5)
+                              <i class="fas fa-star-half-alt text-yellow"></i>
+                            @endif
+                            <div class="rating-text">
+                              <p class="text-light-white fs-12 text-right" title="Nombre d'évaluations">{{ $note->etoiles($produit->id) }} évals</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="restaurent-product-caption-box"><span class="text-light-white">{{ substr($produit->description, 0, 100) }}...</span>
+                        </div>
+                        <div class="restaurent-tags-price">
+                          <a href="{{ route('produit', ['id' => $produit->id]) }}" class="btn-first white-btn">Afficher plus</a>
+                          <div class="restaurent-product-price">
+                            <h6 class="text-success fw-600 no-margin">{{$produit->prix}}<sup>dt</sup></h6>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="product-caption">
-                      <div class="title-box">
-                        <h6 class="product-title"><a href="farm.html" class="text-light-black ">{{ $produit->nom }}
-                          </a></h6>
-                        <div class="tags"> <span class="text-custom-white rectangle-tag bg-green">
-                          <i class="fas fa-shopping-bag"></i>
-                      </span>
-                        </div>
-                      </div>
-                      <div class="product-details">
-                        <div class="price-time"><span class="text-light-black time">Prix</span>
-                          <span class="text-light-white price">{{ $produit->prix }}<sup>dt</sup></span>
-                        </div>
-                        <div class="rating text-right">
-                          <span>
-                          @inject('note', 'App\Http\Controllers\ProduitController')
-                            @for($i = 0; $i <  number_format($note->moynote($produit->id)); $i++)
-                              <i class="fas fa-star text-yellow"></i>
-                            @endfor
-                            @if(($note->moynote($produit->id) %  number_format($note->moynote($produit->id))) > 0.5)
-                              <i class="fas fa-star-half-alt text-yellow"></i>
-                            @endif
-                          </span>
-                          <span class="text-light-white text-right">
-                            <p>{{ $note->nbnote($produit->id) }} éval</p>
-                          </span>
-                        </div>
+                      <div class="restaurent-product-img">
+                        <img src='{{ URL::asset("assets/img/dish/$produit->image")}}' class="img-fluid" alt="#">
                       </div>
                     </div>
                   </div>

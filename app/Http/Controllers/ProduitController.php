@@ -8,35 +8,54 @@ use Illuminate\Http\Request;
 
 class ProduitController extends Controller
 {
- public function show()
- {
-   return view('produit',
-   [
-     'produits' => produit::all(),
-     'categories' => categorie::all()
-   ]);
- }
+  protected $time;
+  public function __construct()
+  {
+    $this->time = $time = new \Westsworld\TimeAgo(new \Westsworld\TimeAgo\Translations\Fr());
+  }
+  public function show()
+  {
+    return view('produits',
+      [
+        'time' => $this->time,
+        'produits' => produit::orderBy('created_at', 'DESC')->get(),
+        'categories' => categorie::orderBy('nom')->get()
+      ]);
+  }
 
- public function showithcategorie($id){
-   return view('produit',
-   [
-     'produits' => categorie::with('produits')->findOrFail($id)->produits, //access to the parent columns
-     'categorie' => categorie::find($id),
-     'categories' => categorie::all()
-   ]);
- }
+  public function categorie($id)
+  {
+    return view('produits',
+      [
+        'time' => $this->time,
+        'produits' => categorie::with('produits')->findOrFail($id)->produits, //access to the parent columns
+        'Categorie' => categorie::find($id),
+        'categories' => categorie::orderBy('nom')->get()
+      ]);
+  }
 
- public function nbproduit($id)
- {
-   return categorie::find($id)->produits()->count();
- }
+  public function details($id)
+  {
+    return view('produit',
+      [
+        'time' => $this->time,
+        'produit' => produit::find($id),
+        'categories' => categorie::orderBy('nom')->get()
+      ]);
+  }
 
- public function nbnote($id)
- {
-   return produit::find($id)->notes()->count();
- }
- public function moynote($id)
- {
-   return produit::find($id)->notes()->avg('nb_etoile');
- }
+  public function count($id)
+  {
+    return categorie::find($id)->produits()->count();
+  }
+
+  public function etoiles($id)
+  {
+    return produit::find($id)->notes()->count();
+  }
+
+  public function avg($id)
+  {
+    return produit::find($id)->notes()->avg('etoiles');
+  }
 }

@@ -64,17 +64,17 @@
           </div>
           <div class="right-side fw-700 mainNavCol">
             <div class="gem-points">
-              <a href="/produit">
+              <a href="{{ route('produits') }}">
                 <span>Produit</span>
               </a>
             </div>
             <div class="gem-points">
-              <a href="/ferme">
+              <a href="{{ route('fermes') }}">
                 <span>Ferme</span>
               </a>
             </div>
             <div class="gem-points">
-              <a href="/forum">
+              <a href="{{ route('forums') }}">
                 <span>Forum</span>
               </a>
             </div>
@@ -296,12 +296,12 @@
           <h6 class="text-light-black">Télécharger Apps</h6>
           <div class="appimg">
             <a href="#">
-              <img src="assets/img/playstore.jpg" class="img-fluid" alt="app logo">
+              <img src='{{ URL::asset("assets/img/playstore.jpg") }}' class="img-fluid" alt="app logo">
             </a>
           </div>
           <div class="appimg">
             <a href="#">
-              <img src="assets/img/appstore.jpg" class="img-fluid" alt="app logo">
+              <img src='{{ URL::asset("assets/img/appstore.jpg") }}' class="img-fluid" alt="app logo">
             </a>
           </div>
         </div>

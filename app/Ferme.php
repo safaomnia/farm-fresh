@@ -14,7 +14,7 @@ class ferme extends Model
   public function avis()
   {
     return $this->belongsToMany(User::class, 'ferme_avis', 'ferme_id', 'client_id')
-      ->withPivot('avis')
+      ->withPivot('avis', 'etoiles')
       ->withTimestamps();
   }
 
