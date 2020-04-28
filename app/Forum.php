@@ -11,7 +11,7 @@ class forum extends Model
     'theme', 'description','fichier'
   ];
 
-  public function user()
+  public function client()
   {
     return $this->belongsTo(User::class);
   }
@@ -19,7 +19,8 @@ class forum extends Model
   public function commentaires()
   {
     return $this->belongsToMany(User::class, 'forum_commentaire', 'forum_id', 'client_id')
-      ->withPivot('commentaire')
+      ->withPivot('id','commentaire')
+      ->using(forum_commentaire::class)
       ->withTimestamps();
   }
 }

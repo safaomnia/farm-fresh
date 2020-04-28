@@ -62,7 +62,7 @@
                         <i class="fas fa-star-half-alt text-yellow"></i>
                       @endif
                       <div class="rating-text">
-                        <p class="text-light-white fs-12 text-right" title="Nombre d'évaluations">{{ $note->avg($produit->id) }} évals</p>
+                        <p class="text-light-white fs-12 text-right" title="Nombre d'évaluations">{{ $note->etoiles($produit->id) }} évals</p>
                       </div>
                     </div>
                   </h2>
@@ -83,6 +83,30 @@
         <aside class="col-lg-3">
           <div class="side-bar section-padding pb-0">
             <div class="advertisement-slider swiper-container h-auto mb-xl-20">
+
+
+              <div class="rating-box">
+                <center><h3 class="text-light-black fw-500">Noter {{ $produit->nom }} </h3></center>
+                <h4>
+                  <form method="POST" action="{{ route('produit.noter') }}" id="rate-form">
+                    {{ csrf_field() }}
+                    <fieldset class="rating" style="margin: -10px 0 10px 40px;">
+                      <input type="radio" id="star5" name="rating" value="5"/><label class="full" for="star5" title="Awesome - 5 stars"></label>
+                      <input type="radio" id="star4half" name="rating" value="4 and a half"/><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                      <input type="radio" id="star4" name="rating" value="4"/><label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                      <input type="radio" id="star3half" name="rating" value="3 and a half"/><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                      <input type="radio" id="star3" name="rating" value="3"/><label class="full" for="star3" title="Meh - 3 stars"></label>
+                      <input type="radio" id="star2half" name="rating" value="2 and a half"/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                      <input type="radio" id="star2" name="rating" value="2"/><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                      <input type="radio" id="star1half" name="rating" value="1 and a half"/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                      <input type="radio" id="star1" name="rating" value="1"/><label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                      <input type="radio" id="starhalf" name="rating" value="half"/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                    </fieldset>
+                    <span class="arrow" style="margin-left: 5px;"><a href="#" onclick="event.preventDefault(); document.getElementById('rate-form').submit();"><i
+                          class="fas fa-chevron-right"></i></a></span>
+                  </form>
+                </h4>
+              </div>
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
                   <div class="testimonial-wrapper">
@@ -96,7 +120,7 @@
                         </div>
                       </div>
                       <div class="testimonial-caption padding-15">
-                        <p class="text-light-white text-uppercase no-margin fs-12">Featured</p>
+                        <p class="text-light-white text-uppercase no-margin fs-12">Ferme de {{ $produit->nom }}</p>
                         <h5 class="fw-600 text-light-black"> {{ $produit->ferme->nom }} </h5>
                         <div class="head-rating" style="margin-top: -10px;">
                           <div class="rating">
@@ -109,94 +133,10 @@
                             @endif
                             <span class="text-light-black fs-12 rate-data">{{ $note->etoiles($produit->ferme->id) }} évaluations</span>
                           </div>
-                          <p class="text-light-black">Delivery was fast and friendly...</p>
+                          <p class="text-light-black">{{ $produit->ferme->client->prenom }} {{ $produit->ferme->client->nom }}</p>
                           <p class="text-light-white fw-100">{{ substr($produit->ferme->description, 0, 50) }}...</p>
                           <a href="{{ route('ferme', ['id' => $produit->ferme->id]) }}" class="btn-first white-btn">Afficher plus</a>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="testimonial-wrapper">
-                      <div class="testimonial-box">
-                        <div class="testimonial-img p-relative">
-                          <a href="farm.html">
-                            <img src="assets/img/blog/438x180/shop-3.jpg" class="img-fluid full-width" alt="testimonial-img">
-                          </a>
-                          <div class="overlay">
-                            <div class="brand-logo">
-                              <img src="assets/img/user/user-1.png" class="img-fluid" alt="logo">
-                            </div>
-                            <div class="add-fav text-light-white"><img src="assets/img/svg/013-heart-1.svg" alt="tag">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="testimonial-caption padding-15">
-                          <p class="text-light-white text-uppercase no-margin fs-12">Featured</p>
-                          <h5 class="fw-600"><a href="farm.html" class="text-light-black">GSA King Tomato Farm</a></h5>
-                          <div class="testimonial-user-box">
-                            <img src="assets/img/blog-details/40x40/user-3.png" class="rounded-circle" alt="farm.html">
-                            <div class="testimonial-user-name">
-                              <p class="text-light-black fw-600">Sarra</p> <i class="fas fa-trophy text-black"></i><span class="text-light-black">Top Reviewer</span>
-                            </div>
-                          </div>
-                          <div class="ratings"> <span class="text-yellow fs-16">
-                            <i class="fas fa-star"></i>
-                          </span>
-                            <span class="text-yellow fs-16">
-                            <i class="fas fa-star"></i>
-                          </span>
-                            <span class="text-yellow fs-16">
-                            <i class="fas fa-star"></i>
-                          </span>
-                            <span class="text-yellow fs-16">
-                            <i class="fas fa-star"></i>
-                          </span>
-                            <span class="text-yellow fs-16">
-                            <i class="fas fa-star"></i>
-                          </span>
-                          </div>
-                          <p class="text-light-black">Delivery was fast and friendly...</p>
-                          <p class="text-light-white fw-100"><strong class="text-light-black fw-700">Local delivery: </strong> From $7.99 (4.0 mi)</p>
-                          <a href="checkout.html" class="btn-second btn-submit">Order Now</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Add Arrows -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-              </div>
-              <div class="large-product-box mb-xl-20">
-                <img src="assets/img/blog/446x1025/ad-1.jpg" class="img-fluid full-width" alt="image">
-                <div class="category-type overlay padding-15">
-                  <button class="category-btn">Most popular near you</button>
-                  <a href="farm.html" class="btn-first white-btn text-light-black fw-600 full-width">See all</a>
-                </div>
-              </div>
-              <div class="inner-wrapper main-box">
-                <div class="main-banner p-relative">
-                  <img src="assets/img/blog/446x501/ff-1.jpg" class="img-fluid full-width main-img" alt="banner">
-                  <div class="overlay-2 main-padding">
-                    <img src="assets/img/logo-2.jpg" class="img-fluid" alt="logo">
-                  </div>
-                  <img src="assets/img/banner/burger.png" class="footer-img" alt="footerimg">
-                </div>
-                <div class="section-2 main-page main-padding">
-                  <div class="login-box">
-                    <h3 class="text-light-black fw-700">Organza food delivery every time</h3>
-                    <div class="input-group row">
-                      <div class="input-group2 col-xl-8">
-                        <input type="search" class="form-control form-control-submit" placeholder="Enter street address or zip code"
-                               value="1246 57th St, Brooklyn, NY, 11219">
-                        <div class="input-group-prepend">
-                          <button class="input-group-text text-light-green"><i class="fab fa-telegram-plane"></i>
-                          </button>
-                        </div>
-                      </div>
-                      <div class="input-group-append col-xl-4">
-                        <button class="btn-second btn-submit full-width" type="button">Find food</button>
                       </div>
                     </div>
                   </div>
@@ -208,4 +148,202 @@
     </div>
   </section>
 
+  <!-- offer near -->
+  <section class="fresh-deals section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="section-header-left">
+            <h3 class="text-light-black header-title title">Produit de même catégorie</h3>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="fresh-deals-slider swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="product-box">
+                  <div class="product-img">
+                    <a href="farm.html">
+                      <img src='{{ URL::asset("assets/img/farms/255x150/shop-10.jpg") }}' class="img-fluid full-width" alt="product-img">
+                    </a>
+                  </div>
+                  <div class="product-caption">
+                    <div class="title-box">
+                      <h6 class="product-title"><a href="farm.html" class="text-light-black">Great Burger</a></h6>
+                    </div>
+                    <p class="text-light-white">American, Fast Food</p>
+                    <div class="product-details">
+                      <div class="price-time"><span class="text-light-black time">30-40 min</span>
+                        <span class="text-light-white price">$10 min</span>
+                      </div>
+                      <div class="rating"> <span>
+                          <i class="fas fa-star text-yellow"></i>
+                          <i class="fas fa-star text-yellow"></i>
+                          <i class="fas fa-star text-yellow"></i>
+                          <i class="fas fa-star text-yellow"></i>
+                          <i class="fas fa-star text-yellow"></i>
+                        </span>
+                        <span class="text-light-white text-right">4225 ratings</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-footer-2">
+                    <div class="discount"><span class="text-success fs-12">$3 off</span>
+                    </div>
+                    <div class="discount-coupon"><span class="text-light-white fs-12">First order only</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-box">
+                  <div class="product-img">
+                    <a href="farm.html">
+                      <img src='{{ URL::asset("assets/img/farms/255x150/shop-11.jpg") }}' class="img-fluid full-width" alt="product-img">
+                    </a>
+                  </div>
+                  <div class="product-caption">
+                    <div class="title-box">
+                      <h6 class="product-title"><a href="farm.html" class="text-light-black">Flavor Town</a></h6>
+                    </div>
+                    <p class="text-light-white">Breakfast, Lunch & Dinner</p>
+                    <div class="product-details">
+                      <div class="price-time"><span class="text-light-black time">30-40 min</span>
+                        <span class="text-light-white price">$10 min</span>
+                      </div>
+                      <div class="rating"> <span>
+                          <i class="fas fa-star text-yellow"></i>
+                          <i class="fas fa-star text-yellow"></i>
+                          <i class="fas fa-star text-yellow"></i>
+                          <i class="fas fa-star text-yellow"></i>
+                          <i class="fas fa-star text-yellow"></i>
+                        </span>
+                        <span class="text-light-white text-right">4225 ratings</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-footer-2">
+                    <div class="discount"><span class="text-success fs-12">$3 off</span>
+                    </div>
+                    <div class="discount-coupon"><span class="text-light-white fs-12">First order only</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-box">
+                  <div class="product-img">
+                    <a href="farm.html">
+                      <img src='{{ URL::asset("assets/img/farms/255x150/shop-22.jpg") }}' class="img-fluid full-width" alt="product-img">
+                    </a>
+                  </div>
+                  <div class="product-caption">
+                    <div class="title-box">
+                      <h6 class="product-title"><a href="farm.html" class="text-light-black">Big Bites</a></h6>
+                    </div>
+                    <p class="text-light-white">Fruits, Vegitables, Milk, Eggs</p>
+                    <div class="product-details">
+                      <div class="price-time"><span class="text-light-black time">30-40 min</span>
+                        <span class="text-light-white price">$10 min</span>
+                      </div>
+                      <div class="rating"> <span>
+                          <i class="fas fa-star text-yellow"></i>
+                          <i class="fas fa-star text-yellow"></i>
+                          <i class="fas fa-star text-yellow"></i>
+                          <i class="fas fa-star text-yellow"></i>
+                          <i class="fas fa-star text-yellow"></i>
+                        </span>
+                        <span class="text-light-white text-right">4225 ratings</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-footer-2">
+                    <div class="discount"><span class="text-success fs-12">$3 off</span>
+                    </div>
+                    <div class="discount-coupon"><span class="text-light-white fs-12">First order only</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-box">
+                  <div class="product-img">
+                    <a href="farm.html">
+                      <img src='{{ URL::asset("assets/img/farms/255x150/shop-23.jpg") }}' class="img-fluid full-width" alt="product-img">
+                    </a>
+                  </div>
+                  <div class="product-caption">
+                    <div class="title-box">
+                      <h6 class="product-title"><a href="farm.html" class="text-light-black">Smile N’ Delight</a></h6>
+                    </div>
+                    <p class="text-light-white">Desserts, Beverages</p>
+                    <div class="product-details">
+                      <div class="price-time"><span class="text-light-black time">30-40 min</span>
+                        <span class="text-light-white price">$10 min</span>
+                      </div>
+                      <div class="rating"> <span>
+                          <i class="fas fa-star text-yellow"></i>
+                          <i class="fas fa-star text-yellow"></i>
+                          <i class="fas fa-star text-yellow"></i>
+                          <i class="fas fa-star text-yellow"></i>
+                          <i class="fas fa-star text-yellow"></i>
+                        </span>
+                        <span class="text-light-white text-right">4225 ratings</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-footer-2">
+                    <div class="discount"><span class="text-success fs-12">$3 off</span>
+                    </div>
+                    <div class="discount-coupon"><span class="text-light-white fs-12">First order only</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-box">
+                  <div class="product-img">
+                    <a href="farm.html">
+                      <img src='{{ URL::asset("assets/img/farms/255x150/shop-24.jpg") }}' class="img-fluid full-width" alt="product-img">
+                    </a>
+                  </div>
+                  <div class="product-caption">
+                    <div class="title-box">
+                      <h6 class="product-title"><a href="farm.html" class="text-light-black">Lil Johnny’s</a></h6>
+                    </div>
+                    <p class="text-light-white">Continental & Mexican</p>
+                    <div class="product-details">
+                      <div class="price-time"><span class="text-light-black time">30-40 min</span>
+                        <span class="text-light-white price">$10 min</span>
+                      </div>
+                      <div class="rating"> <span>
+                          <i class="fas fa-star text-yellow"></i>
+                          <i class="fas fa-star text-yellow"></i>
+                          <i class="fas fa-star text-yellow"></i>
+                          <i class="fas fa-star text-yellow"></i>
+                          <i class="fas fa-star text-yellow"></i>
+                        </span>
+                        <span class="text-light-white text-right">4225 ratings</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-footer-2">
+                    <div class="discount"><span class="text-success fs-12">$3 off</span>
+                    </div>
+                    <div class="discount-coupon"><span class="text-light-white fs-12">First order only</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next"></div>
+            //didn't work
+            <div class="swiper-button-prev"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- offer near -->
 @endsection

@@ -7,8 +7,8 @@ use Faker\Generator as Faker;
 
 $factory->define(forum::class, function (Faker $faker) {
   return [
-    'theme' => $faker->text,
-    'description' => $faker->paragraph,
+    'theme' => $faker->words(3),
+    'description' => $faker->text(500),
     'client_id' => $faker->randomElement(\DB::table('client')->select('id')->get())->id
   ];
 });

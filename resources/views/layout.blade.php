@@ -31,6 +31,8 @@
   <link href="{{ URL::asset('assets/css/style.css')}}" rel="stylesheet">
   <!-- Custom Responsive -->
   <link href="{{ URL::asset('assets/css/responsive.css')}}" rel="stylesheet">
+  <!-- Rating Stylesheet -->
+  <link href="{{ URL::asset('assets/css/rating.css')}}" rel="stylesheet">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;display=swap" rel="stylesheet">
   <!-- place -->
@@ -127,8 +129,7 @@
                       </a>
                     </li>
                   </ul>
-                  <div class="user-footer"><a href="{{ route('logout') }}"
-                                              onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnecter</a>
+                  <div class="user-footer"><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnecter</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
                   </div>
                 </div>
