@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToAvisTable extends Migration {
+class AddForeignKeysToFermeAvisTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class AddForeignKeysToAvisTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('avis', function(Blueprint $table)
+		Schema::table('ferme_avis', function(Blueprint $table)
 		{
 			$table->foreign('ferme_id', 'ferme_avis')->references('id')->on('ferme')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 			$table->foreign('client_id', 'ferme_avis_utilisateur')->references('id')->on('client')->onUpdate('RESTRICT')->onDelete('RESTRICT');
@@ -27,7 +27,7 @@ class AddForeignKeysToAvisTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('avis', function(Blueprint $table)
+		Schema::table('ferme_avis', function(Blueprint $table)
 		{
 			$table->dropForeign('ferme_avis');
 			$table->dropForeign('ferme_avis_utilisateur');

@@ -18,7 +18,7 @@ class CreateLivreurTable extends Migration {
 			$table->text('nom_entreprise', 65535);
 			$table->text('adresse_entreprise', 65535);
 			$table->string('telephone_entreprise', 15);
-			$table->string('certificate', 15);
+			$table->string('certificate', 15)->nullable();
 		});
 	}
 

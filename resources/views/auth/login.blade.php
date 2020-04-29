@@ -80,18 +80,6 @@
                         <img src="assets/img/M.png" alt="btn logo">Se connecter
                       </button>
                     </div>
-                    <div class="form-group text-center"><span>or</span>
-                    </div>
-                    <div class="form-group">
-                      <button type="submit" class="btn-second btn-facebook full-width">
-                        <img src="assets/img/facebook-logo.svg" alt="btn logo">Continue avec Facebook
-                      </button>
-                    </div>
-                    <div class="form-group">
-                      <button type="submit" class="btn-second btn-google full-width">
-                        <img src="assets/img/google-logo.png" alt="btn logo">Continue avec Google
-                      </button>
-                    </div>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group text-center mb-0"><a href="/register">Créez votre compte</a>
                     </div>

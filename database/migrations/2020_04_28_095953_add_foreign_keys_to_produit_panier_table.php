@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToPanierProduitTable extends Migration {
+class AddForeignKeysToProduitPanierTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class AddForeignKeysToPanierProduitTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('panier_produit', function(Blueprint $table)
+		Schema::table('produit_panier', function(Blueprint $table)
 		{
 			$table->foreign('panier_id', 'panier_produit')->references('id')->on('panier')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 			$table->foreign('produit_id', 'produit_panier')->references('id')->on('produit')->onUpdate('RESTRICT')->onDelete('RESTRICT');
@@ -27,7 +27,7 @@ class AddForeignKeysToPanierProduitTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('panier_produit', function(Blueprint $table)
+		Schema::table('produit_panier', function(Blueprint $table)
 		{
 			$table->dropForeign('panier_produit');
 			$table->dropForeign('produit_panier');

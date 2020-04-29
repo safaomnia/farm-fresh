@@ -14,10 +14,12 @@ class CreateDemandeTable extends Migration {
 	{
 		Schema::create('demande', function(Blueprint $table)
 		{
-			$table->bigInteger('id')->unsigned()->primary();
-			$table->enum('type', array('agriculteur','livreur'))->nullable();
+			$table->bigInteger('id', true)->unsigned();
+			$table->enum('type', array('agriculteur','livreur'));
+			$table->enum('etat', array('accepte','refuse','en attende'));
 			$table->text('certificate', 65535)->nullable();
 			$table->bigInteger('client_id')->unsigned()->nullable()->index('demande_client_id');
+			$table->timestamps();
 		});
 	}
 

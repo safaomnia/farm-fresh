@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateProduitTable extends Migration {
+class CreateFermeTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,16 +12,16 @@ class CreateProduitTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('produit', function(Blueprint $table)
+		Schema::create('ferme', function(Blueprint $table)
 		{
 			$table->bigInteger('id', true)->unsigned();
-			$table->string('nom', 300);
-			$table->float('prix', 10, 0)->default(0);
-			$table->integer('stock');
+			$table->text('nom', 65535);
 			$table->text('image', 65535);
+			$table->string('adresse', 50);
+			$table->string('telephone', 50);
+			$table->string('email', 50);
 			$table->text('description', 65535);
-			$table->integer('categorie_id')->unsigned()->index('categorie_id');
-			$table->bigInteger('ferme_id')->unsigned()->index('ferme_id');
+			$table->bigInteger('agriculteur_id')->unsigned()->index('agriculteur_id');
 			$table->timestamps();
 		});
 	}
@@ -34,7 +34,7 @@ class CreateProduitTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('produit');
+		Schema::drop('ferme');
 	}
 
 }

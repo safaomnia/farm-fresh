@@ -86,14 +86,17 @@ class User extends Authenticatable
   public function fermeAvis()
   {
     return $this->belongsToMany(Ferme::class, 'ferme_avis', 'client_id', 'ferme_id')
-      ->using(FermeAvis::class)
-      ->withPivot('commentaire')
+      ->using(ferme_avis::class)
+      ->withPivot('avis')
       ->withTimestamps();
   }
 
-  public function ProduitNotes()
+  public function produitNotes()
   {
-    return $this->belongsToMany(Produit::class, 'produit_note')->withTimestamps();
+    return $this->belongsToMany(Produit::class, 'produit_note', 'client_id', 'produit_id')
+      ->withPivot('etoiles')
+      ->using(produit_note::class)
+      ->withTimestamps();
   }
 
   public function demandes()

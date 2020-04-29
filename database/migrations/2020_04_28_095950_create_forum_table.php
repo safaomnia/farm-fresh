@@ -17,7 +17,7 @@ class CreateForumTable extends Migration {
 			$table->bigInteger('id', true)->unsigned();
 			$table->text('theme', 65535)->nullable();
 			$table->text('description', 65535);
-			$table->text('fichier', 65535);
+			$table->text('fichier', 65535)->nullable();
 			$table->bigInteger('client_id')->unsigned()->index('utilisateur_id');
 			$table->timestamps();
 		});

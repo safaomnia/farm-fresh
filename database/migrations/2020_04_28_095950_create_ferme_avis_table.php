@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateAvisTable extends Migration {
+class CreateFermeAvisTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,14 @@ class CreateAvisTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('avis', function(Blueprint $table)
+		Schema::create('ferme_avis', function(Blueprint $table)
 		{
-			$table->bigInteger('id', true)->unsigned();
-			$table->text('avis', 65535);
-			$table->bigInteger('client_id')->unsigned()->index('utilisateur_id');
+			$table->string('avis', 500);
+			$table->integer('etoiles')->nullable()->default(0);
+			$table->bigInteger('client_id')->unsigned()->index('client_id');
 			$table->bigInteger('ferme_id')->unsigned()->index('ferme_id');
 			$table->timestamps();
+			$table->primary(['client_id','ferme_id']);
 		});
 	}
 
@@ -30,7 +31,7 @@ class CreateAvisTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('avis');
+		Schema::drop('ferme_avis');
 	}
 
 }

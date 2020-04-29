@@ -54,7 +54,7 @@ class RegisterController extends Controller
         'nom' => ['required', 'string', 'max:255', 'alpha'],
         'prenom' => ['required', 'string', 'max:255', 'alpha'],
         'email' => ['required', 'string', 'email', 'unique:client'],
-        'password' => ['required', 'string', 'min:8', 'regex:#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#'],
+        'password' => ['required', 'string', 'min:8', 'regex:#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#', 'confirmed'],
       ],
       [
         'nom.alpha' => 'Votre nom pas correct',

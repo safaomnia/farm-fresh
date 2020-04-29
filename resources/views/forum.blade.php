@@ -72,17 +72,17 @@
             <div class="row">
               <div class="col-12">
                 <div class="blog-meta mb-xl-20">
-                  <h2 class="blog-title text-light-black">Best chinese farms in Brooklyn.</h2>
+                  <h2 class="blog-title text-light-black">{{ $forum->theme }}</h2>
                   <div class="review-user">
                     <div class="review-user-img">
                       <img src='{{ URL::asset("assets/img/user/{$forum->client->photo}") }}' class="rounded-circle" alt="photo-profil">
                       <div class="reviewer-name" style="margin: -40px 0 30px 70px;">
                         <p class="text-light-black fw-600">{{ $forum->client->prenom }} {{ $forum->client->nom }}
-                          <small class="text-light-white fw-500">{{ $forum->client->adresse }}</small>
+                          <small class="text-light-white fw-500">{{ $forum->client->adresse }}</small><br>
+                        <small class="text-light-white">Publié {{ $time->inWords($forum->created_at) }}</small>
                       </div>
                     </div>
                   </div>
-                  <h6 class="text-light-white fs-14">Publié {{ $time->inWords($forum->created_at) }}</h6>
                   <p class="text-light-white">{{ $forum->description }}</p>
                 </div>
                 <div class="comment-box">
@@ -100,6 +100,8 @@
                           </div>
                         </div>
                         <div class="review-date"><span class="text-light-white">{{ $time->inWords($commentaire->pivot->created_at) }}</span>
+                            <a href="{{ route('forum.commentaire.form', ['ferme'=>$forum->id, 'id' => $commentaire->pivot->id]) }}">Modifier</a>
+                            <a href="{{ route('forum.commentaire.delete', ['id' => $commentaire->pivot->id]) }}" onclick="return confirm('Voulez-vous sûr de supprimer?')">Supprimer</a>
                         </div>
                       </div>
                       <p class="text-light-black">{{ $commentaire->pivot->commentaire }}</p>
@@ -135,12 +137,15 @@
                   <div class="section-header-left">
                     <h3 class="text-light-black header-title">Commenter {{ $forum->theme }}</h3>
                   </div>
-                  <form method="POST" action="{{ route('forum.commenter') }}">
+                  <form method="POST" action="@isset($Commentaire) {{ route('forum.commentaire.update', ['id' => $Commentaire->id]) }} @else {{ route('forum.commenter',
+                  ['ferme'
+                  => $forum->id]) }} @endisset">
                     {{ csrf_field() }}
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <textarea class="form-control form-control-submit" name="#" rows="6" placeholder="Your Comment"></textarea>
+                          <textarea class="form-control form-control-submit" name="commentaire" rows="6" placeholder="Votre commentaire">{{ $Commentaire->commentaire ?? ''
+                          }}</textarea>
                         </div>
                         <button type="submit" class="btn-second btn-submit full-width">Send</button>
                       </div>

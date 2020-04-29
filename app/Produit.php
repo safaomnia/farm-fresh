@@ -38,7 +38,8 @@ class produit extends Model
   public function notes()
   {
     return $this->belongsToMany(User::class, 'produit_note', 'produit_id', 'client_id')
-      ->withPivot('nb_etoile')
+      ->withPivot('etoiles')
+      ->using(produit_note::class)
       ->withTimestamps();
   }
 }

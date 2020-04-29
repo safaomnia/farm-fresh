@@ -166,12 +166,11 @@
           @endguest
           <!-- user cart -->
             <div class="cart-btn cart-dropdown">
-              <a href="#" class="text-light-green fw-700"> <i class="fas fa-shopping-bag"></i>
+              <a href="#" class="text-light-green fw-700" onclick="return false"> <i class="fas fa-shopping-bag"></i>
                 <span class="user-alert-cart">3</span>
               </a>
               <div class="cart-detail-box">
                 <div class="card">
-                  <div class="card-header padding-15">Your Order</div>
                   <div class="card-body no-padding">
                     <div class="cat-product-box">
                       <div class="cat-product">
@@ -231,11 +230,12 @@
                       <div class="total-price border-0"><span class="text-dark-white fw-700">Items subtotal:</span>
                         <span class="text-dark-white fw-700">$9.99</span>
                       </div>
+                      <!-- en cas panier vide
                       <div class="empty-bag padding-15"><a href="#">Empty bag</a>
-                      </div>
+                      </div>-->
                     </div>
                   </div>
-                  <div class="card-footer padding-15"><a href="checkout.html" class="btn-first green-btn text-custom-white full-width fw-500">Proceed to Checkout</a>
+                  <div class="card-footer padding-15"><a href="{{ route('panier') }}" class="btn-first green-btn text-custom-white full-width fw-500">Commander</a>
                   </div>
                 </div>
               </div>

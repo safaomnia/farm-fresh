@@ -14,7 +14,6 @@ class AddForeignKeysToProduitTable extends Migration {
 	{
 		Schema::table('produit', function(Blueprint $table)
 		{
-			$table->foreign('categorie_id', 'produit_categorie')->references('id')->on('categorie')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 			$table->foreign('ferme_id', 'produit_ferme')->references('id')->on('ferme')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
@@ -29,7 +28,6 @@ class AddForeignKeysToProduitTable extends Migration {
 	{
 		Schema::table('produit', function(Blueprint $table)
 		{
-			$table->dropForeign('produit_categorie');
 			$table->dropForeign('produit_ferme');
 		});
 	}

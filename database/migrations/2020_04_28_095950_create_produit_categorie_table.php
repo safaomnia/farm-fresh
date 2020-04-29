@@ -14,7 +14,7 @@ class CreateProduitCategorieTable extends Migration {
 	{
 		Schema::create('produit_categorie', function(Blueprint $table)
 		{
-			$table->bigInteger('produit_id')->unsigned();
+			$table->bigInteger('produit_id')->unsigned()->index('produit_id');
 			$table->integer('categorie_id')->unsigned()->index('categorie_id');
 			$table->primary(['produit_id','categorie_id']);
 		});

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToRepondeTable extends Migration {
+class AddForeignKeysToForumCommentaireRepondeTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,9 @@ class AddForeignKeysToRepondeTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('reponde', function(Blueprint $table)
+		Schema::table('forum_commentaire_reponde', function(Blueprint $table)
 		{
-			$table->foreign('commentaire_id', 'forum_commentaire_id')->references('id')->on('commentaire')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('forum_commentaire_id', 'forum_commentaire_id')->references('id')->on('forum_commentaire')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 			$table->foreign('client_id', 'repondre_commentaire_utilisateur_id')->references('id')->on('client')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
@@ -27,7 +27,7 @@ class AddForeignKeysToRepondeTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('reponde', function(Blueprint $table)
+		Schema::table('forum_commentaire_reponde', function(Blueprint $table)
 		{
 			$table->dropForeign('forum_commentaire_id');
 			$table->dropForeign('repondre_commentaire_utilisateur_id');

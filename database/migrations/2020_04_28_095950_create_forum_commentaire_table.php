@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateCommentaireTable extends Migration {
+class CreateForumCommentaireTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateCommentaireTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('commentaire', function(Blueprint $table)
+		Schema::create('forum_commentaire', function(Blueprint $table)
 		{
 			$table->bigInteger('id', true)->unsigned();
 			$table->text('commentaire', 65535)->nullable();
@@ -30,7 +30,7 @@ class CreateCommentaireTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('commentaire');
+		Schema::drop('forum_commentaire');
 	}
 
 }

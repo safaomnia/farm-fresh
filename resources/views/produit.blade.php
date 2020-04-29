@@ -69,9 +69,25 @@
                   <h6 class="text-light-white fs-14" style="margin-top: -30px;">{{ $time->inWords($produit->updated_at) }}</h6>
 
                   <div class="restaurent-tags-price">
-                    <a href="#" class="btn-second btn-submit">Ajouter panier</a>
-                    <div class="restaurent-product-price">
-                      <h6 class="text-success fw-600 text-right" style="margin-top: -30px;">{{$produit->prix}}<sup>dt</sup></h6>
+                    @inject('note', 'App\Http\Controllers\PanierController')
+                    @if($note->exist($produit->id)->isEmpty())
+                      <form method="POST" action="{{ route('panier.add', ['id' => $produit->id]) }}" id="panier-add-form-{{ $produit->id }}">
+                        {{ csrf_field() }}
+                        <a href="{{ route('panier.add', ['id' => $produit->id]) }}" class="btn-second white-btn" title="Ajouter au panier" onclick="event
+                          .preventDefault(); document.getElementById('panier-add-form-{{ $produit->id }}').submit();">
+                          <i class="fas fa-shopping-bag"></i>
+                        </a>
+                      </form>
+                    @else
+                      <form method="POST" action="{{ route('panier.destroy', ['id' => $produit->id]) }}" id="panier-destroy-form-{{ $produit->id }}">
+                        {{ csrf_field() }}
+                        <a href="{{ route('panier.destroy', ['id' => $produit->id]) }}" class="btn-second btn-submit text-light" title="Supprimer du panier"
+                           onclick="event.preventDefault(); document.getElementById('panier-destroy-form-{{ $produit->id }}').submit();">
+                          <i class="fas fa-shopping-bag"></i></a>
+                      </form>
+                    @endif
+                    <div class="restaurent-product-price" style="margin: -30px 0 0 30px;">
+                      <h6 class="text-success fw-600 text-right">{{$produit->prix}}<sup>dt</sup></h6>
                     </div>
                   </div>
                   <p class="text-light-white">{{ $produit->description }}</p>
@@ -86,24 +102,44 @@
 
 
               <div class="rating-box">
-                <center><h3 class="text-light-black fw-500">Noter {{ $produit->nom }} </h3></center>
+                @isset($client_note)
+                  <center><h3 class="text-light-black fw-500">Votre note sur {{ $produit->nom }}  </h3></center>
+                @else
+                  <center><h3 class="text-light-black fw-500">Noter {{ $produit->nom }} </h3></center>
+                @endisset
                 <h4>
-                  <form method="POST" action="{{ route('produit.noter') }}" id="rate-form">
+                  <form method="POST"
+                        action="@isset($client_note) {{ route('produit.update.note', ['produit' =>
+                        $produit->id]) }} @else {{ route('produit.noter', ['produit' => $produit->id]) }} @endisset" id="rate-form">
                     {{ csrf_field() }}
                     <fieldset class="rating" style="margin: -10px 0 10px 40px;">
-                      <input type="radio" id="star5" name="rating" value="5"/><label class="full" for="star5" title="Awesome - 5 stars"></label>
-                      <input type="radio" id="star4half" name="rating" value="4 and a half"/><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-                      <input type="radio" id="star4" name="rating" value="4"/><label class="full" for="star4" title="Pretty good - 4 stars"></label>
-                      <input type="radio" id="star3half" name="rating" value="3 and a half"/><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                      <input type="radio" id="star3" name="rating" value="3"/><label class="full" for="star3" title="Meh - 3 stars"></label>
-                      <input type="radio" id="star2half" name="rating" value="2 and a half"/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-                      <input type="radio" id="star2" name="rating" value="2"/><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
-                      <input type="radio" id="star1half" name="rating" value="1 and a half"/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                      <input type="radio" id="star1" name="rating" value="1"/><label class="full" for="star1" title="Sucks big time - 1 star"></label>
-                      <input type="radio" id="starhalf" name="rating" value="half"/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                      <input type="radio" id="star5" name="rating" value="5" <?php if(isset($client_note)) if($client_note->etoiles == 5) echo 'checked'; ?>  />
+                      <label class="full"  for="star5" title="Impressionnant - 5 stars"></label>
+                      <input type="radio" id="star4half" name="rating" value="4.5" <?php if(isset($client_note)) if($client_note->etoiles == 4.5) echo 'checked'; ?>/>
+                      <label class="half" for="star4half" title="Assez bien - 4.5 stars"></label>
+                      <input type="radio" id="star4" name="rating" value="4" <?php if(isset($client_note)) if($client_note->etoiles == 4) echo 'checked'; ?> />
+                      <label class="full" for="star4" title="Assez bien - 4 stars"></label>
+                      <input type="radio" id="star3half" name="rating" value="3.5" <?php if(isset($client_note)) if($client_note->etoiles == 3.5) echo 'checked'; ?> />
+                      <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                      <input type="radio" id="star3" name="rating" value="3" <?php if(isset($client_note)) if($client_note->etoiles == 3) echo 'checked'; ?> />
+                      <label class="full" for="star3" title="Meh - 3 stars"></label>
+                      <input type="radio" id="star2half" name="rating" value="2.5" <?php if(isset($client_note)) if($client_note->etoiles == 2.5) echo 'checked'; ?>/>
+                      <label class="half" for="star2half" title="Un peu mauvais- 2.5 stars"></label>
+                      <input type="radio" id="star2" name="rating" value="2" <?php if(isset($client_note)) if($client_note->etoiles == 2) echo 'checked'; ?>/>
+                      <label class="full" for="star2" title="Un peu mauvais - 2 stars"></label>
+                      <input type="radio" id="star1half" name="rating" value="1.5" <?php if(isset($client_note)) if($client_note->etoiles == 1.5) echo 'checked'; ?>/>
+                      <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                      <input type="radio" id="star1" name="rating" value="1" <?php if(isset($client_note)) if($client_note->etoiles == 1) echo 'checked'; ?> />
+                      <label class="full" for="star1" title="mauvais - 1 star"></label>
+                      <input type="radio" id="starhalf" name="rating" value="0.5" <?php if(isset($client_note)) if($client_note->etoiles == 0.5) echo 'checked'; ?>/>
+                      <label class="half" for="starhalf" title="mauvais - 0.5 stars"></label>
                     </fieldset>
-                    <span class="arrow" style="margin-left: 5px;"><a href="#" onclick="event.preventDefault(); document.getElementById('rate-form').submit();"><i
-                          class="fas fa-chevron-right"></i></a></span>
+                    @isset($client_note)
+                      <input type="hidden" name="id" value="{{ $client_note->id }}">
+                    @endisset
+                    <span class="arrow" style="margin-left: 5px;"><a href="@isset($client_note) {{ route('produit.update.note', ['produit' =>
+                        $produit->id]) }} @else {{ route('produit.noter', ['produit' => $produit->id]) }} @endisset"  onclick="event.preventDefault(); document
+                        .getElementById('rate-form').submit();"><i class="fas fa-chevron-right"></i></a></span>
                   </form>
                 </h4>
               </div>

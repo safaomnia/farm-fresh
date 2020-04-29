@@ -87,24 +87,16 @@
                       <label class="text-light-white fs-14">Mot de passe</label>
                       <input type="password" id="password-field" name="password" class="form-control form-control-submit @error('password') is-invalid @enderror"
                              required>
-                      <div data-name="#password-field" class="fa fa-fw fa-eye field-icon toggle-password" @error('password') style="margin-right: 20px;" @enderror></div>
                       @error('password')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
+                    </div>
+                    <div class="form-group">
+                      <label class="text-light-white fs-14">Confirmer mot de passe</label>
+                      <input type="password" id="password-field" name="password_confirmation" class="form-control form-control-submit @error('password') is-invalid @enderror"
+                             required>
                     </div>
                     <div class="form-group">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
                       <button type="submit" class="btn-second btn-submit full-width">S'inscrire</button>
-                    </div>
-                    <div class="form-group text-center"><span>or</span>
-                    </div>
-                    <div class="form-group">
-                      <button type="submit" class="btn-second btn-facebook full-width">
-                        <img src="assets/img/facebook-logo.svg" alt="btn logo">Continue avec Facebook
-                      </button>
-                    </div>
-                    <div class="form-group">
-                      <button type="submit" class="btn-second btn-google full-width">
-                        <img src="assets/img/google-logo.png" alt="btn logo">Continue avec Google
-                      </button>
                     </div>
                     <div class="form-group text-center">
                       <p class="text-light-black mb-0">vous avez déjà un compte? <a href="/login">S'identifier</a>

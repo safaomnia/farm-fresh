@@ -16,7 +16,7 @@ class CreateAgriculteurTable extends Migration {
 		{
 			$table->bigInteger('id')->unsigned()->index('id');
 			$table->text('domaine', 65535);
-			$table->text('certification', 65535);
+			$table->text('certificate', 65535)->nullable();
 		});
 	}
 

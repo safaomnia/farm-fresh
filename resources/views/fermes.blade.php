@@ -9,15 +9,28 @@
           <div class="filter-sidebar mb-5">
             <div class="sidebar-tab" style="margin-top: 50px;">
               <ul class="nav nav-pills mb-xl-20">
-                <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#categorie">Catégories</a>
+                <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#search">Rechercher par</a>
                 </li>
               </ul>
               <div class="tab-content">
-                <div class="tab-pane fade show active" id="categorie">
-                  <div class="main-box padding-20 trending-blog-cat mb-xl-20">
-                    <ul>
-                      <li>jojgeo</li>
-                    </ul>
+                <div class="tab-pane fade show active" id="search">
+                  <h6 class="text-light-black fw-700">Farm</h6>
+                  <div class="input-group row">
+                    <div class="input-group2 col-xl-8">
+                      <input type="search" class="form-control form-control-submit">
+                    </div>
+                    <div class="input-group-append col-xl-4">
+                      <button class="btn-second btn-submit full-width" type="button"><i class="fas fa-search"></i></button>
+                    </div>
+                  </div>
+                  <h6 class="text-light-black fw-700" style="margin-top: 20px;">Agriculteur</h6>
+                  <div class="input-group row">
+                    <div class="input-group2 col-xl-8">
+                      <input type="search" class="form-control form-control-submit">
+                    </div>
+                    <div class="input-group-append col-xl-4">
+                      <button class="btn-second btn-submit full-width" type="button"><i class="fas fa-search"></i></button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -227,24 +240,6 @@
                   <img src="assets/img/logo-2.jpg" class="img-fluid" alt="logo">
                 </div>
                 <img src="assets/img/banner/burger.png" class="footer-img" alt="footerimg">
-              </div>
-              <div class="section-2 main-page main-padding">
-                <div class="login-box">
-                  <h3 class="text-light-black fw-700">Organza food delivery every time</h3>
-                  <div class="input-group row">
-                    <div class="input-group2 col-xl-8">
-                      <input type="search" class="form-control form-control-submit" placeholder="Enter street address or zip code"
-                             value="1246 57th St, Brooklyn, NY, 11219">
-                      <div class="input-group-prepend">
-                        <button class="input-group-text text-light-green"><i class="fab fa-telegram-plane"></i>
-                        </button>
-                      </div>
-                    </div>
-                    <div class="input-group-append col-xl-4">
-                      <button class="btn-second btn-submit full-width" type="button">Find food</button>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
