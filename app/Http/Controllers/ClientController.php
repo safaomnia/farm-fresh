@@ -20,7 +20,7 @@ class ClientController extends Controller
 
   public function show($id)
   {
-    $client = User::find(Auth::user()->id);
+    $client = User::find($id);
     if ($client->type == 'client') $view = 'profil.client';
     elseif ($client->type == 'agriculteur') $view = 'profil.agriculteur';
     else $view = 'profil.livreur';

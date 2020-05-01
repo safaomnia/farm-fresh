@@ -71,12 +71,12 @@
                   <div class="restaurent-tags-price">
                     @inject('note', 'App\Http\Controllers\PanierController')
                     @if($note->exist($produit->id)->isEmpty())
-                        <a href="{{ route('panier.add', ['id' => $produit->id]) }}" class="btn-second white-btn" title="Ajouter au panier">
-                          <i class="fas fa-shopping-bag"></i>
-                        </a>
+                      <a href="{{ route('panier.add', ['id' => $produit->id]) }}" class="btn-second white-btn" title="Ajouter au panier">
+                        <i class="fas fa-shopping-bag"></i>
+                      </a>
                     @else
-                        <a href="{{ route('panier.destroy', ['id' => $produit->id]) }}" class="btn-second btn-submit text-light" title="Supprimer du panier">
-                          <i class="fas fa-shopping-bag"></i></a>
+                      <a href="{{ route('panier.destroy', ['id' => $produit->id]) }}" class="btn-second btn-submit text-light" title="Supprimer du panier">
+                        <i class="fas fa-shopping-bag"></i></a>
                     @endif
                     <div class="restaurent-product-price" style="margin: -30px 0 0 30px;">
                       <h6 class="text-success fw-600 text-right">{{$produit->prix}}<sup>dt</sup></h6>
@@ -105,32 +105,32 @@
                         $produit->id]) }} @else {{ route('produit.noter', ['produit' => $produit->id]) }} @endisset" id="rate-form">
                     {{ csrf_field() }}
                     <fieldset class="rating" style="margin: -10px 0 10px 40px;">
-                      <input type="radio" id="star5" name="rating" value="5" <?php if(isset($client_note)) if($client_note->etoiles == 5) echo 'checked'; ?>  />
-                      <label class="full"  for="star5" title="Impressionnant - 5 stars"></label>
-                      <input type="radio" id="star4half" name="rating" value="4.5" <?php if(isset($client_note)) if($client_note->etoiles == 4.5) echo 'checked'; ?>/>
+                      <input type="radio" id="star5" name="rating" value="5" <?php if (isset($client_note)) if ($client_note->etoiles == 5) echo 'checked'; ?> />
+                      <label class="full" for="star5" title="Impressionnant - 5 stars"></label>
+                      <input type="radio" id="star4half" name="rating" value="4.5" <?php if (isset($client_note)) if ($client_note->etoiles == 4.5) echo 'checked'; ?>/>
                       <label class="half" for="star4half" title="Assez bien - 4.5 stars"></label>
-                      <input type="radio" id="star4" name="rating" value="4" <?php if(isset($client_note)) if($client_note->etoiles == 4) echo 'checked'; ?> />
+                      <input type="radio" id="star4" name="rating" value="4" <?php if (isset($client_note)) if ($client_note->etoiles == 4) echo 'checked'; ?> />
                       <label class="full" for="star4" title="Assez bien - 4 stars"></label>
-                      <input type="radio" id="star3half" name="rating" value="3.5" <?php if(isset($client_note)) if($client_note->etoiles == 3.5) echo 'checked'; ?> />
+                      <input type="radio" id="star3half" name="rating" value="3.5" <?php if (isset($client_note)) if ($client_note->etoiles == 3.5) echo 'checked'; ?> />
                       <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                      <input type="radio" id="star3" name="rating" value="3" <?php if(isset($client_note)) if($client_note->etoiles == 3) echo 'checked'; ?> />
+                      <input type="radio" id="star3" name="rating" value="3" <?php if (isset($client_note)) if ($client_note->etoiles == 3) echo 'checked'; ?> />
                       <label class="full" for="star3" title="Meh - 3 stars"></label>
-                      <input type="radio" id="star2half" name="rating" value="2.5" <?php if(isset($client_note)) if($client_note->etoiles == 2.5) echo 'checked'; ?>/>
+                      <input type="radio" id="star2half" name="rating" value="2.5" <?php if (isset($client_note)) if ($client_note->etoiles == 2.5) echo 'checked'; ?>/>
                       <label class="half" for="star2half" title="Un peu mauvais- 2.5 stars"></label>
-                      <input type="radio" id="star2" name="rating" value="2" <?php if(isset($client_note)) if($client_note->etoiles == 2) echo 'checked'; ?>/>
+                      <input type="radio" id="star2" name="rating" value="2" <?php if (isset($client_note)) if ($client_note->etoiles == 2) echo 'checked'; ?>/>
                       <label class="full" for="star2" title="Un peu mauvais - 2 stars"></label>
-                      <input type="radio" id="star1half" name="rating" value="1.5" <?php if(isset($client_note)) if($client_note->etoiles == 1.5) echo 'checked'; ?>/>
+                      <input type="radio" id="star1half" name="rating" value="1.5" <?php if (isset($client_note)) if ($client_note->etoiles == 1.5) echo 'checked'; ?>/>
                       <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                      <input type="radio" id="star1" name="rating" value="1" <?php if(isset($client_note)) if($client_note->etoiles == 1) echo 'checked'; ?> />
+                      <input type="radio" id="star1" name="rating" value="1" <?php if (isset($client_note)) if ($client_note->etoiles == 1) echo 'checked'; ?> />
                       <label class="full" for="star1" title="mauvais - 1 star"></label>
-                      <input type="radio" id="starhalf" name="rating" value="0.5" <?php if(isset($client_note)) if($client_note->etoiles == 0.5) echo 'checked'; ?>/>
+                      <input type="radio" id="starhalf" name="rating" value="0.5" <?php if (isset($client_note)) if ($client_note->etoiles == 0.5) echo 'checked'; ?>/>
                       <label class="half" for="starhalf" title="mauvais - 0.5 stars"></label>
                     </fieldset>
                     @isset($client_note)
                       <input type="hidden" name="id" value="{{ $client_note->id }}">
                     @endisset
                     <span class="arrow" style="margin-left: 5px;"><a href="@isset($client_note) {{ route('produit.update.note', ['produit' =>
-                        $produit->id]) }} @else {{ route('produit.noter', ['produit' => $produit->id]) }} @endisset"  onclick="event.preventDefault(); document
+                        $produit->id]) }} @else {{ route('produit.noter', ['produit' => $produit->id]) }} @endisset" onclick="event.preventDefault(); document
                         .getElementById('rate-form').submit();"><i class="fas fa-chevron-right"></i></a></span>
                   </form>
                 </h4>
@@ -143,7 +143,9 @@
                         <img src='{{ URL::asset("assets/img/farms/{$produit->ferme->image}")}}' class="img-fluid full-width" alt="testimonial-img">
                         <div class="overlay">
                           <div class="brand-logo">
-                            <img src='{{ URL::asset("assets/img/user/{$produit->ferme->client->photo}") }}' class="img-fluid" alt="logo">
+                            <a href="{{ route('profil', ['id' => $produit->ferme->client->id]) }}">
+                              <img src='{{ URL::asset("assets/img/user/{$produit->ferme->client->photo}") }}' class="img-fluid" alt="user-profile">
+                            </a>
                           </div>
                         </div>
                       </div>

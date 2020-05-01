@@ -32,8 +32,8 @@ Route::get('ferme/update/{id}', 'fermeController@update')->name('ferme.update');
 Route::get('ferme/delete/{id}', 'fermeController@delete')->name('ferme.delete');
 //route ferme avis
 Route::post('ferme/donner/avis/{ferme}', 'fermeController@donner_avis')->middleware('auth')->name('ferme.donner.avis');
-Route::post('ferme/update/avis/{ferme}', 'fermeController@update_avis')->middleware('auth')->name('ferme.update.avis');
-Route::get('ferme/delete/avis/{id}', 'fermeController@delete_avis')->middleware('auth')->name('ferme.delete.avis');
+Route::post('ferme/update/avis/{ferme}', 'fermeController@update_avis')->middleware('agriculteur')->name('ferme.update.avis');
+Route::get('ferme/delete/avis/{id}', 'fermeController@delete_avis')->middleware('agriculteur')->name('ferme.delete.avis');
 
 #route forum
 Route::get('forums', 'forumController@show')->name('forums');
@@ -54,7 +54,7 @@ Route::post('forum/commentaire/reponde/update/{forum}/{id}', 'forumController@re
 Route::get('forum/commentaire/reponde/delete/{id}', 'forumController@reply_delete')->middleware('auth')->name('forum.commentaire.reponde.delete');
 
 #route profil
-Route::get('profil/{id}', 'clientController@show')->middleware('auth')->name('profil');
+Route::get('profil/{id}', 'clientController@show')->name('profil');
 Route::get('profil/update/form', 'clientController@form')->middleware('auth')->name('profil.update.form');
 Route::post('profil/update', 'clientController@update')->middleware('auth')->name('profil.update');
 Route::get('profil/delete', 'clientController@delete')->middleware('auth')->name('profil.delete');
