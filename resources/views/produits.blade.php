@@ -258,20 +258,11 @@
                           @inject('note', 'App\Http\Controllers\PanierController')
                           <a href="{{ route('produit', ['id' => $produit->id]) }}" class="btn-first white-btn">Afficher plus</a>
                           @if($note->exist($produit->id)->isEmpty())
-                            <form method="POST" action="{{ route('panier.add', ['id' => $produit->id]) }}" id="panier-add-form-{{ $produit->id }}">
-                              {{ csrf_field() }}
-                              <a href="{{ route('panier.add', ['id' => $produit->id]) }}" class="btn-second white-btn" title="Ajouter au panier" style="margin-left:
-                              -100px;" onclick="event.preventDefault(); document.getElementById('panier-add-form-{{ $produit->id }}').submit();"><i class="fas
-                              fa-shopping-bag"></i></a>
-                            </form>
+                            <a href="{{ route('panier.add', ['id' => $produit->id]) }}" class="btn-second white-btn" title="Ajouter au panier" style="margin-left:
+                              -100px;"><i class="fas fa-shopping-bag"></i></a>
                           @else
-                            <form method="POST" action="{{ route('panier.destroy', ['id' => $produit->id]) }}" id="panier-destroy-form-{{ $produit->id }}">
-                              {{ csrf_field() }}
-                              <a href="{{ route('panier.destroy', ['id' => $produit->id]) }}" class="btn-second btn-submit text-light" title="Supprimer du panier"
-                                 style="margin-left: -100px;" onclick="event.preventDefault(); document.getElementById('panier-destroy-form-{{ $produit->id }}').submit
-                                ();">
-                                <i class="fas fa-shopping-bag"></i></a>
-                            </form>
+                            <a href="{{ route('panier.destroy', ['id' => $produit->id]) }}" class="btn-second btn-submit text-light" title="Supprimer du panier"
+                               style="margin-left: -100px;"><i class="fas fa-shopping-bag"></i></a>
                           @endif
                           <div class="restaurent-product-price">
                             <h6 class="text-success fw-600 no-margin">{{$produit->prix}}<sup>dt</sup></h6>

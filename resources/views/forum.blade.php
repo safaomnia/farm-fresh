@@ -79,7 +79,7 @@
                       <div class="reviewer-name" style="margin: -40px 0 30px 70px;">
                         <p class="text-light-black fw-600">{{ $forum->client->prenom }} {{ $forum->client->nom }}
                           <small class="text-light-white fw-500">{{ $forum->client->adresse }}</small><br>
-                        <small class="text-light-white">Publié {{ $time->inWords($forum->created_at) }}</small>
+                          <small class="text-light-white">Publié {{ $time->inWords($forum->created_at) }}</small>
                       </div>
                     </div>
                   </div>
@@ -100,12 +100,35 @@
                           </div>
                         </div>
                         <div class="review-date"><span class="text-light-white">{{ $time->inWords($commentaire->pivot->created_at) }}</span>
-                            <a href="{{ route('forum.commentaire.form', ['ferme'=>$forum->id, 'id' => $commentaire->pivot->id]) }}">Modifier</a>
-                            <a href="{{ route('forum.commentaire.delete', ['id' => $commentaire->pivot->id]) }}" onclick="return confirm('Voulez-vous sûr de supprimer?')">Supprimer</a>
+                          @auth
+                            @if(Auth::user()->id == $commentaire->pivot->client_id)
+                              <a href="{{ route('forum.commentaire.form', ['ferme'=>$forum->id, 'id' => $commentaire->pivot->id]) }}">Modifier</a>
+                              <a href="{{ route('forum.commentaire.delete', ['id' => $commentaire->pivot->id]) }}"
+                                 onclick="return confirm('Voulez-vous sûr de supprimer?')">Supprimer</a>
+                            @endif
+                          @endauth
                         </div>
                       </div>
                       <p class="text-light-black">{{ $commentaire->pivot->commentaire }}</p>
                     </div>
+                    <form method="POST" action="@if(isset($Reply)) {{ route('forum.commentaire.reponde.update', ['forum' => $forum->id, 'id' => $Reply->id]) }} @else {{
+                    route('forum.commentaire.repondre', ['commentaire' =>  $commentaire->pivot->id]) }} @endif">
+                      {{ csrf_field() }}
+                      <div class="input-group col-xl-12" style="margin: 20px 0 20px 30px;">
+                        <div class="col-xl-2">
+                          <?php $photo = Auth::user()->photo ?>
+                          <img src='{{ URL::asset("assets/img/user/$photo") }}' width="100" class="rounded-circle" alt="#">
+                        </div>
+                        <div class="input-group2 col-xl-8">
+                          <input type="text" name="reponde" class="form-control form-control-submit" value="@if(isset($Reply) && $Reply_commentaire->id ==
+                          $commentaire->pivot->id) {{  $Reply->reponde }} @else echo '' @endif">
+                        </div>
+                        <div class="input-group-append col-xl-2">
+                          <button class="btn-second btn-submit full-width" type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                      </div>
+                    </form>
+                    <div class="u-line" style="margin:0 0 10px 60px;"></div>
                     @foreach($commentaire->pivot->repondes as $reponde)
                       <div class="review-box comment-reply u-line">
                         <div class="review-user">
@@ -115,6 +138,14 @@
                               <p class="text-light-black fw-600">{{ $reponde->prenom }} {{ $reponde->nom }}
                                 <small class="text-light-white fw-500">{{ $reponde->adresse }}</small>
                             </div>
+                            @auth
+                              @if(Auth::user()->id == $reponde->pivot->client_id)
+                                <a href="{{ route('forum.commentaire.reponde.form', ['forum'=>$forum->id, 'commentaire' => $commentaire->pivot->id, 'id'=>
+                                $reponde->pivot->id]) }}">Modifier</a>
+                                <a href="{{ route('forum.commentaire.reponde.delete', ['id' => $reponde->pivot->id]) }}"
+                                   onclick="return confirm('Voulez-vous sûr de supprimer?')">Supprimer</a>
+                              @endif
+                            @endauth
                           </div>
                           <div class="review-date"><span class="text-light-white">{{ $time->inWords($reponde->pivot->created_at) }}</span>
                           </div>

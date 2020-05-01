@@ -28,7 +28,7 @@ class PanierController extends Controller
   }
   public function destroy($produit)
   {
-    panier::find($this->panier->id)->produits()->where(['panier_id' => $this->panier->id, 'produit_id' => $produit])->detach();
+    panier::find($this->panier->id)->produits()->detach($produit);
     return redirect()->back();
   }
 

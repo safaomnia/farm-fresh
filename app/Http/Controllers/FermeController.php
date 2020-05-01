@@ -45,6 +45,19 @@ class FermeController extends Controller
       ]);
   }
 
+  public function form($id)
+  {
+    return  view('ferme-form',['ferme' => ferme::find($id)]);
+  }
+
+  public function delete($id)
+  {
+    $ferme = ferme::find($id);
+    $ferme->avis()->delete();
+    $ferme->produits()->delete();
+    $ferme->delete();
+    return redirect()->back();
+  }
   //avis functions
   public function donner_avis($ferme)
   {

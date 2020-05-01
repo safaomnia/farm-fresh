@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="keywords" content="#">
   <meta name="description" content="#">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>{{ $title ?? 'Farm Fresh' }}</title>
   <!-- Fav and touch icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="#">
@@ -115,10 +116,10 @@
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a href="{{ route('profil', ['id' => Auth::user()->id]) }}">
                         <div class="icon"><i class="flaticon-user"></i>
                         </div>
-                        <span class="details">Account</span>
+                        <span class="details">Compte</span>
                       </a>
                     </li>
                     <li>
@@ -387,5 +388,6 @@
 <!-- organza Js -->
 <script src="{{ URL::asset('assets/js/organza.js')}}"></script>
 <!-- /Place all Scripts Here -->
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 </body>
 </html>

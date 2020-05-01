@@ -475,7 +475,8 @@
                         </a>
                       </div>
                       <div class="delete-btn">
-                        <a href="#" class="text-dark-white"> <i class="far fa-trash-alt"></i>
+                        <a href="{{ route('panier.destroy', ['produit' => $produit->id]) }}" class="text-dark-white" onclick="return confirm('Voulez-vous sûr de ' +
+                         'supprimer?')"> <i class="far fa-trash-alt"></i>
                         </a>
                       </div>
                       <div class="price"><a href="#" class="text-dark-white fw-500">

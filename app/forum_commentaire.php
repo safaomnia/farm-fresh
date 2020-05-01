@@ -11,6 +11,7 @@ class forum_commentaire extends Pivot
     return $this->belongsToMany(User::class, 'forum_commentaire_reponde', 'forum_commentaire_id', 'client_id')
       ->withPivot('reponde', 'id')
       ->using(forum_commentaire_reponde::class)
+      ->orderBy('created_at', 'desc')
       ->withTimestamps();
   }
 }

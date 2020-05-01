@@ -6,7 +6,7 @@
     <div class="blog-page-banner"></div>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-lg-10 blog-inner clearfix" style="margin-left: 100px;">
+        <div class="col-lg-8 blog-inner clearfix" style="margin-left: 200px;">
           <div class="main-box padding-20 full-width">
             <div class="breadcrumb-wrpr">
               <ul class="breadcrumb">
@@ -56,10 +56,13 @@
                             </div>
                           </div>
                           <div class="review-date"><span class="text-light-white">{{ $time->inWords($forum->created_at) }}</span>
-                            @if(Auth::user()->id == $forum->client_id)
-                              <a href="{{ route('forum.delete', ['id' => $forum->id]) }}" onclick="return confirm('Voulez-vous sûr de supprimer ce forum?')">Supprimer</a>
-                              <a href="{{ route('forum.update', ['id' => $forum->id]) }}"> Modifier</a>
-                            @endif
+                            @auth
+                              @if(Auth::user()->id == $forum->client_id)
+                                <a href="{{ route('forum.delete', ['id' => $forum->id]) }}"
+                                   onclick="return confirm('Voulez-vous sûr de supprimer ce forum?')">Supprimer</a>
+                                <a href="{{ route('forum.update', ['id' => $forum->id]) }}"> Modifier</a>
+                              @endif
+                            @endauth
                           </div>
                         </div>
                         <div class="ratings">
