@@ -8,9 +8,8 @@
 
 #route boot
 Auth::routes();
-Route::get('/', function () {
-  return view('home');
-})->name('home');
+Route::view('/', 'home');
+Route::view('/home', 'home');
 
 #route produit
 Route::get('produits', 'produitController@index')->name('product.index');

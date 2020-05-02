@@ -122,6 +122,24 @@
                         <span class="details">Compte</span>
                       </a>
                     </li>
+                    @can('viewAny', \App\ferme::class)
+                      <li>
+                        <a href="#">
+                          <div class="icon"><i class="flaticon-user"></i>
+                          </div>
+                          <span class="details">mes ferme</span>
+                        </a>
+                      </li>
+                    @endcan
+                    @can('viewAny', \App\produit::class)
+                      <li>
+                        <a href="#">
+                          <div class="icon"><i class="flaticon-user"></i>
+                          </div>
+                          <span class="details">mes produits</span>
+                        </a>
+                      </li>
+                    @endcan
                     <li>
                       <a href="#">
                         <div class="icon"><i class="flaticon-board-games-with-roles"></i>
@@ -130,7 +148,8 @@
                       </a>
                     </li>
                   </ul>
-                  <div class="user-footer"><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnecter</a>
+                  <div class="user-footer"><a href="{{ route('logout') }}"
+                                              onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnecter</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
                   </div>
                 </div>
