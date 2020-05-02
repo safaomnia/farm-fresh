@@ -324,7 +324,7 @@
                                 <div class="restaurent-product-caption-box"><span class="text-light-white">{{ substr($produit->description, 0, 100) }}...</span>
                                 </div>
                                 <div class="restaurent-tags-price">
-                                  <a href="{{ route('produit', ['id' => $produit->id]) }}" class="btn-first white-btn">Afficher plus</a>
+                                  <a href="{{ route('product.show', ['id' => $produit->id]) }}" class="btn-first white-btn">Afficher plus</a>
                                   <div class="restaurent-product-price">
                                     <h6 class="text-success fw-600 no-margin">{{$produit->prix}}<sup>dt</sup></h6>
                                   </div>
@@ -630,7 +630,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="review-date"><span class="text-light-white"><a href="{{ route('ferme.delete.avis', ['id' => $ferme_avis->id]) }}" onclick="return confirm
+                  <div class="review-date"><span class="text-light-white"><a href="{{ route('notice.delete', ['id' => $ferme_avis->id]) }}" onclick="return confirm
                   ('Voulez-vous sûr de supprimer votre avis?')">Supprimer </a></span>
                   </div>
                 </div>
@@ -638,8 +638,8 @@
               </div>
             @endisset
             <div class="comment-form">
-              <form method="POST" action="@isset($ferme_avis) {{ route('ferme.update.avis', ['ferme' =>
-                        $ferme->id]) }} @else {{ route('ferme.donner.avis', ['ferme' => $ferme->id]) }} @endisset">
+              <form method="POST" action="@isset($ferme_avis) {{ route('notice.update', ['ferme' =>
+                        $ferme->id]) }} @else {{ route('notice.store', ['ferme' => $ferme->id]) }} @endisset">
                 {{ csrf_field() }}
                 <div class="row">
                   @auth

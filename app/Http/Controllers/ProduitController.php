@@ -17,9 +17,10 @@ class ProduitController extends Controller
   public function __construct()
   {
     $this->time = $time = new \Westsworld\TimeAgo(new \Westsworld\TimeAgo\Translations\Fr());
+    $this->middleware('auth')->only('note_store', 'note_update');
   }
 
-  public function show()
+  public function index()
   {
     return view('produits',
       [
@@ -41,7 +42,7 @@ class ProduitController extends Controller
       ]);
   }
 
-  public function details($id)
+  public function show($id)
   {
     if (Auth::check())
       if ((produit_note::where(['produit_id' => $id, 'client_id' => Auth::user()->id])->first()) == NULL) $note = NULL;
@@ -57,13 +58,13 @@ class ProduitController extends Controller
       ]);
   }
 
-  public function noter($produit)
+  public function note_store($produit)
   {
     User::find(Auth::user()->id)->produitNotes()->attach('', ['etoiles' => request('rating'), 'produit_id' => $produit]);
     return redirect()->back();
   }
 
-  public function update_note()
+  public function note_update()
   {
     $produit_note = produit_note::find(\request('id'));
     $produit_note->etoiles = request('rating');

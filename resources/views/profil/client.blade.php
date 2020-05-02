@@ -89,7 +89,7 @@
                   </div>
                   @auth
                     @if($client->id == Auth::user()->id)
-                      <a href="{{ route('profil.update.form') }}">
+                      <a href="{{ route('profile.edit') }}">
                         <div class="card-footer p-0 modify-order">
                           <button class="text-custom-white full-width fw-500 bg-light-green"><i class="fas fa-chevron-left mr-2"></i> Modifier profil</button>
                         </div>

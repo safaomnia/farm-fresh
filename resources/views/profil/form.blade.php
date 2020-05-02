@@ -13,10 +13,10 @@
                 <div class="col-xl-12 col-lg-7">
                   <div class="step-content">
                     <div class="step-tab-panel active" id="steppanel1">
-                      <form method="POST" action="{{ route('profil.update') }}">
+                      <form method="POST" action="{{ route('profile.update') }}">
                         {{ csrf_field() }}
                         <div class="general-sec">
-                          <div class="row u-line">
+                          <div class="row">
                             <div class="col-12">
                               <h5 class="text-light-black fw-700">Général Information</h5>
                             </div>
@@ -70,47 +70,49 @@
                               </div>
                             </div>
                           </div>
-                          <div class="row" style="margin-top: 30px;">
-                            <div class="col-12">
-                              <h5 class="text-light-black fw-700">Additional Information</h5>
-                            </div>
-                            @isset($client->livreur)
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label class="text-light-black fw-700">Nom de l'entreprise</label>
-                                  <input type="text" name="nom_entreprise" class="form-control form-control-submit" value="{{ $client->livreur->nom_entreprise  }}">
-                                </div>
+                          @if($client->type != 'client')
+                            <div class="row" style="margin-top: 30px;">
+                              <div class="col-12">
+                                <h5 class="text-light-black fw-700">Additional Information</h5>
                               </div>
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label class="text-light-black fw-700">Télephone de l'entreprise</label>
-                                  <input type="text" name="telephone_entreprise" class="form-control form-control-submit" value="{{
+                              @isset($client->livreur)
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label class="text-light-black fw-700">Nom de l'entreprise</label>
+                                    <input type="text" name="nom_entreprise" class="form-control form-control-submit" value="{{ $client->livreur->nom_entreprise  }}">
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label class="text-light-black fw-700">Télephone de l'entreprise</label>
+                                    <input type="text" name="telephone_entreprise" class="form-control form-control-submit" value="{{
                                   $client->livreur->telephone_entreprise  }}">
+                                  </div>
                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label class="text-light-black fw-700">Adresse de l'entreprise</label>
-                                  <input type="text" name="adresse_entreprise" class="form-control form-control-submit" value="{{ $client->livreur->adresse_entreprise
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label class="text-light-black fw-700">Adresse de l'entreprise</label>
+                                    <input type="text" name="adresse_entreprise" class="form-control form-control-submit" value="{{ $client->livreur->adresse_entreprise
                                   }}">
+                                  </div>
                                 </div>
-                              </div>
-                            @endisset
-                            @isset($client->agriculteur)
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label class="text-light-black fw-700">Domaine</label>
-                                  <textarea type="text" name="domaine" class="form-control form-control-submit" rows="3">{{ $client->agriculteur->domaine }}</textarea>
+                              @endisset
+                              @isset($client->agriculteur)
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label class="text-light-black fw-700">Domaine</label>
+                                    <textarea type="text" name="domaine" class="form-control form-control-submit" rows="3">{{ $client->agriculteur->domaine }}</textarea>
+                                  </div>
                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label class="text-light-black fw-700">Certification</label>
-                                  <input type="text" name="certificate" class="form-control form-control-submit" value="{{ $client->agriculteur->certificate }}">
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label class="text-light-black fw-700">Certification</label>
+                                    <input type="text" name="certificate" class="form-control form-control-submit" value="{{ $client->agriculteur->certificate }}">
+                                  </div>
                                 </div>
-                              </div>
-                            @endisset
-                          </div>
+                              @endisset
+                            </div>
+                          @endif
                         </div>
                         <button class="btn-second btn-submit">Modifier</button>
                       </form>

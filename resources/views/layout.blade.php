@@ -67,28 +67,28 @@
           </div>
           <div class="right-side fw-700 mainNavCol">
             <div class="gem-points">
-              <a href="{{ route('produits') }}">
+              <a href="{{ route('product.index') }}">
                 <span>Produit</span>
               </a>
             </div>
             <div class="gem-points">
-              <a href="{{ route('fermes') }}">
+              <a href="{{ route('farm.index') }}">
                 <span>Ferme</span>
               </a>
             </div>
             <div class="gem-points">
-              <a href="{{ route('forums') }}">
+              <a href="{{ route('forum.index') }}">
                 <span>Forum</span>
               </a>
             </div>
             @guest
               <div class="gem-points">
-                <a href="/register">
+                <a href="{{ route('register') }}">
                   <span>S'inscrire</span>
                 </a>
               </div>
               <div class="gem-points">
-                <a href="/login">
+                <a href="{{ route('login') }}">
                   <span>S'identifer</span>
                 </a>
               </div>
@@ -116,7 +116,7 @@
                       </a>
                     </li>
                     <li>
-                      <a href="{{ route('profil', ['id' => Auth::user()->id]) }}">
+                      <a href="{{ route('profile.show', ['id' => Auth::user()->id]) }}">
                         <div class="icon"><i class="flaticon-user"></i>
                         </div>
                         <span class="details">Compte</span>
@@ -236,7 +236,7 @@
                       </div>-->
                     </div>
                   </div>
-                  <div class="card-footer padding-15"><a href="{{ route('panier') }}" class="btn-first green-btn text-custom-white full-width fw-500">Commander</a>
+                  <div class="card-footer padding-15"><a href="{{ route('card.show') }}" class="btn-first green-btn text-custom-white full-width fw-500">Commander</a>
                   </div>
                 </div>
               </div>

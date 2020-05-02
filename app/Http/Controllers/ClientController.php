@@ -16,6 +16,7 @@ class ClientController extends Controller
   public function __construct()
   {
     $this->time = $time = new \Westsworld\TimeAgo(new \Westsworld\TimeAgo\Translations\Fr());
+    $this->middleware('auth')->except('show');
   }
 
   public function show($id)
@@ -30,7 +31,7 @@ class ClientController extends Controller
     ]);
   }
 
-  public function form()
+  public function edit()
   {
     return view('profil.form', [
       'client' => User::find(Auth::user()->id)

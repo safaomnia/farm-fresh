@@ -66,7 +66,7 @@
                     <div class="post-content padding-20">
                       <h5><a href="blog-details.html" class="text-light-black">{{ $ferme->name }}</a></h5>
                       <p>{{ substr($ferme->description, 0, 100) }}...</p>
-                      <div class="blog-link-wrap"><a href="{{ route('ferme', ['id' => $ferme->id]) }}" class="btn-first white-btn">Afficher plus</a>
+                      <div class="blog-link-wrap"><a href="{{ route('farm.show', ['id' => $ferme->id]) }}" class="btn-first white-btn">Afficher plus</a>
                       </div>
                     </div>
                   </article>

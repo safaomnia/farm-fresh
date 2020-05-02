@@ -16,6 +16,7 @@ class ferme extends Model
     return $this->belongsToMany(User::class, 'ferme_avis', 'ferme_id', 'client_id')
       ->withPivot('avis', 'etoiles')
       ->using(ferme_avis::class)
+      ->orderBy('created_at', 'desc')
       ->withTimestamps();
   }
 

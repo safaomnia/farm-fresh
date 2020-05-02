@@ -18,7 +18,7 @@
                     <ul>
                       @foreach($categories as $categorie)
                         <li class="pb-xl-20 u-line mb-xl-20">
-                          <a href="{{ route('produits.categorie', ['id'=> $categorie->id]) }}" class="text-light-black fw-600">{{ $categorie->nom }}
+                          <a href="{{ route('product.categorie', ['id'=> $categorie->id]) }}" class="text-light-black fw-600">{{ $categorie->nom }}
                             <span class="text-light-white fw-400">
                               (
                                 @inject('nbp', 'App\Http\Controllers\ProduitController')
@@ -40,7 +40,7 @@
             <div class="breadcrumb-wrpr">
               <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index-2.html" class="text-light-black">Acceuil</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('produits') }}" class="text-light-black">Produit</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('product.index') }}" class="text-light-black">Produit</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ $produit->nom }}</li>
               </ul>
             </div>
@@ -71,11 +71,11 @@
                   <div class="restaurent-tags-price">
                     @inject('note', 'App\Http\Controllers\PanierController')
                     @if($note->exist($produit->id)->isEmpty())
-                      <a href="{{ route('panier.add', ['id' => $produit->id]) }}" class="btn-second white-btn" title="Ajouter au panier">
+                      <a href="{{ route('card.store', ['id' => $produit->id]) }}" class="btn-second white-btn" title="Ajouter au panier">
                         <i class="fas fa-shopping-bag"></i>
                       </a>
                     @else
-                      <a href="{{ route('panier.destroy', ['id' => $produit->id]) }}" class="btn-second btn-submit text-light" title="Supprimer du panier">
+                      <a href="{{ route('card.delete', ['id' => $produit->id]) }}" class="btn-second btn-submit text-light" title="Supprimer du panier">
                         <i class="fas fa-shopping-bag"></i></a>
                     @endif
                     <div class="restaurent-product-price" style="margin: -30px 0 0 30px;">
@@ -91,8 +91,6 @@
         <aside class="col-lg-3">
           <div class="side-bar section-padding pb-0">
             <div class="advertisement-slider swiper-container h-auto mb-xl-20">
-
-
               <div class="rating-box">
                 @isset($client_note)
                   <center><h3 class="text-light-black fw-500">Votre note sur {{ $produit->nom }}  </h3></center>
@@ -101,8 +99,8 @@
                 @endisset
                 <h4>
                   <form method="POST"
-                        action="@isset($client_note) {{ route('produit.update.note', ['produit' =>
-                        $produit->id]) }} @else {{ route('produit.noter', ['produit' => $produit->id]) }} @endisset" id="rate-form">
+                        action="@isset($client_note) {{ route('note.store', ['produit' =>
+                        $produit->id]) }} @else {{ route('note.store', ['produit' => $produit->id]) }} @endisset" id="rate-form">
                     {{ csrf_field() }}
                     <fieldset class="rating" style="margin: -10px 0 10px 40px;">
                       <input type="radio" id="star5" name="rating" value="5" <?php if (isset($client_note)) if ($client_note->etoiles == 5) echo 'checked'; ?> />
@@ -129,8 +127,8 @@
                     @isset($client_note)
                       <input type="hidden" name="id" value="{{ $client_note->id }}">
                     @endisset
-                    <span class="arrow" style="margin-left: 5px;"><a href="@isset($client_note) {{ route('produit.update.note', ['produit' =>
-                        $produit->id]) }} @else {{ route('produit.noter', ['produit' => $produit->id]) }} @endisset" onclick="event.preventDefault(); document
+                    <span class="arrow" style="margin-left: 5px;"><a href="@isset($client_note) {{ route('note.store', ['produit' =>
+                        $produit->id]) }} @else {{ route('note.store', ['produit' => $produit->id]) }} @endisset" onclick="event.preventDefault(); document
                         .getElementById('rate-form').submit();"><i class="fas fa-chevron-right"></i></a></span>
                   </form>
                 </h4>
@@ -143,7 +141,7 @@
                         <img src='{{ URL::asset("assets/img/farms/{$produit->ferme->image}")}}' class="img-fluid full-width" alt="testimonial-img">
                         <div class="overlay">
                           <div class="brand-logo">
-                            <a href="{{ route('profil', ['id' => $produit->ferme->client->id]) }}">
+                            <a href="{{ route('profile.show', ['id' => $produit->ferme->client->id]) }}">
                               <img src='{{ URL::asset("assets/img/user/{$produit->ferme->client->photo}") }}' class="img-fluid" alt="user-profile">
                             </a>
                           </div>
@@ -162,10 +160,10 @@
                               <i class="fas fa-star-half-alt text-yellow"></i>
                             @endif
                             <span class="text-light-black fs-12 rate-data">{{ $note->etoiles($produit->ferme->id) }} évaluations</span>
-                          </div>
+                          </div> <br>
                           <p class="text-light-black">{{ $produit->ferme->client->prenom }} {{ $produit->ferme->client->nom }}</p>
                           <p class="text-light-white fw-100">{{ substr($produit->ferme->description, 0, 50) }}...</p>
-                          <a href="{{ route('ferme', ['id' => $produit->ferme->id]) }}" class="btn-first white-btn">Afficher plus</a>
+                          <a href="{{ route('farm.show', ['id' => $produit->ferme->id]) }}" class="btn-first white-btn">Afficher plus</a>
                         </div>
                       </div>
                     </div>

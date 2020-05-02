@@ -102,8 +102,8 @@
                         <div class="review-date"><span class="text-light-white">{{ $time->inWords($commentaire->pivot->created_at) }}</span>
                           @auth
                             @if(Auth::user()->id == $commentaire->pivot->client_id)
-                              <a href="{{ route('forum.commentaire.form', ['ferme'=>$forum->id, 'id' => $commentaire->pivot->id]) }}">Modifier</a>
-                              <a href="{{ route('forum.commentaire.delete', ['id' => $commentaire->pivot->id]) }}"
+                              <a href="{{ route('comment.edit', ['ferme'=>$forum->id, 'id' => $commentaire->pivot->id]) }}">Modifier</a>
+                              <a href="{{ route('comment.delete', ['id' => $commentaire->pivot->id]) }}"
                                  onclick="return confirm('Voulez-vous sûr de supprimer?')">Supprimer</a>
                             @endif
                           @endauth
@@ -111,8 +111,8 @@
                       </div>
                       <p class="text-light-black">{{ $commentaire->pivot->commentaire }}</p>
                     </div>
-                    <form method="POST" action="@if(isset($Reply)) {{ route('forum.commentaire.reponde.update', ['forum' => $forum->id, 'id' => $Reply->id]) }} @else {{
-                    route('forum.commentaire.repondre', ['commentaire' =>  $commentaire->pivot->id]) }} @endif">
+                    <form method="POST" action="@if(isset($Reply)) {{ route('reply.update', ['forum' => $forum->id, 'id' => $Reply->id]) }} @else {{
+                    route('reply.store', ['commentaire' =>  $commentaire->pivot->id]) }} @endif">
                       {{ csrf_field() }}
                       <div class="input-group col-xl-12" style="margin: 20px 0 20px 30px;">
                         <div class="col-xl-2">
@@ -140,9 +140,9 @@
                             </div>
                             @auth
                               @if(Auth::user()->id == $reponde->pivot->client_id)
-                                <a href="{{ route('forum.commentaire.reponde.form', ['forum'=>$forum->id, 'commentaire' => $commentaire->pivot->id, 'id'=>
+                                <a href="{{ route('reply.edit', ['forum'=>$forum->id, 'commentaire' => $commentaire->pivot->id, 'id'=>
                                 $reponde->pivot->id]) }}">Modifier</a>
-                                <a href="{{ route('forum.commentaire.reponde.delete', ['id' => $reponde->pivot->id]) }}"
+                                <a href="{{ route('reply.delete', ['id' => $reponde->pivot->id]) }}"
                                    onclick="return confirm('Voulez-vous sûr de supprimer?')">Supprimer</a>
                               @endif
                             @endauth
@@ -168,7 +168,7 @@
                   <div class="section-header-left">
                     <h3 class="text-light-black header-title">Commenter {{ $forum->theme }}</h3>
                   </div>
-                  <form method="POST" action="@isset($Commentaire) {{ route('forum.commentaire.update', ['id' => $Commentaire->id]) }} @else {{ route('forum.commenter',
+                  <form method="POST" action="@isset($Commentaire) {{ route('comment.update', ['id' => $Commentaire->id]) }} @else {{ route('comment.store',
                   ['ferme'
                   => $forum->id]) }} @endisset">
                     {{ csrf_field() }}

@@ -14,6 +14,7 @@ class PanierController extends Controller
   {
     $this->panier = panier::where('ipv4', $_SERVER['REMOTE_ADDR'] ?: ($_SERVER['HTTP_X_FORWARDED_FOR'] ?: $_SERVER['HTTP_CLIENT_IP']))->first();
   }
+
   public function show()
   {
     return view('panier',
@@ -21,18 +22,18 @@ class PanierController extends Controller
       'panier' => $this->panier
     ]);
   }
-  public function add($produit)
+  public function store($produit)
   {
     panier::find($this->panier->id)->produits()->attach('', ['produit_id' => $produit]);
     return redirect()->back();
   }
-  public function destroy($produit)
+  public function delete($produit)
   {
     panier::find($this->panier->id)->produits()->detach($produit);
     return redirect()->back();
   }
 
-  //autre function
+  //additionnal function
   public function exist($produit)
   {
     return produit_panier::where(['panier_id' => $this->panier->id, 'produit_id' => $produit])->get();

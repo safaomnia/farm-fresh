@@ -20,6 +20,7 @@ class produit extends Model
   {
     return $this->belongsToMany(User::class, 'commande', 'produit_id', 'client_id')
       ->using(commande::class)
+      ->orderBy('created_at', 'desc')
       ->withPivot('total', 'etat', 'livraison_id')
       ->withTimestamps();
   }
@@ -40,6 +41,7 @@ class produit extends Model
     return $this->belongsToMany(User::class, 'produit_note', 'produit_id', 'client_id')
       ->withPivot('etoiles')
       ->using(produit_note::class)
+      ->orderBy('created_at')
       ->withTimestamps();
   }
 }

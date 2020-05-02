@@ -13,60 +13,53 @@ Route::get('/', function () {
 })->name('home');
 
 #route produit
-Route::get('produits', 'produitController@show')->name('produits');
-Route::get('produits/categorie/{id}', 'produitController@categorie')->name('produits.categorie');
-Route::get('produit/{id}', 'produitController@details')->name('produit');
-Route::post('produit/noter/{produit}', 'produitController@noter')->middleware('auth')->name('produit.noter');
-Route::post('produit/update/note/{produit}', 'produitController@update_note')->middleware('auth')->name('produit.update.note');
+Route::get('produits', 'produitController@index')->name('product.index');
+Route::get('produits/categorie/{id}', 'produitController@categorie')->name('product.categorie');
+Route::get('produit/{id}', 'produitController@show')->name('product.show');
+Route::post('produit/noter/{produit}', 'produitController@note_store')->name('note.store');
+Route::post('produit/note/update/{produit}', 'produitController@note_update')->name('note.update');
 
 #route panier
-Route::get('panier', 'panierController@show')->name('panier');
-Route::get('panier/add/produit/{id}', 'panierController@add')->name('panier.add');
-Route::get('panier/destroy/produit/{id}', 'panierController@destroy')->name('panier.destroy');
+Route::get('panier', 'panierController@show')->name('card.show');
+Route::get('panier/add/produit/{id}', 'panierController@store')->name('card.store');
+Route::get('panier/destroy/produit/{id}', 'panierController@delete')->name('card.delete');
 
 #route ferme
-Route::get('fermes', 'fermeController@show')->name('fermes');
-Route::get('ferme/{id}', 'fermeController@details')->name('ferme');
-Route::get('ferme/update/form/{id}', 'fermeController@form')->name('ferme.update.form');
-Route::get('ferme/update/{id}', 'fermeController@update')->name('ferme.update');
-Route::get('ferme/delete/{id}', 'fermeController@delete')->name('ferme.delete');
+Route::get('fermes', 'fermeController@index')->name('farm.index');
+Route::get('ferme/{id}', 'fermeController@show')->name('farm.show');
+Route::PUT('ferme/update/{id}', 'fermeController@create')->name('farm.create');
+Route::POST('ferme/update/{id}', 'fermeController@store')->name('farm.store');
+Route::get('ferme/update/form/{id}', 'fermeController@edit')->name('farm.edit');
+Route::POST('ferme/update/{id}', 'fermeController@update')->name('farm.update');
+Route::get('ferme/delete/{id}', 'fermeController@delete')->name('farm.delete');
+
 //route ferme avis
-Route::post('ferme/donner/avis/{ferme}', 'fermeController@donner_avis')->middleware('auth')->name('ferme.donner.avis');
-Route::post('ferme/update/avis/{ferme}', 'fermeController@update_avis')->middleware('agriculteur')->name('ferme.update.avis');
-Route::get('ferme/delete/avis/{id}', 'fermeController@delete_avis')->middleware('agriculteur')->name('ferme.delete.avis');
+Route::post('ferme/donner/avis/{ferme}', 'ferme_avisController@store')->name('notice.store');
+Route::post('ferme/update/avis/{ferme}', 'ferme_avisController@update')->name('notice.update');
+Route::get('ferme/delete/avis/{id}', 'ferme_avisController@delete')->name('notice.delete');
 
 #route forum
-Route::get('forums', 'forumController@show')->name('forums');
-Route::get('forum/{id}', 'forumController@details')->name('forum');
-Route::post('forum/publier', 'forumController@add')->name('forum.publier');
-Route::get('forum/update/{id}', 'forumController@form')->name('forum.update.form');
+Route::get('forums', 'forumController@index')->name('forum.index');
+Route::get('forum/{id}', 'forumController@show')->name('forum.show');
+Route::post('forum/publier', 'forumController@store')->name('forum.store');
+Route::get('forum/update/{id}', 'forumController@edit')->name('forum.edit');
 Route::post('forum/update/{id}', 'forumController@update')->name('forum.update');
 Route::get('forum/delete/{id}', 'forumController@delete')->name('forum.delete');
+
 //route forum commentaire
-Route::post('forum/commenter/{forum}', 'forumController@commenter')->middleware('auth')->name('forum.commenter');
-Route::get('forum/commentaire/update/{forum}/{id}', 'forumController@commentaire_form')->middleware('auth')->name('forum.commentaire.form');
-Route::post('forum/commentaire/update/{id}', 'forumController@commentaire_update')->middleware('auth')->name('forum.commentaire.update');
-Route::get('forum/commentaire/delete/{id}', 'forumController@commentaire_delete')->middleware('auth')->name('forum.commentaire.delete');
+Route::post('forum/commenter/{forum}', 'forum_commentaireController@store')->name('comment.store');
+Route::get('forum/commentaire/update/{forum}/{id}', 'forum_commentaireController@edit')->name('comment.edit');
+Route::post('forum/commentaire/update/{id}', 'forum_commentaireController@update')->name('comment.update');
+Route::get('forum/commentaire/delete/{id}', 'forum_commentaireController@delete')->name('comment.delete');
+
 //route forum commentaire repondes
-Route::post('forum/commentaire/reponde/{commentaire}', 'forumController@reply')->middleware('auth')->name('forum.commentaire.repondre');
-Route::get('forum/commentaire/reponde/update/{forum}/{commentaire}/{id}', 'forumController@reply_form')->middleware('auth')->name('forum.commentaire.reponde.form');
-Route::post('forum/commentaire/reponde/update/{forum}/{id}', 'forumController@reply_update')->middleware('auth')->name('forum.commentaire.reponde.update');
-Route::get('forum/commentaire/reponde/delete/{id}', 'forumController@reply_delete')->middleware('auth')->name('forum.commentaire.reponde.delete');
+Route::post('forum/commentaire/reponde/{commentaire}', 'forum_commentaire_repondeController@store')->name('reply.store');
+Route::get('forum/commentaire/reponde/update/{forum}/{commentaire}/{id}', 'forum_commentaire_repondeController@edit')->name('reply.edit');
+Route::post('forum/commentaire/reponde/update/{forum}/{id}', 'forum_commentaire_repondeController@update')->name('reply.update');
+Route::get('forum/commentaire/reponde/delete/{id}', 'forum_commentaire_repondeController@delete')->name('reply.delete');
 
 #route profil
-Route::get('profil/{id}', 'clientController@show')->name('profil');
-Route::get('profil/update/form', 'clientController@form')->middleware('auth')->name('profil.update.form');
-Route::post('profil/update', 'clientController@update')->middleware('auth')->name('profil.update');
-Route::get('profil/delete', 'clientController@delete')->middleware('auth')->name('profil.delete');
-
-//unfound route
-Route::get('{page}', function ($page) {
-  $pages = [
-    'identifier' => 'auth.login',
-    'inscrire' => 'auth.register',
-    'home' => 'home'
-  ];
-  if (!array_key_exists($page, $pages))
-    abort(503, 'Désolé cette page n\'existe pas');
-  else return view($pages[$page]);
-});
+Route::get('profil/{id}', 'clientController@show')->name('profile.show');
+Route::get('profil/update/form', 'clientController@edit')->name('profile.edit');
+Route::post('profil/update', 'clientController@update')->name('profile.update');
+Route::get('profil/delete', 'clientController@delete')->name('profile.delete');

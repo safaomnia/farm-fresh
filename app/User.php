@@ -68,13 +68,18 @@ class User extends Authenticatable
 
   public function forumCommentaires()
   {
-    return $this->belongsToMany(forum::class, 'forum_commentaire', 'forum_id', 'client_id')->withTimestamps();
+    return $this->belongsToMany(forum::class, 'forum_commentaire', 'forum_id', 'client_id')
+      ->using(forum_commentaire::class)
+      ->orderBy('created_at')
+      ->withTimestamps();
   }
 
   public function forumCommentaireRpondres()
   {
     return $this->belongsToMany(forum_commentaire::class, 'forum_commentaire_reponde', 'client_id', 'forum_commentaire_id')
       ->withPivot('reponde')
+      ->using(forum_commentaire_reponde::class)
+      ->orderBy('created_at')
       ->withTimestamps();
   }
 
@@ -88,6 +93,7 @@ class User extends Authenticatable
     return $this->belongsToMany(Ferme::class, 'ferme_avis', 'client_id', 'ferme_id')
       ->using(ferme_avis::class)
       ->withPivot('avis')
+      ->orderBy('created_at')
       ->withTimestamps();
   }
 
@@ -96,6 +102,7 @@ class User extends Authenticatable
     return $this->belongsToMany(Produit::class, 'produit_note', 'client_id', 'produit_id')
       ->withPivot('etoiles')
       ->using(produit_note::class)
+      ->orderBy('created_at', 'desc')
       ->withTimestamps();
   }
 
@@ -109,6 +116,7 @@ class User extends Authenticatable
     return $this->belongsToMany(produit::class, 'commande', 'client_id', 'produit_id')
       ->using(commande::class)
       ->withPivot('total', 'etat', 'livraison_id')
+      ->orderBy('created_at', 'desc')
       ->withTimestamps();
   }
 }

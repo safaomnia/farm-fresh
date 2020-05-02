@@ -16,10 +16,10 @@ class FermeController extends Controller
   public function __construct()
   {
     $this->time = $time = new \Westsworld\TimeAgo(new \Westsworld\TimeAgo\Translations\Fr());
+    $this->middleware('auth')->only('delete');
   }
 
-  //boot functions
-  public function show()
+  public function index()
   {
     return view('fermes',
       [
@@ -28,7 +28,7 @@ class FermeController extends Controller
       ]);
   }
 
-  public function details($id)
+  public function show($id)
   {
     if (Auth::check())
       if ((ferme_avis::where(['ferme_id' => $id, 'client_id' => Auth::user()->id])->first()) == NULL) $avis = NULL;
@@ -45,7 +45,7 @@ class FermeController extends Controller
       ]);
   }
 
-  public function form($id)
+  public function edit($id)
   {
     return  view('ferme-form',['ferme' => ferme::find($id)]);
   }
@@ -56,27 +56,6 @@ class FermeController extends Controller
     $ferme->avis()->delete();
     $ferme->produits()->delete();
     $ferme->delete();
-    return redirect()->back();
-  }
-  //avis functions
-  public function donner_avis($ferme)
-  {
-    User::find(Auth::user()->id)->fermeAvis()->attach('', ['etoiles' => request('rating'), 'avis' => \request('avis'), 'ferme_id' => $ferme]);
-    return redirect()->back();
-  }
-
-  public function update_avis()
-  {
-    $ferme_avis = ferme_avis::find(\request('id'));
-    $ferme_avis->avis = request('avis');
-    $ferme_avis->etoiles = request('rating');
-    $ferme_avis->save();
-    return redirect()->back();
-  }
-
-  public function delete_avis($id)
-  {
-    ferme_avis::destroy($id);
     return redirect()->back();
   }
 

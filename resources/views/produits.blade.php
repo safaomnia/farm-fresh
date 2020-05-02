@@ -193,7 +193,7 @@
                     <ul>
                       @foreach($categories as $categorie)
                         <li class="pb-xl-20 u-line mb-xl-20">
-                          <a href="{{ route('produits.categorie', ['id'=> $categorie->id]) }}" class="text-light-black fw-600">{{ $categorie->nom }}
+                          <a href="{{ route('product.categorie', ['id'=> $categorie->id]) }}" class="text-light-black fw-600">{{ $categorie->nom }}
                             <span class="text-light-white fw-400">
                               (
                                 @inject('nbp', 'App\Http\Controllers\ProduitController')
@@ -216,7 +216,7 @@
               <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index-2.html" class="text-light-black">Acceuil</a></li>
                 @isset($Categorie)
-                  <li class="breadcrumb-item"><a href="{{ route('produits') }}" class="text-light-black">Produit</a></li>
+                  <li class="breadcrumb-item"><a href="{{ route('product.index') }}" class="text-light-black">Produit</a></li>
                   <li class="breadcrumb-item active" aria-current="page">{{ $categorie->nom }}</li>
                 @else
                   <li class="breadcrumb-item active" aria-current="page">Produit</li>
@@ -256,12 +256,12 @@
                         </div>
                         <div class="restaurent-tags-price">
                           @inject('note', 'App\Http\Controllers\PanierController')
-                          <a href="{{ route('produit', ['id' => $produit->id]) }}" class="btn-first white-btn">Afficher plus</a>
+                          <a href="{{ route('product.show', ['id' => $produit->id]) }}" class="btn-first white-btn">Afficher plus</a>
                           @if($note->exist($produit->id)->isEmpty())
-                            <a href="{{ route('panier.add', ['id' => $produit->id]) }}" class="btn-second white-btn" title="Ajouter au panier" style="margin-left:
+                            <a href="{{ route('card.store', ['id' => $produit->id]) }}" class="btn-second white-btn" title="Ajouter au panier" style="margin-left:
                               -100px;"><i class="fas fa-shopping-bag"></i></a>
                           @else
-                            <a href="{{ route('panier.destroy', ['id' => $produit->id]) }}" class="btn-second btn-submit text-light" title="Supprimer du panier"
+                            <a href="{{ route('card.delete', ['id' => $produit->id]) }}" class="btn-second btn-submit text-light" title="Supprimer du panier"
                                style="margin-left: -100px;"><i class="fas fa-shopping-bag"></i></a>
                           @endif
                           <div class="restaurent-product-price">

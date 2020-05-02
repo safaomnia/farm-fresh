@@ -21,7 +21,7 @@
                   <div class="section-header-left">
                     <h3 class="text-light-black header-title">Publier forum</h3>
                   </div>
-                  <form method="POST" action="@isset($forum) {{ route('forum.update.form', ['id' => $forum->id]) }} @else {{ route('forum.publier') }}
+                  <form method="POST" action="@isset($forum) {{ route('forum.edit', ['id' => $forum->id]) }} @else {{ route('forum.store') }}
                   @endisset">
                     {{ csrf_field() }}
                     <div class="row">
@@ -43,7 +43,7 @@
                 </div>
 
                 @foreach($forums as $forum)
-                  <a href="{{ route('forum', ['id' => $forum->id]) }}">
+                  <a href="{{ route('forum.show', ['id' => $forum->id]) }}">
                     <div class="col-md-12">
                       <div class="review-box">
                         <div class="review-user">
