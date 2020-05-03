@@ -33,7 +33,7 @@ class ClientController extends Controller
 
   public function edit()
   {
-    return view('profil.form', [
+    return view('profil.edit', [
       'client' => User::find(Auth::user()->id)
     ]);
   }

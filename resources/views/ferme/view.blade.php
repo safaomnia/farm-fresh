@@ -35,13 +35,15 @@
             <div class="head-rating">
               <div class="rating">
                 @inject('note', 'App\Http\Controllers\FermeController')
-                @for($i = 0; $i <  number_format($note->avg($ferme->id)); $i++)
-                  <i class="fas fa-star text-yellow"></i>
-                @endfor
-                @if(($note->avg($ferme->id) %  number_format($note->avg($ferme->id))) > 0.5)
-                  <i class="fas fa-star-half-alt text-yellow"></i>
+                @if($note->avg($ferme->id))
+                  @for($i = 0; $i <  number_format($note->avg($ferme->id)); $i++)
+                    <i class="fas fa-star text-yellow"></i>
+                  @endfor
+                  @if(($note->avg($ferme->id) %  number_format($note->avg($ferme->id))) > 0.5)
+                    <i class="fas fa-star-half-alt text-yellow"></i>
+                  @endif
+                  <span class="text-light-black fs-12 rate-data">{{ $note->etoiles($ferme->id) }} évaluations</span>
                 @endif
-                <span class="text-light-black fs-12 rate-data">{{ $note->etoiles($ferme->id) }} évaluations</span>
               </div>
               <div class="product-review">
                 <div class="restaurent-details-mob">
@@ -310,15 +312,17 @@
                                   </div>
                                   <div class="restaurent-product-rating text-right">
                                     @inject('note', 'App\Http\Controllers\ProduitController')
-                                    @for($i = 0; $i <  number_format($note->avg($produit->id)); $i++)
-                                      <i class="fas fa-star text-yellow"></i>
-                                    @endfor
-                                    @if(($note->avg($produit->id) %  number_format($note->avg($produit->id))) > 0.5)
-                                      <i class="fas fa-star-half-alt text-yellow"></i>
+                                    @if($note->avg($ferme->id))
+                                      @for($i = 0; $i <  number_format($note->avg($produit->id)); $i++)
+                                        <i class="fas fa-star text-yellow"></i>
+                                      @endfor
+                                      @if(($note->avg($produit->id) %  number_format($note->avg($produit->id))) > 0.5)
+                                        <i class="fas fa-star-half-alt text-yellow"></i>
+                                      @endif
+                                      <div class="rating-text">
+                                        <p class="text-light-white fs-12 text-right" title="Nombre d'évaluations">{{ $note->etoiles($produit->id) }} évals</p>
+                                      </div>
                                     @endif
-                                    <div class="rating-text">
-                                      <p class="text-light-white fs-12 text-right" title="Nombre d'évaluations">{{ $note->etoiles($produit->id) }} évals</p>
-                                    </div>
                                   </div>
                                 </div>
                                 <div class="restaurent-product-caption-box"><span class="text-light-white">{{ substr($produit->description, 0, 100) }}...</span>
@@ -336,7 +340,8 @@
                             </div>
                           </div>
                         </div>
-                      @endforeach</div>
+                      @endforeach
+                    </div>
                   </div>
                 </div>
               </div>
@@ -597,13 +602,14 @@
             <div class="restaurent-rating mb-xl-20">
               <div class="star">
               <span class="text-yellow fs-16">
-
                 @inject('note', 'App\Http\Controllers\FermeController')
-                @for($i = 0; $i <  number_format($note->avg($ferme->id)); $i++)
-                  <i class="fas fa-star text-yellow"></i>
-                @endfor
-                @if(($note->avg($ferme->id) %  number_format($note->avg($ferme->id))) > 0.5)
-                  <i class="fas fa-star-half-alt text-yellow"></i>
+                @if($note->avg($ferme->id))
+                  @for($i = 0; $i <  number_format($note->avg($ferme->id)); $i++)
+                    <i class="fas fa-star text-yellow"></i>
+                  @endfor
+                  @if(($note->avg($ferme->id) %  number_format($note->avg($ferme->id))) > 0.5)
+                    <i class="fas fa-star-half-alt text-yellow"></i>
+                  @endif
                 @endif
               </span>
               </div>
@@ -652,29 +658,30 @@
                   @endauth
                   <div class="col-md-6">
                     <div class="form-group">
-                      <fieldset class="rating" style="margin: -10px 0 10px 0;"><input type="radio" id="star5" name="rating" value="5" <?php if(isset($ferme_avis)) if
-                        ($ferme_avis->etoiles == 5) echo 'checked'; ?>  />
-                      <label class="full"  for="star5" title="Impressionnant - 5 stars"></label>
-                      <input type="radio" id="star4half" name="rating" value="4.5" <?php if(isset($ferme_avis)) if($ferme_avis->etoiles == 4.5) echo 'checked'; ?>/>
-                      <label class="half" for="star4half" title="Assez bien - 4.5 stars"></label>
-                      <input type="radio" id="star4" name="rating" value="4" <?php if(isset($ferme_avis)) if($ferme_avis->etoiles == 4) echo 'checked'; ?> />
-                      <label class="full" for="star4" title="Assez bien - 4 stars"></label>
-                      <input type="radio" id="star3half" name="rating" value="3.5" <?php if(isset($ferme_avis)) if($ferme_avis->etoiles == 3.5) echo 'checked'; ?> />
-                      <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                      <input type="radio" id="star3" name="rating" value="3" <?php if(isset($ferme_avis)) if($ferme_avis->etoiles == 3) echo 'checked'; ?> />
-                      <label class="full" for="star3" title="Meh - 3 stars"></label>
-                      <input type="radio" id="star2half" name="rating" value="2.5" <?php if(isset($ferme_avis)) if($ferme_avis->etoiles == 2.5) echo 'checked'; ?>/>
-                      <label class="half" for="star2half" title="Un peu mauvais- 2.5 stars"></label>
-                      <input type="radio" id="star2" name="rating" value="2" <?php if(isset($ferme_avis)) if($ferme_avis->etoiles == 2) echo 'checked'; ?>/>
-                      <label class="full" for="star2" title="Un peu mauvais - 2 stars"></label>
-                      <input type="radio" id="star1half" name="rating" value="1.5" <?php if(isset($ferme_avis)) if($ferme_avis->etoiles == 1.5) echo 'checked'; ?>/>
-                      <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                      <input type="radio" id="star1" name="rating" value="1" <?php if(isset($ferme_avis)) if($ferme_avis->etoiles == 1) echo 'checked'; ?> />
-                      <label class="full" for="star1" title="mauvais - 1 star"></label>
-                      <input type="radio" id="starhalf" name="rating" value="0.5" <?php if(isset($ferme_avis)) if($ferme_avis->etoiles == 0.5) echo 'checked'; ?>/>
-                      <label class="half" for="starhalf" title="mauvais - 0.5 stars"></label>
+                      <fieldset class="rating" style="margin: -10px 0 10px 0;"><input type="radio" id="star5" name="rating" value="5" <?php if (isset($ferme_avis)) if
+                        ($ferme_avis->etoiles == 5) echo 'checked'; ?> />
+                        <label class="full" for="star5" title="Impressionnant - 5 stars"></label>
+                        <input type="radio" id="star4half" name="rating" value="4.5" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 4.5) echo 'checked'; ?>/>
+                        <label class="half" for="star4half" title="Assez bien - 4.5 stars"></label>
+                        <input type="radio" id="star4" name="rating" value="4" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 4) echo 'checked'; ?> />
+                        <label class="full" for="star4" title="Assez bien - 4 stars"></label>
+                        <input type="radio" id="star3half" name="rating" value="3.5" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 3.5) echo 'checked'; ?> />
+                        <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                        <input type="radio" id="star3" name="rating" value="3" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 3) echo 'checked'; ?> />
+                        <label class="full" for="star3" title="Meh - 3 stars"></label>
+                        <input type="radio" id="star2half" name="rating" value="2.5" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 2.5) echo 'checked'; ?>/>
+                        <label class="half" for="star2half" title="Un peu mauvais- 2.5 stars"></label>
+                        <input type="radio" id="star2" name="rating" value="2" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 2) echo 'checked'; ?>/>
+                        <label class="full" for="star2" title="Un peu mauvais - 2 stars"></label>
+                        <input type="radio" id="star1half" name="rating" value="1.5" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 1.5) echo 'checked'; ?>/>
+                        <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                        <input type="radio" id="star1" name="rating" value="1" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 1) echo 'checked'; ?> />
+                        <label class="full" for="star1" title="mauvais - 1 star"></label>
+                        <input type="radio" id="starhalf" name="rating" value="0.5" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 0.5) echo 'checked'; ?>/>
+                        <label class="half" for="starhalf" title="mauvais - 0.5 stars"></label>
                       </fieldset>
-                      <textarea class="form-control form-control-submit" name="avis" rows="2" placeholder="Votre avis" required><?php if(isset($ferme_avis)) echo $ferme_avis->avis; ?></textarea>
+                      <textarea class="form-control form-control-submit" name="avis" rows="2" placeholder="Votre avis"
+                                required><?php if (isset($ferme_avis)) echo $ferme_avis->avis; ?></textarea>
                     </div>
                   </div>
                   <div class="col-md-4">

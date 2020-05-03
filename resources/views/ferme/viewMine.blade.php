@@ -8,6 +8,11 @@
         <aside class="col-lg-3 mb-md-40">
           <div class="filter-sidebar mb-5">
             <div class="sidebar-tab" style="margin-top: 50px;">
+              <a href="{{ route('farm.create') }}">
+                <div class="input-group-append mb-xl-20">
+                  <button class="btn-second btn-submit" type="button">Ajouter nouveau ferme</button>
+                </div>
+              </a>
               <ul class="nav nav-pills mb-xl-20">
                 <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#search">Rechercher par</a>
                 </li>
@@ -16,20 +21,20 @@
                 <div class="tab-pane fade show active" id="search">
                   <h6 class="text-light-black fw-700">Farm</h6>
                   <div class="input-group row">
-                    <div class="input-group2 col-xl-8">
+                    <div class="input-group2 col-xl-10">
                       <input type="search" class="form-control form-control-submit">
                     </div>
-                    <div class="input-group-append col-xl-4">
-                      <button class="btn-second btn-submit full-width" type="button"><i class="fas fa-search"></i></button>
+                    <div class="input-group-append col-xl-2">
+                      <button class="btn-second btn-submit" type="button"><i class="fas fa-search"></i></button>
                     </div>
                   </div>
                   <h6 class="text-light-black fw-700" style="margin-top: 20px;">Agriculteur</h6>
                   <div class="input-group row">
-                    <div class="input-group2 col-xl-8">
+                    <div class="input-group2 col-xl-10">
                       <input type="search" class="form-control form-control-submit">
                     </div>
-                    <div class="input-group-append col-xl-4">
-                      <button class="btn-second btn-submit full-width" type="button"><i class="fas fa-search"></i></button>
+                    <div class="input-group-append col-xl-2">
+                      <button class="btn-second btn-submit" type="button"><i class="fas fa-search"></i></button>
                     </div>
                   </div>
                 </div>
@@ -54,17 +59,24 @@
                         <img src='{{ URL::asset("assets/img/farms/$ferme->image")}}' class="img-fluid full-width" alt="ferme">
                       </a>
                     </div>
-                    <div class="post-meta">
-                      <div class="author-img">
-                        <img src='{{ URL::asset("assets/img/user/{$ferme->client->photo}") }}' class="rounded-circle" alt="image">
-                      </div>
-                      <div class="author-meta">
-                        <h6 class="no-margin"><a href="#" class="text-light-black">{{ $ferme->client->prenom }} {{ $ferme->client->nom }}</a></h6>
-                        <p class="no-margin text-light-white"><a href="#" class="text-light-white">{{ $time->inWords($ferme->created_at) }}</p>
-                      </div>
-                    </div>
                     <div class="post-content padding-20">
-                      <h5><a href="blog-details.html" class="text-light-black">{{ $ferme->name }}</a></h5>
+                      <h5 class="no-margin"><a href="blog-details.html" class="text-light-black">{{ $ferme->nom }}</a></h5>
+                      <p class="text-light-white text-right" style="margin-top: -25px;">{{ $time->inWords($ferme->created_at) }}</p>
+                      <div class="rating" style="margin-top: -10px;">
+                        @inject('note', 'App\Http\Controllers\FermeController')
+                        @if($note->avg($ferme->id))
+                          @for($i = 0; $i <  number_format($note->avg($ferme->id)); $i++)
+                            <i class="fas fa-star text-yellow"></i>
+                          @endfor
+                          @if(($note->avg($ferme->id) %  number_format($note->avg($ferme->id))) > 0.5)
+                            <i class="fas fa-star-half-alt text-yellow"></i>
+                          @endif
+                        @endif
+                        @if($note->etoiles($ferme->id))
+                          <span class="text-light-black fs-12 rate-data" style="top:0;">{{ $note->etoiles($ferme->id) }} évaluations</span>
+                        @endif
+                      </div>
+                      <br>
                       <p>{{ substr($ferme->description, 0, 100) }}...</p>
                       <div class="blog-link-wrap"><a href="{{ route('farm.show', ['id' => $ferme->id]) }}" class="btn-first white-btn">Afficher plus</a>
                       </div>

@@ -68,16 +68,19 @@
           <div class="right-side fw-700 mainNavCol">
             <div class="gem-points">
               <a href="{{ route('product.index') }}">
+                <i class="fab fa-product-hunt"></i>
                 <span>Produit</span>
               </a>
             </div>
             <div class="gem-points">
               <a href="{{ route('farm.index') }}">
+                <i class="fa fa-home"></i>
                 <span>Ferme</span>
               </a>
             </div>
             <div class="gem-points">
               <a href="{{ route('forum.index') }}">
+                <i class="fa fa-comments"></i>
                 <span>Forum</span>
               </a>
             </div>
@@ -92,8 +95,7 @@
                   <span>S'identifer</span>
                 </a>
               </div>
-          @else
-            <!-- mobile search -->
+            @else
               <div class="mobile-search">
                 <a href="#" data-toggle="modal" data-target="#search-box"> <i class="fas fa-search"></i>
                 </a>
@@ -110,43 +112,54 @@
                   <ul>
                     <li>
                       <a href="order-details.html">
-                        <div class="icon"><i class="flaticon-rewind"></i>
+                        <div class="icon"><i class="fab fa-jedi-order"></i>
                         </div>
                         <span class="details">Commandes passées</span>
                       </a>
                     </li>
                     <li>
                       <a href="{{ route('profile.show', ['id' => Auth::user()->id]) }}">
-                        <div class="icon"><i class="flaticon-user"></i>
+                        <div class="icon"><i class="fa fa-user-check"></i>
                         </div>
                         <span class="details">Compte</span>
                       </a>
                     </li>
                     @can('viewAny', \App\ferme::class)
                       <li>
-                        <a href="#">
-                          <div class="icon"><i class="flaticon-user"></i>
+                        <a href="{{ route('farm.mine') }}">
+                          <div class="icon"><i class="fa fa-home"></i>
                           </div>
-                          <span class="details">mes ferme</span>
+                          <span class="details">Mes fermes</span>
                         </a>
                       </li>
                     @endcan
                     @can('viewAny', \App\produit::class)
                       <li>
                         <a href="#">
-                          <div class="icon"><i class="flaticon-user"></i>
+                          <div class="icon"><i class="fab fa-product-hunt"></i>
                           </div>
-                          <span class="details">mes produits</span>
+                          <span class="details">Mes produits</span>
                         </a>
                       </li>
                     @endcan
-                    <li>
-                      <a href="#">
-                        <div class="icon"><i class="flaticon-board-games-with-roles"></i>
-                        </div>
-                        <span class="details">Help</span>
-                      </a>
-                    </li>
+                    @can('viewAny', \App\livraison::class)
+                      <li>
+                        <a href="#">
+                          <div class="icon"><i class="fa fa-truck"></i>
+                          </div>
+                          <span class="details">Mes livraisons</span>
+                        </a>
+                      </li>
+                    @endcan
+                    @can('viewAny', \App\transport::class)
+                      <li>
+                        <a href="#">
+                          <div class="icon"><i class="fa fa-bus"></i>
+                          </div>
+                          <span class="details">Mes transports</span>
+                        </a>
+                      </li>
+                    @endcan
                   </ul>
                   <div class="user-footer"><a href="{{ route('logout') }}"
                                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnecter</a>

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\ferme;
 use App\ferme_avis;
 use App\produit;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,10 +20,19 @@ class FermeController extends Controller
 
   public function index()
   {
-    return view('fermes',
+    return view('ferme.viewAny',
       [
         'time' => $this->time,
         'fermes' => ferme::orderBy('created_at', 'DESC')->get()
+      ]);
+  }
+
+  public function mine()
+  {
+    return view('ferme.viewMine',
+      [
+        'time' => $this->time,
+        'fermes' => ferme::where('agriculteur_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get()
       ]);
   }
 
@@ -35,7 +43,7 @@ class FermeController extends Controller
       else $avis = ferme_avis::where(['ferme_id' => $id, 'client_id' => Auth::user()->id])->first();
     else
       $avis = NULL;
-    return view('ferme',
+    return view('ferme.view',
       [
         'time' => $this->time,
         'ferme_avis' => $avis,
@@ -45,9 +53,30 @@ class FermeController extends Controller
       ]);
   }
 
+  public function store()
+  {
+    $ferme = new ferme();
+    $ferme->nom = \request('nom_ferme');
+    $ferme->telephone = \request('telephone');
+    $ferme->email = \request('email');
+    $ferme->image = 'default.jpg';
+    $ferme->adresse = 'jendouba';
+    $ferme->description = \request('description_ferme');
+    $ferme->agriculteur_id = Auth::user()->id;
+    $ferme->save();
+    $ferme->produits()->create([
+      'nom' => \request('nom_produit'),
+      'prix' => \request('prix'),
+      'stock' => \request('stock'),
+      'image' => 'default.jpg',
+      'description' => \request('description_produit')
+    ]);
+    return redirect()->route('farm.mine');
+  }
+
   public function edit($id)
   {
-    return  view('ferme-form',['ferme' => ferme::find($id)]);
+    return view('ferme.edit', ['ferme' => ferme::find($id)]);
   }
 
   public function delete($id)

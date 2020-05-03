@@ -22,7 +22,7 @@ class ProduitController extends Controller
 
   public function index()
   {
-    return view('produits',
+    return view('produit.viewAny',
       [
         'time' => $this->time,
         'produits' => produit::orderBy('created_at', 'DESC')->get(),
@@ -33,7 +33,7 @@ class ProduitController extends Controller
   public function categorie($id)
   {
     $categorie = categorie::find($id);
-    return view('produits',
+    return view('produit.viewAny',
       [
         'time' => $this->time,
         'produits' => $categorie->produits, //access to the parent columns
@@ -49,7 +49,7 @@ class ProduitController extends Controller
       else $note = produit_note::where(['produit_id' => $id, 'client_id' => Auth::user()->id])->first();
     else
       $note = NULL;
-    return view('produit',
+    return view('produit.view',
       [
         'time' => $this->time,
         'client_note' => $note,
@@ -80,11 +80,11 @@ class ProduitController extends Controller
 
   public function etoiles($id)
   {
-    return produit::find($id)->notes()->count();
+    return (produit_note::where('produit_id', $id)->get()->isEmpty()) ? 0 : produit::find($id)->notes()->count();
   }
 
   public function avg($id)
   {
-    return produit::find($id)->notes()->avg('etoiles');
+     return ($this->etoiles($id) != null) ? produit::find($id)->notes()->avg('etoiles') : null;
   }
 }
