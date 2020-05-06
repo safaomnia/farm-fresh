@@ -21,10 +21,10 @@ class CreateClientTable extends Migration {
 			$table->enum('sexe', array('Femme','Homme'))->nullable();
 			$table->string('telephone', 15)->nullable();
 			$table->string('email', 100);
+			$table->enum('type', array('livreur','agriculteur','client'))->default('client');
 			$table->string('adresse', 50)->nullable();
 			$table->string('password', 100);
 			$table->text('photo', 65535);
-			$table->enum('type', array('livreur','agriculteur','client'))->default('client');
 			$table->dateTime('email_verified_at')->nullable();
 			$table->timestamps();
 			$table->string('remember_token', 1000)->nullable();

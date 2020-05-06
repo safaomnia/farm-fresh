@@ -14,7 +14,7 @@ class AddForeignKeysToLivraisonTable extends Migration {
 	{
 		Schema::table('livraison', function(Blueprint $table)
 		{
-			$table->foreign('transport_id', 'livraison_transport')->references('matricule')->on('transport')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('transport_id', 'livraison_transport')->references('matricule')->on('transport')->onUpdate('CASCADE')->onDelete('CASCADE');
 		});
 	}
 

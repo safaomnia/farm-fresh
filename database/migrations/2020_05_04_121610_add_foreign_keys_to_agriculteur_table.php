@@ -14,7 +14,7 @@ class AddForeignKeysToAgriculteurTable extends Migration {
 	{
 		Schema::table('agriculteur', function(Blueprint $table)
 		{
-			$table->foreign('id', 'utilisateur_agriculteur')->references('id')->on('client')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('id', 'utilisateur_agriculteur')->references('id')->on('client')->onUpdate('CASCADE')->onDelete('CASCADE');
 		});
 	}
 

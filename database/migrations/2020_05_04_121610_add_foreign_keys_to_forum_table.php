@@ -14,7 +14,7 @@ class AddForeignKeysToForumTable extends Migration {
 	{
 		Schema::table('forum', function(Blueprint $table)
 		{
-			$table->foreign('client_id', 'utilisateur_annonce')->references('id')->on('client')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('client_id', 'utilisateur_annonce')->references('id')->on('client')->onUpdate('CASCADE')->onDelete('CASCADE');
 		});
 	}
 

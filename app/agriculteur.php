@@ -10,7 +10,7 @@ class agriculteur extends Model
   public $timestamps = false;
 
   protected $fillable = [
-    'domaine', 'certification'
+    'domaine', 'certificate'
   ];
 
   public function fermes()

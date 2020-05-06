@@ -3,40 +3,17 @@
   <div class="main-sec"></div>
   <!-- Navigation -->
   <section class="register-restaurent-sec section-padding bg-light-theme">
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-left: 150px;">
       <div class="row">
-        <div class="col-lg-9">
+        <div class="col-lg-7">
           <div class="sidebar-tabs main-box padding-20 mb-md-40">
             <div id="add-restaurent-tab" class="step-app">
-              <form method="POST" action="{{ route('farm.update', ['id' => $ferme->id]) }}">
-                @csrf
-                <div class="row">
-                  <div class="col-xl-4 col-lg-5 mb-md-40">
-                    <ul class="step-steps steps-1">
-                      <li class="stepbtn active" id="step1">
-                        <a href="#"> <span class="number"></span>
-                          <span class="step-name">Général Info</span>
-                        </a>
-                      </li>
-                      <li class="stepbtn" id="step2">
-                        <a href="#"> <span class="number"></span>
-                          <span class="step-name">Location</span>
-                        </a>
-                      </li>
-                    </ul>
-                    <ul class="step-steps steps-2">
-                      <li class="add-res-tab active" id="stepbtn1"><a href="#" class="add-res-tab">Général Info</a></li>
-                      <li class="add-res-tab" id="stepbtn2"><a href="#" class="add-res-tab">Location</a></li>
-                    </ul>
-                    <div class="step-footer">
-                      <button class="btn-first white-btn none" id="prev-1">Previous</button>
-                      <button class="btn-first white-btn" id="next-1">Next</button>
-                      <button class="btn-first white-btn none" id="finish-1">Finish</button>
-                    </div>
-                  </div>
-                  <div class="col-xl-8 col-lg-7">
+              <div class="row">
+                <div class="col-xl-12 col-lg-7">
+                  <form method="POST" action="{{ route('farm.update', ['ferme' => $ferme]) }}">
+                    @csrf
                     <div class="step-content">
-                      <div class="step-tab-panel active" id="steppanel1">
+                      <div class="step-tab-panel active">
                         <div class="payment-sec">
                           <div class="section-header-left">
                             <h3 class="text-light-black header-title">Modifier {{ $ferme->nom }} ferme</h3>
@@ -49,7 +26,7 @@
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Nom de ferme <sup class="fs-16">*</sup>
                                 </label>
-                                <input type="text" name="nom_ferme" class="form-control form-control-submit" placeholder="i.e Mazraa" value="{{ $ferme->nom }}">
+                                <input type="text" name="nom" class="form-control form-control-submit" placeholder="i.e Mazraa" value="{{ $ferme->nom }}">
                               </div>
                             </div>
                             <div class="col-md-6">
@@ -73,15 +50,11 @@
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Description</label>
-                                <textarea type="text" name="description_ferme" class="form-control form-control-submit" rows="3" placeholder="i.e est une bonne
+                                <textarea type="text" name="description" class="form-control form-control-submit" rows="3" placeholder="i.e est une bonne
                               ferme">{{ $ferme->description }}</textarea>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                      <div class="step-tab-panel" id="steppanel2">
-                        <div class="package-sec">
                           <div class="row">
                             <div class="col-12">
                               <h5 class="text-light-black fw-700">Location</h5>
@@ -152,12 +125,13 @@
                               </div>
                             </div>
                           </div>
+                          <button class="btn-second btn-submit">Modifier</button>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </form>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
@@ -166,67 +140,10 @@
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <div class="large-product-box p-relative pb-0">
-                  <img src="assets/img/sidebanner-1.jpg" class="img-fluid full-width" alt="image">
-                  <div class="overlay padding-20">
-                    <div class="tag-box">
-                      <span class="text-custom-white rectangle-tag bg-gradient-red">Trending</span>
-                    </div>
-                    <div class="content-wrapper">
-                      <h3 class="text-custom-white">50% Discount on All New Farms</h3>
-                      <a href="#" class="btn-submit btn-second">Get Deals</a>
-                    </div>
-                  </div>
-                  <div class="overlay overlay-bg"></div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="large-product-box p-relative pb-0">
-                  <img src="assets/img/sidebanner-2.jpg" class="img-fluid full-width" alt="image">
-                  <div class="overlay padding-20">
-                    <div class="tag-box">
-                      <span class="text-custom-white rectangle-tag bg-gradient-red">New</span>
-                    </div>
-                    <div class="content-wrapper">
-                      <h3 class="text-custom-white">50% Discount on All New Farms</h3>
-                      <a href="#" class="btn-submit btn-second">Get Deals</a>
-                    </div>
-                  </div>
-                  <div class="overlay overlay-bg"></div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="large-product-box p-relative pb-0">
-                  <img src="assets/img/sidebanner-3.jpg" class="img-fluid full-width" alt="image">
-                  <div class="overlay padding-20">
-                    <div class="tag-box">
-                      <span class="text-custom-white rectangle-tag bg-gradient-red">Trending</span>
-                    </div>
-                    <div class="content-wrapper">
-                      <h3 class="text-custom-white">50% Discount on All New Farms</h3>
-                      <a href="#" class="btn-submit btn-second">Get Deals</a>
-                    </div>
-                  </div>
-                  <div class="overlay overlay-bg"></div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="large-product-box p-relative pb-0">
-                  <img src="assets/img/sidebanner-2.jpg" class="img-fluid full-width" alt="image">
-                  <div class="overlay padding-20">
-                    <div class="tag-box">
-                      <span class="text-custom-white rectangle-tag bg-gradient-red">New</span>
-                    </div>
-                    <div class="content-wrapper">
-                      <h3 class="text-custom-white">50% Discount on All New Farms</h3>
-                      <a href="#" class="btn-submit btn-second">Get Deals</a>
-                    </div>
-                  </div>
-                  <div class="overlay overlay-bg"></div>
+                  <img src='{{ URL::asset("assets/img/farms/$ferme->image") }}' class="img-fluid full-width" alt="ferme-image">
                 </div>
               </div>
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
           </div>
         </div>
       </div>

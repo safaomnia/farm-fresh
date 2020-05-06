@@ -36,20 +36,20 @@ class FermeController extends Controller
       ]);
   }
 
-  public function show($id)
+  public function show(ferme $ferme)
   {
     if (Auth::check())
-      if ((ferme_avis::where(['ferme_id' => $id, 'client_id' => Auth::user()->id])->first()) == NULL) $avis = NULL;
-      else $avis = ferme_avis::where(['ferme_id' => $id, 'client_id' => Auth::user()->id])->first();
+      if ((ferme_avis::where(['ferme_id' => $ferme->id, 'client_id' => Auth::user()->id])->first()) == NULL) $avis = NULL;
+      else $avis = ferme_avis::where(['ferme_id' => $ferme->id, 'client_id' => Auth::user()->id])->first();
     else
       $avis = NULL;
     return view('ferme.view',
       [
         'time' => $this->time,
         'ferme_avis' => $avis,
-        'produits' => produit::all()->where('ferme_id', $id),
-        'all_avis' => ferme::with('avis')->findOrFail($id)->avis,
-        'ferme' => ferme::find($id)
+        'produits' => produit::all()->where('ferme_id', $ferme->id),
+        'all_avis' => ferme::with('avis')->findOrFail($ferme->id)->avis,
+        'ferme' => $ferme
       ]);
   }
 
@@ -74,14 +74,19 @@ class FermeController extends Controller
     return redirect()->route('farm.mine');
   }
 
-  public function edit($id)
+  public function edit(ferme $ferme)
   {
-    return view('ferme.edit', ['ferme' => ferme::find($id)]);
+    return view('ferme.edit', ['ferme' => $ferme]);
   }
 
-  public function delete($id)
+  public function update(ferme $ferme)
   {
-    $ferme = ferme::find($id);
+    $ferme->update(\request()->all());
+    return redirect()->back();
+  }
+
+  public function delete(ferme $ferme)
+  {
     $ferme->avis()->delete();
     $ferme->produits()->delete();
     $ferme->delete();

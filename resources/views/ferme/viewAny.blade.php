@@ -81,7 +81,7 @@
                       </div>
                       <br>
                       <p style="margin-top: 10px;">{{ substr($ferme->description, 0, 100) }}...</p>
-                      <div class="blog-link-wrap"><a href="{{ route('farm.show', ['id' => $ferme->id]) }}" class="btn-first white-btn">Afficher plus</a>
+                      <div class="blog-link-wrap"><a href="{{ route('farm.show', ['ferme' => $ferme]) }}" class="btn-first white-btn">Afficher plus</a>
                       </div>
                     </div>
                   </article>

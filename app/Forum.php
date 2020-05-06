@@ -8,7 +8,7 @@ class forum extends Model
 {
   public $table = "forum";
   protected $fillable = [
-    'theme', 'description','fichier'
+    'theme', 'description'
   ];
 
   public function client()

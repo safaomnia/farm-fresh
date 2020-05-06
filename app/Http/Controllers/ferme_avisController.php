@@ -14,24 +14,21 @@ class ferme_avisController extends Controller
     $this->middleware('auth');
   }
 
-  public function store($ferme)
+  public function store()
   {
-    User::find(Auth::user()->id)->fermeAvis()->attach('', ['etoiles' => request('rating'), 'avis' => \request('avis'), 'ferme_id' => $ferme]);
+    Auth::user()->fermeAvis()->attach('', \request()->all());
     return redirect()->back();
   }
 
-  public function update()
+  public function update(ferme_avis $avis)
   {
-    $ferme_avis = ferme_avis::find(\request('id'));
-    $ferme_avis->avis = request('avis');
-    $ferme_avis->etoiles = request('rating');
-    $ferme_avis->save();
+    $avis->update(\request()->all());
     return redirect()->back();
   }
 
-  public function delete($id)
+  public function delete(ferme_avis $avis)
   {
-    ferme_avis::destroy($id);
+    $avis->delete();
     return redirect()->back();
   }
 }

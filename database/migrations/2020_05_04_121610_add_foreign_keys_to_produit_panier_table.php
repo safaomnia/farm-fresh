@@ -14,8 +14,8 @@ class AddForeignKeysToProduitPanierTable extends Migration {
 	{
 		Schema::table('produit_panier', function(Blueprint $table)
 		{
-			$table->foreign('panier_id', 'panier_produit')->references('id')->on('panier')->onUpdate('RESTRICT')->onDelete('RESTRICT');
-			$table->foreign('produit_id', 'produit_panier')->references('id')->on('produit')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('panier_id', 'panier_produit')->references('id')->on('panier')->onUpdate('CASCADE')->onDelete('CASCADE');
+			$table->foreign('produit_id', 'produit_panier')->references('id')->on('produit')->onUpdate('CASCADE')->onDelete('CASCADE');
 		});
 	}
 

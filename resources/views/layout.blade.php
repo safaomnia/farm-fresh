@@ -87,11 +87,13 @@
             @guest
               <div class="gem-points">
                 <a href="{{ route('register') }}">
+                  <div class="icon"><i class="fa fa-user-plus"></i></div>
                   <span>S'inscrire</span>
                 </a>
               </div>
               <div class="gem-points">
                 <a href="{{ route('login') }}">
+                  <div class="icon"><i class="fa fa-user"></i></div>
                   <span>S'identifer</span>
                 </a>
               </div>
@@ -108,7 +110,7 @@
                   <img src='{{ URL::asset("assets/img/user/$photo") }}' width="50" height="50" class="rounded-circle" alt="user-img">
                   <span> {{ Auth::user()->prenom }} {{ Auth::user()->nom }} </span>
                 </a>
-                <div class="user-dropdown">
+                <div class="user-dropdown" style="margin-left: 30px;">
                   <ul>
                     <li>
                       <a href="order-details.html">
@@ -118,7 +120,7 @@
                       </a>
                     </li>
                     <li>
-                      <a href="{{ route('profile.show', ['id' => Auth::user()->id]) }}">
+                      <a href="{{ route('profile.show', ['client' => Auth::user()]) }}">
                         <div class="icon"><i class="fa fa-user-check"></i>
                         </div>
                         <span class="details">Compte</span>

@@ -14,8 +14,8 @@ class AddForeignKeysToFermeAvisTable extends Migration {
 	{
 		Schema::table('ferme_avis', function(Blueprint $table)
 		{
-			$table->foreign('ferme_id', 'ferme_avis')->references('id')->on('ferme')->onUpdate('RESTRICT')->onDelete('RESTRICT');
-			$table->foreign('client_id', 'ferme_avis_utilisateur')->references('id')->on('client')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('ferme_id', 'ferme_avis')->references('id')->on('ferme')->onUpdate('CASCADE')->onDelete('CASCADE');
+			$table->foreign('client_id', 'ferme_avis_utilisateur')->references('id')->on('client')->onUpdate('CASCADE')->onDelete('CASCADE');
 		});
 	}
 

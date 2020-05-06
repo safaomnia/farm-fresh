@@ -21,9 +21,9 @@
                   <div class="section-header-left">
                     <h3 class="text-light-black header-title">Publier forum</h3>
                   </div>
-                  <form method="POST" action="@isset($forum) {{ route('forum.edit', ['id' => $forum->id]) }} @else {{ route('forum.store') }}
+                  <form method="POST" action="@isset($forum) {{ route('forum.update', ['forum' => $forum]) }} @else {{ route('forum.store') }}
                   @endisset">
-                    {{ csrf_field() }}
+                    @csrf
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
@@ -41,37 +41,40 @@
                     </div>
                   </form>
                 </div>
-
                 @foreach($forums as $forum)
-                  <a href="{{ route('forum.show', ['id' => $forum->id]) }}">
-                    <div class="col-md-12">
-                      <div class="review-box">
-                        <div class="review-user">
-                          <div class="review-user-img">
-                            <img src='{{ URL::asset("assets/img/user/{$forum->client->photo}") }}' class="rounded-circle" alt="#">
-                            <div class="reviewer-name">
-                              <p class="text-light-black fw-700">{{ $forum->client->prenom }} {{ $forum->client->nom }}<small
-                                  class="text-light-white fw-500">{{ $forum->client->adresse }}</small>
+                  <div class="col-md-12">
+                    <div class="review-box">
+                      <div class="review-user">
+                        <div class="review-user-img">
+                          <img src='{{ URL::asset("assets/img/user/{$forum->client->photo}")}}' class="rounded-circle" alt="#">
+                          <div class="reviewer-name">
+                            <p class="text-light-black fw-700">
+                              <a href="{{ route('profile.show', ['client' => $forum->client]) }}">
+                                {{ $forum->client->prenom }} {{ $forum->client->nom }}
+                              </a>
+                              <small class="text-light-white fw-500">{{ $forum->client->adresse }}</small>
+                            </p>
+                            <a href="{{ route('forum.show', ['forum' => $forum]) }}">
                               <p class="text-light-black"><strong class="fw-600">Theme :</strong> {{ $forum->theme }} </p>
-                            </div>
-                          </div>
-                          <div class="review-date"><span class="text-light-white">{{ $time->inWords($forum->created_at) }}</span>
-                            @auth
-                              @if(Auth::user()->id == $forum->client_id)
-                                <a href="{{ route('forum.delete', ['id' => $forum->id]) }}"
-                                   onclick="return confirm('Voulez-vous sûr de supprimer ce forum?')">Supprimer</a>
-                                <a href="{{ route('forum.update', ['id' => $forum->id]) }}"> Modifier</a>
-                              @endif
-                            @endauth
+                            </a>
                           </div>
                         </div>
-                        <div class="ratings">
-                          <p class="text-light-black">{{ substr($forum->description, 0, 100) }}...</p>
+                        <div class="review-date"><span class="text-light-white text-right">{{ $time->inWords($forum->created_at) }}</span>
+                          @can('update', $forum)
+                            <a href="{{  route('forum.edit', ['forum' => $forum]) }}"> Modifier</a>
+                          @endcan
+                          @can('delete', $forum)
+                            <a href="{{ route('forum.delete', ['forum' => $forum]) }}"
+                               onclick="return confirm('Voulez-vous sûr de supprimer ce forum?')">Supprimer</a>
+                          @endcan
                         </div>
                       </div>
-                      <div class="u-line"></div>
+                      <div class="ratings">
+                        <p class="text-light-black">{{ substr($forum->description, 0, 100) }}...</p>
+                      </div>
                     </div>
-                  </a>
+                    <div class="u-line"></div>
+                  </div>
                 @endforeach
               </div>
             </section>

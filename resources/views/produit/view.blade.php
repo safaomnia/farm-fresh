@@ -18,7 +18,7 @@
                     <ul>
                       @foreach($categories as $categorie)
                         <li class="pb-xl-20 u-line mb-xl-20">
-                          <a href="{{ route('product.categorie', ['id'=> $categorie->id]) }}" class="text-light-black fw-600">{{ $categorie->nom }}
+                          <a href="{{ route('product.categorie', ['categorie'=> $categorie]) }}" class="text-light-black fw-600">{{ $categorie->nom }}
                             <span class="text-light-white fw-400">
                               (
                                 @inject('nbp', 'App\Http\Controllers\ProduitController')
@@ -58,7 +58,8 @@
                       @for($i = 0; $i <  number_format($note->avg($produit->id)); $i++)
                         <i class="fas fa-star text-yellow"></i>
                       @endfor
-                      @if(($note->avg($produit->id) %  number_format($note->avg($produit->id))) > 0.5)
+                      @if((number_format($note->avg($produit->ferme->id) != 0)) && ($note->avg($produit->ferme->id) %  number_format($note->avg
+                            ($produit->ferme->id))) > 0.5)
                         <i class="fas fa-star-half-alt text-yellow"></i>
                       @endif
                       <div class="rating-text">
@@ -71,11 +72,11 @@
                   <div class="restaurent-tags-price">
                     @inject('note', 'App\Http\Controllers\PanierController')
                     @if($note->exist($produit->id)->isEmpty())
-                      <a href="{{ route('card.store', ['id' => $produit->id]) }}" class="btn-second white-btn" title="Ajouter au panier">
+                      <a href="{{ route('card.store', ['produit_id' => $produit->id]) }}" class="btn-second white-btn" title="Ajouter au panier">
                         <i class="fas fa-shopping-bag"></i>
                       </a>
                     @else
-                      <a href="{{ route('card.delete', ['id' => $produit->id]) }}" class="btn-second btn-submit text-light" title="Supprimer du panier">
+                      <a href="{{ route('card.delete', ['produit_id' => $produit->id]) }}" class="btn-second btn-submit text-light" title="Supprimer du panier">
                         <i class="fas fa-shopping-bag"></i></a>
                     @endif
                     <div class="restaurent-product-price" style="margin: -30px 0 0 30px;">
@@ -99,37 +100,39 @@
                 @endisset
                 <h4>
                   <form method="POST"
-                        action="@isset($client_note) {{ route('note.store', ['produit' =>
-                        $produit->id]) }} @else {{ route('note.store', ['produit' => $produit->id]) }} @endisset" id="rate-form">
-                    {{ csrf_field() }}
+                        action="@isset($client_note) {{ route('note.update', ['note' =>  $client_note]) }}
+                        @else {{ route('note.store') }} @endisset" id="rate-form">
+                    @csrf
                     <fieldset class="rating" style="margin: -10px 0 10px 40px;">
-                      <input type="radio" id="star5" name="rating" value="5" <?php if (isset($client_note)) if ($client_note->etoiles == 5) echo 'checked'; ?> />
+                      <input type="radio" id="star5" name="etoiles" value="5" <?php if (isset($client_note)) if ($client_note->etoiles == 5) echo 'checked'; ?> />
                       <label class="full" for="star5" title="Impressionnant - 5 stars"></label>
-                      <input type="radio" id="star4half" name="rating" value="4.5" <?php if (isset($client_note)) if ($client_note->etoiles == 4.5) echo 'checked'; ?>/>
+                      <input type="radio" id="star4half" name="etoiles" value="4.5" <?php if (isset($client_note)) if ($client_note->etoiles == 4.5) echo 'checked'; ?>/>
                       <label class="half" for="star4half" title="Assez bien - 4.5 stars"></label>
-                      <input type="radio" id="star4" name="rating" value="4" <?php if (isset($client_note)) if ($client_note->etoiles == 4) echo 'checked'; ?> />
+                      <input type="radio" id="star4" name="etoiles" value="4" <?php if (isset($client_note)) if ($client_note->etoiles == 4) echo 'checked'; ?> />
                       <label class="full" for="star4" title="Assez bien - 4 stars"></label>
-                      <input type="radio" id="star3half" name="rating" value="3.5" <?php if (isset($client_note)) if ($client_note->etoiles == 3.5) echo 'checked'; ?> />
+                      <input type="radio" id="star3half" name="etoiles" value="3.5" <?php if (isset($client_note)) if ($client_note->etoiles == 3.5) echo 'checked';?>/>
                       <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                      <input type="radio" id="star3" name="rating" value="3" <?php if (isset($client_note)) if ($client_note->etoiles == 3) echo 'checked'; ?> />
+                      <input type="radio" id="star3" name="etoiles" value="3" <?php if (isset($client_note)) if ($client_note->etoiles == 3) echo 'checked'; ?> />
                       <label class="full" for="star3" title="Meh - 3 stars"></label>
-                      <input type="radio" id="star2half" name="rating" value="2.5" <?php if (isset($client_note)) if ($client_note->etoiles == 2.5) echo 'checked'; ?>/>
+                      <input type="radio" id="star2half" name="etoiles" value="2.5" <?php if (isset($client_note)) if ($client_note->etoiles == 2.5) echo 'checked'; ?>/>
                       <label class="half" for="star2half" title="Un peu mauvais- 2.5 stars"></label>
-                      <input type="radio" id="star2" name="rating" value="2" <?php if (isset($client_note)) if ($client_note->etoiles == 2) echo 'checked'; ?>/>
+                      <input type="radio" id="star2" name="etoiles" value="2" <?php if (isset($client_note)) if ($client_note->etoiles == 2) echo 'checked'; ?>/>
                       <label class="full" for="star2" title="Un peu mauvais - 2 stars"></label>
-                      <input type="radio" id="star1half" name="rating" value="1.5" <?php if (isset($client_note)) if ($client_note->etoiles == 1.5) echo 'checked'; ?>/>
+                      <input type="radio" id="star1half" name="etoiles" value="1.5" <?php if (isset($client_note)) if ($client_note->etoiles == 1.5) echo 'checked'; ?>/>
                       <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                      <input type="radio" id="star1" name="rating" value="1" <?php if (isset($client_note)) if ($client_note->etoiles == 1) echo 'checked'; ?> />
+                      <input type="radio" id="star1" name="etoiles" value="1" <?php if (isset($client_note)) if ($client_note->etoiles == 1) echo 'checked'; ?> />
                       <label class="full" for="star1" title="mauvais - 1 star"></label>
-                      <input type="radio" id="starhalf" name="rating" value="0.5" <?php if (isset($client_note)) if ($client_note->etoiles == 0.5) echo 'checked'; ?>/>
+                      <input type="radio" id="starhalf" name="etoiles" value="0.5" <?php if (isset($client_note)) if ($client_note->etoiles == 0.5) echo 'checked'; ?>/>
                       <label class="half" for="starhalf" title="mauvais - 0.5 stars"></label>
                     </fieldset>
-                    @isset($client_note)
-                      <input type="hidden" name="id" value="{{ $client_note->id }}">
-                    @endisset
-                    <span class="arrow" style="margin-left: 5px;"><a href="@isset($client_note) {{ route('note.store', ['produit' =>
-                        $produit->id]) }} @else {{ route('note.store', ['produit' => $produit->id]) }} @endisset" onclick="event.preventDefault(); document
-                        .getElementById('rate-form').submit();"><i class="fas fa-chevron-right"></i></a></span>
+                    <span class="arrow" style="margin-left: 5px;">
+                      <a href="@isset($client_note) {{ route('note.update', ['note' =>  $client_note]) }}
+                      @else {{ route('note.store') }} @endisset"
+                         onclick="event.preventDefault(); document.getElementById('rate-form').submit();">
+                        <input type="hidden" name="produit_id" value="{{ $produit->id }}">
+                        <i class="fas fa-chevron-right"></i>
+                      </a>
+                    </span>
                   </form>
                 </h4>
               </div>
@@ -141,7 +144,7 @@
                         <img src='{{ URL::asset("assets/img/farms/{$produit->ferme->image}")}}' class="img-fluid full-width" alt="testimonial-img">
                         <div class="overlay">
                           <div class="brand-logo">
-                            <a href="{{ route('profile.show', ['id' => $produit->ferme->client->id]) }}">
+                            <a href="{{ route('profile.show', ['client' => $produit->ferme->client]) }}">
                               <img src='{{ URL::asset("assets/img/user/{$produit->ferme->client->photo}") }}' class="img-fluid" alt="user-profile">
                             </a>
                           </div>
@@ -156,14 +159,15 @@
                             @for($i = 0; $i <  number_format($note->avg($produit->ferme->id)); $i++)
                               <i class="fas fa-star text-yellow"></i>
                             @endfor
-                            @if(($note->avg($produit->ferme->id) %  number_format($note->avg($produit->ferme->id))) > 0.5)
+                            @if((number_format($note->avg($produit->ferme->id) != 0)) && ($note->avg($produit->ferme->id) %  number_format($note->avg
+                            ($produit->ferme->id))) > 0.5)
                               <i class="fas fa-star-half-alt text-yellow"></i>
                             @endif
                             <span class="text-light-black fs-12 rate-data">{{ $note->etoiles($produit->ferme->id) }} évaluations</span>
                           </div> <br>
                           <p class="text-light-black">{{ $produit->ferme->client->prenom }} {{ $produit->ferme->client->nom }}</p>
                           <p class="text-light-white fw-100">{{ substr($produit->ferme->description, 0, 50) }}...</p>
-                          <a href="{{ route('farm.show', ['id' => $produit->ferme->id]) }}" class="btn-first white-btn">Afficher plus</a>
+                          <a href="{{ route('farm.show', ['ferme' => $produit->ferme]) }}" class="btn-first white-btn">Afficher plus</a>
                         </div>
                       </div>
                     </div>

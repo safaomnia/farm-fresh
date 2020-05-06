@@ -14,7 +14,7 @@ class AddForeignKeysToPanierTable extends Migration {
 	{
 		Schema::table('panier', function(Blueprint $table)
 		{
-			$table->foreign('client_id', 'panier_utilisateur')->references('id')->on('client')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('client_id', 'panier_utilisateur')->references('id')->on('client')->onUpdate('CASCADE')->onDelete('CASCADE');
 		});
 	}
 

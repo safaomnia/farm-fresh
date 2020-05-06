@@ -465,7 +465,7 @@
                   <div class="cat-product-box">
                     <div class="cat-product">
                       <div class="cat-name">
-                        <a href="{{ route('card.show', ['id' => $produit->id]) }}">
+                        <a href="{{ route('card.show', ['produit_id' => $produit->id]) }}">
                           <p class="text-light-green fw-700"><span class="text-dark-white">{{ $i }}</span>{{ $produit->nom }}</p>
                           <span class="text-light-white fw-700">
                             @foreach($produit->categories as $categorie)
@@ -475,7 +475,7 @@
                         </a>
                       </div>
                       <div class="delete-btn">
-                        <a href="{{ route('card.delete', ['produit' => $produit->id]) }}" class="text-dark-white" onclick="return confirm('Voulez-vous sûr de ' +
+                        <a href="{{ route('card.delete', ['produit_id' => $produit->id]) }}" class="text-dark-white" onclick="return confirm('Voulez-vous sûr de ' +
                          'supprimer?')"> <i class="far fa-trash-alt"></i>
                         </a>
                       </div>

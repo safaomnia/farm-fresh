@@ -14,8 +14,8 @@ class AddForeignKeysToProduitNoteTable extends Migration {
 	{
 		Schema::table('produit_note', function(Blueprint $table)
 		{
-			$table->foreign('produit_id', 'produit_note')->references('id')->on('produit')->onUpdate('RESTRICT')->onDelete('RESTRICT');
-			$table->foreign('client_id', 'produit_note_utilisateur')->references('id')->on('client')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('produit_id', 'produit_note')->references('id')->on('produit')->onUpdate('CASCADE')->onDelete('CASCADE');
+			$table->foreign('client_id', 'produit_note_utilisateur')->references('id')->on('client')->onUpdate('CASCADE')->onDelete('CASCADE');
 		});
 	}
 

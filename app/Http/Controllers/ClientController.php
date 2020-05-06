@@ -1,9 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\agriculteur;
-use App\livreur;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,9 +16,8 @@ class ClientController extends Controller
     $this->middleware('auth')->except('show');
   }
 
-  public function show($id)
+  public function show(User $client)
   {
-    $client = User::find($id);
     if ($client->type == 'client') $view = 'profil.client';
     elseif ($client->type == 'agriculteur') $view = 'profil.agriculteur';
     else $view = 'profil.livreur';
@@ -34,13 +30,13 @@ class ClientController extends Controller
   public function edit()
   {
     return view('profil.edit', [
-      'client' => User::find(Auth::user()->id)
+      'client' => Auth::user()
     ]);
   }
 
   public function update()
   {
-    $client = User::find(Auth::user()->id);
+    $client = Auth::user();
     $client->nom = \request('nom');
     $client->prenom = \request('prenom');
     $client->datenai = \request('datenai');
@@ -49,19 +45,17 @@ class ClientController extends Controller
     $client->adresse = \request('adresse');
     $client->sexe = \request('sexe');
     $client->save();
-    if (Auth::user()->type == 'agriculteur') {
-      $agriculteur = agriculteur::find(Auth::user()->id);
-      $agriculteur->domaine = \request('domaine');
-      $agriculteur->certificate = \request('certificate');
-      $agriculteur->save();
+    if ($client->type == 'agriculteur') {
+      $client->agriculteur->domaine = \request('domaine');
+      $client->agriculteur->certificate = \request('certificate');
+      $client->agriculteur->save();
     }
-    if (Auth::user()->type == 'livreur')
+    if ($client->type == 'livreur')
     {
-      $livreur = livreur::find(Auth::user()->id);
-      $livreur->nom_entreprise = \request('nom_entreprise');
-      $livreur->telephone_entreprise = \request('telephone_entreprise');
-      $livreur->adresse_entreprise = \request('adresse_entreprise');
-      $livreur->save();
+      $client->livreur->nom_entreprise = \request('nom_entreprise');
+      $client->livreur->telephone_entreprise = \request('telephone_entreprise');
+      $client->livreur->adresse_entreprise = \request('adresse_entreprise');
+      $client->livreur->save();
     }
     return redirect()->back();
   }

@@ -8,7 +8,7 @@ class demande extends Model
 {
   public $table = 'demande';
   protected $fillable = [
-    'type', 'certificate'
+    'type', 'etat', 'certificate'
   ];
 
   public function client()

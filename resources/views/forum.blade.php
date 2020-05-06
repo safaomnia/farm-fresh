@@ -100,20 +100,20 @@
                           </div>
                         </div>
                         <div class="review-date"><span class="text-light-white">{{ $time->inWords($commentaire->pivot->created_at) }}</span>
-                          @auth
-                            @if(Auth::user()->id == $commentaire->pivot->client_id)
-                              <a href="{{ route('comment.edit', ['ferme'=>$forum->id, 'id' => $commentaire->pivot->id]) }}">Modifier</a>
-                              <a href="{{ route('comment.delete', ['id' => $commentaire->pivot->id]) }}"
-                                 onclick="return confirm('Voulez-vous sûr de supprimer?')">Supprimer</a>
-                            @endif
-                          @endauth
+                          @can('update', $commentaire->pivot)
+                            <a href="{{ route('comment.edit', ['ferme'=> $forum, 'commentaire' => $commentaire->pivot]) }}">Modifier</a>
+                          @endcan
+                          @can('delete', $commentaire->pivot)
+                            <a href="{{ route('comment.delete', ['commentaire' => $commentaire->pivot]) }}"
+                               onclick="return confirm('Voulez-vous sûr de supprimer?')">Supprimer</a>
+                          @endcan
                         </div>
                       </div>
                       <p class="text-light-black">{{ $commentaire->pivot->commentaire }}</p>
                     </div>
-                    <form method="POST" action="@if(isset($Reply)) {{ route('reply.update', ['forum' => $forum->id, 'id' => $Reply->id]) }} @else {{
-                    route('reply.store', ['commentaire' =>  $commentaire->pivot->id]) }} @endif">
-                      {{ csrf_field() }}
+                    <form method="POST" action="@if(isset($Reply)) {{ route('reply.update', ['forum' => $forum, 'reponde' => $Reply]) }} @else {{
+                    route('reply.store', ['commentaire' =>  $commentaire->pivot]) }} @endif">
+                      @csrf
                       <div class="input-group col-xl-12" style="margin: 20px 0 20px 30px;">
                         <div class="col-xl-2">
                           <?php $photo = Auth::user()->photo ?>
@@ -121,7 +121,7 @@
                         </div>
                         <div class="input-group2 col-xl-8">
                           <input type="text" name="reponde" class="form-control form-control-submit" value="@if(isset($Reply) && $Reply_commentaire->id ==
-                          $commentaire->pivot->id) {{  $Reply->reponde }} @else echo '' @endif">
+                          $commentaire->pivot->id) {{  $Reply->reponde }} @endif">
                         </div>
                         <div class="input-group-append col-xl-2">
                           <button class="btn-second btn-submit full-width" type="submit"><i class="fas fa-paper-plane"></i></button>
@@ -135,17 +135,19 @@
                           <div class="review-user-img">
                             <img src='{{ URL::asset("assets/img/user/$reponde->photo") }}' class="rounded-circle" alt="#">
                             <div class="reviewer-name">
-                              <p class="text-light-black fw-600">{{ $reponde->prenom }} {{ $reponde->nom }}
+                              <p class="text-light-black fw-600">
+                                <a href="{{ route('profile.show', ['client' => $reponde->id]) }}">
+                                  {{ $reponde->prenom }} {{ $reponde->nom }}
+                                </a>
                                 <small class="text-light-white fw-500">{{ $reponde->adresse }}</small>
                             </div>
-                            @auth
-                              @if(Auth::user()->id == $reponde->pivot->client_id)
-                                <a href="{{ route('reply.edit', ['forum'=>$forum->id, 'commentaire' => $commentaire->pivot->id, 'id'=>
-                                $reponde->pivot->id]) }}">Modifier</a>
-                                <a href="{{ route('reply.delete', ['id' => $reponde->pivot->id]) }}"
-                                   onclick="return confirm('Voulez-vous sûr de supprimer?')">Supprimer</a>
-                              @endif
-                            @endauth
+                            @can('update', $reponde->pivot)
+                              <a href="{{ route('reply.edit', ['forum'=> $forum, 'commentaire' => $commentaire->pivot, '$reponde'=> $reponde->pivot]) }}">Modifier</a>
+                            @endcan
+                            @can('delete', $reponde->pivot)
+                              <a href="{{ route('reply.delete', ['reponde' => $reponde->pivot]) }}"
+                                 onclick="return confirm('Voulez-vous sûr de supprimer?')">Supprimer</a>
+                            @endcan
                           </div>
                           <div class="review-date"><span class="text-light-white">{{ $time->inWords($reponde->pivot->created_at) }}</span>
                           </div>
@@ -168,16 +170,17 @@
                   <div class="section-header-left">
                     <h3 class="text-light-black header-title">Commenter {{ $forum->theme }}</h3>
                   </div>
-                  <form method="POST" action="@isset($Commentaire) {{ route('comment.update', ['id' => $Commentaire->id]) }} @else {{ route('comment.store',
-                  ['ferme'
-                  => $forum->id]) }} @endisset">
-                    {{ csrf_field() }}
+                  <form method="POST" action="@isset($Commentaire) {{ route('comment.update', ['commentaire' => $Commentaire]) }}
+                  @else {{ route('comment.store') }} @endisset">
+                    @csrf
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
                           <textarea class="form-control form-control-submit" name="commentaire" rows="6" placeholder="Votre commentaire">{{ $Commentaire->commentaire ?? ''
                           }}</textarea>
                         </div>
+                        <input type="hidden" name="client_id" value="{{ Auth::user()->id }}">
+                        <input type="hidden" name="forum_id" value="{{ $forum->id }}">
                         <button type="submit" class="btn-second btn-submit full-width">Send</button>
                       </div>
                     </div>
@@ -189,11 +192,11 @@
                       <div class="testimonial-box">
                         <div class="testimonial-img p-relative">
                           <a href="farm.html">
-                            <img src="assets/img/blog/438x180/shop-1.jpg" class="img-fluid full-width" alt="testimonial-img">
+                            <img src='{{ URL::asset("assets/img/blog/438x180/shop-1.jpg") }}' class="img-fluid full-width" alt="testimonial-img">
                           </a>
                           <div class="overlay">
                             <div class="brand-logo">
-                              <img src="assets/img/user/user-1.png" class="img-fluid" alt="logo">
+                              <img src='{{ URL::asset("assets/img/user/user-1.png") }}' class="img-fluid" alt="logo">
                             </div>
                             <div class="add-fav text-light-white"><img src="assets/img/svg/013-heart-1.svg" alt="tag">
                             </div>
@@ -203,7 +206,7 @@
                           <p class="text-light-white text-uppercase no-margin fs-12">Featured</p>
                           <h5 class="fw-600"><a href="farm.html" class="text-light-black">GSA King Tomato Farm</a></h5>
                           <div class="testimonial-user-box">
-                            <img src="assets/img/blog-details/40x40/user-1.png" class="rounded-circle" alt="#">
+                            <img src='{{ URL::asset("assets/img/blog-details/40x40/user-1.png") }}' class="rounded-circle" alt="#">
                             <div class="testimonial-user-name">
                               <p class="text-light-black fw-600">Sarra</p> <i class="fas fa-trophy text-black"></i><span class="text-light-black">Top Reviewer</span>
                             </div>
@@ -237,13 +240,11 @@
                       <div class="testimonial-box">
                         <div class="testimonial-img p-relative">
                           <a href="farm.html">
-                            <img src="assets/img/blog/438x180/shop-3.jpg" class="img-fluid full-width" alt="testimonial-img">
+                            <img src='{{ URL::asset("assets/img/blog/438x180/shop-3.jpg") }}' class="img-fluid full-width" alt="testimonial-img">
                           </a>
                           <div class="overlay">
                             <div class="brand-logo">
-                              <img src="assets/img/user/user-1.png" class="img-fluid" alt="logo">
-                            </div>
-                            <div class="add-fav text-light-white"><img src="assets/img/svg/013-heart-1.svg" alt="tag">
+                              <img src='{{ URL::asset("assets/img/user/user-1.png") }}' class="img-fluid" alt="logo">
                             </div>
                           </div>
                         </div>
@@ -251,7 +252,7 @@
                           <p class="text-light-white text-uppercase no-margin fs-12">Featured</p>
                           <h5 class="fw-600"><a href="farm.html" class="text-light-black">GSA King Tomato Farm</a></h5>
                           <div class="testimonial-user-box">
-                            <img src="assets/img/blog-details/40x40/user-1.png" class="rounded-circle" alt="farm.html">
+                            <img src='{{ URL::asset("assets/img/blog-details/40x40/user-1.png") }}' class="rounded-circle" alt="farm.html">
                             <div class="testimonial-user-name">
                               <p class="text-light-black fw-600">Sarra</p> <i class="fas fa-trophy text-black"></i><span class="text-light-black">Top Reviewer</span>
                             </div>
@@ -284,13 +285,11 @@
                       <div class="testimonial-box">
                         <div class="testimonial-img p-relative">
                           <a href="farm.html">
-                            <img src="assets/img/blog/438x180/shop-2.jpg" class="img-fluid full-width" alt="testimonial-img">
+                            <img src='{{ URL::asset("assets/img/blog/438x180/shop-2.jpg") }}' class="img-fluid full-width" alt="testimonial-img">
                           </a>
                           <div class="overlay">
                             <div class="brand-logo">
-                              <img src="assets/img/user/user-2.png" class="img-fluid" alt="logo">
-                            </div>
-                            <div class="add-fav text-light-white"><img src="assets/img/svg/013-heart-1.svg" alt="tag">
+                              <img src='{{ URL::asset("assets/img/user/user-2.png") }}' class="img-fluid" alt="logo">
                             </div>
                           </div>
                         </div>
@@ -298,7 +297,7 @@
                           <p class="text-light-white text-uppercase no-margin fs-12">Featured</p>
                           <h5 class="fw-600"><a href="farm.html" class="text-light-black">GSA King Tomato Farm</a></h5>
                           <div class="testimonial-user-box">
-                            <img src="assets/img/blog-details/40x40/user-2.png" class="rounded-circle" alt="farm.html">
+                            <img src='{{ URL::asset("assets/img/blog-details/40x40/user-2.png") }}' class="rounded-circle" alt="farm.html">
                             <div class="testimonial-user-name">
                               <p class="text-light-black fw-600">Sarra</p> <i class="fas fa-trophy text-black"></i><span class="text-light-black">Top Reviewer</span>
                             </div>
@@ -332,7 +331,7 @@
                 <div class="swiper-button-prev"></div>
               </div>
               <div class="large-product-box mb-xl-20">
-                <img src="assets/img/blog/446x1025/ad-1.jpg" class="img-fluid full-width" alt="image">
+                <img src='{{ URL::asset("assets/img/blog/446x1025/ad-1.jpg") }}' class="img-fluid full-width" alt="image">
                 <div class="category-type overlay padding-15">
                   <button class="category-btn">Most popular near you</button>
                   <a href="#" class="btn-first white-btn text-light-black fw-600 full-width">See all</a>
@@ -340,11 +339,11 @@
               </div>
               <div class="inner-wrapper main-box">
                 <div class="main-banner p-relative">
-                  <img src="assets/img/blog/446x501/ff-1.jpg" class="img-fluid full-width main-img" alt="banner">
+                  <img src='{{ URL::asset("assets/img/blog/446x501/ff-1.jpg") }}' class="img-fluid full-width main-img" alt="banner">
                   <div class="overlay-2 main-padding">
-                    <img src="assets/img/logo-2.jpg" class="img-fluid" alt="logo">
+                    <img src='{{ URL::asset("assets/img/logo-2.jpg") }}' class="img-fluid" alt="logo">
                   </div>
-                  <img src="assets/img/banner/burger.png" class="footer-img" alt="footerimg">
+                  <img src='{{ URL::asset("assets/img/banner/burger.png") }}' class="footer-img" alt="footerimg">
                 </div>
                 <div class="section-2 main-page main-padding">
                   <div class="login-box">

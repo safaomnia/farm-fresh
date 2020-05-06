@@ -18,33 +18,31 @@ class forum_commentaireController extends Controller
     $this->middleware('auth');
   }
 
-  public function store($forum)
+  public function store()
   {
-    User::find(Auth::user()->id)->forumCommentaires()->attach('', ['client_id' => Auth::user()->id, 'commentaire' => request('commentaire'), 'forum_id' => $forum]);
+    Auth::user()->forumCommentaires()->attach('', \request()->all());
     return redirect()->back();
   }
 
-  public function edit($forum, $id)
+  public function edit(forum $forum, forum_commentaire $commentaire)
   {
     return view('forum',
       [
         'time' => $this->time,
-        'forum' => forum::find($forum),
-        'Commentaire' => forum_commentaire::find($id)
+        'forum' => $forum,
+        'Commentaire' => $commentaire
       ]);
   }
 
-  public function update($id)
+  public function update(forum_commentaire $commentaire)
   {
-    $forum_avis = forum_commentaire::find($id);
-    $forum_avis->commentaire = request('commentaire');
-    $forum_avis->save();
+    $commentaire->update(\request()->all());
     return redirect()->back();
   }
 
-  public function delete($id)
+  public function delete(forum_commentaire $commentaire)
   {
-    forum_commentaire::destroy($id);
+    $commentaire->delete();
     return redirect()->back();
   }
 }

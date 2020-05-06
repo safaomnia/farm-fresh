@@ -14,8 +14,8 @@ class AddForeignKeysToForumCommentaireRepondeTable extends Migration {
 	{
 		Schema::table('forum_commentaire_reponde', function(Blueprint $table)
 		{
-			$table->foreign('forum_commentaire_id', 'forum_commentaire_id')->references('id')->on('forum_commentaire')->onUpdate('RESTRICT')->onDelete('RESTRICT');
-			$table->foreign('client_id', 'repondre_commentaire_utilisateur_id')->references('id')->on('client')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('forum_commentaire_id', 'forum_commentaire_id')->references('id')->on('forum_commentaire')->onUpdate('CASCADE')->onDelete('CASCADE');
+			$table->foreign('client_id', 'repondre_commentaire_utilisateur_id')->references('id')->on('client')->onUpdate('CASCADE')->onDelete('CASCADE');
 		});
 	}
 

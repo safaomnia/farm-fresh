@@ -41,7 +41,7 @@ class fermePolicy
    */
   public function create(User $user)
   {
-    return in_array($user->type, ['agriculteur']);
+    return $user->type == 'agriculteur';
   }
 
   /**
@@ -53,7 +53,7 @@ class fermePolicy
    */
   public function update(User $user, ferme $ferme)
   {
-    return ($user->type == 'agriculteur' && $ferme->agriculteur_id == $user->id) ? true : false;
+    return ($user->type == 'agriculteur' && $ferme->agriculteur_id == $user->id);
   }
 
   /**
@@ -65,7 +65,7 @@ class fermePolicy
    */
   public function delete(User $user, ferme $ferme)
   {
-    return ($user->type == 'agriculteur' && $ferme->agriculteur_id == $user->id) ? true : false;
+    return ($user->type == 'agriculteur' && $ferme->agriculteur_id == $user->id);
   }
 
   /**

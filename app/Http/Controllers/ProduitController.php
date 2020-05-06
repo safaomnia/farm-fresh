@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class ProduitController extends Controller
 {
   protected $time;
-
+  protected $user;
   //boot functions
   public function __construct()
   {
@@ -30,9 +30,8 @@ class ProduitController extends Controller
       ]);
   }
 
-  public function categorie($id)
+  public function categorie(categorie $categorie)
   {
-    $categorie = categorie::find($id);
     return view('produit.viewAny',
       [
         'time' => $this->time,
@@ -42,33 +41,33 @@ class ProduitController extends Controller
       ]);
   }
 
-  public function show($id)
+  public function show(produit $produit)
   {
     if (Auth::check())
-      if ((produit_note::where(['produit_id' => $id, 'client_id' => Auth::user()->id])->first()) == NULL) $note = NULL;
-      else $note = produit_note::where(['produit_id' => $id, 'client_id' => Auth::user()->id])->first();
+      if ((produit_note::where(['produit_id' => $produit->id, 'client_id' => Auth::user()->id])->first()) == NULL)
+        $note = NULL;
+      else
+        $note = produit_note::where(['produit_id' => $produit->id, 'client_id' => Auth::user()->id])->first();
     else
       $note = NULL;
     return view('produit.view',
       [
         'time' => $this->time,
         'client_note' => $note,
-        'produit' => produit::find($id),
+        'produit' => $produit,
         'categories' => categorie::orderBy('nom')->get()
       ]);
   }
 
-  public function note_store($produit)
+  public function note_store()
   {
-    User::find(Auth::user()->id)->produitNotes()->attach('', ['etoiles' => request('rating'), 'produit_id' => $produit]);
+    Auth::user()->produitNotes()->attach('', \request()->all(), ['client_id' => Auth::user()->id]);
     return redirect()->back();
   }
 
-  public function note_update()
+  public function note_update(produit_note $note)
   {
-    $produit_note = produit_note::find(\request('id'));
-    $produit_note->etoiles = request('rating');
-    $produit_note->save();
+    $note->update(\request()->all());
     return redirect()->back();
   }
 
@@ -85,6 +84,6 @@ class ProduitController extends Controller
 
   public function avg($id)
   {
-     return ($this->etoiles($id) != null) ? produit::find($id)->notes()->avg('etoiles') : null;
+    return ($this->etoiles($id) != null) ? produit::find($id)->notes()->avg('etoiles') : null;
   }
 }

@@ -22,20 +22,20 @@ class PanierController extends Controller
       'panier' => $this->panier
     ]);
   }
-  public function store($produit)
+  public function store($produit_id)
   {
-    panier::find($this->panier->id)->produits()->attach('', ['produit_id' => $produit]);
+    panier::find($this->panier->id)->produits()->attach('', ['produit_id' => $produit_id]);
     return redirect()->back();
   }
-  public function delete($produit)
+  public function delete($produit_id)
   {
-    panier::find($this->panier->id)->produits()->detach($produit);
+    panier::find($this->panier->id)->produits()->detach($produit_id);
     return redirect()->back();
   }
 
   //additionnal function
-  public function exist($produit)
+  public function exist($produit_id)
   {
-    return produit_panier::where(['panier_id' => $this->panier->id, 'produit_id' => $produit])->get();
+    return produit_panier::where(['panier_id' => $this->panier->id, 'produit_id' => $produit_id])->get();
   }
 }

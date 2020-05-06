@@ -29,12 +29,12 @@ class ForumController extends Controller
       ]);
   }
 
-  public function show($id)
+  public function show(forum $forum)
   {
     return view('forum',
       [
         'time' => $this->time,
-        'forum' => forum::find($id)
+        'forum' => $forum
       ]);
   }
 
@@ -48,30 +48,26 @@ class ForumController extends Controller
     return redirect()->back();
   }
 
-  public function edit($id)
+  public function edit(forum $forum)
   {
     return view('forums',
       [
-        'forum' => forum::find($id),
+        'forum' => $forum,
         'time' => $this->time,
         'forums' => forum::orderBy('created_at', 'DESC')->get()
       ]
     );
   }
 
-  public function update($id)
+  public function update(forum $forum)
   {
-    $forum = forum::find($id);
-    $forum->theme = \request('theme');
-    $forum->description = \request('description');
-    $forum->client_id = Auth::user()->id;
-    $forum->save();
+    $forum->update(\request()->all(), ['client_id'=> Auth::user()->id]);
     return redirect('forums');
   }
 
-  public function delete($id)
+  public function delete(forum $forum)
   {
-    forum::destroy($id);
+    $forum->delete();
     return redirect()->back();
   }
 }

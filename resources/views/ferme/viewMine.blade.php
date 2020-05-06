@@ -78,7 +78,12 @@
                       </div>
                       <br>
                       <p>{{ substr($ferme->description, 0, 100) }}...</p>
-                      <div class="blog-link-wrap"><a href="{{ route('farm.show', ['id' => $ferme->id]) }}" class="btn-first white-btn">Afficher plus</a>
+                      <div class="blog-link-wrap">
+                        <a href="{{ route('farm.show', ['ferme' => $ferme]) }}" class="btn-first white-btn">Afficher plus</a>
+                        <a href="{{ route('farm.edit', ['ferme' => $ferme]) }}" class="btn-first white-btn"><i class="fa fa-edit"></i> </a>
+                        <a href="{{ route('farm.delete', ['ferme' => $ferme]) }}" class="btn-first white-btn" onclick="return confirm('Voulez-vous sûr de supprimer?')">
+                          <i class="fa fa-trash"></i>
+                        </a>
                       </div>
                     </div>
                   </article>

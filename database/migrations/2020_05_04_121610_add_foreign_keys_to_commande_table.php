@@ -14,9 +14,9 @@ class AddForeignKeysToCommandeTable extends Migration {
 	{
 		Schema::table('commande', function(Blueprint $table)
 		{
-			$table->foreign('client_id', 'commande_client')->references('id')->on('client')->onUpdate('RESTRICT')->onDelete('RESTRICT');
-			$table->foreign('livraison_id', 'commande_livraison')->references('id')->on('livraison')->onUpdate('RESTRICT')->onDelete('RESTRICT');
-			$table->foreign('produit_id', 'commande_produit')->references('id')->on('produit')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('client_id', 'commande_client')->references('id')->on('client')->onUpdate('CASCADE')->onDelete('CASCADE');
+			$table->foreign('livraison_id', 'commande_livraison')->references('id')->on('livraison')->onUpdate('CASCADE')->onDelete('CASCADE');
+			$table->foreign('produit_id', 'commande_produit')->references('id')->on('produit')->onUpdate('CASCADE')->onDelete('CASCADE');
 		});
 	}
 

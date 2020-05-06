@@ -14,8 +14,8 @@ class AddForeignKeysToProduitCategorieTable extends Migration {
 	{
 		Schema::table('produit_categorie', function(Blueprint $table)
 		{
-			$table->foreign('categorie_id', 'categorie_id')->references('id')->on('categorie')->onUpdate('RESTRICT')->onDelete('RESTRICT');
-			$table->foreign('produit_id', 'produit_id')->references('id')->on('produit')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('categorie_id', 'categorie_id')->references('id')->on('categorie')->onUpdate('CASCADE')->onDelete('CASCADE');
+			$table->foreign('produit_id', 'produit_id')->references('id')->on('produit')->onUpdate('CASCADE')->onDelete('CASCADE');
 		});
 	}
 

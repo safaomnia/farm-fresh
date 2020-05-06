@@ -328,7 +328,7 @@
                                 <div class="restaurent-product-caption-box"><span class="text-light-white">{{ substr($produit->description, 0, 100) }}...</span>
                                 </div>
                                 <div class="restaurent-tags-price">
-                                  <a href="{{ route('product.show', ['id' => $produit->id]) }}" class="btn-first white-btn">Afficher plus</a>
+                                  <a href="{{ route('product.show', ['produit' => $produit]) }}" class="btn-first white-btn">Afficher plus</a>
                                   <div class="restaurent-product-price">
                                     <h6 class="text-success fw-600 no-margin">{{$produit->prix}}<sup>dt</sup></h6>
                                   </div>
@@ -636,7 +636,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="review-date"><span class="text-light-white"><a href="{{ route('notice.delete', ['id' => $ferme_avis->id]) }}" onclick="return confirm
+                  <div class="review-date"><span class="text-light-white"><a href="{{ route('notice.delete', ['avis' => $ferme_avis]) }}" onclick="return confirm
                   ('Voulez-vous sûr de supprimer votre avis?')">Supprimer </a></span>
                   </div>
                 </div>
@@ -644,9 +644,9 @@
               </div>
             @endisset
             <div class="comment-form">
-              <form method="POST" action="@isset($ferme_avis) {{ route('notice.update', ['ferme' =>
-                        $ferme->id]) }} @else {{ route('notice.store', ['ferme' => $ferme->id]) }} @endisset">
-                {{ csrf_field() }}
+              <form method="POST" action="@isset($ferme_avis) {{ route('notice.update', ['avis' => $ferme_avis]) }}
+              @else {{ route('notice.store') }} @endisset">
+                @csrf
                 <div class="row">
                   @auth
                     <?php $photo = Auth::user()->photo; ?>
@@ -661,33 +661,32 @@
                       <fieldset class="rating" style="margin: -10px 0 10px 0;"><input type="radio" id="star5" name="rating" value="5" <?php if (isset($ferme_avis)) if
                         ($ferme_avis->etoiles == 5) echo 'checked'; ?> />
                         <label class="full" for="star5" title="Impressionnant - 5 stars"></label>
-                        <input type="radio" id="star4half" name="rating" value="4.5" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 4.5) echo 'checked'; ?>/>
+                        <input type="radio" id="star4half" name="etoiles" value="4.5" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 4.5) echo 'checked'; ?>/>
                         <label class="half" for="star4half" title="Assez bien - 4.5 stars"></label>
-                        <input type="radio" id="star4" name="rating" value="4" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 4) echo 'checked'; ?> />
+                        <input type="radio" id="star4" name="etoiles" value="4" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 4) echo 'checked'; ?> />
                         <label class="full" for="star4" title="Assez bien - 4 stars"></label>
-                        <input type="radio" id="star3half" name="rating" value="3.5" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 3.5) echo 'checked'; ?> />
+                        <input type="radio" id="star3half" name="etoiles" value="3.5" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 3.5) echo 'checked'; ?> />
                         <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                        <input type="radio" id="star3" name="rating" value="3" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 3) echo 'checked'; ?> />
+                        <input type="radio" id="star3" name="etoiles" value="3" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 3) echo 'checked'; ?> />
                         <label class="full" for="star3" title="Meh - 3 stars"></label>
-                        <input type="radio" id="star2half" name="rating" value="2.5" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 2.5) echo 'checked'; ?>/>
+                        <input type="radio" id="star2half" name="etoiles" value="2.5" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 2.5) echo 'checked'; ?>/>
                         <label class="half" for="star2half" title="Un peu mauvais- 2.5 stars"></label>
-                        <input type="radio" id="star2" name="rating" value="2" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 2) echo 'checked'; ?>/>
+                        <input type="radio" id="star2" name="etoiles" value="2" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 2) echo 'checked'; ?>/>
                         <label class="full" for="star2" title="Un peu mauvais - 2 stars"></label>
-                        <input type="radio" id="star1half" name="rating" value="1.5" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 1.5) echo 'checked'; ?>/>
+                        <input type="radio" id="star1half" name="etoiles" value="1.5" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 1.5) echo 'checked'; ?>/>
                         <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                        <input type="radio" id="star1" name="rating" value="1" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 1) echo 'checked'; ?> />
+                        <input type="radio" id="star1" name="etoiles" value="1" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 1) echo 'checked'; ?> />
                         <label class="full" for="star1" title="mauvais - 1 star"></label>
-                        <input type="radio" id="starhalf" name="rating" value="0.5" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 0.5) echo 'checked'; ?>/>
+                        <input type="radio" id="starhalf" name="etoiles" value="0.5" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 0.5) echo 'checked'; ?>/>
                         <label class="half" for="starhalf" title="mauvais - 0.5 stars"></label>
                       </fieldset>
-                      <textarea class="form-control form-control-submit" name="avis" rows="2" placeholder="Votre avis"
-                                required><?php if (isset($ferme_avis)) echo $ferme_avis->avis; ?></textarea>
+                      <textarea class="form-control form-control-submit" name="avis" rows="2" placeholder="Votre avis"  required>{{ $ferme_avis->avis ?? '' }}</textarea>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
                       <div class="form-group"></div>
-                      @isset($ferme_avis) <input type="hidden" name="id" value="{{ $ferme_avis->id }}"> @endisset
+                      <input type="hidden" name="ferme_id" value="{{ $ferme->id }}">
                       <button type="submit" class="btn-second btn-submit" style="margin-top: 10px">Valider</button>
                     </div>
                   </div>

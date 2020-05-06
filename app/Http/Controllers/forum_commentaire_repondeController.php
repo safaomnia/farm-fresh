@@ -18,36 +18,37 @@ class forum_commentaire_repondeController extends Controller
     $this->middleware('auth');
   }
 
-  public function store($commentaire)
+  public function store(forum_commentaire $commentaire)
   {
-    forum_commentaire::find($commentaire)->repondes()->attach('', ['client_id' => Auth::user()->id, 'reponde' => request('reponde'), 'forum_commentaire_id' =>
-      $commentaire]);
+    $commentaire->repondes()->attach('',
+      [
+        'client_id' => Auth::user()->id,
+        'reponde' => request('reponde')
+      ]);
     return redirect()->back();
   }
 
 
-  public function edit($forum, $commentaire, $id)
+  public function edit(forum $forum, forum_commentaire $commentaire, forum_commentaire_reponde $reponde)
   {
     return view('forum',
       [
         'time' => $this->time,
-        'forum' => forum::find($forum),
-        'Reply_commentaire' => forum_commentaire_reponde::find($commentaire),
-        'Reply' => forum_commentaire_reponde::find($id)
+        'forum' => $forum,
+        'Reply_commentaire' => $commentaire,
+        'Reply' => $reponde
       ]);
   }
 
-  public function update($forum, $id)
+  public function update(forum $forum, forum_commentaire_reponde $reponde)
   {
-    $forum_commentaire_reponde = forum_commentaire_reponde::find($id);
-    $forum_commentaire_reponde->reponde = \request('reponde');
-    $forum_commentaire_reponde->save();
-    return redirect()->route('forum', ['id' => $forum]);
+    $reponde->update(\request()->all());
+    return redirect()->route('forum.show', ['forum' => $forum]);
   }
 
-  public function delete($id)
+  public function delete(forum_commentaire_reponde $reponde)
   {
-    forum_commentaire_reponde::destroy($id);
+    $reponde->delete();
     return redirect()->back();
   }
 

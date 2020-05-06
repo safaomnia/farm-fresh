@@ -14,11 +14,12 @@ class CreateProduitNoteTable extends Migration {
 	{
 		Schema::create('produit_note', function(Blueprint $table)
 		{
-			$table->float('etoiles')->default(0);
+			$table->bigInteger('id', true);
+			$table->float('etoiles', 10, 0)->default(0);
 			$table->bigInteger('client_id')->unsigned()->index('utilisateur_id');
 			$table->bigInteger('produit_id')->unsigned()->index('ferme_id');
 			$table->timestamps();
-			$table->primary(['client_id','produit_id']);
+			$table->unique(['client_id','produit_id'], 'client_id_produit_id');
 		});
 	}
 

@@ -8,7 +8,7 @@ class ferme extends Model
 {
   public $table = 'ferme';
   protected $fillable = [
-    'nom', 'adresse', 'description'
+    'nom', 'image', 'adresse', 'telephone', 'email', 'description'
   ];
 
   public function avis()
