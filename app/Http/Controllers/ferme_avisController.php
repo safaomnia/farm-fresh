@@ -17,18 +17,15 @@ class ferme_avisController extends Controller
   public function store()
   {
     Auth::user()->fermeAvis()->attach('', \request()->all());
-    return redirect()->back();
   }
 
   public function update(ferme_avis $avis)
   {
     $avis->update(\request()->all());
-    return redirect()->back();
   }
 
   public function delete(ferme_avis $avis)
   {
     $avis->delete();
-    return redirect()->back();
   }
 }

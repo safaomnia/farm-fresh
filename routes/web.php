@@ -34,7 +34,7 @@ Route::post('ferme/update/{ferme}', 'fermeController@update')->middleware('can:u
 Route::get('ferme/delete/{ferme}', 'fermeController@delete')->middleware('can:delete,ferme')->name('farm.delete');
 
 //route ferme avis
-Route::post('ferme/donner/avis', 'ferme_avisController@store')->name('notice.store');
+Route::put('ferme/donner/avis', 'ferme_avisController@store')->name('notice.store');
 Route::post('ferme/update/avis/{avis}', 'ferme_avisController@update')->name('notice.update');
 Route::get('ferme/delete/avis/{avis}', 'ferme_avisController@delete')->name('notice.delete');
 

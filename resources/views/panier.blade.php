@@ -475,9 +475,7 @@
                         </a>
                       </div>
                       <div class="delete-btn">
-                        <a href="{{ route('card.delete', ['produit_id' => $produit->id]) }}" class="text-dark-white" onclick="return confirm('Voulez-vous sûr de ' +
-                         'supprimer?')"> <i class="far fa-trash-alt"></i>
-                        </a>
+                        <button class="text-dark-white" id="product-delete{{ $produit->id }}"><i class="far fa-trash-alt"></i></button>
                       </div>
                       <div class="price"><a href="#" class="text-dark-white fw-500">
                           {{ $produit->prix }} <sup>dt</sup>
@@ -505,7 +503,7 @@
                   </div>
                 </div>
                 <div class="card-footer p-0 modify-order">
-                  <button class="text-custom-white full-width fw-500 bg-light-green"><i class="fas fa-chevron-left mr-2"></i> Modifier votre commande </button>
+                  <button class="text-custom-white full-width fw-500 bg-light-green"><i class="fas fa-chevron-left mr-2"></i> Modifier votre commande</button>
                   <a href="#" class="total-amount"> <span class="text-custom-white fw-700">TOTAL</span>
                     <span class="text-custom-white fw-700">{{ $somme }}<sup>dt</sup></span>
                   </a>
@@ -517,5 +515,25 @@
       </div>
     </div>
   </section>
-
+  <script type="text/javascript">
+    $(document).ready(function () {
+      <?php foreach($panier->produits as $produit) { ?>
+      $(document).on("click", "#product-delete<?php echo e($produit->id); ?>", function () {
+        if (confirm("Voulez-vous sûr de supprimer <?php echo e($produit->id); ?>")) {
+          $.ajax({
+            type: 'GET',
+            url: '<?php echo url('panier/destroy/produit'); ?>/' + '<?php echo $produit->id; ?>',
+            success: function () {
+              $("#scrollstyle-4").load(" #scrollstyle-4");
+            },
+            error: function (error) {
+              console.log(error);
+              alert("delete error");
+            }
+          });
+        } else return false;
+      });
+      <?php } ?>
+    });
+  </script>
 @endsection

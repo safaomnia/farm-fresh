@@ -599,8 +599,9 @@
             <h3 class="text-light-black header-title title">Avis de {{ $ferme->nom }}</h3>
           </div>
           @isset($ferme->avis)
-            <div class="restaurent-rating mb-xl-20">
-              <div class="star">
+            <div id="my-notice">
+              <div class="restaurent-rating mb-xl-20">
+                <div class="star">
               <span class="text-yellow fs-16">
                 @inject('note', 'App\Http\Controllers\FermeController')
                 @if($note->avg($ferme->id))
@@ -612,89 +613,144 @@
                   @endif
                 @endif
               </span>
+                </div>
+                <span class="fs-12 text-light-black">{{ $note->etoiles($ferme->id) }} évaluations</span>
               </div>
-              <span class="fs-12 text-light-black">{{ $note->etoiles($ferme->id) }} évaluations</span>
-            </div>
-            <p class="text-light-black mb-xl-20">Exprimez votre opinion sur la {{ $ferme->nom }}:</p>
-            <div class="u-line" style="margin-bottom: 30px;"></div>
-            @isset($ferme_avis)
-              <?php $user = Auth::user()?>
-              <div class="review-box">
-                <div class="review-user">
-                  <div class="review-user-img">
-                    <img src='{{ URL::asset("assets/img/user/$user->photo") }}' class="rounded-circle" alt="#">
-                    <div class="reviewer-name">
-                      <p class="text-light-black fw-600">{{ $user->prenom }} {{ $user->nom }}<small
-                          class="text-light-white fw-500">{{ $user->adresse }}</small>
-                      <div class="ratings">
+              <p class="text-light-black mb-xl-20">Exprimez votre opinion sur la {{ $ferme->nom }}:</p>
+              <div class="u-line" style="margin-bottom: 30px;"></div>
+              @isset($ferme_avis)
+                <?php $user = Auth::user()?>
+                <div id="notice-box" class="review-box">
+                  <div class="review-user">
+                    <div class="review-user-img">
+                      <img src='{{ URL::asset("assets/img/user/$user->photo") }}' class="rounded-circle" alt="#">
+                      <div class="reviewer-name">
+                        <p class="text-light-black fw-600">{{ $user->prenom }} {{ $user->nom }}
+                          <small class="text-light-white fw-500">{{ $user->adresse }}</small>
+                        </p>
+                        <div class="ratings">
                         <span class="text-yellow fs-16">
                           @for($i = 0; $i <  $ferme_avis->etoiles; $i++)
                             <i class="fas fa-star text-yellow"></i>
                           @endfor
                         </span>
-                        <span class="ml-2 text-light-white">{{ $time->inWords($ferme_avis->created_at) }}</span>
+                          <span class="ml-2 text-light-white">{{ $time->inWords($ferme_avis->created_at) }}</span>
+                        </div>
                       </div>
                     </div>
+                    <div class="review-date">
+                    <span class="text-light-white">
+                      <a id="notice-delete">Supprimer </a>
+                    </span>
+                    </div>
+                    <div class="review-date"><span class="text-light-white"><a id="notice-edit">Modifier</a></span></div>
                   </div>
-                  <div class="review-date"><span class="text-light-white"><a href="{{ route('notice.delete', ['avis' => $ferme_avis]) }}" onclick="return confirm
-                  ('Voulez-vous sûr de supprimer votre avis?')">Supprimer </a></span>
-                  </div>
+                  <p class="text-light-black">{{ $ferme_avis->avis }}</p>
                 </div>
-                <p class="text-light-black">{{ $ferme_avis->avis }}</p>
-              </div>
-            @endisset
-            <div class="comment-form">
-              <form method="POST" action="@isset($ferme_avis) {{ route('notice.update', ['avis' => $ferme_avis]) }}
-              @else {{ route('notice.store') }} @endisset">
-                @csrf
-                <div class="row">
-                  @auth
-                    <?php $photo = Auth::user()->photo; ?>
-                    <div class="review-user col-md-1">
-                      <div class="review-user-img">
-                        <img src='{{ URL::asset("assets/img/user/$photo") }}' class="rounded-circle" alt="profil-user">
+                <div id="notice-div" class="comment-form" style="display: none;">
+                  <form id="notice-form">
+                    @csrf
+                    <div class="row">
+                      @auth
+                        <?php $photo = Auth::user()->photo; ?>
+                        <div class="review-user col-md-1">
+                          <div class="review-user-img">
+                            <img src='{{ URL::asset("assets/img/user/$photo") }}' class="rounded-circle" alt="profil-user">
+                          </div>
+                        </div>
+                      @endauth
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <fieldset class="rating" style="margin: -10px 0 10px 0;"><input type="radio" id="star5" name="rating"
+                                                                                          value="5" {{ ($ferme_avis->etoiles == 5) ?  'checked': '' }} />
+                            <label class="full" for="star5" title="Impressionnant - 5 stars"></label>
+                            <input type="radio" id="star4half" name="etoiles" value="4.5" {{ ($ferme_avis->etoiles == 4.5) ?  'checked': '' }}/>
+                            <label class="half" for="star4half" title="Assez bien - 4.5 stars"></label>
+                            <input type="radio" id="star4" name="etoiles" value="4" {{ ($ferme_avis->etoiles == 4) ?  'checked': '' }} />
+                            <label class="full" for="star4" title="Assez bien - 4 stars"></label>
+                            <input type="radio" id="star3half" name="etoiles" value="3.5" {{ ($ferme_avis->etoiles == 3.5) ?  'checked': '' }} />
+                            <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                            <input type="radio" id="star3" name="etoiles" value="3" {{ ($ferme_avis->etoiles == 3) ?  'checked': '' }}/>
+                            <label class="full" for="star3" title="Meh - 3 stars"></label>
+                            <input type="radio" id="star2half" name="etoiles" value="2.5" {{ ($ferme_avis->etoiles == 2.5) ?  'checked': '' }}/>
+                            <label class="half" for="star2half" title="Un peu mauvais- 2.5 stars"></label>
+                            <input type="radio" id="star2" name="etoiles" value="2" {{ ($ferme_avis->etoiles == 2) ?  'checked': '' }}/>
+                            <label class="full" for="star2" title="Un peu mauvais - 2 stars"></label>
+                            <input type="radio" id="star1half" name="etoiles" value="1.5" {{ ($ferme_avis->etoiles == 1.5) ?  'checked': '' }}/>
+                            <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                            <input type="radio" id="star1" name="etoiles" value="1" {{ ($ferme_avis->etoiles == 1) ?  'checked': '' }} />
+                            <label class="full" for="star1" title="mauvais - 1 star"></label>
+                            <input type="radio" id="starhalf" name="etoiles" value="0.5" {{ ($ferme_avis->etoiles == 0.5) ?  'checked': '' }}/>
+                            <label class="half" for="starhalf" title="mauvais - 0.5 stars"></label>
+                          </fieldset>
+                          <textarea class="form-control form-control-submit" name="avis" rows="2" placeholder="Votre avis" required>{{ $ferme_avis->avis }}</textarea>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <div class="form-group"></div>
+                          <input type="hidden" name="ferme_id" value="{{ $ferme->id }}">
+                          <button type="submit" class="btn-second btn-submit" style="margin-top: 10px">Valider</button>
+                          <button id="notice-cancel" type="button" class="btn-second btn-submit" style="margin-top: 10px">Annuler</button>
+                        </div>
                       </div>
                     </div>
-                  @endauth
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <fieldset class="rating" style="margin: -10px 0 10px 0;"><input type="radio" id="star5" name="rating" value="5" <?php if (isset($ferme_avis)) if
-                        ($ferme_avis->etoiles == 5) echo 'checked'; ?> />
-                        <label class="full" for="star5" title="Impressionnant - 5 stars"></label>
-                        <input type="radio" id="star4half" name="etoiles" value="4.5" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 4.5) echo 'checked'; ?>/>
-                        <label class="half" for="star4half" title="Assez bien - 4.5 stars"></label>
-                        <input type="radio" id="star4" name="etoiles" value="4" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 4) echo 'checked'; ?> />
-                        <label class="full" for="star4" title="Assez bien - 4 stars"></label>
-                        <input type="radio" id="star3half" name="etoiles" value="3.5" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 3.5) echo 'checked'; ?> />
-                        <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                        <input type="radio" id="star3" name="etoiles" value="3" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 3) echo 'checked'; ?> />
-                        <label class="full" for="star3" title="Meh - 3 stars"></label>
-                        <input type="radio" id="star2half" name="etoiles" value="2.5" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 2.5) echo 'checked'; ?>/>
-                        <label class="half" for="star2half" title="Un peu mauvais- 2.5 stars"></label>
-                        <input type="radio" id="star2" name="etoiles" value="2" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 2) echo 'checked'; ?>/>
-                        <label class="full" for="star2" title="Un peu mauvais - 2 stars"></label>
-                        <input type="radio" id="star1half" name="etoiles" value="1.5" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 1.5) echo 'checked'; ?>/>
-                        <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                        <input type="radio" id="star1" name="etoiles" value="1" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 1) echo 'checked'; ?> />
-                        <label class="full" for="star1" title="mauvais - 1 star"></label>
-                        <input type="radio" id="starhalf" name="etoiles" value="0.5" <?php if (isset($ferme_avis)) if ($ferme_avis->etoiles == 0.5) echo 'checked'; ?>/>
-                        <label class="half" for="starhalf" title="mauvais - 0.5 stars"></label>
-                      </fieldset>
-                      <textarea class="form-control form-control-submit" name="avis" rows="2" placeholder="Votre avis"  required>{{ $ferme_avis->avis ?? '' }}</textarea>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <div class="form-group"></div>
-                      <input type="hidden" name="ferme_id" value="{{ $ferme->id }}">
-                      <button type="submit" class="btn-second btn-submit" style="margin-top: 10px">Valider</button>
-                    </div>
-                  </div>
+                  </form>
                 </div>
-              </form>
+              @else
+                <div id="notice-div-store" class="comment-form">
+                  <form id="notice-form-add">
+                    @csrf
+                    @method('PUT')
+                    <div class="row">
+                      @auth
+                        <?php $photo = Auth::user()->photo; ?>
+                        <div class="review-user col-md-1">
+                          <div class="review-user-img">
+                            <img src='{{ URL::asset("assets/img/user/$photo") }}' class="rounded-circle" alt="profil-user">
+                          </div>
+                        </div>
+                      @endauth
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <fieldset class="rating" style="margin: -10px 0 10px 0;"><input type="radio" id="star5" name="rating" value="5"/>
+                            <label class="full" for="star5" title="Impressionnant - 5 stars"></label>
+                            <input type="radio" id="star4half" name="etoiles" value="4.5"/>
+                            <label class="half" for="star4half" title="Assez bien - 4.5 stars"></label>
+                            <input type="radio" id="star4" name="etoiles" value="4"/>
+                            <label class="full" for="star4" title="Assez bien - 4 stars"></label>
+                            <input type="radio" id="star3half" name="etoiles" value="3.5"/>
+                            <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                            <input type="radio" id="star3" name="etoiles" value="3"/>
+                            <label class="full" for="star3" title="Meh - 3 stars"></label>
+                            <input type="radio" id="star2half" name="etoiles" value="2.5"/>
+                            <label class="half" for="star2half" title="Un peu mauvais- 2.5 stars"></label>
+                            <input type="radio" id="star2" name="etoiles" value="2"/>
+                            <label class="full" for="star2" title="Un peu mauvais - 2 stars"></label>
+                            <input type="radio" id="star1half" name="etoiles" value="1.5"/>
+                            <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                            <input type="radio" id="star1" name="etoiles" value="1"/>
+                            <label class="full" for="star1" title="mauvais - 1 star"></label>
+                            <input type="radio" id="starhalf" name="etoiles" value="0.5"/>
+                            <label class="half" for="starhalf" title="mauvais - 0.5 stars"></label>
+                          </fieldset>
+                          <textarea class="form-control form-control-submit" name="avis" rows="2" placeholder="Votre avis" required></textarea>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <div class="form-group"></div>
+                          <input type="hidden" name="ferme_id" value="{{ $ferme->id }}">
+                          <button type="submit" class="btn-second btn-submit" style="margin-top: 10px">Valider</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              @endisset
+              <p class="text-light-black mb-xl-20">Voici ce que les gens avis:</p>
+              <div class="u-line"></div>
             </div>
-            <p class="text-light-black mb-xl-20">Voici ce que les gens avis:</p>
-            <div class="u-line"></div>
             @foreach($ferme->avis as $avis)
               <div class="review-box u-line">
                 <div class="review-user">
@@ -736,4 +792,59 @@
     </div>
   </section>
   <!-- restaurent reviews -->
+  <script>
+    <?php if(isset($ferme_avis)) { ?>
+    $(document).on("click", "#notice-edit", function () {
+      $("#notice-box").hide();
+      $("#notice-div").show();
+    });
+    $(document).on("click", "#notice-cancel", function () {
+      $("#notice-div").hide();
+      $("#notice-box").show();
+    });
+    $(document).on("click", "#notice-delete", function () {
+      if (confirm("Voulez-vous sûr de supprimer?")) {
+        $.ajax({
+          type: 'GET',
+          url: '<?php echo url('ferme/delete/avis/'); ?>/' + '<?php echo $ferme_avis->id; ?>',
+          success: function () {
+            $("#review").load(" #review");
+          },
+          error: function () {
+            alert("delete error");
+          }
+        });
+      } else return false;
+    });
+    $(document).on("submit", "#notice-form", function (e) {
+      e.preventDefault();
+      $.ajax({
+        type: 'POST',
+        url: '<?php echo url('ferme/update/avis/'); ?>/' + '<?php echo $ferme_avis->id; ?>',
+        data: $("#notice-form").serialize(),
+        success: function () {
+          $("#review").load(" #review");
+        },
+        error: function () {
+          alert("update error");
+        }
+      });
+    });
+    <?php } else {?>
+    $(document).on("submit", "#notice-form-add", function (e) {
+      e.preventDefault();
+      $.ajax({
+        type: 'POST',
+        url: '<?php echo url('ferme/donner/avis'); ?>',
+        data: $("#notice-form-add").serialize(),
+        success: function () {
+          $("#review").load(" #review");
+        },
+        error: function (error) {
+          console.log(error);
+        }
+      });
+    });
+    <?php } ?>
+  </script>
 @endsection
