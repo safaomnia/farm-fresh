@@ -72,12 +72,16 @@
                   <div class="restaurent-tags-price">
                     @inject('note', 'App\Http\Controllers\PanierController')
                     @if($note->exist($produit->id)->isEmpty())
-                      <a href="{{ route('card.store', ['produit_id' => $produit->id]) }}" class="btn-second white-btn" title="Ajouter au panier">
+                      <button id="add-cart{{ $produit->id }}" class="btn-second white-btn" title="Ajouter au panier">
                         <i class="fas fa-shopping-bag"></i>
-                      </a>
+                      </button>
+                      <button id="success-cart{{ $produit->id }}" class="btn-second btn-submit text-light" title="Supprimer du panier">
+                        <i class="fas fa-shopping-bag"></i>
+                      </button>
                     @else
-                      <a href="{{ route('card.delete', ['produit_id' => $produit->id]) }}" class="btn-second btn-submit text-light" title="Supprimer du panier">
-                        <i class="fas fa-shopping-bag"></i></a>
+                      <button class="btn-second btn-submit text-light" title="Supprimer du panier">
+                        <i class="fas fa-shopping-bag"></i>
+                      </button>
                     @endif
                     <div class="restaurent-product-price" style="margin: -30px 0 0 30px;">
                       <h6 class="text-success fw-600 text-right">{{$produit->prix}}<sup>dt</sup></h6>
@@ -164,7 +168,8 @@
                               <i class="fas fa-star-half-alt text-yellow"></i>
                             @endif
                             <span class="text-light-black fs-12 rate-data">{{ $note->etoiles($produit->ferme->id) }} évaluations</span>
-                          </div> <br>
+                          </div>
+                          <br>
                           <p class="text-light-black">{{ $produit->ferme->client->prenom }} {{ $produit->ferme->client->nom }}</p>
                           <p class="text-light-white fw-100">{{ substr($produit->ferme->description, 0, 50) }}...</p>
                           <a href="{{ route('farm.show', ['ferme' => $produit->ferme]) }}" class="btn-first white-btn">Afficher plus</a>
@@ -378,4 +383,19 @@
     </div>
   </section>
   <!-- offer near -->
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#success-cart<?php echo $produit->id?>").hide();
+      $("#add-cart<?php echo $produit->id?>").click(function () {
+        $.ajax({
+          type: 'get',
+          url: '<?php echo url('panier/add/produit'); ?>/' + <?php echo $produit->id ?>,
+          success: function () {
+            $("#add-cart<?php echo $produit->id?>").hide();
+            $("#success-cart<?php echo $produit->id?>").show();
+          }
+        });
+      });
+    });
+  </script>
 @endsection

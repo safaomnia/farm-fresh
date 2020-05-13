@@ -7,6 +7,7 @@
   <meta name="keywords" content="#">
   <meta name="description" content="#">
   <meta name="csrf-token" content="{{ csrf_token() }}">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <title>{{ $title ?? 'Farm Fresh' }}</title>
   <!-- Fav and touch icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="#">
@@ -411,17 +412,17 @@
 <script src="{{ URL::asset('assets/js/ion.rangeSlider.min.js')}}"></script>
 <!-- Swiper Slider -->
 <script src="{{ URL::asset('assets/js/swiper.min.js')}}"></script>
+<!-- sticky sidebar -->
+<script src="{{ URL::asset('assets/js/sticksy.js')}}"></script>
+<!-- organza Js -->
+<script src="{{ URL::asset('assets/js/organza.js')}}"></script>
 <!-- Nice Select -->
 <script src="{{ URL::asset('assets/js/jquery.nice-select.min.js')}}"></script>
 <!-- magnific popup -->
 <script src="{{ URL::asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
 <!-- Maps -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnd9JwZvXty-1gHZihMoFhJtCXmHfeRQg"></script>
-<!-- sticky sidebar -->
-<script src="{{ URL::asset('assets/js/sticksy.js')}}"></script>
-<!-- organza Js -->
-<script src="{{ URL::asset('assets/js/organza.js')}}"></script>
+
 <!-- /Place all Scripts Here -->
-<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 </body>
 </html>

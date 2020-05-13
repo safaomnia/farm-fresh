@@ -115,10 +115,12 @@
                     route('reply.store', ['commentaire' =>  $commentaire->pivot]) }} @endif">
                       @csrf
                       <div class="input-group col-xl-12" style="margin: 20px 0 20px 30px;">
+                        @auth
                         <div class="col-xl-2">
-                          <?php $photo = Auth::user()->photo ?>
+                          <?php $photo = Auth::user()->nom ?>
                           <img src='{{ URL::asset("assets/img/user/$photo") }}' width="100" class="rounded-circle" alt="#">
                         </div>
+                        @endauth
                         <div class="input-group2 col-xl-8">
                           <input type="text" name="reponde" class="form-control form-control-submit" value="@if(isset($Reply) && $Reply_commentaire->id ==
                           $commentaire->pivot->id) {{  $Reply->reponde }} @endif">
@@ -165,7 +167,6 @@
           <div class="sidebar3">
             <div class="side-bar section-padding pb-0">
               <div class="advertisement-slider swiper-container h-auto mb-xl-20">
-
                 <div class="comment-form">
                   <div class="section-header-left">
                     <h3 class="text-light-black header-title">Commenter {{ $forum->theme }}</h3>
@@ -179,7 +180,7 @@
                           <textarea class="form-control form-control-submit" name="commentaire" rows="6" placeholder="Votre commentaire">{{ $Commentaire->commentaire ?? ''
                           }}</textarea>
                         </div>
-                        <input type="hidden" name="client_id" value="{{ Auth::user()->id }}">
+                        <input type="hidden" name="client_id" value="{{ Auth::user()->id ?? ''}}">
                         <input type="hidden" name="forum_id" value="{{ $forum->id }}">
                         <button type="submit" class="btn-second btn-submit full-width">Send</button>
                       </div>
@@ -358,7 +359,7 @@
                         </div>
                       </div>
                       <div class="input-group-append col-xl-4">
-                        <button class="btn-second btn-submit full-width" type="button">Find food</button>
+                        <button class="btn-second btn-submit full-width" type="button" id="btn">Find food</button>
                       </div>
                     </div>
                   </div>

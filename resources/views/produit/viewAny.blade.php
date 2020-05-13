@@ -258,12 +258,14 @@
                           @inject('note', 'App\Http\Controllers\PanierController')
                           <a href="{{ route('product.show', ['produit' => $produit]) }}" class="btn-first white-btn">Afficher plus</a>
                           @if($note->exist($produit->id)->isEmpty())
-                            <a href="{{ route('card.store', ['produit_id' => $produit->id]) }}" class="btn-second white-btn" title="Ajouter au panier"
-                               style="margin-left:
-                              -100px;"><i class="fas fa-shopping-bag"></i></a>
+                            <button id="add-cart{{ $produit->id }}" class="btn-second white-btn" title="Ajouter au panier"
+                                    style="margin-left:
+                              -100px;"><i class="fas fa-shopping-bag"></i></button>
+                            <button id="success-cart{{ $produit->id }}" class="btn-second btn-submit text-light"
+                                    title="Supprimer du panier" style="margin-left: -100px;"><i class="fas fa-shopping-bag"></i></button>
                           @else
-                            <a href="{{ route('card.delete', ['produit_id' => $produit->id]) }}" class="btn-second btn-submit text-light" title="Supprimer du panier"
-                               style="margin-left: -100px;"><i class="fas fa-shopping-bag"></i></a>
+                            <button class="btn-second btn-submit text-light" title="Supprimer du panier" style="margin-left: -100px;"><i class="fas
+                            fa-shopping-bag"></i></button>
                           @endif
                           <div class="restaurent-product-price">
                             <h6 class="text-success fw-600 no-margin">{{$produit->prix}}<sup>dt</sup></h6>
@@ -470,5 +472,21 @@
       </div>
     </div>
   </section>
-
+  <script type="text/javascript">
+    $(document).ready(function () {
+      <?php foreach($produits as $produit) { ?>
+      $("#success-cart<?php echo $produit->id?>").hide();
+      $("#add-cart<?php echo $produit->id?>").click(function () {
+        $.ajax({
+          type: 'get',
+          url: '<?php echo url('panier/add/produit'); ?>/' + <?php echo $produit->id ?>,
+          success: function () {
+            $("#add-cart<?php echo $produit->id?>").hide();
+            $("#success-cart<?php echo $produit->id?>").show();
+          }
+        });
+      });
+      <?php } ?>
+    });
+  </script>
 @endsection
