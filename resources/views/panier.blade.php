@@ -462,7 +462,7 @@
                 <div class="card-body no-padding" id="scrollstyle-4">
                   <?php $i = 0; $somme = 0;
                   foreach($panier->produits as $produit) : $i++; $somme += $produit->prix;?>
-                  <div class="cat-product-box">
+                  <div class="cat-product-box" id="product-box{{ $produit->prix }}">
                     <div class="cat-product">
                       <div class="cat-name">
                         <a href="{{ route('card.show', ['produit_id' => $produit->id]) }}">
@@ -524,7 +524,7 @@
             type: 'GET',
             url: '<?php echo url('panier/destroy/produit'); ?>/' + '<?php echo $produit->id; ?>',
             success: function () {
-              $("#scrollstyle-4").load(" #scrollstyle-4");
+              $("#product-box{{ $produit->prix }}").load(" #product-box{{ $produit->prix }}");
             },
             error: function (error) {
               console.log(error);

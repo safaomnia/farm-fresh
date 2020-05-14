@@ -793,58 +793,64 @@
   </section>
   <!-- restaurent reviews -->
   <script>
-    <?php if(isset($ferme_avis)) { ?>
-    $(document).on("click", "#notice-edit", function () {
-      $("#notice-box").hide();
-      $("#notice-div").show();
-    });
-    $(document).on("click", "#notice-cancel", function () {
-      $("#notice-div").hide();
-      $("#notice-box").show();
-    });
-    $(document).on("click", "#notice-delete", function () {
-      if (confirm("Voulez-vous sûr de supprimer?")) {
+    $(document).ready(function () {
+      <?php if(isset($ferme_avis)) { ?>
+      $(document).on("click", "#notice-edit", function () {
+        $("#notice-box").hide();
+        $("#notice-div").show();
+      });
+      $(document).on("click", "#notice-cancel", function () {
+        $("#notice-div").hide();
+        $("#notice-box").show();
+      });
+      $(document).on("click", "#notice-delete", function () {
+        if (confirm("Voulez-vous sûr de supprimer?")) {
+          $.ajax({
+            type: 'GET',
+            url: '<?php echo url('ferme/delete/avis/'); ?>/' + '<?php echo $ferme_avis->id; ?>',
+            success: function () {
+              $("#review").load(" #review");
+            },
+            error: function () {
+              alert("delete error");
+            }
+          });
+        } else return false;
+      });
+      $(document).on("submit", "#notice-form", function (e) {
+        e.preventDefault();
         $.ajax({
-          type: 'GET',
-          url: '<?php echo url('ferme/delete/avis/'); ?>/' + '<?php echo $ferme_avis->id; ?>',
+          type: 'POST',
+          url: '<?php echo url('ferme/update/avis/'); ?>/' + '<?php echo $ferme_avis->id; ?>',
+          data: $("#notice-form").serialize(),
           success: function () {
             $("#review").load(" #review");
           },
           error: function () {
-            alert("delete error");
+            alert("update error");
           }
         });
-      } else return false;
-    });
-    $(document).on("submit", "#notice-form", function (e) {
-      e.preventDefault();
-      $.ajax({
-        type: 'POST',
-        url: '<?php echo url('ferme/update/avis/'); ?>/' + '<?php echo $ferme_avis->id; ?>',
-        data: $("#notice-form").serialize(),
-        success: function () {
-          $("#review").load(" #review");
-        },
-        error: function () {
-          alert("update error");
-        }
       });
-    });
-    <?php } else {?>
-    $(document).on("submit", "#notice-form-add", function (e) {
-      e.preventDefault();
-      $.ajax({
-        type: 'POST',
-        url: '<?php echo url('ferme/donner/avis'); ?>',
-        data: $("#notice-form-add").serialize(),
-        success: function () {
-          $("#review").load(" #review");
-        },
-        error: function (error) {
-          console.log(error);
-        }
+      <?php } else {?>
+      $(document).on("submit", "#notice-form-add", function (e) {
+        e.preventDefault();
+        <?php if(isset(Auth::user()->id)) { ?>
+        $.ajax({
+          type: 'POST',
+          url: '<?php echo url('ferme/donner/avis'); ?>',
+          data: $("#notice-form-add").serialize(),
+          success: function () {
+            $("#review").load(" #review");
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        });
+        <?php } else { ?>
+          location.href = '/login';
+        <?php } ?>
       });
+      <?php } ?>
     });
-    <?php } ?>
   </script>
 @endsection
