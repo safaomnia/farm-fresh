@@ -7,10 +7,8 @@
       color: #6da830;
     }
 
-    .pagination > .active > a,
     .pagination > .active > a:focus,
     .pagination > .active > a:hover,
-    .pagination > .active > span,
     .pagination > .active > span:focus,
     .pagination > .active > span:hover,
     .pagination > li > a:hover {
@@ -18,8 +16,6 @@
       border-color: #6da830;
       color: white;
     }
-    
-
   </style>
   <section class="our-articles bg-light-theme section-padding pt-0">
     <div class="blog-page-banner"></div>
@@ -246,10 +242,10 @@
 
             <nav aria-label="Page navigation example" style="margin-bottom: 20px;">
               <ul class="pagination justify-content-center">
-                {{ $produits->render() }}
+                {{ $produits->links() }}
               </ul>
             </nav>
-            <div class="row">
+            <div id="products-box" class="row">
               @foreach($produits as $produit)
                 <div class="col-lg-12">
                   <div class="restaurent-product-list">
@@ -306,22 +302,10 @@
                 </div>
               @endforeach
             </div>
-            <nav aria-label="Page navigation example">
+
+            <nav aria-label="Page navigation example" style="margin-bottom: 20px;">
               <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                  <a class="page-link" href="#" tabindex="-1">Précédent</a>
-                </li>
-                <li class="page-item"><a class="page-link btn-first white-btn text-light-green" href="#">1</a></li>
-                <li class="page-item">
-                <span class="page-link btn-first btn-submit text-light">
-                  2
-                  <span class="sr-only">(current)</span>
-                </span>
-                </li>
-                <li class="page-item"><a class="page-link btn-first white-btn text-light-green" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link btn-first white-btn text-light-green" href="#">Suivant</a>
-                </li>
+                {{ $produits->links() }}
               </ul>
             </nav>
           </div>
