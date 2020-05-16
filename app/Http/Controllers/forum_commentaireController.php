@@ -21,28 +21,15 @@ class forum_commentaireController extends Controller
   public function store()
   {
     Auth::user()->forumCommentaires()->attach('', \request()->all());
-    return redirect()->back();
-  }
-
-  public function edit(forum $forum, forum_commentaire $commentaire)
-  {
-    return view('forum',
-      [
-        'time' => $this->time,
-        'forum' => $forum,
-        'Commentaire' => $commentaire
-      ]);
   }
 
   public function update(forum_commentaire $commentaire)
   {
     $commentaire->update(\request()->all());
-    return redirect()->back();
   }
 
   public function delete(forum_commentaire $commentaire)
   {
     $commentaire->delete();
-    return redirect()->back();
   }
 }

@@ -25,7 +25,7 @@ class ProduitController extends Controller
     return view('produit.viewAny',
       [
         'time' => $this->time,
-        'produits' => produit::orderBy('created_at', 'DESC')->get(),
+        'produits' => produit::orderBy('created_at', 'DESC')->paginate(15),
         'categories' => categorie::orderBy('nom')->get()
       ]);
   }

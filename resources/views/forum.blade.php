@@ -97,66 +97,105 @@
                           <div class="reviewer-name">
                             <p class="text-light-black fw-600">{{ $commentaire->prenom }} {{ $commentaire->nom }}
                               <small class="text-light-white fw-500">{{ $commentaire->adresse }}</small>
+                            </p>
+                            <div class="review-date" style="right:0px;"><span class="text-light-white">{{ $time->inWords($commentaire->pivot->created_at) }}</span></div>
                           </div>
                         </div>
-                        <div class="review-date"><span class="text-light-white">{{ $time->inWords($commentaire->pivot->created_at) }}</span>
-                          @can('update', $commentaire->pivot)
-                            <a href="{{ route('comment.edit', ['ferme'=> $forum, 'commentaire' => $commentaire->pivot]) }}">Modifier</a>
-                          @endcan
-                          @can('delete', $commentaire->pivot)
-                            <a href="{{ route('comment.delete', ['commentaire' => $commentaire->pivot]) }}"
-                               onclick="return confirm('Voulez-vous sûr de supprimer?')">Supprimer</a>
-                          @endcan
+                        @can('update', $commentaire->pivot)
+                          <div class="dropdown">
+                            <button class="btn-first text-light-green" type="button" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+                            <ul class="dropdown-menu" style="margin-left: -100px; padding-left: 30px;">
+                              <li style="cursor: pointer;" data-toggle="modal" data-target="#edit-popup{{ $commentaire->pivot->id }}">Modifier</li>
+                              <li id="delete-comment{{ $commentaire->pivot->id }}" style="cursor: pointer;">Supprimer</li>
+                            </ul>
+                          </div>
+                      @endcan
+                      <!-- Modal -->
+                        <div class="modal fade" id="edit-popup{{ $commentaire->pivot->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                             aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modifier commentaire</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <form id="edit-comment-form{{ $commentaire->pivot->id }}">
+                                <div class="modal-body">
+                                  @csrf
+                                  <div class="row">
+                                    <div class="col-md-12">
+                                      <div class="form-group">
+                                        <textarea class="form-control form-control-submit" name="commentaire" rows="4" placeholder="Entrer votre
+                                        commentaire">{{ $commentaire->pivot->commentaire }}</textarea>
+                                      </div>
+                                      <input type="hidden" name="client_id" value="{{ Auth::user()->id ?? ''}}">
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn-second text-light-green" data-dismiss="modal">Close</button>
+                                  <button type="submit" class="btn-second btn-submit">Modifier</button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <p class="text-light-black">{{ $commentaire->pivot->commentaire }}</p>
+                      <button id="reply{{ $commentaire->pivot->id }}" class="btn-first btn-default text-light-green" style="margin-left: -17px;">Répondre
+                        ({{ count($commentaire->pivot->repondes) }})
+                      </button>
                     </div>
-                    <form method="POST" action="@if(isset($Reply)) {{ route('reply.update', ['forum' => $forum, 'reponde' => $Reply]) }} @else {{
-                    route('reply.store', ['commentaire' =>  $commentaire->pivot]) }} @endif">
-                      @csrf
-                      <div class="input-group col-xl-12" style="margin: 20px 0 20px 30px;">
-                        @auth
-                        <div class="col-xl-2">
-                          <?php $photo = Auth::user()->nom ?>
-                          <img src='{{ URL::asset("assets/img/user/$photo") }}' width="100" class="rounded-circle" alt="#">
-                        </div>
-                        @endauth
-                        <div class="input-group2 col-xl-8">
-                          <input type="text" name="reponde" class="form-control form-control-submit" value="@if(isset($Reply) && $Reply_commentaire->id ==
-                          $commentaire->pivot->id) {{  $Reply->reponde }} @endif">
-                        </div>
-                        <div class="input-group-append col-xl-2">
-                          <button class="btn-second btn-submit full-width" type="submit"><i class="fas fa-paper-plane"></i></button>
-                        </div>
-                      </div>
-                    </form>
-                    <div class="u-line" style="margin:0 0 10px 60px;"></div>
-                    @foreach($commentaire->pivot->repondes as $reponde)
-                      <div class="review-box comment-reply u-line">
-                        <div class="review-user">
-                          <div class="review-user-img">
-                            <img src='{{ URL::asset("assets/img/user/$reponde->photo") }}' class="rounded-circle" alt="#">
-                            <div class="reviewer-name">
-                              <p class="text-light-black fw-600">
-                                <a href="{{ route('profile.show', ['client' => $reponde->id]) }}">
-                                  {{ $reponde->prenom }} {{ $reponde->nom }}
-                                </a>
-                                <small class="text-light-white fw-500">{{ $reponde->adresse }}</small>
+                    <div id="reply-box{{ $commentaire->pivot->id }}" style="display: none;">
+                      <form id="add-reply-form">
+                        @csrf
+                        @method('PUT')
+                        <div class="input-group col-xl-12" style="margin: 20px 0 20px 30px;">
+                          @auth
+                            <div class="col-xl-2">
+                              <?php $photo = Auth::user()->photo ?>
+                              <img src='{{ URL::asset("assets/img/user/$photo") }}' width="100" class="rounded-circle" alt="#">
                             </div>
-                            @can('update', $reponde->pivot)
-                              <a href="{{ route('reply.edit', ['forum'=> $forum, 'commentaire' => $commentaire->pivot, '$reponde'=> $reponde->pivot]) }}">Modifier</a>
-                            @endcan
-                            @can('delete', $reponde->pivot)
-                              <a href="{{ route('reply.delete', ['reponde' => $reponde->pivot]) }}"
-                                 onclick="return confirm('Voulez-vous sûr de supprimer?')">Supprimer</a>
-                            @endcan
+                          @endauth
+                          <div class="input-group2 col-xl-8">
+                            <input type="text" name="reponde" class="form-control form-control-submit" value="@if(isset($Reply) && $Reply_commentaire->id ==
+                          $commentaire->pivot->id) {{  $Reply->reponde }} @endif" placeholder="Entrer votre répondre">
                           </div>
-                          <div class="review-date"><span class="text-light-white">{{ $time->inWords($reponde->pivot->created_at) }}</span>
-                          </div>
+                          <span class="input-group-btn">
+                            <button class="btn btn-second btn-submit" type="button" style="margin: 5px;"><i class="fas fa-paper-plane"></i></button>
+                          </span>
                         </div>
-                        <p class="text-light-black">{{ $reponde->pivot->reponde }}</p>
-                      </div>
-                    @endforeach
+                      </form>
+                      <div class="u-line" style="margin:0 0 10px 60px;"></div>
+                      @foreach($commentaire->pivot->repondes as $reponde)
+                        <div class="review-box comment-reply u-line">
+                          <div class="review-user">
+                            <div class="review-user-img">
+                              <img src='{{ URL::asset("assets/img/user/$reponde->photo") }}' class="rounded-circle" alt="#">
+                              <div class="reviewer-name">
+                                <p class="text-light-black fw-600">
+                                  <a href="{{ route('profile.show', ['client' => $reponde->id]) }}">
+                                    {{ $reponde->prenom }} {{ $reponde->nom }}
+                                  </a>
+                                  <small class="text-light-white fw-500">{{ $reponde->adresse }}</small>
+                              </div>
+                              @can('update', $reponde->pivot)
+                                <a href="{{ route('reply.edit', ['forum'=> $forum, 'commentaire' => $commentaire->pivot, '$reponde'=> $reponde->pivot]) }}">Modifier</a>
+                              @endcan
+                              @can('delete', $reponde->pivot)
+                                <a href="{{ route('reply.delete', ['reponde' => $reponde->pivot]) }}"
+                                   onclick="return confirm('Voulez-vous sûr de supprimer?')">Supprimer</a>
+                              @endcan
+                            </div>
+                            <div class="review-date"><span class="text-light-white">{{ $time->inWords($reponde->pivot->created_at) }}</span>
+                            </div>
+                          </div>
+                          <p class="text-light-black">{{ $reponde->pivot->reponde }}</p>
+                        </div>
+                      @endforeach
+                    </div>
                   @endforeach
                 </div>
               </div>
@@ -166,27 +205,30 @@
         <aside class="col-lg-3">
           <div class="sidebar3">
             <div class="side-bar section-padding pb-0">
-              <div class="advertisement-slider swiper-container h-auto mb-xl-20">
-                <div class="comment-form">
-                  <div class="section-header-left">
-                    <h3 class="text-light-black header-title">Commenter {{ $forum->theme }}</h3>
-                  </div>
-                  <form method="POST" action="@isset($Commentaire) {{ route('comment.update', ['commentaire' => $Commentaire]) }}
-                  @else {{ route('comment.store') }} @endisset">
-                    @csrf
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <textarea class="form-control form-control-submit" name="commentaire" rows="6" placeholder="Votre commentaire">{{ $Commentaire->commentaire ?? ''
-                          }}</textarea>
-                        </div>
-                        <input type="hidden" name="client_id" value="{{ Auth::user()->id ?? ''}}">
-                        <input type="hidden" name="forum_id" value="{{ $forum->id }}">
-                        <button type="submit" class="btn-second btn-submit full-width">Send</button>
-                      </div>
+              <div class="inner-wrapper main-box">
+                <div class="section-2 main-page main-padding" style="margin-bottom: 30px;">
+                  <div class="comment-form">
+                    <div class="section-header-left">
+                      <h5 class="text-light-black" style="margin-bottom: -5px;">Commenter ici</h5>
                     </div>
-                  </form>
+                    <form id="add-comment-form">
+                      @csrf
+                      @method('PUT')
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <textarea class="form-control form-control-submit" name="commentaire" rows="4" placeholder="Entrer votre commentaire"></textarea>
+                          </div>
+                          <input type="hidden" name="client_id" value="{{ Auth::user()->id ?? ''}}">
+                          <input type="hidden" name="forum_id" value="{{ $forum->id }}">
+                          <button type="submit" class="btn-second btn-submit">Commenter</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
+              </div>
+              <div class="advertisement-slider swiper-container h-auto mb-xl-20">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
                     <div class="testimonial-wrapper">
@@ -371,4 +413,68 @@
       </div>
     </div>
   </section>
+  <script>
+    $(document).ready(function () {
+      $(document).on("submit", "#add-comment-form", function (e) {
+        e.preventDefault();
+        <?php if(isset(Auth::user()->id)) { ?>
+        $.ajax({
+          type: 'POST',
+          url: '/forum/commentaire/store',
+          data: $("#add-comment-form").serialize(),
+          success: function (response) {
+            console.log(response);
+            $("#add-comment-form").load(" #add-comment-form");
+            $(".comment-box").load(" .comment-box");
+          },
+          error: function (error) {
+            console.log(error);
+            alert("Error : Comment not saved !!");
+          }
+        });
+        <?php } else { ?>
+          location.href = '/login';
+        <?php } ?>
+      });
+      <?php foreach ($forum->commentaires as $commentaire) { ?>
+      $(document).on("click", "#reply{{ $commentaire->pivot->id }}", function () {
+        $("#reply-box{{ $commentaire->pivot->id }}").show();
+      });
+      $(document).on("dblclick", "#reply{{ $commentaire->pivot->id }}", function () {
+        $("#reply-box{{ $commentaire->pivot->id }}").hide();
+      });
+      $(document).on("click", "#delete-comment{{ $commentaire->pivot->id }}", function () {
+        if (confirm("Voulez-vous sûr de supprimer?")) {
+          $.ajax({
+            type: 'GET',
+            url: '<?php echo url("forum/commentaire/delete"); ?>/' + <?php echo $commentaire->pivot->id; ?>,
+            success: function () {
+              $(".comment-box").load(" .comment-box");
+            },
+            error: function (error) {
+              console.log(error);
+              alert("Error: delete comment !!");
+            }
+          });
+        } else return false;
+      });
+      $(document).on("submit", "#edit-comment-form{{ $commentaire->pivot->id }}", function (e) {
+        e.preventDefault();
+        $.ajax({
+          type: 'POST',
+          url: '<?php echo url("/forum/commentaire/update"); ?>/' + <?php echo $commentaire->pivot->id; ?>,
+          data: $("#edit-comment-form<?php echo e($commentaire->pivot->id); ?>").serialize(),
+          success: function () {
+            $("#edit-popup<?php echo e($commentaire->pivot->id); ?>").modal('toggle');
+            $(".comment-box").load(" .comment-box");
+          },
+          error: function (error) {
+            console.log(error);
+            alert("Error : Comment not updated !!");
+          }
+        });
+      });
+      <?php } ?>
+    });
+  </script>
 @endsection

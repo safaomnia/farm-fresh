@@ -1,6 +1,26 @@
 @extends('layout')
 
 @section('content')
+  <style>
+    .pagination > li > a,
+    .pagination > li > span {
+      color: #6da830;
+    }
+
+    .pagination > .active > a,
+    .pagination > .active > a:focus,
+    .pagination > .active > a:hover,
+    .pagination > .active > span,
+    .pagination > .active > span:focus,
+    .pagination > .active > span:hover,
+    .pagination > li > a:hover {
+      background-color: #6da830;
+      border-color: #6da830;
+      color: white;
+    }
+    
+
+  </style>
   <section class="our-articles bg-light-theme section-padding pt-0">
     <div class="blog-page-banner"></div>
     <div class="container-fluid">
@@ -223,6 +243,12 @@
                 @endisset
               </ul>
             </div>
+
+            <nav aria-label="Page navigation example" style="margin-bottom: 20px;">
+              <ul class="pagination justify-content-center">
+                {{ $produits->render() }}
+              </ul>
+            </nav>
             <div class="row">
               @foreach($produits as $produit)
                 <div class="col-lg-12">
@@ -258,13 +284,13 @@
                           @inject('note', 'App\Http\Controllers\PanierController')
                           <a href="{{ route('product.show', ['produit' => $produit]) }}" class="btn-first white-btn">Afficher plus</a>
                           @if($note->exist($produit->id)->isEmpty())
-                            <button id="add-cart{{ $produit->id }}" class="btn-second white-btn" title="Ajouter au panier"
+                            <button id="add-cart{{ $produit->id }}" class="btn-first white-btn text-light-green" title="Ajouter au panier"
                                     style="margin-left:
                               -100px;"><i class="fas fa-shopping-bag"></i></button>
-                            <button id="success-cart{{ $produit->id }}" class="btn-second btn-submit text-light"
-                                    title="Supprimer du panier" style="margin-left: -100px;"><i class="fas fa-shopping-bag"></i></button>
+                            <button id="success-cart{{ $produit->id }}" class="btn-first btn-submit text-light"
+                                    title="Supprimer du panier" style="margin-left: -100px; display: none;"><i class="fas fa-shopping-bag"></i></button>
                           @else
-                            <button class="btn-second btn-submit text-light" title="Supprimer du panier" style="margin-left: -100px;"><i class="fas
+                            <button class="btn-first btn-submit text-light" title="Supprimer du panier" style="margin-left: -100px;"><i class="fas
                             fa-shopping-bag"></i></button>
                           @endif
                           <div class="restaurent-product-price">
@@ -280,6 +306,24 @@
                 </div>
               @endforeach
             </div>
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1">Précédent</a>
+                </li>
+                <li class="page-item"><a class="page-link btn-first white-btn text-light-green" href="#">1</a></li>
+                <li class="page-item">
+                <span class="page-link btn-first btn-submit text-light">
+                  2
+                  <span class="sr-only">(current)</span>
+                </span>
+                </li>
+                <li class="page-item"><a class="page-link btn-first white-btn text-light-green" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link btn-first white-btn text-light-green" href="#">Suivant</a>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
         <aside class="col-lg-3">
@@ -475,7 +519,6 @@
   <script type="text/javascript">
     $(document).ready(function () {
       <?php foreach($produits as $produit) { ?>
-      $("#success-cart<?php echo $produit->id?>").hide();
       $("#add-cart<?php echo $produit->id?>").click(function () {
         $.ajax({
           type: 'get',

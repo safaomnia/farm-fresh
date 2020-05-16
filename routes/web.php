@@ -47,9 +47,9 @@ Route::post('forum/update/{forum}', 'forumController@update')->middleware('can:u
 Route::get('forum/delete/{forum}', 'forumController@delete')->middleware('can:delete,forum')->name('forum.delete');
 
 //route forum commentaire
-Route::post('forum/commentaire/store', 'forum_commentaireController@store')->name('comment.store');
+Route::put('forum/commentaire/store', 'forum_commentaireController@store')->name('comment.store');
 Route::get('forum/commentaire/edit/{forum}/{commentaire}', 'forum_commentaireController@edit')->middleware('can:update,commentaire')->name('comment.edit');
-Route::post('forum/commentaire/update/{forum}/com{mentaire}', 'forum_commentaireController@update')->middleware('can:update,commentaire')->name('comment.update');
+Route::post('forum/commentaire/update/{commentaire}', 'forum_commentaireController@update')->name('comment.update');
 Route::get('forum/commentaire/delete/{commentaire}', 'forum_commentaireController@delete')->middleware('can:delete,commentaire')->name('comment.delete');
 
 //route forum commentaire repondes
