@@ -8,7 +8,7 @@
   <meta name="description" content="#">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <title>{{ $title ?? 'Farm Fresh' }}</title>
+  <title>{{ $title ?? 'Farmtastic' }}</title>
   <!-- Fav and touch icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="#">
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="#">
