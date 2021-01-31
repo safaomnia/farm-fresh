@@ -460,9 +460,11 @@
                   <p class="text-light-white no-margin fw-500">le panier contient :</p>
                 </div>
                 <div class="card-body no-padding" id="scrollstyle-4">
+                <div id="refresh-delete">
                   <?php $i = 0; $somme = 0;
-                  foreach($panier->produits as $produit) : $i++; $somme += $produit->prix;?>
+                  foreach($panier->produits as $produit) : $somme += $produit->prix;?>
                   <div class="cat-product-box" id="product-box{{ $produit->id }}">
+                  <?php $i++; ?>
                     <div class="cat-product">
                       <div class="cat-name">
                         <a href="{{ route('card.show', ['produit_id' => $produit->id]) }}">
@@ -475,7 +477,13 @@
                         </a>
                       </div>
                       <div class="delete-btn">
-                        <button class="text-dark-white" id="product-delete{{ $produit->id }}"><i class="far fa-trash-alt"></i></button>
+                        <button 
+                          class="text-dark-white" 
+                          id="product-delete{{ $produit->id }}" 
+                          onmouseenter="this.classList.add('text-danger')" 
+                          onmouseleave="this.classList.remove('text-danger')">
+                          <i class="far fa-trash-alt" title="Supprimer"></i>
+                        </button>
                       </div>
                       <div class="price"><a href="#" class="text-dark-white fw-500">
                           {{ $produit->prix }} <sup>dt</sup>
@@ -484,6 +492,7 @@
                     </div>
                   </div>
                   <?php endforeach; ?>
+                  </div>
                   <div id="item-total" class="item-total">
                     <div class="total-price border-0 pb-0"><span class="text-dark-white fw-600">Items subtotal:</span>
                       <span class="text-dark-white fw-600">{{ $somme }}<sup>dt</sup></span>
@@ -517,14 +526,14 @@
   </section>
   <script type="text/javascript">
     $(document).ready(function () {
-      <?php foreach($panier->produits as $produit) { ?>
+      <?php foreach($panier->produits as $produit) {  ?>
       $(document).on("click", "#product-delete<?php echo e($produit->id); ?>", function () {
         if (confirm("Voulez-vous sûr de supprimer?")) {
           $.ajax({
             type: 'GET',
             url: '<?php echo url('panier/destroy/produit'); ?>/' + '<?php echo $produit->id; ?>',
             success: function () {
-              $("#product-box{{ $produit->id }}").load(" #product-box{{ $produit->id }}");
+                $("#refresh-delete").load(" #refresh-delete");
               $("#item-total").load(" #item-total");
             },
             error: function (error) {

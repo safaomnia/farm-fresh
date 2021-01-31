@@ -14,7 +14,7 @@
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="#">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="#">
   <link rel="apple-touch-icon-precomposed" href="#">
-  <link rel="shortcut icon" href="#">
+  <link rel="shortcut icon" href="{{ URL::asset('assets/img/logo/icon.png')}}" title="icon">
   <!-- Bootstrap -->
   <link href="{{ URL::asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
   <!-- Fontawesome -->
@@ -39,8 +39,31 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;display=swap" rel="stylesheet">
   <!-- place -->
 </head>
-<body>
+<body style="margin-top:-10px;">
 <!-- Navigation -->
+<div class="copyright">
+  <div class="container-fluid">
+    <div class="row fw-400 fs-12 mr-3" style="margin-bottom:-10px;">
+      <div class="col-lg-4">
+      </div>
+      <div class="col-lg-4 text-center medewithlove align-self-center">
+      </div>
+      <div class="col-lg-4">
+        <div class="copyright-text">
+        <span class="text-light-black">
+        @guest
+           <a href="/login" class="gem-points">S'identifier</a> | 
+           <a href="/register" class="gem-points">S'inscrire</a> | 
+         @endguest
+          <a href="/aide" class="gem-points">Aide </a> |
+           <a href="/contact" class="gem-points">Contactez-nous</a> | 
+          <a href="/propos" class="gem-points">Qui sommes-nous?</a>
+         </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
 <div class="header">
   <header class="full-width">
     <div class="container-fluid">
@@ -48,8 +71,8 @@
         <div class="col-12 mainNavCol">
           <!-- logo -->
           <div class="logo mainNavCol">
-            <a href="index-2.html">
-              <img src="{{URL::asset('assets/img/logo.png')}}" class="img-fluid" alt="Logo">
+            <a href="{{ route('home') }}">
+              <img src="{{ URL::asset('assets/img/logo/logo.png') }}" class="img-fluid" alt="Logo">
             </a>
           </div>
           <!-- logo -->
@@ -69,23 +92,31 @@
           <div class="right-side fw-700 mainNavCol">
             <div class="gem-points">
               <a href="{{ route('product.index') }}">
-                <i class="fab fa-product-hunt"></i>
+                <i class="fab fa-product-hunt" title="Produit"></i>
                 <span>Produit</span>
               </a>
             </div>
             <div class="gem-points">
               <a href="{{ route('farm.index') }}">
-                <i class="fa fa-home"></i>
+                <i class="fa fa-home" title="Ferme"></i>
                 <span>Ferme</span>
               </a>
             </div>
             <div class="gem-points">
               <a href="{{ route('forum.index') }}">
-                <i class="fa fa-comments"></i>
+                <i class="fa fa-comments" title="Forum"></i>
                 <span>Forum</span>
               </a>
             </div>
+
+              <!-- mobile search -->
+            <div class="mobile-search">
+              <a href="#" data-toggle="modal" data-target="#search-box"> <i class="fas fa-search"></i>
+              </a>
+            </div>
+            <!-- end mobile search -->
             @guest
+            <!-- authentification
               <div class="gem-points">
                 <a href="{{ route('register') }}">
                   <div class="icon"><i class="fa fa-user-plus"></i></div>
@@ -98,12 +129,8 @@
                   <span>S'identifer</span>
                 </a>
               </div>
+              <!-- end authentication -->
             @else
-              <div class="mobile-search">
-                <a href="#" data-toggle="modal" data-target="#search-box"> <i class="fas fa-search"></i>
-                </a>
-              </div>
-              <!-- mobile search -->
               <!-- user account -->
               <div class="user-details p-relative">
                 <a href="#" class="text-light-white fw-500">
@@ -202,79 +229,9 @@
           @endguest
           <!-- user cart -->
             <div class="cart-btn cart-dropdown">
-              <a href="#" class="text-light-green fw-700" onclick="return false"> <i class="fas fa-shopping-bag"></i>
+              <a href="{{ route('card.show') }}" class="text-light-green fw-700"> <i class="fas fa-shopping-cart" title="Panier"></i>
                 <span class="user-alert-cart">3</span>
               </a>
-              <div class="cart-detail-box">
-                <div class="card">
-                  <div class="card-body no-padding">
-                    <div class="cat-product-box">
-                      <div class="cat-product">
-                        <div class="cat-name">
-                          <a href="#">
-                            <p class="text-light-green"><span class="text-dark-white">1</span> Chilli Chicken</p> <span
-                              class="text-light-white">small, chilli chicken</span>
-                          </a>
-                        </div>
-                        <div class="delete-btn">
-                          <a href="#" class="text-dark-white"> <i class="far fa-trash-alt"></i>
-                          </a>
-                        </div>
-                        <div class="price"><a href="#" class="text-dark-white fw-500">
-                            $2.25
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="cat-product-box">
-                      <div class="cat-product">
-                        <div class="cat-name">
-                          <a href="#">
-                            <p class="text-light-green"><span class="text-dark-white">1</span> loaded cheese</p> <span
-                              class="text-light-white">small, chilli chicken</span>
-                          </a>
-                        </div>
-                        <div class="delete-btn">
-                          <a href="#" class="text-dark-white"> <i class="far fa-trash-alt"></i>
-                          </a>
-                        </div>
-                        <div class="price"><a href="#" class="text-dark-white fw-500">
-                            $2.25
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="cat-product-box">
-                      <div class="cat-product">
-                        <div class="cat-name">
-                          <a href="#">
-                            <p class="text-light-green"><span class="text-dark-white">1</span> Tortia Chicken</p> <span
-                              class="text-light-white">small, chilli chicken</span>
-                          </a>
-                        </div>
-                        <div class="delete-btn">
-                          <a href="#" class="text-dark-white"> <i class="far fa-trash-alt"></i>
-                          </a>
-                        </div>
-                        <div class="price"><a href="#" class="text-dark-white fw-500">
-                            $2.25
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="item-total">
-                      <div class="total-price border-0"><span class="text-dark-white fw-700">Items subtotal:</span>
-                        <span class="text-dark-white fw-700">$9.99</span>
-                      </div>
-                      <!-- en cas panier vide
-                      <div class="empty-bag padding-15"><a href="#">Empty bag</a>
-                      </div>-->
-                    </div>
-                  </div>
-                  <div class="card-footer padding-15"><a href="{{ route('card.show') }}" class="btn-first green-btn text-custom-white full-width fw-500">Commander</a>
-                  </div>
-                </div>
-              </div>
             </div>
             <!-- user cart -->
           </div>

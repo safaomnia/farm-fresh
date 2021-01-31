@@ -256,7 +256,7 @@
           <div class="product-item main-box mb-md-20">
             <div class="img">
               <a href="#">
-                <img src="assets/img/dish/150x151/dish-4.jpg" alt="image">
+                <img src="assets/img/dish/150x151/dish-9.jpg" alt="image">
               </a> <span><a href="#">
                             <i class="fas fa-shopping-bag"></i></a></span>
             </div>

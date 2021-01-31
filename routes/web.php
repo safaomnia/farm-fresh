@@ -9,7 +9,7 @@
 #route boot
 Auth::routes();
 Route::view('/', 'home');
-Route::view('/home', 'home');
+Route::view('/home', 'home')->name('home');
 
 #route produit
 Route::get('produits', 'produitController@index')->name('product.index');
