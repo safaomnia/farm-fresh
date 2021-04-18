@@ -10,6 +10,7 @@
 Auth::routes();
 Route::view('/', 'home');
 Route::view('/home', 'home')->name('home');
+Route::get('/order', 'CommandeController@index')->name('order');
 
 #route produit
 Route::get('produits', 'produitController@index')->name('product.index');
