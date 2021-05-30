@@ -59,7 +59,7 @@
                 <div class="row">
                   <div class="col-lg-6 col-md-12 col-sm-6">
                     <div class="form-group">
-                      <input type="text" name="nom" class="form-control form-control-submit @error('nom') is-invalid @enderror" placeholder="Ecrivez ici" value="{{ old
+                      <input name="nom" class="form-control form-control-submit @error('nom') is-invalid @enderror" placeholder="Nom" value="{{ old
                       ('nom') }}" placeholder="Nom" required>
                       @error('nom')
                       <span class="invalid-feedback" role="alert">
@@ -70,7 +70,7 @@
                   </div>
                   <div class="col-lg-6 col-md-12 col-sm-6">
                     <div class="form-group">
-                      <input type="text" name="prenom" class="form-control form-control-submit @error('prenom') is-invalid @enderror" value="{{ old('prenom') }}"
+                      <input name="prenom" class="form-control form-control-submit @error('prenom') is-invalid @enderror" value="{{ old('prenom') }}"
                             placeholder="Prénom" required>
                       @error('prenom')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
                     </div>

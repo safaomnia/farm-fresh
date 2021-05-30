@@ -261,7 +261,6 @@
                               <span class="rectangle-tag bg-gradient-red text-custom-white">10%</span>
                             </div>
                           </div>
-                        var_dump($produit);
                           <div class="restaurent-product-rating text-right">
                             @inject('note', 'App\Http\Controllers\ProduitController')
                             @for($i = 0; $i <  number_format($note->avg($produit->id)); $i++)
@@ -296,7 +295,7 @@
                         </div>
                       </div>
                       <div class="restaurent-product-img">
-                        <img src='{{ URL::asset("assets/img/dish/$produit->image")}}' class="img-fluid" alt="#">
+                        <img src='{{ URL::asset("assets/img/dish/$produit->image")}}' class="img-fluid" alt="{{ $produit->nom }}">
                       </div>
                     </div>
                   </div>

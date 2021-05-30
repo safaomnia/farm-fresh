@@ -385,7 +385,7 @@ a.chatpopup-whatsapp-button {
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="#">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="#">
   <link rel="apple-touch-icon-precomposed" href="#">
-  <link rel="shortcut icon" href="{{ URL::asset('assets/img/logo/icon.png')}}" title="icon">
+  <link rel="shortcut icon" href="{{ URL::asset('assets\img\LOGO\Icon.png')}}" title="icon">
   <!-- Bootstrap -->
   <link href="{{ URL::asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
   <!-- Fontawesome -->
@@ -440,9 +440,9 @@ a.chatpopup-whatsapp-button {
       <div class="row">
         <div class="col-12 mainNavCol">
           <!-- logo -->
-          <div class="logo mainNavCol">
+          <div class="logo mainNavCol" style="margin-right: 3ch;">
             <a href="{{ route('home') }}">
-              <img src="{{ URL::asset('assets/img/logo/logo.png') }}" class="img-fluid" alt="Logo">
+              <img src="{{ URL::asset('assets\img\LOGO\LOGO.png') }}" class="img-fluid" alt="Logo">
             </a>
           </div>
           <!-- logo -->
