@@ -261,6 +261,7 @@
                               <span class="rectangle-tag bg-gradient-red text-custom-white">10%</span>
                             </div>
                           </div>
+                        var_dump($produit);
                           <div class="restaurent-product-rating text-right">
                             @inject('note', 'App\Http\Controllers\ProduitController')
                             @for($i = 0; $i <  number_format($note->avg($produit->id)); $i++)
