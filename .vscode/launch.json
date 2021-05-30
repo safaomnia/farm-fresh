@@ -16,7 +16,12 @@
             "request": "launch",
             "program": "${file}",
             "cwd": "${fileDirname}",
-            "port": 9000
+            "port": 9000,
+            "serverReadyAction": {
+            "pattern": "listening on port ([0-9]+)",
+            "uriFormat": "http://localhost:%s",
+            "action": "openExternally"
+            }
         }
     ]
 }

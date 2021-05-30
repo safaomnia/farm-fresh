@@ -1,9 +1,8 @@
 <?php
 
 namespace App;
-
+$var = "content";
 use Illuminate\Database\Eloquent\Model;
-
 class demande extends Model
 {
   public $table = 'demande';
@@ -13,6 +12,7 @@ class demande extends Model
 
   public function client()
   {
+    $var = "content";
     return $this->belongsTo(User::class, 'client_id');
   }
 }

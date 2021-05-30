@@ -63,16 +63,15 @@
               </div>
               @enderror
               <form method="POST">
-                <h4 class="text-light-black fw-600">Connectez-vous avec votre compte Farm Fresh</h4>
+                <h4 class="form-group text-light-black fw-600">Connectez-vous </h4>
+                
                 <div class="row">
                   <div class="col-12">
                     <div class="form-group">
-                      <label class="text-light-white fs-14">Email</label>
-                      <input type="email" name="email" class="form-control form-control-submit" placeholder="Ecrivez ici" value="{{ old('email') }}" required>
+                      <input type="email" name="email" class="form-control form-control-submit" placeholder="Email" value="{{ old('email') }}" required>
                     </div>
                     <div class="form-group">
-                      <label class="text-light-white fs-14">Mot de passe</label>
-                      <input type="password" id="password-field" name="password" class="form-control form-control-submit" required>
+                      <input type="password" id="password-field" name="password" placeholder="Mot de passe" class="form-control form-control-submit" required>
                       <div data-name="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></div>
                     </div>
                     <div class="form-group">

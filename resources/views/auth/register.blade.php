@@ -59,9 +59,8 @@
                 <div class="row">
                   <div class="col-lg-6 col-md-12 col-sm-6">
                     <div class="form-group">
-                      <label class="text-light-white fs-14">Nom</label>
                       <input type="text" name="nom" class="form-control form-control-submit @error('nom') is-invalid @enderror" placeholder="Ecrivez ici" value="{{ old
-                      ('nom') }}" required>
+                      ('nom') }}" placeholder="Nom" required>
                       @error('nom')
                       <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -71,27 +70,23 @@
                   </div>
                   <div class="col-lg-6 col-md-12 col-sm-6">
                     <div class="form-group">
-                      <label class="text-light-white fs-14">Prénom</label>
                       <input type="text" name="prenom" class="form-control form-control-submit @error('prenom') is-invalid @enderror" value="{{ old('prenom') }}"
-                             required>
+                            placeholder="Prénom" required>
                       @error('prenom')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
                     </div>
                   </div>
                   <div class="col-12">
                     <div class="form-group">
-                      <label class="text-light-white fs-14">Email</label>
-                      <input type="email" name="email" class="form-control form-control-submit @error('email') is-invalid @enderror" value="{{ old('email') }}" required>
+                      <input placeholder="Email" type="email" name="email" class="form-control form-control-submit @error('email') is-invalid @enderror" value="{{ old('email') }}" required>
                       @error('email')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
                     </div>
                     <div class="form-group">
-                      <label class="text-light-white fs-14">Mot de passe</label>
-                      <input type="password" id="password-field" name="password" class="form-control form-control-submit @error('password') is-invalid @enderror"
+                      <input placeholder="Mot de passe" type="password" id="password-field" name="password" class="form-control form-control-submit @error('password') is-invalid @enderror"
                              required>
                       @error('password')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
                     </div>
                     <div class="form-group">
-                      <label class="text-light-white fs-14">Confirmer mot de passe</label>
-                      <input type="password" id="password-field" name="password_confirmation" class="form-control form-control-submit @error('password') is-invalid @enderror"
+                      <input placeholder="Confirmer mot de passe" type="password" id="password-field" name="password_confirmation" class="form-control form-control-submit @error('password') is-invalid @enderror"
                              required>
                     </div>
                     <div class="form-group">
