@@ -13,7 +13,8 @@
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="#">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="#">
   <link rel="apple-touch-icon-precomposed" href="#">
-  <link rel="shortcut icon" href="#">
+  <link rel="shortcut icon" href="{{ URL::asset('assets\img\logo\Icon.png')}}" title="icon">
+
   <!-- Bootstrap -->
   <link href="assets/css/bootstrap.min.css" rel="stylesheet">
   <!-- Fontawesome -->
@@ -69,12 +70,6 @@
                     </div>
                   </div>
                   <div class="col-lg-6 col-md-12 col-sm-6">
-                    <div class="form-group">
-                      <input name="prenom" class="form-control form-control-submit @error('prenom') is-invalid @enderror" value="{{ old('prenom') }}"
-                            placeholder="Prénom" required>
-                      @error('prenom')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
-                    </div>
-                  </div><div class="col-lg-6 col-md-12 col-sm-6">
                     <div class="form-group">
                       <input name="prenom" class="form-control form-control-submit @error('prenom') is-invalid @enderror" value="{{ old('prenom') }}"
                             placeholder="Prénom" required>

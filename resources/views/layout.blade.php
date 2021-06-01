@@ -379,13 +379,13 @@ a.chatpopup-whatsapp-button {
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <!-- Google Fonts -->
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <title>{{ $title ?? 'Farmtast' }}</title>
+  <title>{{ $title ?? 'Farmtastic' }}</title>
   <!-- Fav and touch icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="#">
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="#">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="#">
   <link rel="apple-touch-icon-precomposed" href="#">
-  <link rel="shortcut icon" href="{{ URL::asset('assets\img\LOGO\Icon.png')}}" title="icon">
+  <link rel="shortcut icon" href="{{ URL::asset('assets\img\logo\Icon.png')}}" title="icon">
   <!-- Bootstrap -->
   <link href="{{ URL::asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
   <!-- Fontawesome -->
@@ -440,9 +440,9 @@ a.chatpopup-whatsapp-button {
       <div class="row">
         <div class="col-12 mainNavCol">
           <!-- logo -->
-          <div class="logo mainNavCol" style="margin-right: 3ch;">
+          <div class="logo mainNavCol" style="margin:-2ch 3ch 0 3ch;">
             <a href="{{ route('home') }}">
-              <img src="{{ URL::asset('assets\img\LOGO\LOGO.png') }}" class="img-fluid" alt="Logo">
+              <img src="{{ URL::asset('assets\img\logo\logo3.png') }}" class="img-fluid" alt="Logo">
             </a>
           </div>
           <!-- logo -->

@@ -13,7 +13,7 @@
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="#">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="#">
   <link rel="apple-touch-icon-precomposed" href="#">
-  <link rel="shortcut icon" href="#">
+  <link rel="shortcut icon" href="{{ URL::asset('assets\img\logo\Icon.png')}}" title="icon">
   <!-- Bootstrap -->
   <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
   <!-- Fontawesome -->
@@ -76,11 +76,14 @@
                     </div>
                     <div class="form-group">
                       <button type="submit" class="btn-second btn-submit full-width">
-                        <img src="{{ asset('assets/img/M.png') }}" alt="btn logo">Se connecter
+                        <img src="{{ asset('assets/img/logo/icon.png') }}" alt="btn logo">Se connecter
                       </button>
                     </div>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <div class="form-group text-center mb-0"><a href="/register">Créez votre compte</a>
+                    <div class="form-group text-center mb-0">
+                      <p class="text-light-black mb-0">vous n'avez pas un compte? 
+                        <a href="/register">Créez votre compte</a>
+                      </p>
                     </div>
                   </div>
                 </div>
