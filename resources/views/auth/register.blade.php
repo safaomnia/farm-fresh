@@ -74,6 +74,12 @@
                             placeholder="Prénom" required>
                       @error('prenom')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
                     </div>
+                  </div><div class="col-lg-6 col-md-12 col-sm-6">
+                    <div class="form-group">
+                      <input name="prenom" class="form-control form-control-submit @error('prenom') is-invalid @enderror" value="{{ old('prenom') }}"
+                            placeholder="Prénom" required>
+                      @error('prenom')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
+                    </div>
                   </div>
                   <div class="col-12">
                     <div class="form-group">
