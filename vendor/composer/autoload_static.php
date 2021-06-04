@@ -493,6 +493,7 @@ class ComposerStaticInit0a332c44ecaad5948502ab7f30cc7bb1
         'App\\Http\\Controllers\\ferme_avisController' => __DIR__ . '/../..' . '/app/Http/Controllers/ferme_avisController.php',
         'App\\Http\\Controllers\\forum_commentaireController' => __DIR__ . '/../..' . '/app/Http/Controllers/forum_commentaireController.php',
         'App\\Http\\Controllers\\forum_commentaire_repondeController' => __DIR__ . '/../..' . '/app/Http/Controllers/forum_commentaire_repondeController.php',
+        'App\\Http\\Controllers\\mailController' => __DIR__ . '/../..' . '/app/Http/Controllers/mailController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',

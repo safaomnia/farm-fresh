@@ -44,10 +44,11 @@ class VerifyEmail extends Notification
         }
 
         return (new MailMessage)
-            ->subject(Lang::getFromJson('Verify Email Address'))
-            ->line(Lang::getFromJson('Please click the button below to verify your email address.'))
-            ->action(Lang::getFromJson('Verify Email Address'), $verificationUrl)
-            ->line(Lang::getFromJson('If you did not create an account, no further action is required.'));
+            ->subject(Lang::getFromJson('Vérifier l\'adresse e-mail'))
+            ->greeting('Bienvenue '.$notifiable->prenom.' '.$notifiable->nom)
+            ->line(Lang::getFromJson('Veuillez cliquer sur le bouton ci-dessous pour vérifier votre adresse e-mail.'))
+            ->action(Lang::getFromJson('Vérifier l\'adresse e-mail'), $verificationUrl)
+            ->line(Lang::getFromJson('Si vous n\'avez pas créé de compte, aucune autre action n\'est requise.'));
     }
 
     /**

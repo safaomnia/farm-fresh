@@ -18,9 +18,9 @@ class ClientController extends Controller
 
   public function show(User $client)
   {
-    if ($client->type == 'client') $view = 'profil.client';
-    elseif ($client->type == 'agriculteur') $view = 'profil.agriculteur';
-    else $view = 'profil.livreur';
+    if ($client->type == 'client') $view = 'profile.client';
+    elseif ($client->type == 'agriculteur') $view = 'profile.agriculteur';
+    else $view = 'profile.livreur';
     return view($view, [
       'time' => $this->time,
       'client' => $client
@@ -29,7 +29,7 @@ class ClientController extends Controller
 
   public function edit()
   {
-    return view('profil.edit', [
+    return view('profile.edit', [
       'client' => Auth::user()
     ]);
   }

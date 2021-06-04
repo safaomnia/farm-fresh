@@ -9,308 +9,308 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
-    <style type="text/css">
-.container {
-width: 50px;
-  border: 2px solid #dedede;
-  background-color: white;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px 0;
-}
-
-.darker {
-  border-color: #ccc;
-  background-color: #ddd;
-}
-
-.container::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-        @keyframes blink {
-
-    from,
-    to {
-        color: transparent
+  <style type="text/css">
+    .container {
+    width: 50px;
+      border: 2px solid #dedede;
+      background-color: white;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 10px 0;
     }
 
-    50% {
-        color: black
-    }
-}
-
-@-moz-keyframes blink {
-
-    from,
-    to {
-        color: transparent
+    .darker {
+      border-color: #ccc;
+      background-color: #ddd;
     }
 
-    50% {
-        color: black
+    .container::after {
+      content: "";
+      clear: both;
+      display: table;
     }
-}
+            @keyframes blink {
 
-@-webkit-keyframes blink {
+        from,
+        to {
+            color: transparent
+        }
 
-    from,
-    to {
-        color: transparent
-    }
-
-    50% {
-        color: black
-    }
-}
-
-@-ms-keyframes blink {
-
-    from,
-    to {
-        color: transparent
+        50% {
+            color: black
+        }
     }
 
-    50% {
-        color: black
+    @-moz-keyframes blink {
+
+        from,
+        to {
+            color: transparent
+        }
+
+        50% {
+            color: black
+        }
     }
-}
 
-@-o-keyframes blink {
+    @-webkit-keyframes blink {
 
-    from,
-    to {
-        color: transparent
+        from,
+        to {
+            color: transparent
+        }
+
+        50% {
+            color: black
+        }
     }
 
-    50% {
-        color: black
+    @-ms-keyframes blink {
+
+        from,
+        to {
+            color: transparent
+        }
+
+        50% {
+            color: black
+        }
     }
-}
 
-.chatpopup-widget * {
-    box-sizing: border-box
-}
+    @-o-keyframes blink {
 
-.chatpopup-widget {
-    position: fixed;
-    bottom: 12px;
-    z-index: 999999;
-    display: flex;
-    flex-direction: column
-}
+        from,
+        to {
+            color: transparent
+        }
 
-.chatpopup-widget__body {
-    margin-bottom: 10px;
-    min-width: 300px;
-    max-width: 340px;
-    display: none;
-    margin-left: 12px
-}
+        50% {
+            color: black
+        }
+    }
 
-.chatpopup-widget__body-header {
-    padding: 15px;
-    font-size: 15px;
-    line-height: 22px;
-    text-align: center;
-    border-radius: 4px 4px 0 0;
-    position: relative
-}
+    .chatpopup-widget * {
+        box-sizing: border-box
+    }
 
-.chatpopup-widget-close {
-    position: absolute;
-    top: -40px;
-    width: 30px;
-    height: 30px;
-    border-radius: 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    user-select: none
-}
+    .chatpopup-widget {
+        position: fixed;
+        bottom: 12px;
+        z-index: 999999;
+        display: flex;
+        flex-direction: column
+    }
 
-.chatpopup-support-persons {
-    background-color: #fff;
-    padding: 15px;
-    box-shadow: 0 50px 30px rgba(0, 0, 0, 0.1);
-    border-radius: 0 0 4px 4px;
-    max-height: 370px;
-    overflow-y: auto;
-    min-height: 20px
-}
+    .chatpopup-widget__body {
+        margin-bottom: 10px;
+        min-width: 300px;
+        max-width: 340px;
+        display: none;
+        margin-left: 12px
+    }
 
-.chatpopup-support-person {
-    display: flex;
-    margin-bottom: 15px;
-    border: 1px solid #F5F5F5;
-    cursor: pointer
-}
+    .chatpopup-widget__body-header {
+        padding: 15px;
+        font-size: 15px;
+        line-height: 22px;
+        text-align: center;
+        border-radius: 4px 4px 0 0;
+        position: relative
+    }
 
-.chatpopup-support-person__img {
-    width: 70px;
-    height: 70px;
-    margin-right: 15px;
-    position: relative
-}
+    .chatpopup-widget-close {
+        position: absolute;
+        top: -40px;
+        width: 30px;
+        height: 30px;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        user-select: none
+    }
 
-.chatpopup-support-person__img img {
-    width: 100%;
-    border-radius: 0
-}
+    .chatpopup-support-persons {
+        background-color: #fff;
+        padding: 15px;
+        box-shadow: 0 50px 30px rgba(0, 0, 0, 0.1);
+        border-radius: 0 0 4px 4px;
+        max-height: 370px;
+        overflow-y: auto;
+        min-height: 20px
+    }
 
-.chatpopup-support-person__status {
-    background-color: red;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    position: absolute;
-    bottom: 0;
-    right: 0
-}
+    .chatpopup-support-person {
+        display: flex;
+        margin-bottom: 15px;
+        border: 1px solid #F5F5F5;
+        cursor: pointer
+    }
 
-.chatpopup-support-person__status--avail {
-    background-color: #00c853
-}
+    .chatpopup-support-person__img {
+        width: 70px;
+        height: 70px;
+        margin-right: 15px;
+        position: relative
+    }
 
-.chatpopup-support-person__status--not-avail {
-    background-color: #ffd600
-}
+    .chatpopup-support-person__img img {
+        width: 100%;
+        border-radius: 0
+    }
 
-.chatpopup-support-person__meta {
-    display: flex;
-    flex-direction: column;
-    justify-content: center
-}
+    .chatpopup-support-person__status {
+        background-color: red;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        position: absolute;
+        bottom: 0;
+        right: 0
+    }
 
-.chatpopup-support-person__name,
-.chatpopup-support-person__title {
-    line-height: 20px
-}
+    .chatpopup-support-person__status--avail {
+        background-color: #00c853
+    }
 
-.chatpopup-support-person__name {
-    font-size: 16px;
-    font-weight: 700;
-    color: #706F6F
-}
+    .chatpopup-support-person__status--not-avail {
+        background-color: #ffd600
+    }
 
-.chatpopup-support-person__title {
-    color: #706F6F
-}
+    .chatpopup-support-person__meta {
+        display: flex;
+        flex-direction: column;
+        justify-content: center
+    }
 
-.chatpopup-welcome-msg {
-    padding: 5px 15px;
-    border-radius: 0 0 4px 4px
-}
+    .chatpopup-support-person__name,
+    .chatpopup-support-person__title {
+        line-height: 20px
+    }
 
-.chatpopup-custom-offer {
-    margin: 10px 0
-}
+    .chatpopup-support-person__name {
+        font-size: 16px;
+        font-weight: 700;
+        color: #706F6F
+    }
 
-.chatpopup-custom-offer img {
-    width: 100%
-}
+    .chatpopup-support-person__title {
+        color: #706F6F
+    }
 
-.chatpopup-widget__trigger {
-    padding: 6px 14px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 15px;
-    display: inline-block;
-    user-select: none;
-    display: flex;
-    align-items: center
-}
+    .chatpopup-welcome-msg {
+        padding: 5px 15px;
+        border-radius: 0 0 4px 4px
+    }
 
-.chatpopup-gdpr {
-    font-size: 14px;
-    border: 1px solid transparent;
-    padding-left: 15px;
-    background-color: #fff
-}
+    .chatpopup-custom-offer {
+        margin: 10px 0
+    }
 
-.chatpopup-gdpr.error {
-    border: 1px solid red
-}
+    .chatpopup-custom-offer img {
+        width: 100%
+    }
 
-a.chatpopup-whatsapp-button {
-    padding: 6px 20px !important;
-    text-align: center !important;
-    text-decoration: none !important;
-    margin-right: 5px !important;
-    border-radius: 2px !important;
-    cursor: pointer !important;
-    font-size: 15px !important;
-    outline: none !important;
-    display: inline-block !important
-}
+    .chatpopup-widget__trigger {
+        padding: 6px 14px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 15px;
+        display: inline-block;
+        user-select: none;
+        display: flex;
+        align-items: center
+    }
 
-.chatpopup-blinking-cursor {
-    font-weight: 100;
-    font-size: 15px;
-    color: #2E3D48;
-    -webkit-animation: 1s blink step-end infinite;
-    -moz-animation: 1s blink step-end infinite;
-    -ms-animation: 1s blink step-end infinite;
-    -o-animation: 1s blink step-end infinite;
-    animation: 1s blink step-end infinite
-}
+    .chatpopup-gdpr {
+        font-size: 14px;
+        border: 1px solid transparent;
+        padding-left: 15px;
+        background-color: #fff
+    }
 
-.chatpopup-input-wrapper {
-    display: flex;
-    align-items: center;
-    padding: 5px 10px;
-    background: #fff;
-    box-shadow: 0 50px 30px rgba(0, 0, 0, 0.1);
-    border-radius: 0 0 4px 4px;
-    border-top: 1px solid #ccc
-}
+    .chatpopup-gdpr.error {
+        border: 1px solid red
+    }
 
-.chatpopup-input-wrapper input {
-    flex: 1;
-    height: 40px;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important
-}
+    a.chatpopup-whatsapp-button {
+        padding: 6px 20px !important;
+        text-align: center !important;
+        text-decoration: none !important;
+        margin-right: 5px !important;
+        border-radius: 2px !important;
+        cursor: pointer !important;
+        font-size: 15px !important;
+        outline: none !important;
+        display: inline-block !important
+    }
 
-.chatpopup-input-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    cursor: pointer;
-    margin: 0 10px
-}
+    .chatpopup-blinking-cursor {
+        font-weight: 100;
+        font-size: 15px;
+        color: #2E3D48;
+        -webkit-animation: 1s blink step-end infinite;
+        -moz-animation: 1s blink step-end infinite;
+        -ms-animation: 1s blink step-end infinite;
+        -o-animation: 1s blink step-end infinite;
+        animation: 1s blink step-end infinite
+    }
 
-.chatpopup-input-icon svg {
-    width: 100%;
-    height: auto
-}
+    .chatpopup-input-wrapper {
+        display: flex;
+        align-items: center;
+        padding: 5px 10px;
+        background: #fff;
+        box-shadow: 0 50px 30px rgba(0, 0, 0, 0.1);
+        border-radius: 0 0 4px 4px;
+        border-top: 1px solid #ccc
+    }
 
-.chatpopup_jwi {
-    display: inline-block;
-    position: fixed;
-    bottom: 12px;
-    filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, .1));
-    outline: none;
-    z-index: 99999
-}
+    .chatpopup-input-wrapper input {
+        flex: 1;
+        height: 40px;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important
+    }
 
-.chatpopup-icon-close svg {
-    width: 14px
-}
+    .chatpopup-input-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        cursor: pointer;
+        margin: 0 10px
+    }
 
-.chatpopup-icon-whatsapp {
-    line-height: 0 !important;
-    margin-right: 5px
-}
+    .chatpopup-input-icon svg {
+        width: 100%;
+        height: auto
+    }
 
-.chatpopup-icon-whatsapp svg {
-    width: 16px
-}
-.chatpopup-widget-close,
+    .chatpopup_jwi {
+        display: inline-block;
+        position: fixed;
+        bottom: 12px;
+        filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, .1));
+        outline: none;
+        z-index: 99999
+    }
+
+    .chatpopup-icon-close svg {
+        width: 14px
+    }
+
+    .chatpopup-icon-whatsapp {
+        line-height: 0 !important;
+        margin-right: 5px
+    }
+
+    .chatpopup-icon-whatsapp svg {
+        width: 16px
+    }
+    .chatpopup-widget-close,
         .chatpopup-widget__body-header,
         .chatpopup-widget__trigger,
         .chatpopup-welcome-msg {
@@ -374,7 +374,7 @@ a.chatpopup-whatsapp-button {
                 opacity: 0;
             }
         }
-    </style>
+      </style>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <!-- Google Fonts -->
@@ -406,6 +406,8 @@ a.chatpopup-whatsapp-button {
   <link href="{{ URL::asset('assets/css/responsive.css')}}" rel="stylesheet">
   <!-- Rating Stylesheet -->
   <link href="{{ URL::asset('assets/css/rating.css')}}" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;display=swap" rel="stylesheet">
   <!-- place -->
   
 </head>
@@ -422,12 +424,12 @@ a.chatpopup-whatsapp-button {
         <div class="copyright-text">
         <span class="text-light-black">
         @guest
-           <a href="/login" class="gem-points">S'identifier</a> | 
-           <a href="/register" class="gem-points">S'inscrire</a> | 
+           <a href="login" class="gem-points">S'identifier</a> | 
+           <a href="register" class="gem-points">S'inscrire</a> | 
          @endguest
           <a href="#" class="gem-points">Aide </a> |
-           <a href="/contact" class="gem-points">Contactez-nous</a> | 
-          <a href="/propos" class="gem-points">Qui sommes-nous?</a>
+           <a href="contact" class="gem-points">Contactez-nous</a> | 
+          <a href="propos" class="gem-points">Qui sommes-nous?</a>
          </span>
         </div>
       </div>
@@ -635,7 +637,7 @@ a.chatpopup-whatsapp-button {
             </li>
             <li><a href="#" class="text-light-white fw-600">Rechercher ferme</a>
             </li>
-            <li><a href="/login" class="text-light-white fw-600">S'identifier</a>
+            <li><a href="login" class="text-light-white fw-600">S'identifier</a>
             </li>
           </ul>
         </div>

@@ -24,6 +24,7 @@ return array(
     'App\\Http\\Controllers\\ferme_avisController' => $baseDir . '/app/Http/Controllers/ferme_avisController.php',
     'App\\Http\\Controllers\\forum_commentaireController' => $baseDir . '/app/Http/Controllers/forum_commentaireController.php',
     'App\\Http\\Controllers\\forum_commentaire_repondeController' => $baseDir . '/app/Http/Controllers/forum_commentaire_repondeController.php',
+    'App\\Http\\Controllers\\mailController' => $baseDir . '/app/Http/Controllers/mailController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',

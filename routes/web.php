@@ -8,8 +8,10 @@
 
 
 #route boot
-Auth::routes();
+Auth::routes(['verify' => true]);
+Route::view('/verify', 'auth.verify');
 Route::view('/', 'home');
+Route::view('/sign-up', 'mail.sign-up');
 Route::view('/home', 'home')->name('home');
 Route::get('/order', 'CommandeController@index')->name('order');
 

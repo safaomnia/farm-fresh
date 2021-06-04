@@ -31,7 +31,7 @@ class forum_commentaire_repondeController extends Controller
 
   public function edit(forum $forum, forum_commentaire $commentaire, forum_commentaire_reponde $reponde)
   {
-    return view('forum',
+    return view('forum.view',
       [
         'time' => $this->time,
         'forum' => $forum,

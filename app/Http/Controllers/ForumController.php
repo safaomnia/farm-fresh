@@ -31,7 +31,7 @@ class ForumController extends Controller
 
   public function show(forum $forum)
   {
-    return view('forum',
+    return view('forum.view',
       [
         'time' => $this->time,
         'forum' => $forum
@@ -50,7 +50,7 @@ class ForumController extends Controller
 
   public function edit(forum $forum)
   {
-    return view('forums',
+    return view('forum.viewAny',
       [
         'forum' => $forum,
         'time' => $this->time,
@@ -62,7 +62,7 @@ class ForumController extends Controller
   public function update(forum $forum)
   {
     $forum->update(\request()->all(), ['client_id'=> Auth::user()->id]);
-    return redirect('forums');
+    return redirect('forum.viewAny');
   }
 
   public function delete(forum $forum)
