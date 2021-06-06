@@ -42,7 +42,7 @@
   <div class="container-fluid no-padding">
     <div class="row no-gutters overflow-auto">
       <div class="col-md-6">
-        <div class="main-banner">
+          <div class="main-banner">
           <img src="{{ asset('assets/img/banner/'.$bg) }}" class="img-fluid full-width main-img" alt="logo">
           <div class="overlay-2 main-padding">
             <a href="{{ url('/') }}">
