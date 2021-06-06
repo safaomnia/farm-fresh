@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class panier extends Model
 {
-  public $table = 'panier';
+  public    $table    = 'panier';
   protected $fillable = [
     'ipv4'
   ];

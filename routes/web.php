@@ -11,6 +11,8 @@
 Auth::routes(['verify' => true]);
 Route::view('/verify', 'auth.verify');
 Route::view('/', 'home');
+Route::view('/contact', 'contact');
+Route::post('/contact', 'contactController@send');
 Route::view('/sign-up', 'mail.sign-up');
 Route::view('/home', 'home')->name('home');
 Route::get('/order', 'CommandeController@index')->name('order');
