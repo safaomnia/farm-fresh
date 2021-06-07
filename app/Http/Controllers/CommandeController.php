@@ -21,7 +21,7 @@ class CommandeController extends Controller
   {
     return view('order',
       [
-        'time' => $this->time,
+        'time'   => $this->time,
         'orders' => commande::orderBy('created_at', 'DESC')->paginate(15)
       ]);
   }
@@ -30,7 +30,7 @@ class CommandeController extends Controller
   {
     return view('ferme.viewMine',
       [
-        'time' => $this->time,
+        'time'   => $this->time,
         'fermes' => ferme::where('agriculteur_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get()
       ]);
   }
@@ -38,36 +38,36 @@ class CommandeController extends Controller
   public function show(ferme $ferme)
   {
     if (Auth::check())
-      if ((ferme_avis::where(['ferme_id' => $ferme->id, 'client_id' => Auth::user()->id])->first()) == NULL) $avis = NULL;
-      else $avis = ferme_avis::where(['ferme_id' => $ferme->id, 'client_id' => Auth::user()->id])->first();
+      if   ((ferme_avis::where(['ferme_id' => $ferme->id, 'client_id' => Auth::user()->id])->first()) == NULL) $avis = NULL;
+      else $avis                                                                                                     = ferme_avis::where(['ferme_id' => $ferme->id, 'client_id' => Auth::user()->id])->first();
     else
       $avis = NULL;
     return view('ferme.view',
       [
-        'time' => $this->time,
+        'time'       => $this->time,
         'ferme_avis' => $avis,
-        'produits' => produit::all()->where('ferme_id', $ferme->id),
-        'all_avis' => ferme::with('avis')->findOrFail($ferme->id)->avis,
-        'ferme' => $ferme
+        'produits'   => produit::all()->where('ferme_id', $ferme->id),
+        'all_avis'   => ferme::with('avis')->findOrFail($ferme->id)->avis,
+        'ferme'      => $ferme
       ]);
   }
 
   public function store()
   {
-    $ferme = new ferme();
-    $ferme->nom = \request('nom_ferme');
-    $ferme->telephone = \request('telephone');
-    $ferme->email = \request('email');
-    $ferme->image = 'default.jpg';
-    $ferme->adresse = 'jendouba';
-    $ferme->description = \request('description_ferme');
+    $ferme                 = new ferme();
+    $ferme->nom            = \request('nom_ferme');
+    $ferme->telephone      = \request('telephone');
+    $ferme->email          = \request('email');
+    $ferme->image          = 'default.jpg';
+    $ferme->adresse        = 'jendouba';
+    $ferme->description    = \request('description_ferme');
     $ferme->agriculteur_id = Auth::user()->id;
     $ferme->save();
     $ferme->produits()->create([
-      'nom' => \request('nom_produit'),
-      'prix' => \request('prix'),
-      'stock' => \request('stock'),
-      'image' => 'default.jpg',
+      'nom'         => \request('nom_produit'),
+      'prix'        => \request('prix'),
+      'stock'       => \request('stock'),
+      'image'       => 'default.jpg',
       'description' => \request('description_produit')
     ]);
     return redirect()->route('farm.mine');
@@ -95,11 +95,11 @@ class CommandeController extends Controller
   //additional functions
   public function etoiles($id)
   {
-    return ferme::find($id)->avis()->count();
+    return ferme:: find($id)->avis()->count();
   }
 
   public function avg($id)
   {
-    return ferme::find($id)->avis()->avg('etoiles');
+    return ferme:: find($id)->avis()->avg('etoiles');
   }
 }

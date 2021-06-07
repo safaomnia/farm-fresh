@@ -427,7 +427,6 @@
            <a href="login" class="gem-points">S'identifier</a> | 
            <a href="register" class="gem-points">S'inscrire</a> | 
          @endguest
-          <a href="#" class="gem-points">Aide </a> |
            <a href="contact" class="gem-points">Contactez-nous</a> | 
           <a href="propos" class="gem-points">Qui sommes-nous?</a>
          </span>

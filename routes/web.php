@@ -9,13 +9,14 @@
 
 #route boot
 Auth::routes(['verify' => true]);
-Route::view('/verify', 'auth.verify');
+Route::view('verify', 'auth.verify');
 Route::view('/', 'home');
-Route::view('/contact', 'contact');
-Route::post('/contact', 'contactController@send');
-Route::view('/sign-up', 'mail.sign-up');
-Route::view('/home', 'home')->name('home');
-Route::get('/order', 'CommandeController@index')->name('order');
+Route::view('contact', 'contact');
+Route::view('about-us', 'about-us')->name('about-us');
+Route::post('contact', 'contactController@send');
+Route::view('sign-up', 'mail.sign-up');
+Route::view('home', 'home')->name('home');
+Route::get('order', 'CommandeController@index')->name('order');
 
 #route produit
 Route::get('produits', 'produitController@index')->name('product.index');
