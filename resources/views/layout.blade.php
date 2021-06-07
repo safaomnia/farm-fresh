@@ -413,7 +413,7 @@
 </head>
 <body style="margin-top:-10px;">
 <!-- Navigation -->
-<div class="copyright">
+<div class="copyright bg-light-green">
   <div class="container-fluid">
     <div class="row fw-400 fs-12 mr-3" style="margin-bottom:-10px;">
       <div class="col-lg-4">
@@ -422,13 +422,13 @@
       </div>
       <div class="col-lg-4">
         <div class="copyright-text">
-        <span class="text-light-black">
+        <span class="text-light-white">
         @guest
-           <a href="login" class="gem-points">S'identifier</a> | 
-           <a href="register" class="gem-points">S'inscrire</a> | 
+           <a href="login" class="gem-points" style="color: #fff">S'identifier</a> | 
+           <a href="register" class="gem-points" style="color: #fff">S'inscrire</a> | 
          @endguest
-           <a href="contact" class="gem-points">Contactez-nous</a> | 
-          <a href="propos" class="gem-points">Qui sommes-nous?</a>
+           <a href="contact" class="gem-points" style="color: #fff">Contactez-nous</a> | 
+          <a href="propos" class="gem-points" style="color: #fff">Qui sommes-nous?</a>
          </span>
         </div>
       </div>
